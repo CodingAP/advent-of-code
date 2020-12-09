@@ -20,7 +20,19 @@ for (let i = 0; i < commandArgs.length; i++) {
 }
 
 let runDay = (day, year) => {
-    if (fs.existsSync(`./years/${year}/day${day}`)) return { part1: require(`../years/${year}/day${day}/part1.js`)(), part2: require(`../years/${year}/day${day}/part2.js`)() };
+    if (fs.existsSync(`./years/${year}/day${day}`)) {
+        let before1 = process.hrtime();
+        let part1 = require(`../years/${year}/day${day}/part1.js`)();
+        let after1 = process.hrtime(before1);
+        let time1 = after1[1] / 1000000;
+
+        let before2 = process.hrtime();
+        let part2 = require(`../years/${year}/day${day}/part2.js`)();
+        let after2 = process.hrtime(before2);
+        let time2 = after2[1] / 1000000;
+    
+        return { part1, time1, part2, time2 };
+    }
     return null;
 }
 
