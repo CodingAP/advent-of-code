@@ -22,6 +22,7 @@ for (let i = 0; i < commandArgs.length; i++) {
     }
 }
 
-let aoc = require(`./solutions/${options.year}/day${options.day}.js`);
-console.log(`Part 1: ${aoc.part1()}`);
-console.log(`Part 2: ${aoc.part2()}`);
+let part1 = require(`./years/${options.year}/day${options.day}/part1.js`);
+let part2 = require(`./years/${options.year}/day${options.day}/part2.js`);
+console.log(`Part 1: ${part1()}`);
+console.log(`Part 2: ${part2()}`);

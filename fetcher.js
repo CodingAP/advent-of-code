@@ -7,7 +7,6 @@ const currentDay = new Date();
 let options = {
     day: '' + currentDay.getDate(),
     year: '' + currentDay.getFullYear(),
-    out: `${currentDay.getDate()}.in`,
     modified: false
 };
 
@@ -18,7 +17,6 @@ for (let i = 0; i < commandArgs.length; i++) {
     switch (parts[0]) {
         case '--day':
             options.day = parts[1];
-            options.out = parts[1] + '.in';
             break;
         case '--year':
             options.year = parts[1];
@@ -26,7 +24,7 @@ for (let i = 0; i < commandArgs.length; i++) {
     }
 }
 
-const template = fs.readFileSync('./template.tpl').toString().replace('$year', options.year).replace('$out', options.out);
+const template = fs.readFileSync('./template.tpl').toString().replace(/\$year\$/, options.year).replace(/\$day\$/, options.day);
 
 (async () => {
     if (options.day > 0 && options.day <= 25 && (options.modified || currentDay.getMonth() == 11)) {
@@ -35,14 +33,28 @@ const template = fs.readFileSync('./template.tpl').toString().replace('$year', o
         );
         
         let body = await response.text();
-        fs.writeFile(`inputs/${options.year}/${options.out}`, body, (err) => {
+
+        let dir = `./years/${options.year}/day${options.day}`;
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+
+        fs.writeFile(dir + '/input.txt', body, (err) => {
             if (err) throw err;
-            console.log(`Saved input to ${options.out}!`);
+            console.log(`Saved input for day ${options.day}!`);
         });
             
-        fs.writeFile(`solutions/${options.year}/day${options.day}.js`, template, (err) => {
+        fs.writeFile(dir + '/part1.js', template, (err) => {
             if (err) throw err;
-            console.log(`Saved program to day${options.day}.js!`);
+            console.log(`Saved part 1 of day ${options.day}!`);
+        });
+
+        fs.writeFile(dir + '/part2.js', template, (err) => {
+            if (err) throw err;
+            console.log(`Saved part 2 of day ${options.day}!`);
+        });
+
+        fs.writeFile(dir + '/README.md', '', (err) => {
+            if (err) throw err;
+            console.log(`Saved the README of day ${options.day}!`);
         });
     }
 })();
