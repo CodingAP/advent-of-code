@@ -1,9 +1,9 @@
-## Advent of Code
+# Advent of Code
 
 These are my solutions to Advent of Code!
 Live Streaming on [Youtube](https://www.youtube.com/CodingAP)
 
-## This Year's Progress
+# This Year's Progress
 
 | Day  | Part One | Part Two | 
 |---|:---:|:---:|
@@ -17,34 +17,34 @@ Live Streaming on [Youtube](https://www.youtube.com/CodingAP)
 | [Day 8](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day8)| 2051✔ | 2304✔ |
 | [Day 9](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day9)| 1930745883✔ | 268878261✔ |
 
-## Previous Years' Progress
+# Previous Years' Progress
 
-# 2019
+## 2019
 | Day  | Part One | Part Two | 
 |---|:---:|:---:|
 
 
-# 2018
+## 2018
 | Day  | Part One | Part Two | 
 |---|:---:|:---:|
 
 
-# 2017
+## 2017
 | Day  | Part One | Part Two | 
 |---|:---:|:---:|
 
 
-# 2016
+## 2016
 | Day  | Part One | Part Two | 
 |---|:---:|:---:|
 
 
-# 2015
+## 2015
 | Day  | Part One | Part Two | 
 |---|:---:|:---:|
 
 
-## Running The Code
+# Running The Code
 Use `runner.js` to run the code. Example:
     node scripts/runner --day=1 --year=2015
 to run both parts of day 1 of 2015's event.
