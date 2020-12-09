@@ -169,9 +169,3 @@ Live Streaming on [Youtube](https://www.youtube.com/CodingAP)
 | [Day 23](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day23)| Not finished❌ | Not finished❌ |
 | [Day 24](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day24)| Not finished❌ | Not finished❌ |
 | [Day 25](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day25)| Not finished❌ | Not finished❌ |
-
-
-# Running The Code
-Use `runner.js` to run the code.
-
-Example: `node scripts/runner --day=1 --year=2015` to run both parts of day 1 of 2015's event.
