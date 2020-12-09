@@ -1,5 +1,5 @@
 const input = require('fs').readFileSync('./years/2020/day6/input.txt').toString().trim();
-const common = require('../../../common');
+const common = require('../../../scripts/common');
 
 module.exports = () => {
     let sum = 0;
