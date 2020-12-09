@@ -36,7 +36,7 @@ The toboggan can only follow a few specific slopes (you opted for a cheaper mode
 
 From your starting position at the top-left, check the position that is right 3 and down 1\. Then, check the position that is right 3 and down 1 from there, and so on until you go past the bottom of the map.
 
-The locations you'd check in the above example are marked here with `_O_` where there was an open square and `_X_` where there was a tree:
+The locations you'd check in the above example are marked here with _`O`_ where there was an open square and _`X`_ where there was a tree:
 
     ..##.........##.........##.........##.........##.........##.......  --->
     #..O#...#..#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..
@@ -50,7 +50,7 @@ The locations you'd check in the above example are marked here with `_O_` where 
     #...##....##...##....##...#X....##...##....##...##....##...##....#
     .#..#...#.#.#..#...#.#.#..#...X.#.#..#...#.#.#..#...#.#.#..#...#.#  --->
 
-In this example, traversing the map using this slope would cause you to encounter `_7_` trees.
+In this example, traversing the map using this slope would cause you to encounter _`7`_ trees.
 
 Starting at the top-left corner of your map and following a slope of right 3 and down 1, _how many trees would you encounter?_
 
@@ -66,6 +66,6 @@ Determine the number of trees you would encounter if, for each of the following 
 *   Right 7, down 1.
 *   Right 1, down 2.
 
-In the above example, these slopes would find `2`, `7`, `3`, `4`, and `2` tree(s) respectively; multiplied together, these produce the answer `_336_`.
+In the above example, these slopes would find `2`, `7`, `3`, `4`, and `2` tree(s) respectively; multiplied together, these produce the answer _`336`_.
 
 _What do you get if you multiply together the number of trees encountered on each of the listed slopes?_

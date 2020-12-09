@@ -1,0 +1,1 @@
+function a(e) { var d = document.createElement("textarea"); document.body.appendChild(d), d.value = e, d.select(), document.execCommand("copy"), document.body.removeChild(d) } a(document.querySelectorAll(".day-desc")[0].innerHTML + "\n" + document.querySelectorAll(".day-desc")[1].innerHTML);

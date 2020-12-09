@@ -16,7 +16,7 @@ For example, suppose you have the following list:
 
 Each line gives the password policy and then the password. The password policy indicates the lowest and highest number of times a given letter must appear for the password to be valid. For example, `1-3 a` means that the password must contain `a` at least `1` time and at most `3` times.
 
-In the above example, `_2_` passwords are valid. The middle password, `cdefg`, is not; it contains no instances of `b`, but needs at least `1`. The first and third passwords are valid: they contain one `a` or nine `c`, both within the limits of their respective policies.
+In the above example, _`2`_ passwords are valid. The middle password, `cdefg`, is not; it contains no instances of `b`, but needs at least `1`. The first and third passwords are valid: they contain one `a` or nine `c`, both within the limits of their respective policies.
 
 _How many passwords are valid_ according to their policies?
 
@@ -30,8 +30,8 @@ Each policy actually describes two _positions in the password_, where `1` means 
 
 Given the same example list from above:
 
-*   `1-3 a: _a_b_c_de` is _valid_: position `1` contains `a` and position `3` does not.
-*   `1-3 b: _c_d_e_fg` is _invalid_: neither position `1` nor position `3` contains `b`.
-*   `2-9 c: c_c_cccccc_c_` is _invalid_: both position `2` and position `9` contain `c`.
+*   `1-3 a: `_`a`_`b`_`c`_`de` is _valid_: position `1` contains `a` and position `3` does not.
+*   `1-3 b: `_`c`_`d`_`e`_`fg` is _invalid_: neither position `1` nor position `3` contains `b`.
+*   `2-9 c: c`_`c`_`cccccc`_`c`_ is _invalid_: both position `2` and position `9` contain `c`.
 
 _How many passwords are valid_ according to the new interpretation of the policies?
