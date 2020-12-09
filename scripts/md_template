@@ -1,4 +1,4 @@
-| [Day $day$](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/$year$/day$day$)| $part1$$mark1$ ($time1$ ms) | $part2$$mark2$ ($time2$ ms) |
+| [Day $day$](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/$year$/day$day$)| $part1$$mark1$$time1$ | $part2$$mark2$$time2$ |
 # Advent of Code
 
 These are my solutions to Advent of Code!

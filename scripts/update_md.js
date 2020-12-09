@@ -15,19 +15,21 @@ for (let year = 2015; year <= 2020; year++) {
             if (answers.part1 != 0) {
                 newLine = newLine.replace(/\$part1\$/, answers.part1);
                 newLine = newLine.replace(/\$mark1\$/, '✔');
-                newLine = newLine.replace(/\$time1\$/, answers.time1);
+                newLine = newLine.replace(/\$time1\$/, ` (${answers.time1} ms)`);
             } else {
                 newLine = newLine.replace(/\$part1\$/, 'Not finished');
                 newLine = newLine.replace(/\$mark1\$/, '❌');
+                newLine = newLine.replace(/\$time1\$/, ``);
             }
 
             if (answers.part2 != 0) {
                 newLine = newLine.replace(/\$part2\$/, answers.part2);
                 newLine = newLine.replace(/\$mark2\$/, '✔');
-                newLine = newLine.replace(/\$time2\$/, answers.time2);
+                newLine = newLine.replace(/\$time2\$/, ` (${answers.time2} ms)`);
             } else {
                 newLine = newLine.replace(/\$part2\$/, 'Not finished');
                 newLine = newLine.replace(/\$mark2\$/, '❌');
+                newLine = newLine.replace(/\$time2\$/, ``);
             }
             newLine += '\n'
             table += newLine;
