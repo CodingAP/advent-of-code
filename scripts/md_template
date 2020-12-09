@@ -1,6 +1,7 @@
 # Advent of Code
 
 These are my solutions to Advent of Code!
+
 Live Streaming on [Youtube](https://www.youtube.com/CodingAP)
 
 # This Year's Progress
@@ -37,6 +38,6 @@ $2016table$
 $2015table$
 
 # Running The Code
-Use `runner.js` to run the code. Example:
-    node scripts/runner --day=1 --year=2015
-to run both parts of day 1 of 2015's event.
+Use `runner.js` to run the code.
+
+Example: `node scripts/runner --day=1 --year=2015` to run both parts of day 1 of 2015's event.

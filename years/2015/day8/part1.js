@@ -1,3 +1,4 @@
+const inputBytes = require('fs').readFileSync('./years/2015/day8/input.txt');
 const input = require('fs').readFileSync('./years/2015/day8/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 

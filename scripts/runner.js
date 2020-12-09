@@ -1,3 +1,4 @@
+const fs = require('fs');
 let currentDay = new Date();
 
 let options = {
@@ -19,14 +20,15 @@ for (let i = 0; i < commandArgs.length; i++) {
 }
 
 let runDay = (day, year) => {
-    let part1 = require(`../years/${year}/day${day}/part1.js`);
-    let part2 = require(`../years/${year}/day${day}/part2.js`);
-    console.log(`Part 1: ${part1()}`);
-    console.log(`Part 2: ${part2()}`);
+    if (fs.existsSync(`./years/${year}/day${day}`)) return { part1: require(`../years/${year}/day${day}/part1.js`)(), part2: require(`../years/${year}/day${day}/part2.js`)() };
+    return null;
 }
 
 if (require.main === module) {
-    runDay(options.day, options.year);
+    let answers = runDay(options.day, options.year);
+    console.log(`Advent of Code ${options.year} - Day ${options.day}`);
+    console.log(`Part 1: ${answers.part1}`);
+    console.log(`Part 2: ${answers.part2}`);
 } else {
     module.exports = runDay;
 }
