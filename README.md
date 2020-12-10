@@ -2,8 +2,6 @@
 
 These are my solutions to Advent of Code!
 
-Live Streaming on [Youtube](https://www.youtube.com/CodingAP)
-
 # This Year's Progress
 
 | Day  | Part One | Part Two | 
