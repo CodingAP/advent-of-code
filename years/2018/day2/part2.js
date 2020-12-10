@@ -1,6 +1,23 @@
-const input = require('fs').readFileSync('./years/2020/day9/input.txt').toString().trim();
+const input = require('fs').readFileSync('./years/2018/day2/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
 module.exports = () => {
-    return 0;
+    let words = input.split('\n');
+
+    for (let i = 0; i < words.length; i++) {
+        for (let j = 0; j < words.length; j++) {
+            if (i == j) continue;
+            let difference = 0;
+            for (let k = 0; k < words[i].length; k++) {
+                if (words[i].charAt(k) != words[j].charAt(k)) difference++;
+            }
+            if (difference == 1) {
+                let word = '';
+                for (let k = 0; k < words[i].length; k++) {
+                    if (words[i].charAt(k) == words[j].charAt(k)) word += words[j].charAt(k);
+                }
+                return word;
+            }
+        }
+    }
 }

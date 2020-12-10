@@ -1,6 +1,35 @@
-const input = require('fs').readFileSync('./years/2020/day9/input.txt').toString().trim();
+const input = require('fs').readFileSync('./years/2018/day2/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
 module.exports = () => {
-    return 0;
+    let words = input.split('\n');
+
+    let double = 0;
+    let triple = 0;
+
+    words.forEach(element => {
+        let letters = {};
+        let doubled = false, tripled = false;
+
+        for (let i = 0; i < element.length; i++) {
+            let letter = element.charAt(i);
+
+            if (!letters[letter]) letters[letter] = 0;
+            letters[letter]++;
+        }
+
+        let keys = Object.keys(letters);
+        for (let i = 0; i < keys.length; i++) {
+            if (letters[keys[i]] == 2 && !doubled) {
+                double++;
+                doubled = true;
+            }
+            if (letters[keys[i]] == 3 && !tripled) {
+                triple++;
+                tripled = true;
+            }
+        }
+    });
+
+    return double * triple;
 }
