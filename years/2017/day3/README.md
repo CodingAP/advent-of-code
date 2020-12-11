@@ -9,6 +9,7 @@ Each square on the grid is allocated in a spiral pattern starting at a location 
     19   6   1   2  11
     20   7   8   9  10
     21  22  23---> ...
+    
 
 While this is very space-efficient (no squares are skipped), requested data must be carried back to square `1` (the location of the only access port for this memory system) by programs that can only move up, down, left, or right. They always take the shortest path: the [Manhattan Distance](https://en.wikipedia.org/wiki/Taxicab_geometry) between the location of the data and square `1`.
 
@@ -40,5 +41,6 @@ Once a square is written, its value does not change. Therefore, the first few sq
     330   10    1    1   54
     351   11   23   25   26
     362  747  806--->   ...
+    
 
 What is the _first value written_ that is _larger_ than your puzzle input?

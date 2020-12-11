@@ -25,7 +25,7 @@ _What is the sum of the fuel requirements_ for all of the modules on your spacec
 
 During the second Go / No Go poll, the Elf in charge of the Rocket Equation Double-Checker stops the launch sequence. Apparently, you forgot to include additional fuel for the fuel you just added.
 
-Fuel itself requires fuel just like a module - take its mass, divide by three, round down, and subtract 2\. However, that fuel _also_ requires fuel, and _that_ fuel requires fuel, and so on. Any mass that would require _negative fuel_ should instead be treated as if it requires _zero fuel_; the remaining mass, if any, is instead handled by _wishing really hard_, which has no mass and is outside the scope of this calculation.
+Fuel itself requires fuel just like a module - take its mass, divide by three, round down, and subtract 2. However, that fuel _also_ requires fuel, and _that_ fuel requires fuel, and so on. Any mass that would require _negative fuel_ should instead be treated as if it requires _zero fuel_; the remaining mass, if any, is instead handled by _wishing really hard_, which has no mass and is outside the scope of this calculation.
 
 So, for each module mass, calculate its fuel and add it to the total. Then, treat the fuel amount you just calculated as the input mass and repeat the process, continuing until a fuel requirement is zero or negative. For example:
 

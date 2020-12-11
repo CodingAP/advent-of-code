@@ -9,26 +9,28 @@ However, the person sitting next to you seems to be experiencing a language barr
     abcx
     abcy
     abcz
+    
 
 In this group, there are _`6`_ questions to which anyone answered "yes": `a`, `b`, `c`, `x`, `y`, and `z`. (Duplicate answers to the same question don't count extra; each question counts at most once.)
 
 Another group asks for your help, then another, and eventually you've collected answers from every group on the plane (your puzzle input). Each group's answers are separated by a blank line, and within each group, each person's answers are on a single line. For example:
 
     abc
-
+    
     a
     b
     c
-
+    
     ab
     ac
-
+    
     a
     a
     a
     a
-
+    
     b
+    
 
 This list represents answers from five groups:
 
@@ -51,20 +53,21 @@ You don't need to identify the questions to which _anyone_ answered "yes"; you n
 Using the same example as above:
 
     abc
-
+    
     a
     b
     c
-
+    
     ab
     ac
-
+    
     a
     a
     a
     a
-
+    
     b
+    
 
 This list represents answers from five groups:
 
