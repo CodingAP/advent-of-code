@@ -19,8 +19,8 @@ These are my solutions to Advent of Code!
 | [Day 11](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day11)| 2108✔ (110.567 ms) | 1897✔ (134.332 ms) |
 | [Day 12](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day12)| 415✔ (0.916 ms) | 29401✔ (2.797 ms) |
 | [Day 13](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day13)| 4315✔ (1.077 ms) | 556100168221141✔ (1.419 ms) |
-| [Day 14](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day14)| Not finished❌ | Not finished❌ |
-| [Day 15](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day15)| Not finished❌ | Not finished❌ |
+| [Day 14](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day14)| 13865835758282✔ (16.893 ms) | 4195339838136✔ (252.743 ms) |
+| [Day 15](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day15)| 319✔ (8.173 ms) | 2424✔ (910.920 ms) |
 | [Day 16](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day16)| Not finished❌ | Not finished❌ |
 | [Day 17](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day17)| Not finished❌ | Not finished❌ |
 | [Day 18](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day18)| Not finished❌ | Not finished❌ |
