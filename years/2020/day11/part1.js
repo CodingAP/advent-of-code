@@ -27,11 +27,7 @@ module.exports = () => {
                 }
             }
 
-            if (value) {
-                newGrid[y][x] = (neighbors < 4);
-            } else {
-                newGrid[y][x] = (neighbors == 0);
-            }
+            newGrid[y][x] = (value) ? (neighbors < 4) : (neighbors == 0);
         });
 
         if (!previousGrid) {

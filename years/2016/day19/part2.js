@@ -2,5 +2,5 @@ const input = require('fs').readFileSync('./years/2016/day19/input.txt').toStrin
 const common = require('../../../scripts/common');
 
 module.exports = () => {
-    return 0;
+    
 }
