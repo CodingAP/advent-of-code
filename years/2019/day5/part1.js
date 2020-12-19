@@ -2,11 +2,11 @@ const input = require('fs').readFileSync('./years/2019/day5/input.txt').toString
 const common = require('../../../scripts/common');
 
 module.exports = () => {
-    return 0;
     let program = common.parseListToInt(input, ',');
     let programCounter = 0;
     let halted = false;
-    let output = 0;
+    let intcodeOutput = 0;
+    let intcodeInput = 1;
 
     let modes = {
         '0': args => {
@@ -27,11 +27,11 @@ module.exports = () => {
             return 4;
         },
         '3': (rawArgs, treatedArgs) => {
-            program[rawArgs[0]] = parseInt(common.prompt('Intcode Computer request input: '));
+            program[rawArgs[0]] = intcodeInput || parseInt(common.prompt('Intcode Computer request input: '));
             return 2;
         },
         '4': (rawArgs, treatedArgs) => {
-            output = treatedArgs[0];
+            intcodeOutput = treatedArgs[0];
             return 2;
         },
         '99': (rawArgs, treatedArgs) => {
@@ -53,5 +53,5 @@ module.exports = () => {
         programCounter += offset;
     }
 
-    return output;
+    return intcodeOutput;
 }

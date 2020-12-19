@@ -5,7 +5,8 @@ module.exports = () => {
     let program = common.parseListToInt(input, ',');
     let programCounter = 0;
     let halted = false;
-    let output = 0;
+    let intcodeOutput = 0;
+    let intcodeInput = 5;
 
     let modes = {
         '0': args => {
@@ -26,11 +27,11 @@ module.exports = () => {
             return 4;
         },
         '3': (rawArgs, treatedArgs) => {
-            program[rawArgs[0]] = parseInt(common.prompt('Intcode Computer request input: '));
+            program[rawArgs[0]] = intcodeInput || parseInt(common.prompt('Intcode Computer request input: '));
             return 2;
         },
         '4': (rawArgs, treatedArgs) => {
-            output = treatedArgs[0];
+            intcodeOutput = treatedArgs[0];
             return 2;
         },
         '5': (rawArgs, treatedArgs) => {
@@ -52,7 +53,7 @@ module.exports = () => {
             return 4;
         },
         '8': (rawArgs, treatedArgs) => {
-            program[rawArgs[2]] = (treatedArgs[0] > treatedArgs[1]) ? 1 : 0;
+            program[rawArgs[2]] = (treatedArgs[0] == treatedArgs[1]) ? 1 : 0;
             return 4;
         },
         '99': (rawArgs, treatedArgs) => {
@@ -69,11 +70,10 @@ module.exports = () => {
             rawArgs.push(program[programCounter + i]);
             treatedArgs.push(modes[parseInt(program[programCounter].toString().padStart(5, '0').charAt(3 - i))](program[programCounter + i]));
         }
-        console.log(programCounter, opcode, rawArgs, treatedArgs);
 
         let offset = instructions[opcode](rawArgs, treatedArgs);
         programCounter += offset;
     }
 
-    return output;
+    return intcodeOutput;
 }

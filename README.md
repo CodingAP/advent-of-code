@@ -42,7 +42,7 @@ These are my solutions to Advent of Code!
 | [Day 2](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day2)| 5482655✔ (0.522 ms) | 4967✔ (3.246 ms) |
 | [Day 3](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day3)| Not finished❌ | Not finished❌ |
 | [Day 4](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day4)| Not finished❌ | Not finished❌ |
-| [Day 5](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day5)| Not finished❌ | Not finished❌ |
+| [Day 5](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day5)| 5044655✔ (1.142 ms) | 7408802✔ (0.552 ms) |
 | [Day 6](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day6)| Not finished❌ | Not finished❌ |
 | [Day 7](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day7)| Not finished❌ | Not finished❌ |
 | [Day 8](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day8)| Not finished❌ | Not finished❌ |
