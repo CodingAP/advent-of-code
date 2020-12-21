@@ -1,3 +1,6 @@
+require = require('esm')(module);
+let Combinatorics = require('js-combinatorics');
+
 let common = {
     parseListToInt: (array, splitter = '\n', radix = 10) => {
         return array.split(splitter).map(value => parseInt(value, radix));
@@ -114,6 +117,15 @@ let common = {
             else num2 %= num1;
         }
         return Math.max(num1, num2);
+    },
+    powerSet: array => {
+        return [...new Combinatorics.PowerSet(array)];
+    },
+    cartesianProduct: array => {
+        return [...new Combinatorics.CartesianProduct(array)];
+    },
+    combinations: (array, number) => {
+        return [...new Combinatorics.Combination(array, number)];
     }
 }
 

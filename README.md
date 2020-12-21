@@ -174,12 +174,12 @@ These are my solutions to Advent of Code!
 | [Day 14](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day14)| 2660✔ (2.675 ms) | 1256✔ (4.630 ms) |
 | [Day 15](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day15)| Not finished❌ | Not finished❌ |
 | [Day 16](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day16)| 373✔ (2.297 ms) | 260✔ (1.574 ms) |
-| [Day 17](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day17)| Not finished❌ | Not finished❌ |
+| [Day 17](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day17)| 654✔ (626.284 ms) | 57✔ (610.610 ms) |
 | [Day 18](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day18)| 768✔ (62.974 ms) | 781✔ (62.024 ms) |
-| [Day 19](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day19)| Not finished❌ | Not finished❌ |
+| [Day 19](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day19)| 535✔ (4.871 ms) | 212✔ (2.168 ms) |
 | [Day 20](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day20)| Not finished❌ | Not finished❌ |
 | [Day 21](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day21)| 78✔ (2.563 ms) | 148✔ (2.385 ms) |
 | [Day 22](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day22)| Not finished❌ | Not finished❌ |
-| [Day 23](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day23)| Not finished❌ | Not finished❌ |
-| [Day 24](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day24)| Not finished❌ | Not finished❌ |
+| [Day 23](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day23)| 255✔ (11.199 ms) | 334✔ (2.375 ms) |
+| [Day 24](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day24)| 11846773891✔ (383.086 ms) | 80393059✔ (227.957 ms) |
 | [Day 25](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2015/day25)| Not finished❌ | Not finished❌ |

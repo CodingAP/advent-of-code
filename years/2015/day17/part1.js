@@ -2,5 +2,12 @@ const input = require('fs').readFileSync('./years/2015/day17/input.txt').toStrin
 const common = require('../../../scripts/common');
 
 module.exports = () => {
-    return 0;
+    let possible = [];
+    let allCombos = common.powerSet(common.parseListToInt(input));
+
+    allCombos.forEach(value => {
+        if (common.addAll(value) == 150) possible.push(value);
+    });
+
+    return possible.length;
 }
