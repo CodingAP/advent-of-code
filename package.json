@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "js-combinatorics": "^1.4.5",
     "md5": "^2.3.0",
     "node-fetch": "^2.6.1",
     "node-html-parser": "^2.0.0",
