@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "doubly-linked-list": "^1.0.6",
     "esm": "^3.2.25",
     "js-combinatorics": "^1.4.5",
     "md5": "^2.3.0",
