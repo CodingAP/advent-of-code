@@ -1,41 +1,78 @@
 const input = require('fs').readFileSync('./years/2020/day23/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-var DLL = require('doubly-linked-list.js');
-
 module.exports = () => {
-    let array = input.split('');
-    let cups = new DLL.DoublyLinkedList();
-    for (let i = 0; i < 1000000; i++) {
-        if (!array[i]) cups.append(i + 1 + '');
-        else cups.append(array[i])
+    let originalCups = common.parseListToInt(input, '');
+    let inputCups = originalCups.map(data => ({ data, next: null, previous: null }));
+    let max = originalCups.reduce((max, curr) => Math.max(max, curr), 0);
+    let length = 1000000;
+    
+    for (let i = 0; i < (length - originalCups.length); i++) {
+        let data = max + 1 + i;
+        inputCups.push({ data, next: null, previous: null });
     }
-    let current = 0;
+    
+    inputCups.forEach((cup, i) => {
+        let nextCup = inputCups[(i + 1) < inputCups.length ? (i + 1) : 0];
+        let previousCup = inputCups[(i - 1) >= 0 ? (i - 1) : (inputCups.length - 1)];
+
+        cup.next = nextCup;
+        nextCup.previous = cup;
+        cup.previous = previousCup;
+        previousCup.next = cup;
+    });
+
+    let dllGet = value => {
+        if (value < 1) value = length - value;
+
+        if (value <= max) return inputCups.find(cup => cup.data == value);
+        return inputCups[value - 1];
+    }
+
+    let dllInsertAfter = (cup, data) => {
+        data.next = cup.next;
+        data.previous = cup;
+        
+        cup.next.previous = data;
+        cup.next = data;
+    }
+
+    let dllRemove = cup => {
+        cup.next.previous = cup.previous;
+        cup.previous.next = cup.next;
+    }
+
+    let current = inputCups[0];
 
     for (let i = 0; i < 10000000; i++) {
-        let clockwise = [];
-        let currentCup = cups.item(current);
-
+        let removed = [];
         for (let i = 0; i < 3; i++) {
-            clockwise.push(currentCup.next.data);
-            currentCup.next.remove();
+            let remove = current.next;
+            dllRemove(remove);
+            removed.push(remove);
         }
 
-        let destination = cups.item(current);
+        let destination = current.data;
+
         do {
-            destination.data = (parseInt(destination.data) - 1) + '';
-            if (destination.data == '0') destination.data = '1000000';
-        } while (clockwise.includes(destination.data))
+            destination--;
+            if (destination < 1) destination = length;
+        } while (removed.some(rCup => rCup.data == destination));
 
-        current = (current + 1) % cups.size();
+        let destinationCup = dllGet(destination);
 
-        for (let i = 0; i < 3; i++) {
-            destination.append(clockwise[i]);
+        let dCup = destinationCup;
+        for (let current of removed) {
+            dllInsertAfter(dCup, current);
+            dCup = current;
         }
 
-        if (i % 100000 == 0) console.log(i);
+        current = current.next;
     }
-
-    console.log(cups);
-    return 0;
+    
+    let one = dllGet(1);
+    let first = one.next;
+    let second = first.next;
+    
+    return first.data * second.data;
 }

@@ -5,7 +5,7 @@ module.exports = () => {
     let players = [[], []];
     
     let player = -1;
-    let lines = input.split(/\n/);
+    let lines = input.split(/\r\n/); //Laptop has \r from some reason
     lines.forEach(value => {
         if (value.startsWith('Player')) {
             player++;
@@ -28,6 +28,13 @@ module.exports = () => {
         if (players[0].length == 0 || players[1].length == 0) break;
     }
 
-    console.log(players);
-    return 0;
+    let score = 0;
+    for (let i = 0; i < players.length; i++) {
+        if (players[i].length != 0) {
+            for (let j = 0; j < players[i].length; j++) {
+                score += (players[i].length - j) * players[i][j];
+            }
+        }
+    }
+    return score;
 }

@@ -2,33 +2,75 @@ const input = require('fs').readFileSync('./years/2020/day23/input.txt').toStrin
 const common = require('../../../scripts/common');
 
 module.exports = () => {
-    let array = input.split('');
-    let current = 0;
+    let originalCups = common.parseListToInt(input, '');
+    let inputCups = originalCups.map(data => ({ data, next: null, previous: null }));
+    let max = originalCups.reduce((max, curr) => Math.max(max, curr), 0);
+    let length = 9;
 
-    for (let i = 0; i < 100; i++) {
-        let clockwise = [];
-        for (let i = 0; i < 3; i++) {
-            let number = array[(current + 1) % array.length];
-            clockwise.push(number);
-            array.splice(array.indexOf(number), 1);
-        }
+    inputCups.forEach((cup, i) => {
+        let nextCup = inputCups[(i + 1) < inputCups.length ? (i + 1) : 0];
+        let previousCup = inputCups[(i - 1) >= 0 ? (i - 1) : (inputCups.length - 1)];
 
-        let destination = array[current];
-        do {
-            destination = (parseInt(destination) - 1) + '';
-            if (destination == '0') destination = '9';
-        } while (clockwise.includes(destination))
+        cup.next = nextCup;
+        nextCup.previous = cup;
+        cup.previous = previousCup;
+        previousCup.next = cup;
+    });
 
-        current = (current + 1) % array.length;
+    let dllGet = value => {
+        if (value < 1) value = length + 1 - value;
 
-        let stabilizer = array[current];
-
-        array.splice(array.indexOf(destination) + 1, 0, clockwise[0], clockwise[1], clockwise[2]);
-
-        let rotate = array.indexOf(stabilizer) - current;
-        for (let i = 0; i < rotate; i++) array.push(array.shift());
+        if (value <= max) return inputCups.find(cup => cup.data == value);
+        return inputCups[value - 1];
     }
 
-    array = array.join('');
-    return array.slice(array.indexOf('1') + 1) + array.slice(0, array.indexOf('1'));
+    let dllInsertAfter = (cup, data) => {
+        data.next = cup.next;
+        data.previous = cup;
+
+        cup.next.previous = data;
+        cup.next = data;
+    }
+
+    let dllRemove = cup => {
+        cup.next.previous = cup.previous;
+        cup.previous.next = cup.next;
+    }
+
+    let current = inputCups[0];
+
+    for (let i = 0; i < 100; i++) {
+        let removed = [];
+        for (let i = 0; i < 3; i++) {
+            let remove = current.next;
+            dllRemove(remove);
+            removed.push(remove);
+        }
+
+        let destination = current.data;
+
+        do {
+            destination--;
+            if (destination < 1) destination = length;
+        } while (removed.some(rCup => rCup.data == destination));
+
+        let destinationCup = dllGet(destination);
+
+        let dCup = destinationCup;
+        for (let current of removed) {
+            dllInsertAfter(dCup, current);
+            dCup = current;
+        }
+
+        current = current.next;
+    }
+
+    let string = '';
+    let one = dllGet(1);
+    let final = one.next;
+    while (final != one) {
+        string += final.data;
+        final = final.next;
+    }
+    return string;
 }
