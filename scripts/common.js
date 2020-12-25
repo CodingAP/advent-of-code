@@ -110,6 +110,9 @@ let common = {
     },
     combinations: (array, number) => {
         return [...new Combinatorics.Combination(array, number)];
+    },
+    baseN: (array, number) => {
+        return [...new Combinatorics.BaseN(array, number)];
     }
 }
 

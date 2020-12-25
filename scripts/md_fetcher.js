@@ -34,7 +34,7 @@ htmlToMarkdown.addRule('header2', {
     }
 });
 
-let fetchMarkdown = async (day, year) => {
+let fetchMarkdownFromWebsite = async (day, year) => {
     const response = await fetch(
         `https://adventofcode.com/${year}/day/${day}`, { headers: { cookie: `session=${process.env.SESSION_ID}` } }
     );
@@ -51,8 +51,19 @@ let fetchMarkdown = async (day, year) => {
     });
 }
 
+let fetchMarkdownFromFile = async (day, year) => {
+    const markdown = htmlToMarkdown.turndown(htmlParser.parse(await fs.readFileSync('./scripts/md.html')).innerHTML);
+
+    let dir = `./years/${year}/day${day}`;
+
+    fs.writeFile(dir + '/README.md', markdown, (err) => {
+        if (err) throw err;
+        console.log(`Saved the README of day ${day}, year ${year}!`);
+    });
+}
+
 if (require.main === module) {
-    fetchMarkdown(options.day, options.year);
+    fetchMarkdownFromFile(options.day, options.year);
 } else {
-    module.exports = fetchMarkdown;
+    module.exports = fetchMarkdownFromFile;
 }

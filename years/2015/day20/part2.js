@@ -5,15 +5,20 @@ module.exports = () => {
     let limit = parseInt(input);
 
     let calculatePresents = house => {
-        let sum = 0;
-        let d = Math.floor(Math.sqrt(house) + 1);
-        for (let i = 1; i <= d; i++) {
+        let sum = house;
+        if (house < 50) sum++;
+        
+        let sqrt = Math.sqrt(house);
+
+        for (let i = 2; i <= sqrt; i++) {
             if (house % i == 0) {
-                sum += i;
-                sum += house / i;
+                if (house / i <= 50) sum += i;
+                if (house / (house / i) <= 50) sum += house / i;
             }
         }
-        return sum * 10;
+
+        if (sqrt % 1 == 0) sum -= sqrt;
+        return sum * 11;
     }
 
     let house = 1;

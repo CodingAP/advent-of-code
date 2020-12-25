@@ -19,6 +19,9 @@ module.exports = () => {
         },
         '1': args => {
             return args;
+        },
+        '2': args => {
+            return program[relativeBase + args];
         }
     }
 

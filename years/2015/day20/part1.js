@@ -5,14 +5,14 @@ module.exports = () => {
     let limit = parseInt(input);
 
     let calculatePresents = house => {
-        let sum = 0;
-        let d = Math.floor(Math.sqrt(house) + 1);
-        for (let i = 1; i <= d; i++) {
-            if (house % i == 0) {
-                sum += i;
-                sum += house / i;
-            }
+        let sum = 1 + house;
+        let sqrt = Math.sqrt(house);
+
+        for (let i = 2; i <= sqrt; i++) {
+            if (0 == house % i) sum += i + house / i;
         }
+
+        if (0 == sqrt % 1) sum -= sqrt;
         return sum * 10;
     }
 
