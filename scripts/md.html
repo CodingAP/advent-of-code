@@ -1,130 +1,32 @@
-<h2>--- Day 22: Wizard Simulator 20XX ---</h2>
-<p>Little Henry Case decides that defeating bosses with <a href="21">swords and stuff</a> is boring. Now he's playing
-    the game with a <span title="Being a !@#$% Sorcerer.">wizard</span>. Of course, he gets stuck on another boss and
-    needs your help again.</p>
-<p>In this version, combat still proceeds with the player and the boss taking alternating turns. The player still goes
-    first. Now, however, you don't get any equipment; instead, you must choose one of your spells to cast. The first
-    character at or below <code>0</code> hit points loses.</p>
-<p>Since you're a wizard, you don't get to wear armor, and you can't attack normally. However, since you do <em>magic
-        damage</em>, your opponent's armor is ignored, and so the boss effectively has zero armor as well. As before, if
-    armor (from a spell, in this case) would reduce damage below <code>1</code>, it becomes <code>1</code> instead -
-    that is, the boss' attacks always deal at least <code>1</code> damage.</p>
-<p>On each of your turns, you must select one of your spells to cast. If you cannot afford to cast any spell, you lose.
-    Spells cost <em>mana</em>; you start with <em>500</em> mana, but have no maximum limit. You must have enough mana to
-    cast a spell, and its cost is immediately deducted when you cast it. Your spells are Magic Missile, Drain, Shield,
-    Poison, and Recharge.</p>
+<h2>--- Day 25: Combo Breaker ---</h2><p>You finally reach the check-in desk. Unfortunately, their registration systems are currently offline, and they cannot check you in. Noticing the look on your face, they quickly add that tech support is already on the way! They even created all the room keys this morning; you can take yours now and give them your room deposit once the registration system comes back online.</p>
+<p>The room key is a small <a href="https://en.wikipedia.org/wiki/Radio-frequency_identification" target="_blank">RFID</a> card. Your room is on the 25th floor and the elevators are also temporarily out of service, so it takes what little energy you have left to even climb the stairs and navigate the halls. You finally reach the door to your room, swipe your card, and - <em>beep</em> - the light turns red.</p>
+<p>Examining the card more closely, you discover a phone number for tech support.</p>
+<p>"Hello! How can we help you today?" You explain the situation.</p>
+<p>"Well, it sounds like the card isn't sending the right command to unlock the door. If you go back to the check-in desk, surely someone there can reset it for you." Still catching your breath, you describe the status of the elevator and the exact number of stairs you just had to climb.</p>
+<p>"I see! Well, your only other option would be to reverse-engineer the cryptographic handshake the card does with the door and then inject your own commands into the data stream, but that's definitely impossible." You thank them for their time.</p>
+<p>Unfortunately for the door, you know a thing or two about cryptographic handshakes.</p>
+<p>The handshake used by the card and the door involves an operation that <em>transforms</em> a <em>subject number</em>. To transform a subject number, start with the value <code>1</code>. Then, a number of times called the <em>loop size</em>, perform the following steps:</p>
 <ul>
-    <li><em>Magic Missile</em> costs <code>53</code> mana. It instantly does <code>4</code> damage.</li>
-    <li><em>Drain</em> costs <code>73</code> mana. It instantly does <code>2</code> damage and heals you for
-        <code>2</code> hit points.</li>
-    <li><em>Shield</em> costs <code>113</code> mana. It starts an <em>effect</em> that lasts for <code>6</code> turns.
-        While it is active, your armor is increased by <code>7</code>.</li>
-    <li><em>Poison</em> costs <code>173</code> mana. It starts an <em>effect</em> that lasts for <code>6</code> turns.
-        At the start of each turn while it is active, it deals the boss <code>3</code> damage.</li>
-    <li><em>Recharge</em> costs <code>229</code> mana. It starts an <em>effect</em> that lasts for <code>5</code> turns.
-        At the start of each turn while it is active, it gives you <code>101</code> new mana.</li>
+<li>Set the value to itself multiplied by the <em>subject number</em>.</li>
+<li>Set the value to the remainder after dividing the value by <em><code>20201227</code></em>.</li>
 </ul>
-<p><em>Effects</em> all work the same way. Effects apply at the start of both the player's turns and the boss' turns.
-    Effects are created with a timer (the number of turns they last); at the start of each turn, after they apply any
-    effect they have, their timer is decreased by one. If this decreases the timer to zero, the effect ends. You cannot
-    cast a spell that would start an effect which is already active. However, effects can be started on the same turn
-    they end.</p>
-<p>For example, suppose the player has <code>10</code> hit points and <code>250</code> mana, and that the boss has
-    <code>13</code> hit points and <code>8</code> damage:</p>
-<pre><code>-- Player turn --
-- Player has 10 hit points, 0 armor, 250 mana
-- Boss has 13 hit points
-Player casts Poison.
-
--- Boss turn --
-- Player has 10 hit points, 0 armor, 77 mana
-- Boss has 13 hit points
-Poison deals 3 damage; its timer is now 5.
-Boss attacks for 8 damage.
-
--- Player turn --
-- Player has 2 hit points, 0 armor, 77 mana
-- Boss has 10 hit points
-Poison deals 3 damage; its timer is now 4.
-Player casts Magic Missile, dealing 4 damage.
-
--- Boss turn --
-- Player has 2 hit points, 0 armor, 24 mana
-- Boss has 3 hit points
-Poison deals 3 damage. This kills the boss, and the player wins.
-</code></pre>
-<p>Now, suppose the same initial conditions, except that the boss has <code>14</code> hit points instead:</p>
-<pre><code>-- Player turn --
-- Player has 10 hit points, 0 armor, 250 mana
-- Boss has 14 hit points
-Player casts Recharge.
-
--- Boss turn --
-- Player has 10 hit points, 0 armor, 21 mana
-- Boss has 14 hit points
-Recharge provides 101 mana; its timer is now 4.
-Boss attacks for 8 damage!
-
--- Player turn --
-- Player has 2 hit points, 0 armor, 122 mana
-- Boss has 14 hit points
-Recharge provides 101 mana; its timer is now 3.
-Player casts Shield, increasing armor by 7.
-
--- Boss turn --
-- Player has 2 hit points, 7 armor, 110 mana
-- Boss has 14 hit points
-Shield's timer is now 5.
-Recharge provides 101 mana; its timer is now 2.
-Boss attacks for 8 - 7 = 1 damage!
-
--- Player turn --
-- Player has 1 hit point, 7 armor, 211 mana
-- Boss has 14 hit points
-Shield's timer is now 4.
-Recharge provides 101 mana; its timer is now 1.
-Player casts Drain, dealing 2 damage, and healing 2 hit points.
-
--- Boss turn --
-- Player has 3 hit points, 7 armor, 239 mana
-- Boss has 12 hit points
-Shield's timer is now 3.
-Recharge provides 101 mana; its timer is now 0.
-Recharge wears off.
-Boss attacks for 8 - 7 = 1 damage!
-
--- Player turn --
-- Player has 2 hit points, 7 armor, 340 mana
-- Boss has 12 hit points
-Shield's timer is now 2.
-Player casts Poison.
-
--- Boss turn --
-- Player has 2 hit points, 7 armor, 167 mana
-- Boss has 12 hit points
-Shield's timer is now 1.
-Poison deals 3 damage; its timer is now 5.
-Boss attacks for 8 - 7 = 1 damage!
-
--- Player turn --
-- Player has 1 hit point, 7 armor, 167 mana
-- Boss has 9 hit points
-Shield's timer is now 0.
-Shield wears off, decreasing armor by 7.
-Poison deals 3 damage; its timer is now 4.
-Player casts Magic Missile, dealing 4 damage.
-
--- Boss turn --
-- Player has 1 hit point, 0 armor, 114 mana
-- Boss has 2 hit points
-Poison deals 3 damage. This kills the boss, and the player wins.
-</code></pre>
-<p>You start with <em>50 hit points</em> and <em>500 mana points</em>. The boss's actual stats are in your puzzle input.
-    What is the <em>least amount of mana</em> you can spend and still win the fight? (Do not include mana recharge
-    effects as "spending" negative mana.)</p>
-<h2 id="part2">--- Part Two ---</h2>
-<p>On the next run through the game, you increase the difficulty to <em>hard</em>.</p>
-<p>At the start of each <em>player turn</em> (before any other effects apply), you lose <code>1</code> hit point. If
-    this brings you to or below <code>0</code> hit points, you lose.</p>
-<p>With the same starting stats for you and the boss, what is the <em>least amount of mana</em> you can spend and still
-    win the fight?</p>
+<p>The card always uses a specific, secret <em>loop size</em> when it transforms a subject number. The door always uses a different, secret loop size.</p>
+<p>The cryptographic handshake works like this:</p>
+<ul>
+<li>The <em>card</em> transforms the subject number of <em><code>7</code></em> according to the <em>card's</em> secret loop size. The result is called the <em>card's public key</em>.</li>
+<li>The <em>door</em> transforms the subject number of <em><code>7</code></em> according to the <em>door's</em> secret loop size. The result is called the <em>door's public key</em>.</li>
+<li>The card and door use the wireless RFID signal to transmit the two public keys (your puzzle input) to the other device. Now, the <em>card</em> has the <em>door's</em> public key, and the <em>door</em> has the <em>card's</em> public key. Because you can eavesdrop on the signal, you have both public keys, but neither device's loop size.</li>
+<li>The <em>card</em> transforms the subject number of <em>the door's public key</em> according to the <em>card's</em> loop size. The result is the <em>encryption key</em>.</li>
+<li>The <em>door</em> transforms the subject number of <em>the card's public key</em> according to the <em>door's</em> loop size. The result is the same <em>encryption key</em> as the <em>card</em> calculated.</li>
+</ul>
+<p>If you can use the two public keys to determine each device's loop size, you will have enough information to calculate the secret <em>encryption key</em> that the card and door use to communicate; this would let you send the <code>unlock</code> command directly to the door!</p>
+<p>For example, suppose you know that the card's public key is <code>5764801</code>. With a little trial and error, you can work out that the card's loop size must be <em><code>8</code></em>, because transforming the initial subject number of <code>7</code> with a loop size of <code>8</code> produces <code>5764801</code>.</p>
+<p>Then, suppose you know that the door's public key is <code>17807724</code>. By the same process, you can determine that the door's loop size is <em><code>11</code></em>, because transforming the initial subject number of <code>7</code> with a loop size of <code>11</code> produces <code>17807724</code>.</p>
+<p>At this point, you can use either device's loop size with the other device's public key to calculate the <em>encryption key</em>. Transforming the subject number of <code>17807724</code> (the door's public key) with a loop size of <code>8</code> (the card's loop size) produces the encryption key, <em><code>14897079</code></em>. (Transforming the subject number of <code>5764801</code> (the card's public key) with a loop size of <code>11</code> (the door's loop size) produces the same encryption key: <em><code>14897079</code></em>.)</p>
+<p><em>What encryption key is the handshake trying to establish?</em></p>
+<h2 id="part2">--- Part Two ---</h2><p><span title="You notice the brand written on the side of the lock: Diffie, Hellman, and Merkle.">The light turns green and the door unlocks.</span> As you collapse onto the bed in your room, your pager goes off!</p>
+<p>"It's an emergency!" the Elf calling you explains. "The <a href="https://en.wikipedia.org/wiki/Soft_serve" target="_blank">soft serve</a> machine in the cafeteria on sub-basement 7 just failed and you're the only one that knows how to fix it! We've already dispatched a reindeer to your location to pick you up."</p>
+<p>You hear the sound of hooves landing on your balcony.</p>
+<p>The reindeer carefully explores the contents of your room while you figure out how you're going to pay the <em class="star">50 stars</em> you owe the resort before you leave. Noticing that you look concerned, the reindeer wanders over to you; you see that it's carrying a small pouch.</p>
+<p>"Sorry for the trouble," a note in the pouch reads. Sitting at the bottom of the pouch is a gold coin with a little picture of a starfish on it.</p>
+<p>Looks like you only needed <em class="star">49 stars</em> after all.</p>
