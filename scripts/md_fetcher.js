@@ -63,7 +63,7 @@ let fetchMarkdownFromFile = async (day, year) => {
 }
 
 if (require.main === module) {
-    fetchMarkdownFromFile(options.day, options.year);
+    fetchMarkdownFromWebsite(options.day, options.year);
 } else {
-    module.exports = fetchMarkdownFromFile;
+    module.exports = fetchMarkdownFromWebsite;
 }
