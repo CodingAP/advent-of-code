@@ -52,7 +52,7 @@ let fetchMarkdownFromWebsite = async (day, year) => {
 }
 
 let fetchMarkdownFromFile = async (day, year) => {
-    const markdown = htmlToMarkdown.turndown(htmlParser.parse(await fs.readFileSync('./scripts/md.html')).innerHTML);
+    const markdown = htmlToMarkdown.turndown(htmlParser.parse(fs.readFileSync('./scripts/md.html')).innerHTML);
 
     let dir = `./years/${year}/day${day}`;
 

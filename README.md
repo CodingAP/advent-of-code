@@ -103,11 +103,11 @@ These are my solutions to Advent of Code!
 | [Day 3](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day3)| 371✔ (37.479 ms) | 369601✔ (0.382 ms) |
 | [Day 4](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day4)| 477✔ (3.285 ms) | 167✔ (7.228 ms) |
 | [Day 5](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day5)| 336905✔ (3.120 ms) | 21985262✔ (172.026 ms) |
-| [Day 6](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day6)| Not finished❌ | Not finished❌ |
+| [Day 6](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day6)| 4074✔ (534.754 ms) | 2793✔ (65.904 ms) |
 | [Day 7](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day7)| Not finished❌ | Not finished❌ |
 | [Day 8](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day8)| 8022✔ (5.811 ms) | 9819✔ (4.589 ms) |
 | [Day 9](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day9)| Not finished❌ | Not finished❌ |
-| [Day 10](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day10)| Not finished❌ | Not finished❌ |
+| [Day 10](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day10)| 38628✔ (9.724 ms) | e1462100a34221a7f0906da15c1c979a✔ (7.113 ms) |
 | [Day 11](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day11)| Not finished❌ | Not finished❌ |
 | [Day 12](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day12)| Not finished❌ | Not finished❌ |
 | [Day 13](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2017/day13)| Not finished❌ | Not finished❌ |

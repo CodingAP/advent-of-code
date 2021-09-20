@@ -27,15 +27,16 @@ let answersDB = new Database('./scripts/answers.db');
 let submitDay = async (day, year) => {
     let averageTime1 = 0;
     let averageTime2 = 0;
+    let firstAnswers = { part1: '', part2: '' };
     let times = 10;
     for (let i = 0; i < times; i++) {
         let answers = runDay(day, year);
+        firstAnswers.part1 = answers.part1;
+        firstAnswers.part2 = answers.part2;
         averageTime1 += answers.time1;
         averageTime2 += answers.time2;
     }
-
-    let answers = runDay(day, year);
-    answersDB.add(`d${day}y${year}`, parseInt(day), parseInt(year), answers.part1 + '', (averageTime1 / times).toFixed(3), answers.part2 + '', (averageTime2 / times).toFixed(3));
+    answersDB.add(`d${day}y${year}`, parseInt(day), parseInt(year), firstAnswers.part1 + '', (averageTime1 / times).toFixed(3), firstAnswers.part2 + '', (averageTime2 / times).toFixed(3));
 
     console.log(`Submitted day ${day}, year ${year}!`);
 }
