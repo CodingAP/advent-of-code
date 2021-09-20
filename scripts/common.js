@@ -113,6 +113,9 @@ let common = {
     },
     baseN: (array, number) => {
         return [...new Combinatorics.BaseN(array, number)];
+    },
+    readInput: path => {
+        return require('fs').readFileSync(path).toString().trim().replace(/\r/g, '');
     }
 }
 

@@ -1,5 +1,5 @@
-const input = require('fs').readFileSync('./years/2019/day22/input.txt').toString().trim();
 const common = require('../../../scripts/common');
+const input = common.readInput('./years/2019/day22/input.txt');
 
 module.exports = () => {
     let deck = new Array(10007).fill().map((value, index) => { return index });

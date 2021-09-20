@@ -1,5 +1,5 @@
-const input = require('fs').readFileSync('./years/2015/day21/input.txt').toString().trim();
 const common = require('../../../scripts/common');
+const input = common.readInput('./years/2015/day21/input.txt');
 
 module.exports = () => {
     let player = { health: 100, attack: 0, armor: 0, gold: 0 };

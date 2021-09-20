@@ -1,5 +1,5 @@
-const input = require('fs').readFileSync('./years/2018/day7/input.txt').toString().trim();
 const common = require('../../../scripts/common');
+const input = common.readInput('./years/2018/day7/input.txt');
 
 module.exports = () => {
     let steps = {};

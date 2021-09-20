@@ -40,10 +40,10 @@ These are my solutions to Advent of Code!
 |---|:---:|:---:|
 | [Day 1](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day1)| 3415076✔ (0.520 ms) | 5119745✔ (0.153 ms) |
 | [Day 2](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day2)| 5482655✔ (0.522 ms) | 4967✔ (3.246 ms) |
-| [Day 3](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day3)| Not finished❌ | Not finished❌ |
-| [Day 4](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day4)| Not finished❌ | Not finished❌ |
+| [Day 3](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day3)| 896✔ (14.683 ms) | 16524✔ (8.467 ms) |
+| [Day 4](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day4)| 1873✔ (254.626 ms) | 1264✔ (264.775 ms) |
 | [Day 5](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day5)| 5044655✔ (1.142 ms) | 7408802✔ (0.552 ms) |
-| [Day 6](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day6)| Not finished❌ | Not finished❌ |
+| [Day 6](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day6)| 144909✔ (15.511 ms) | 259✔ (3.065 ms) |
 | [Day 7](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day7)| Not finished❌ | Not finished❌ |
 | [Day 8](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day8)| 2520✔ (13.233 ms) | LEGJY✔ (6.402 ms) |
 | [Day 9](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2019/day9)| Not finished❌ | Not finished❌ |
