@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2015/day11/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let incrementPassword = password => {
         let numbers = password.split('').map(value => value.charCodeAt(0) - 97);
         let overflow = true;

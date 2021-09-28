@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day22/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let players = [[], []];
     
     let player = -1;

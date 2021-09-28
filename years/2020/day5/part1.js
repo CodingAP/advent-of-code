@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day5/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let highestID = -Infinity;
     let ids = input.split('\n');
     for (let i = 0; i < ids.length; i++) {

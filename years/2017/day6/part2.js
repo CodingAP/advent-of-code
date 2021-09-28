@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2017/day6/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let banks = common.parseListToInt(input, '\t');
     // banks = [0, 2, 7, 0];
 

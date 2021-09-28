@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2016/day1/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let position = { x: 0, y: 0 };
     let currentDirection = 0;
     let directions = input.replace(/\s/g, '').split(',');

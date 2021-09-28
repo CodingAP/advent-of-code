@@ -1,8 +1,7 @@
-const input = require('fs').readFileSync('./years/2016/day4/input.txt').toString().trim();
 const { settings } = require('cluster');
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let sum = 0;
     let rooms = input.split('\n');
     for (let i = 0; i < rooms.length; i++) {

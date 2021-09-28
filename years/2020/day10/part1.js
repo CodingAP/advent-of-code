@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day10/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let adapters = common.parseListToInt(input);
     adapters.push(0);
     adapters = adapters.sort((a, b) => a - b);

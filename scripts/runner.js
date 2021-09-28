@@ -1,4 +1,5 @@
 const fs = require('fs');
+const common = require('./common');
 let currentDay = new Date();
 
 let options = {
@@ -34,7 +35,7 @@ let runDay = (day, year, parts = 'both') => {
         switch (parts) {
             case '1':
                 before = process.hrtime();
-                part1 = require(`../years/${year}/day${day}/part1.js`)();
+                part1 = require(`../years/${year}/day${day}/part1.js`)(common.readInput(day, year));
                 after = process.hrtime(before);
                 time1 = after[1] / 1000000;
                 
@@ -46,18 +47,18 @@ let runDay = (day, year, parts = 'both') => {
                 time1 = 0;
 
                 before = process.hrtime();
-                part2 = require(`../years/${year}/day${day}/part2.js`)();
+                part2 = require(`../years/${year}/day${day}/part2.js`)(common.readInput(day, year));
                 after = process.hrtime(before);
                 time2 = after[1] / 1000000;
                 break;
             default:
                 before = process.hrtime();
-                part1 = require(`../years/${year}/day${day}/part1.js`)();
+                part1 = require(`../years/${year}/day${day}/part1.js`)(common.readInput(day, year));
                 after = process.hrtime(before);
                 time1 = after[1] / 1000000;
 
                 before = process.hrtime();
-                part2 = require(`../years/${year}/day${day}/part2.js`)();
+                part2 = require(`../years/${year}/day${day}/part2.js`)(common.readInput(day, year));
                 after = process.hrtime(before);
                 time2 = after[1] / 1000000;
                 break;

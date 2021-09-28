@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2016/day25/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let runAssembunny = inputA => {
         let program = input.split('\n');
         let registers = { a: inputA, b: 0, c: 0, d: 0 };

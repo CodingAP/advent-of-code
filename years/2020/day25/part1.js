@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day25/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let keys = common.parseListToInt(input);
     let loopSizes = [];
 

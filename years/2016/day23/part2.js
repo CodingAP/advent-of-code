@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2016/day23/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     //After analyzing the code, all this does it return the factorial of input number and adds 7820 (85 * 92) to it
     //Just to save computation time, I'm just doing to solve that for 12
     let a = 12;

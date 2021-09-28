@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2019/day22/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let deck = new Array(10007).fill().map((value, index) => { return index });
 
     input.split('\n').forEach(value => {

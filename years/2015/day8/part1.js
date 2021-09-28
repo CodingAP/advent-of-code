@@ -1,8 +1,8 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2015/day8/input.txt');
+
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let code = 0, length = 0;
 
     let bytes = [];

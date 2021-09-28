@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2020/day6/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let sum = 0;
     let groups = [];
     let people = input.split('\n');

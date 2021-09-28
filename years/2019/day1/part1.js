@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2019/day1/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let sum = 0;
 
     let fuels = input.split('\n').map(value => parseInt(value));

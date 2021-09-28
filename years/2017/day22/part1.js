@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2017/day22/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let grid = {};
     let rows = input.split('\n');
     for (let i = 0; i < rows.length; i++) {

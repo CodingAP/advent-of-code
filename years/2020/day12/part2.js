@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2020/day12/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let instructions = input.split('\n');
     let position = { x: 0, y: 0 };
     let waypoint = { x: 10, y: 1 };

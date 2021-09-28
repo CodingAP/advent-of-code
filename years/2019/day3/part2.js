@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2019/day3/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let instructions = input.split('\n');
     let wires = [];
 

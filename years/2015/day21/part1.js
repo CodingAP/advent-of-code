@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2015/day21/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let player = { health: 100, attack: 0, armor: 0, gold: 0 };
     let boss = { health: 104, attack: 8, armor: 1 };
 

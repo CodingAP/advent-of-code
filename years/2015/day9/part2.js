@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2015/day9/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let distances = {};
     let distancesInput = input.split('\n');
     for (let i = 0; i < distancesInput.length; i++) {

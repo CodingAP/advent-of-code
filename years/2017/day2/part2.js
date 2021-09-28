@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2017/day2/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let checksum = 0;
     let rows = input.split('\n');
     for (let i = 0; i < rows.length; i++) {

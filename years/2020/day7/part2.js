@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2020/day7/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let rules = input.split('\n');
     let bags = {};
 

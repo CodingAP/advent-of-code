@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day23/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let originalCups = common.parseListToInt(input, '');
     let inputCups = originalCups.map(data => ({ data, next: null, previous: null }));
     let max = originalCups.reduce((max, curr) => Math.max(max, curr), 0);

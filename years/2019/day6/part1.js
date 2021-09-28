@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2019/day6/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let orbits = {};
     input.replace(/\r/g, '').split('\n').forEach(element => {
         let tokens = element.split(')');

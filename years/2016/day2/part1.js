@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2016/day2/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let passcode = '';
 
     let position = { x: 1, y: 1 };

@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2018/day23/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let nanobots = [];
     input.split(/\r\n/).forEach(value => {
         let position = value.split(' ')[0].split(/[<>]/)[1].split(',').map(value => parseInt(value));

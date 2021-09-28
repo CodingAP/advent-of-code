@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2018/day10/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let initial = input.split('\n');
     let particles 
     for (let i = 0; i < particles.length; i++) {

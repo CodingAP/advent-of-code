@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2020/day10/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let adapters = common.parseListToInt(input);
     adapters.push(0);
     adapters.sort((a, b) => a - b);

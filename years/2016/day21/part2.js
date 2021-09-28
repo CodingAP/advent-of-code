@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2016/day21/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let scrambleTheString = string => {
         let scrambler = string.split('');
 

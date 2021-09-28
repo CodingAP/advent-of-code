@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2015/day15/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let ingredients = [];
     input.replace(/[,]/g, '').split(/\r\n/).forEach(value => {
         let tokens = value.split(' ').slice(1);

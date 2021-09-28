@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2016/day9/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let uncompressed = '';
 
     for (let i = 0; i < input.length; i++) {

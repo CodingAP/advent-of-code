@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2020/day18/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let sum = 0;
     let expressions = input.split('\n');
 

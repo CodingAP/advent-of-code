@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2020/day22/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let playGame = players => {
         let previous = [];
         

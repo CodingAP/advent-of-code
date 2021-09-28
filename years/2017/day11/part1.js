@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2017/day11/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     // let directions = input.split(',');
     // let positions = { n: 0, s: 0, e: 0, w: 0 };
     // let steps = {

@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2017/day4/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let valid = 0;
     let wordGroups = input.split('\n');
     for (let i = 0; i < wordGroups.length; i++) {

@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2019/day4/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let [min, max] = input.split('-').map(element => parseInt(element));
     
     let count = 0;

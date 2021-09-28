@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2018/day5/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let polymer = input;
     
     while (true) {

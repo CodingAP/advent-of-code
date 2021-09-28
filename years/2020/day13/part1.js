@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day13/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let information = input.split('\n');
     let earliest = parseInt(information[0]);
     let busIDs = information[1].split(',').filter(value => value != 'x').map(value => parseInt(value));

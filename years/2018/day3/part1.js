@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2018/day3/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let claims = input.split('\n');
     let size = 1000;
 

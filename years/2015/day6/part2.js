@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2015/day6/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let size = 1000;
     let grid = [];
     for (let y = 0; y < size; y++) {

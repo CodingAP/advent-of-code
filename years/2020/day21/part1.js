@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day21/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let ingredients = input.split('\n');
 
     let unknownIngredients = [];

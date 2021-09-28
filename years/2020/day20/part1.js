@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day20/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let convertArrayToBinary = array => {
         return parseInt(array.map(value => (value) ? '1' : '0').join(''), 2);
     }

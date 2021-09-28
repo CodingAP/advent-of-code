@@ -1,8 +1,8 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2016/day15/input.txt');
+
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let diskInfo = input.split('\n');
     let disks = [];
 

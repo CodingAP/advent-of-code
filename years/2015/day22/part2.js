@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2015/day22/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     var bossStats = {
         hp: 71,
         damageAmt: 10,
@@ -128,7 +125,6 @@ module.exports = () => {
                 this.damageAmt = this.initial.damageAmt;
         }
     }
-
 
     var me = new Player({ hp: 50, mana: 500 }, true);
     var boss = new Player(bossStats);

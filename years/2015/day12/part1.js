@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2015/day12/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let checkForNumbers = element => {
         let sum = 0;
         if (element === Object(element)) {

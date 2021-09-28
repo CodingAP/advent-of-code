@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2020/day13/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let information = input.split('\n');
     let busIDs = information[1].split(',').map(value => parseInt(value) || 0);
 

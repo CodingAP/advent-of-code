@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2016/day22/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let nodes = [];
     let df = input.split('\n');
     for (let i = 0; i < df.length; i++) {

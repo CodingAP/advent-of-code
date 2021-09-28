@@ -1,8 +1,8 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2018/day6/input.txt');
+
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let points = [];
     
     let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;

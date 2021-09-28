@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2015/day24/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let weights = common.parseListToInt(input);
     let groupSize = common.addAll(weights) / 3;
 

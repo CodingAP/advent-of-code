@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2015/day15/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let ingredients = [];
     input.replace(/[,]/g, '').split(/\r\n/).forEach(value => {
         let tokens = value.split(' ').slice(1);

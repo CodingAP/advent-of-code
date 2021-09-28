@@ -1,4 +1,3 @@
-const input = require('fs').readFileSync('./years/2019/day7/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
 class IntcodeComputer {
@@ -86,7 +85,7 @@ class IntcodeComputer {
     }
 }
 
-module.exports = () => {
+module.exports = input => {
     let highest = -Infinity;
     let firstPermutations = common.permutator([0, 1, 2, 3, 4]);
     let secondPermutations = common.permutator([5, 6, 7, 8, 9]);

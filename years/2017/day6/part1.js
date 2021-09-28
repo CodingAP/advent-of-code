@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2017/day6/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let banks = common.parseListToInt(input, '\t');
     // banks = [0, 2, 7, 0];
 

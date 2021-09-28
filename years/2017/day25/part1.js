@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2017/day25/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let index = 0;
     let memory = {};
     let currentState = 'a';

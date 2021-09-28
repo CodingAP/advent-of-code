@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day8/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let previousPosition = [];
     let accumulator = 0, programCounter = 0;
     let program = input.split('\n');

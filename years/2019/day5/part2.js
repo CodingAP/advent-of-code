@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2019/day5/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let program = common.parseListToInt(input, ',');
     let programCounter = 0;
     let halted = false;

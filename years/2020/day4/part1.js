@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day4/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let processedPassports = [];
     let passports = input.split('\n');
     let currentPassport = '';

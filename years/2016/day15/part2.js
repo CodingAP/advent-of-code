@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2016/day15/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let diskInfo = input.split('\n');
     let disks = [];
 

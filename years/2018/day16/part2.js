@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2018/day16/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let instructions = {
         addi: (registers, args) => {
             let newRegisters = common.copy(registers);

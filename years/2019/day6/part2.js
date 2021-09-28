@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2019/day6/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let orbits = {};
     input.replace(/\r/g, '').split('\n').forEach(element => {
         let tokens = element.split(')');

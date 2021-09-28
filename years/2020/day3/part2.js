@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2020/day3/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let velocities = [{ x: 1, y: 1 }, { x: 3, y: 1 }, { x: 5, y: 1 }, { x: 7, y: 1 }, { x: 1, y: 2 }];
     let sum = 1;
 

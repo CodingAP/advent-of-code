@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2018/day23/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let nanobots = [];
     input.split(/\r\n/).forEach(value => {
         let position = value.split(' ')[0].split(/[<>]/)[1].split(',').map(value => parseInt(value));

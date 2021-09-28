@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2020/day15/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let numbers = common.parseListToInt(input, ',');
 
     let hashMap = new Array(30000000);

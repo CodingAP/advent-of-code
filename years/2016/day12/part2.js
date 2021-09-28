@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2016/day12/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let program = input.split('\n');
     let registers = { a: 0, b: 0, c: 1, d: 0 };
     let programCounter = 0;

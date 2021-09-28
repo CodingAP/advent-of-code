@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2015/day17/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let possible = [];
     let allCombos = common.powerSet(common.parseListToInt(input));
 

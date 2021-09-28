@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2015/day3/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let santa = { x: 0, y: 0 }, robo = { x: 0, y: 0 };
     let locations = { '0,0': 1 };
 

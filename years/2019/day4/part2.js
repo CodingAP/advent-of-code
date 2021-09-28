@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2019/day4/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let [min, max] = input.split('-').map(element => parseInt(element));
 
     let count = 0;

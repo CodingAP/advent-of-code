@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2016/day13/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let grid = common.create2DArray(50, 50, (x, y) => {
         let formula = x * x + 3 * x + 2 * x * y + y + y * y;
         formula += parseInt(input);

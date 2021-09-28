@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2016/day7/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let valid = 0;
 
     let addresses = input.split('\n');

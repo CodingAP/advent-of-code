@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2020/day11/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let seats = input.split('\n');
 
     let grid = common.create2DArray(seats[0].length, seats.length, (x, y) => {

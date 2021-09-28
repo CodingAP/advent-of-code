@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2019/day7/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let runProgram = intcodeInputs => {
         let program = common.parseListToInt(input, ',');
         let programCounter = 0;

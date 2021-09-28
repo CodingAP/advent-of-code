@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2015/day25/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let needed = { x: 3019, y: 3010 };
     let position = { x: 1, y: 1 };
     

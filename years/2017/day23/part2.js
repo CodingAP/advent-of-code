@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2017/day23/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     // After analyzing the code, which is what I am supposed to do,
     // It counts how many composite numbers are between 109300 and 126300 in increments of 17
     // To do this easily, I just do it in my code

@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day3/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let position = { x: 0, y: 0 };
     let velocity = { x: 3, y: 1 };
     let trees = 0;

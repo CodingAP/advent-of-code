@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2016/day18/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let rows = new Array(40);
     rows[0] = input;
 

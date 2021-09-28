@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2016/day3/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let valid = 0;
     let triangles = input.split('\n');
     triangles.forEach(element => {

@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2017/day13/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let sockets = [];
     input.split('\n').forEach(socket => {
         let tokens = socket.split(': ');

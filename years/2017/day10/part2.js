@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2017/day10/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let ascii = Array.from(input).map((element, index) => input.charCodeAt(index));
     ascii.push(17, 31, 73, 47, 23);
 

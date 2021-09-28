@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2017/day23/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let program = input.split('\n');
     let registers = { a: 0, b: 0, c: 0, d: 0, e: 0, f: 0, g: 0, h: 0 };
     let programCounter = 0;

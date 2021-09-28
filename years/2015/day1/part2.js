@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2015/day1/input.txt').toString();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let floor = 0;
     for (let i = 0; i < input.length; i++) {
         if (input.charAt(i) == '(') floor++;

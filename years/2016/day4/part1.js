@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2016/day4/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let sum = 0;
     let rooms = input.split('\n');
     for (let i = 0; i < rooms.length; i++) {

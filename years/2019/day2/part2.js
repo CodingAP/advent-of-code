@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2019/day2/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let executeProgram = program => {
         let changedProgram = [...program];
         let programCounter = 0;

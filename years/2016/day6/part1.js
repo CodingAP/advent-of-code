@@ -1,7 +1,4 @@
-const common = require('../../../scripts/common');
-const input = common.readInput('./years/2016/day6/input.txt');
-
-module.exports = () => {
+module.exports = input => {
     let message = '';
     
     let messages = input.split('\n');

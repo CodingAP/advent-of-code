@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2017/day12/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let connections = input.split('\n');
     let programs = [];
 

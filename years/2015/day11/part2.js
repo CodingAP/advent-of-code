@@ -1,7 +1,4 @@
-const input = require('fs').readFileSync('./years/2015/day11/input.txt').toString().trim();
-const common = require('../../../scripts/common');
-
-module.exports = () => {
+module.exports = input => {
     let incrementPassword = password => {
         let numbers = password.split('').map(value => value.charCodeAt(0) - 97);
         let overflow = true;

@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2020/day23/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let originalCups = common.parseListToInt(input, '');
     let inputCups = originalCups.map(data => ({ data, next: null, previous: null }));
     let max = originalCups.reduce((max, curr) => Math.max(max, curr), 0);

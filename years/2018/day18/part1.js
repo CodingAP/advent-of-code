@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2018/day18/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let size = 50;
     let rows = input.split(/\n/);
     let grid = common.create2DArray(size, size, (x, y) => {

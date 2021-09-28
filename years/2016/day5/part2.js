@@ -1,7 +1,6 @@
-const input = require('fs').readFileSync('./years/2016/day5/input.txt').toString().trim();
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let password = new Array(8);
 
     let i = 0;

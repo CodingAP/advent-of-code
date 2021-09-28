@@ -1,7 +1,6 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day15/input.txt');
 
-module.exports = () => {
+module.exports = input => {
     let numbers = common.parseListToInt(input, ',');
     
     let past = [];

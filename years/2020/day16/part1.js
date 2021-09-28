@@ -1,8 +1,8 @@
 const common = require('../../../scripts/common');
-const input = common.readInput('./years/2020/day16/input.txt');
+
 const common = require('../../../scripts/common');
 
-module.exports = () => {
+module.exports = input => {
     let information = input.split('\n');
     let allRanges = {};
     let otherTickets = [];
