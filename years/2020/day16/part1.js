@@ -1,7 +1,5 @@
 const common = require('../../../scripts/common');
 
-const common = require('../../../scripts/common');
-
 module.exports = input => {
     let information = input.split('\n');
     let allRanges = {};
