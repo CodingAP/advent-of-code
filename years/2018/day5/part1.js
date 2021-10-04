@@ -15,6 +15,6 @@ module.exports = input => {
         }
         if (finished) break;
     }
-    console.log(polymer);
+    console.log(polymer.length, input.length);
     return polymer.length;
 }
