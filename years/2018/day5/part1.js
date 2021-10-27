@@ -7,7 +7,9 @@ module.exports = input => {
             let current = polymer.charAt(i);
             let next = polymer.charAt(i + 1) || '';
 
-            if (current == next.toLowerCase() || current.toLowerCase() == next) {
+            if (current.toLowerCase() == next.toLowerCase() &&
+                ((current == current.toUpperCase() && next == next.toLowerCase()) ||
+                ((current == current.toLowerCase() && next == next.toUpperCase())))) {
                 polymer = polymer.slice(0, i) + polymer.slice(i + 2);
                 i++;
                 finished = false;
@@ -15,6 +17,6 @@ module.exports = input => {
         }
         if (finished) break;
     }
-    console.log(polymer.length, input.length);
+    
     return polymer.length;
 }
