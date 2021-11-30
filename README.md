@@ -77,7 +77,7 @@ These are my solutions to Advent of Code!
 | [Day 7](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2018/day7)| Not finished❌ | Not finished❌ |
 | [Day 8](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2018/day8)| Not finished❌ | Not finished❌ |
 | [Day 9](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2018/day9)| Not finished❌ | Not finished❌ |
-| [Day 10](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2018/day10)| Not finished❌ | Not finished❌ |
+| [Day 10](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2018/day10)| ERCXLAJL✔ (36.926 ms) | 10813✔ (39.591 ms) |
 | [Day 11](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2018/day11)| Not finished❌ | Not finished❌ |
 | [Day 12](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2018/day12)| Not finished❌ | Not finished❌ |
 | [Day 13](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2018/day13)| Not finished❌ | Not finished❌ |
