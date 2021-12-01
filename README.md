@@ -6,6 +6,38 @@ These are my solutions to Advent of Code!
 
 | Day  | Part One | Part Two | 
 |---|:---:|:---:|
+| [Day 1](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day1)| 1301✔ (0.876 ms) | 1346✔ (0.799 ms) |
+| [Day 2](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day2)| Not finished❌ | Not finished❌ |
+| [Day 3](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day3)| Not finished❌ | Not finished❌ |
+| [Day 4](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day4)| Not finished❌ | Not finished❌ |
+| [Day 5](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day5)| Not finished❌ | Not finished❌ |
+| [Day 6](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day6)| Not finished❌ | Not finished❌ |
+| [Day 7](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day7)| Not finished❌ | Not finished❌ |
+| [Day 8](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day8)| Not finished❌ | Not finished❌ |
+| [Day 9](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day9)| Not finished❌ | Not finished❌ |
+| [Day 10](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day10)| Not finished❌ | Not finished❌ |
+| [Day 11](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day11)| Not finished❌ | Not finished❌ |
+| [Day 12](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day12)| Not finished❌ | Not finished❌ |
+| [Day 13](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day13)| Not finished❌ | Not finished❌ |
+| [Day 14](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day14)| Not finished❌ | Not finished❌ |
+| [Day 15](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day15)| Not finished❌ | Not finished❌ |
+| [Day 16](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day16)| Not finished❌ | Not finished❌ |
+| [Day 17](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day17)| Not finished❌ | Not finished❌ |
+| [Day 18](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day18)| Not finished❌ | Not finished❌ |
+| [Day 19](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day19)| Not finished❌ | Not finished❌ |
+| [Day 20](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day20)| Not finished❌ | Not finished❌ |
+| [Day 21](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day21)| Not finished❌ | Not finished❌ |
+| [Day 22](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day22)| Not finished❌ | Not finished❌ |
+| [Day 23](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day23)| Not finished❌ | Not finished❌ |
+| [Day 24](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day24)| Not finished❌ | Not finished❌ |
+| [Day 25](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day25)| Not finished❌ | Not finished❌ |
+
+
+# Previous Years' Progress
+
+## 2020
+| Day  | Part One | Part Two | 
+|---|:---:|:---:|
 | [Day 1](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day1)| 926464✔ (1.941 ms) | 65656536✔ (3.869 ms) |
 | [Day 2](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day2)| 445✔ (3.125 ms) | 491✔ (2.168 ms) |
 | [Day 3](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day3)| 193✔ (2.296 ms) | 1355323200✔ (1.909 ms) |
@@ -32,8 +64,6 @@ These are my solutions to Advent of Code!
 | [Day 24](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day24)| 320✔ (17.951 ms) | 3777✔ (584.964 ms) |
 | [Day 25](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2020/day25)| 19774660✔ (288.852 ms) | 2020 DONE!✔ (0.163 ms) |
 
-
-# Previous Years' Progress
 
 ## 2019
 | Day  | Part One | Part Two | 

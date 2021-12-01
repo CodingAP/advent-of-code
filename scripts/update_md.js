@@ -7,6 +7,7 @@ final = final.slice(1).join('\n');
 
 let updateMD = async () => {
     let tables = {
+        '2021': [],
         '2020': [],
         '2019': [],
         '2018': [],
