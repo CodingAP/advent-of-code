@@ -27,19 +27,8 @@ for (let i = 0; i < commandArgs.length; i++) {
 let fetchDay = async (day, year) => {
     const template = fs.readFileSync('./scripts/template').toString().replace(/\$year\$/, year).replace(/\$day\$/, day);
 
-    const response = await fetch(
-        `https://adventofcode.com/${year}/day/${day}/input`, { headers: { cookie: `session=${process.env.SESSION_ID}` } }
-    );
-
-    let body = await response.text();
-
     let dir = `./years/${year}/day${day}`;
     if (!fs.existsSync(dir)) fs.mkdirSync(dir);
-
-    fs.writeFile(dir + '/input.txt', body, (err) => {
-        if (err) throw err;
-        console.log(`Saved input for day ${day}, year ${year}!`);
-    });
 
     fs.writeFile(dir + '/part1.js', template, (err) => {
         if (err) throw err;
@@ -49,6 +38,17 @@ let fetchDay = async (day, year) => {
     fs.writeFile(dir + '/part2.js', template, (err) => {
         if (err) throw err;
         console.log(`Saved part 2 of day ${day}, year ${year}!`);
+    });
+    
+    const response = await fetch(
+        `https://adventofcode.com/${year}/day/${day}/input`, { headers: { cookie: `session=${process.env.SESSION_ID}` } }
+    );
+
+    let body = await response.text();
+
+    fs.writeFile(dir + '/input.txt', body, (err) => {
+        if (err) throw err;
+        console.log(`Saved input for day ${day}, year ${year}!`);
     });
 }
 
