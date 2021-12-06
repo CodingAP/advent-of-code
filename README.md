@@ -11,7 +11,7 @@ These are my solutions to Advent of Code!
 | [Day 3](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day3)| 2583164✔ (4.886 ms) | 2784375✔ (2.777 ms) |
 | [Day 4](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day4)| 16716✔ (15.670 ms) | 4880✔ (20.270 ms) |
 | [Day 5](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day5)| 6007✔ (115.932 ms) | 19349✔ (198.825 ms) |
-| [Day 6](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day6)| Not finished❌ | Not finished❌ |
+| [Day 6](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day6)| 379114✔ (16.393 ms) | 1702631502303✔ (0.982 ms) |
 | [Day 7](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day7)| Not finished❌ | Not finished❌ |
 | [Day 8](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day8)| Not finished❌ | Not finished❌ |
 | [Day 9](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day9)| Not finished❌ | Not finished❌ |
