@@ -1,5 +1,3 @@
-const common = require('../../../scripts/common');
-
 module.exports = input => {
     let lines = [];
     input.split('\n').forEach(element => {

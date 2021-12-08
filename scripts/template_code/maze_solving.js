@@ -1,1 +1,1 @@
-// TODO: implement code snippet for maze solving
+// just look at pathfinding code in node modules
