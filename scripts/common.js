@@ -1,6 +1,98 @@
 require = require('esm')(module);
 let Combinatorics = require('js-combinatorics');
 
+class Node {
+    constructor(cellData) {
+        this.isWall = cellData.isWall;
+    }
+}
+
+class BreadthFirstSearch {
+    constructor(start, end, cellArr) {
+        this.rows = cellArr.length;
+        this.columns = cellArr[0].length;
+        this.matrix = {};
+        this.start = start;
+        this.end = end;
+
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < this.columns; j++) {
+                this.matrix[`${i}_${j}`] = new Node(cellArr[i][j]);
+            }
+        }
+    }
+
+    getChildren(node) {
+        let [i_str, j_str] = node.split('_');
+        let i = parseInt(i_str);
+        let j = parseInt(j_str);
+
+        let children = [];
+        let di_dj_arr = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+
+        di_dj_arr.forEach(([di, dj]) => {
+            if (i + di >= 0 && j + dj >= 0 && i + di < this.rows && j + dj < this.columns && !this.matrix[`${i + di}_${j + dj}`].isWall) children.push(`${i + di}_${j + dj}`);
+        })
+
+        return children;
+    }
+
+    startAlgorithm() {
+        let visited = [];
+        let parents = {};
+        let found = false;
+
+        let pendingNodes = [];
+        pendingNodes.push(this.start);
+        parents[this.start] = null;
+
+        while (pendingNodes.length) {
+            let currNode = pendingNodes[0];
+
+            if (currNode === this.end) {
+                visited.push(this.end);
+                found = true;
+                break;
+            }
+
+            let children = this.getChildren(currNode);
+
+            let unvisitedChildren = children.filter(child => !visited.includes(child));
+
+            for (let i = 0; i < unvisitedChildren.length; i++) {
+                parents[unvisitedChildren[i]] = currNode;
+                if (!pendingNodes.includes(unvisitedChildren[i])) pendingNodes.push(unvisitedChildren[i]);
+            }
+
+            visited.push(currNode);
+            pendingNodes.shift();
+        }
+
+        if (!found) {
+            return {
+                exploredNodes: visited,
+                path: [],
+                found
+            }
+        }
+
+        let path = [this.end];
+        let parent = parents[this.end];
+        while (parent) {
+            path.push(parent);
+            parent = parents[parent];
+        }
+
+        path.reverse();
+
+        return {
+            exploredNodes: visited,
+            path,
+            found
+        }
+    }
+}
+
 let common = {
     parseListToInt: (array, splitter = '\n', radix = 10) => {
         return array.split(splitter).map(value => parseInt(value, radix));
@@ -69,18 +161,18 @@ let common = {
         }
         return true;
     },
-    mazeSolver: (maze, startingPosition, endPosition, shortest = true) => {
-        let Snake = require('snake');
-        let snake = new Snake();
+    solveMaze: (grid, start, end) => {
+        // if value == 1, then its a wall
+        for (let y = 0; y < grid.length; y++) {
+            for (let x = 0; x < grid[0].length; x++) {
+                grid[y][x] = { weight: 0, isWall: grid[y][x] == 1 };
+            }
+        }
 
-        let result = snake.solve({
-            maze: maze,
-            start: [ startingPosition.x, maze.length - 1 - startingPosition.y ],
-            end: [ endPosition.x, maze.length - 1 - endPosition.y ],
-            heuristic: 'breadthFirst'
+        return new BreadthFirstSearch(`${start.x}_${start.y}`, `${end.x}_${end.y}`, grid).startAlgorithm().path.map(element => {
+            let tokens = element.split('_').map(element => parseInt(element));
+            return { x: tokens[0], y: tokens[1] };
         });
-
-        return result.route;
     },
     objectForEach: (obj, callback) => {
         let keys = Object.keys(obj);
