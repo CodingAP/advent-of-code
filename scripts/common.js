@@ -158,14 +158,12 @@ let common = {
     },
     solveMaze: (grid, start, end) => {
         // if value == 1, then its a wall
-        for (let y = 0; y < grid.length; y++) {
-            for (let x = 0; x < grid[0].length; x++) {
-                grid[y][x] = { weight: 0, isWall: grid[y][x] == 1 };
-            }
-        }
+        common.map2DArray(grid, (value, x, y) => {
+            return { weight: 0, isWall: value == 1 };
+        });
 
         return new BreadthFirstSearch(`${start.x}_${start.y}`, `${end.x}_${end.y}`, grid).startAlgorithm().path.map(element => {
-            let tokens = element.split('_').map(element => parseInt(element));
+            let tokens = common.parseListToInt(element, '_');
             return { x: tokens[0], y: tokens[1] };
         });
     },

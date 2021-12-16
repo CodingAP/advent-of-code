@@ -1,5 +1,4 @@
 const common = require('../../../scripts/common');
-const dijkstra = require('dijkstrajs');
 
 module.exports = input => {
     let rows = input.split('\n');
