@@ -4,7 +4,9 @@ let currentDay = new Date();
 
 let options = {
     day: '' + currentDay.getDate(),
-    year: '' + currentDay.getFullYear()
+    year: '' + currentDay.getFullYear(),
+    iterations: 10,
+    trimming: true
 };
 
 const commandArgs = process.argv.slice(2);
@@ -19,18 +21,27 @@ for (let i = 0; i < commandArgs.length; i++) {
         case '--year':
             options.year = parts[1];
             break;
+        case '--i':
+        case '--iter':
+        case '--iterations':
+            options.iterations = parseInt(parts[1]);
+            break;
+        case '--t':
+        case '--trimming':
+            options.trimming = parts[1] == 'true';
+            break;
     }
 }
 
 let answersDB = new Database('./scripts/answers.db');
 
-let submitDay = async (day, year) => {
+let submitDay = async (day, year, iterations = 10, needsTrimming = true) => {
     let averageTime1 = 0;
     let averageTime2 = 0;
     let firstAnswers = { part1: '', part2: '' };
-    let times = 10;
-    for (let i = 0; i < times; i++) {
-        let answers = runDay(day, year);
+    
+    for (let i = 0; i < iterations; i++) {
+        let answers = runDay(day, year, 'both', needsTrimming);
         firstAnswers.part1 = answers.part1;
         firstAnswers.part2 = answers.part2;
         averageTime1 += answers.time1;
@@ -42,7 +53,7 @@ let submitDay = async (day, year) => {
 }
 
 if (require.main === module) {
-    submitDay(options.day, options.year);
+    submitDay(options.day, options.year, options.iterations, options.needsTrimming);
 } else {
     module.exports = submitDay;
 }

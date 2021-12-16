@@ -114,8 +114,10 @@ let common = {
     baseN: (array, number) => {
         return [...new Combinatorics.BaseN(array, number)];
     },
-    readInput: (day, year) => {
-        return require('fs').readFileSync(`./years/${year}/day${day}/input.txt`).toString().trim().replace(/\r/g, '');
+    readInput: (day, year, trim = true) => {
+        let string = require('fs').readFileSync(`./years/${year}/day${day}/input.txt`).toString().replace(/\r/g, '');
+        if (trim) string = string.trim();
+        return string;
     },
     readFile: path => {
         return require('fs').readFileSync(path).toString().replace(/\r/g, '');

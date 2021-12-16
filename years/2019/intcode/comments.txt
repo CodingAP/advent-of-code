@@ -1,0 +1,42 @@
+intcode days:
+    developing days: 2, 5, 9, 17
+    others: 7, 11, 13, 15, 19, 21, 23, 25
+
+Day 7 program (examples)
+a = Get computer id
+b = Previous output
+b *= 10 // Shift output digits to the right
+a += b // Add current id
+output a
+
+a = Get computer id
+b = Previous output
+b *= 10 // Shift output digits to the right
+a *= -1 // Invert a
+a += 5 // Add 5 (a = 5 - computer id)
+a += b // Add current id
+output a
+
+a = Get computer id
+b = Previous output
+b *= 10 // Shift output digits to the right
+a -= 2 // Subtract 2 from a
+if (a < 0) a += 7 // Add 7 if a is negative (a = 5 if id = 0, 6 if id = 1, others are a = id - 2)
+a += b // Add current id
+output a
+
+Actual Day 7 program (part 1 only does one loop, part 2 does all 5)
+part 1
+a = Get computer id - 4
+b = Previous output
+b *= 2
+b += a
+output b
+
+part 2
+a = Get computer id - 4
+loop 5 times
+    b = Current output
+    b *= 2
+    b += a
+    output b

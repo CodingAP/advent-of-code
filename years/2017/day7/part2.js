@@ -27,6 +27,7 @@ module.exports = input => {
         if (programs[base].children.length != 0) {
             let same = childrenWeights.every((val, i, arr) => val === arr[0]);
             if (!same) {
+                // TODO: fix this shit
                 console.log(`PROBLEM: ${base}, ${childrenWeights}`);
                 let unique = [...new Set(childrenWeights)];
                 console.log('change weight: ' + (Math.abs(unique[0] - unique[1])));
