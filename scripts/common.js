@@ -1,11 +1,6 @@
 require = require('esm')(module);
-let Combinatorics = require('js-combinatorics');
-
-class Node {
-    constructor(cellData) {
-        this.isWall = cellData.isWall;
-    }
-}
+const Combinatorics = require('js-combinatorics');
+const dijkstra = require('dijkstrajs');
 
 class BreadthFirstSearch {
     constructor(start, end, cellArr) {
@@ -17,7 +12,7 @@ class BreadthFirstSearch {
 
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.columns; j++) {
-                this.matrix[`${i}_${j}`] = new Node(cellArr[i][j]);
+                this.matrix[`${i}_${j}`] = cellArr[i][j];
             }
         }
     }
@@ -172,6 +167,24 @@ let common = {
         return new BreadthFirstSearch(`${start.x}_${start.y}`, `${end.x}_${end.y}`, grid).startAlgorithm().path.map(element => {
             let tokens = element.split('_').map(element => parseInt(element));
             return { x: tokens[0], y: tokens[1] };
+        });
+    },
+    solveMazeWeighted: (grid, start, end) => {
+        let gridObj = {};
+
+        common.forEach2DArray(grid, (value, x, y) => {
+            let current = `${x},${y}`;
+            gridObj[current] = {};
+
+            if (y + 1 < grid.length) gridObj[current][`${x},${y + 1}`] = grid[y + 1][x];
+            if (y - 1 >= 0) gridObj[current][`${x},${y - 1}`] = grid[y - 1][x];
+            if (x + 1 < grid[0].length) gridObj[current][`${x + 1},${y}`] = grid[y][x + 1];
+            if (x - 1 >= 0) gridObj[current][`${x - 1},${y}`] = grid[y][x - 1];
+        });
+
+        return dijkstra.find_path(gridObj, `${start.x},${start.y}`, `${end.x},${end.y}`).map(element => {
+            let [x, y] = common.parseListToInt(element, ',');
+            return { x, y };
         });
     },
     objectForEach: (obj, callback) => {

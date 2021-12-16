@@ -9,13 +9,13 @@
   "author": "CodingAP",
   "license": "ISC",
   "dependencies": {
+    "dijkstrajs": "^1.0.2",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "js-combinatorics": "^1.4.5",
     "md5": "^2.3.0",
     "node-fetch": "^2.6.1",
     "node-html-parser": "^2.0.0",
-    "pathfinding-algorithms": "^1.0.11",
     "prompt-sync": "^4.2.0",
     "turndown": "^7.0.0"
   }
