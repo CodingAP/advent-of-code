@@ -30,7 +30,7 @@ These are my solutions to Advent of Code!
 | [Day 22](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day22)| Not finished❌ | Not finished❌ |
 | [Day 23](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day23)| Not finished❌ | Not finished❌ |
 | [Day 24](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day24)| Not finished❌ | Not finished❌ |
-| [Day 25](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day25)| Not finished❌ | Not finished❌ |
+| [Day 25](https://github.com/CodingAP/advent-of-code-updated/tree/main/years/2021/day25)| 435✔ (880.534 ms) | 2021 DONE!✔ (1.071 ms) |
 
 
 # Previous Years' Progress

@@ -28,7 +28,7 @@ let submitDay = async (day, year) => {
     let averageTime1 = 0;
     let averageTime2 = 0;
     let firstAnswers = { part1: '', part2: '' };
-    let times = 10;
+    let times = 1;
     for (let i = 0; i < times; i++) {
         let answers = runDay(day, year);
         firstAnswers.part1 = answers.part1;

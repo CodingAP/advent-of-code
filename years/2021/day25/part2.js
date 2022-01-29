@@ -1,5 +1,3 @@
-const common = require('../../../scripts/common');
-
 module.exports = input => {
-    return 0;
+    return '2021 DONE!';
 }

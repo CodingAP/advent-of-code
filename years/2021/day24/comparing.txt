@@ -16,6 +16,7 @@ add y w
 add y 12
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -34,6 +35,7 @@ add y w
 add y 9
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -52,6 +54,7 @@ add y w
 add y 8
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -70,6 +73,7 @@ add y w
 add y 3
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -88,6 +92,7 @@ add y w
 add y 0
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -106,6 +111,7 @@ add y w
 add y 11
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -124,6 +130,7 @@ add y w
 add y 10
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -142,6 +149,7 @@ add y w
 add y 13
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -160,6 +168,7 @@ add y w
 add y 3
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -178,6 +187,7 @@ add y w
 add y 10
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -196,6 +206,7 @@ add y w
 add y 10
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -214,6 +225,7 @@ add y w
 add y 14
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
@@ -232,6 +244,7 @@ add y w
 add y 6
 mul y x
 add z y
+
 inp w
 mul x 0
 add x z
