@@ -30,4 +30,4 @@ Example:
 Use the provided ```aoc.js```. That will automatically run the files given.
 
 ### Other information
-In this repo, there are two profiles; ```github``` and ```google```. ```github``` is my original profile where most of my code before 2022 was written. ```google``` is my new profile where I will make my push for 400 stars. You can say that there will be a difference of expertise in the code, so you can check that out if you want! Each year should have all the results if complete
+In this repo, there are two profiles; ```github``` and ```google```. ```github``` is my original profile where most of my code before 2022 was written. ```google``` is my new profile where I will make my push for 400 stars. You can say that there will be a difference of expertise in the code, so you can check that out if you want! Each year should have all the results if complete, and each day should have a write up.
