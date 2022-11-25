@@ -1,6 +1,7 @@
 const part1 = async input => {
     let wires = {};
-    let instructions = input.split(/\r\n/);
+    // FIXED
+    let instructions = input.split(/\n/);
 
     while (true) {
         let finished = true;
@@ -69,7 +70,8 @@ const part1 = async input => {
 
 const part2 = async input => {
     let wires = {};
-    let instructions = input.split(/\r\n/);
+    // FIXED
+    let instructions = input.split(/\n/);
     let again = false;
 
     while (true) {
@@ -135,7 +137,8 @@ const part2 = async input => {
             let newB = wires.a;
             wires = {};
             wires.b = newB;
-            instructions = input.split(/\r\n/);
+            // FIXED
+            instructions = input.split(/\n/);
             instructions[3] = '';
             again = true;
         } else if (finished && again) {
