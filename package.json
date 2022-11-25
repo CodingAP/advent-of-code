@@ -1,22 +1,16 @@
 {
-  "name": "advent-of-code",
-  "version": "1.1.0",
-  "description": "Fetcher and Runner for Advent Of Code",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "CodingAP",
-  "license": "ISC",
-  "dependencies": {
-    "dijkstrajs": "^1.0.2",
-    "dotenv": "^8.2.0",
-    "esm": "^3.2.25",
-    "js-combinatorics": "^1.4.5",
-    "md5": "^2.3.0",
-    "node-fetch": "^2.6.1",
-    "node-html-parser": "^2.0.0",
-    "prompt-sync": "^4.2.0",
-    "turndown": "^7.0.0"
-  }
+    "name": "advent-of-code-manager",
+    "version": "2.0.0",
+    "description": "Manager for Advent of Code puzzles",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "CodingAP",
+    "license": "ISC",
+    "type": "module",
+    "dependencies": {
+        "js-combinatorics": "^2.1.1",
+        "node-fetch": "^3.3.0"
+    }
 }
