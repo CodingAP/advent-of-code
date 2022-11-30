@@ -33,26 +33,53 @@ const generateDay = async (day, year) => {
     await fs.writeFile(directory + `/solution.js`, mainCode);
 }
 
-const printHelpMessage = () => {
-    console.log(
-`Advent of Code Manager
+const generateREADME = async (day, year) => {
+    let response = await fetch(`https://adventofcode.com/${year}/day/${day}`);
+    let text = await response.text();
+    let title = [...text.matchAll(/<h2>\s*.*<\/h2>/g)][0][0].split(': ')[1].split(' ---')[0];
 
-Usage:
-    node aoc [--c | --f | --g] --d=<day> --y=<year>
-    node aoc [--r | --s] --d=<day> --y=<year> --p=<part>
-    node aoc [--h | --help]
-            
-Options:
-    --d, --day          Day of the puzzle (defaults to current day if nothing is provided)
-    --f, --fetcher      Gets the puzzle input and creates new solution folder for the day
-    --g, --generate     Generates the solution folder without getting the input
-    --h, --help         Shows the help message
-    --p, --part         Part of the puzzle (defaults to both if nothing is provided)
-    --r, --run          Run day's solution for testing
-    --s, --submit       Submits the puzzle solutions to the website and gets a response
-    --y, --year         Year of the puzzle (defaults to current year if nothing is provided)
-`
-    );
+    let results = await runDay(day, year, 'BOTH');
+    let readme = await fs.readFile('./scripts/day_readme.md');
+    readme = readme.toString()
+        .replace(/%year%/g, year)
+        .replace(/%day%/g, day)
+        .replace(/%title%/g, title)
+        .replace(/%part1%/g, results.part1.answer)
+        .replace(/%part2%/g, results.part2.answer);
+
+    const directory = `./profiles/${settings.currentProfile}/${year}/day${day}`;
+    let exists = false;
+    try {
+        const stats = await fs.stat(directory);
+        exists = stats.isDirectory();
+    } catch (error) { }
+
+    if (!exists) await fs.mkdir(directory, { recursive: true });
+
+    await fs.writeFile(directory + `/README.md`, readme);
+}
+
+const generateWriteUp = async (day, year) => {
+    let response = await fetch(`https://adventofcode.com/${year}/day/${day}`);
+    let text = await response.text();
+    let title = [...text.matchAll(/<h2>\s*.*<\/h2>/g)][0][0].split(': ')[1].split(' ---')[0];
+
+    let writeup = await fs.readFile('./scripts/writeup.md');
+    writeup = writeup.toString()
+        .replace(/%year%/g, year)
+        .replace(/%day%/g, day)
+        .replace(/%title%/g, title);
+
+    const directory = `./writeups/${year}/`;
+    let exists = false;
+    try {
+        const stats = await fs.stat(directory);
+        exists = stats.isDirectory();
+    } catch (error) { }
+
+    if (!exists) await fs.mkdir(directory, { recursive: true });
+
+    await fs.writeFile(directory + `/day${day}_writeup.md`, writeup);
 }
 
 const runDay = async (day, year, part) => {
@@ -116,6 +143,30 @@ const submitDay = async (day, year, part) => {
     return outcome;
 }
 
+const printHelpMessage = () => {
+    console.log(
+`Advent of Code Manager
+
+Usage:
+    node aoc [--c | --f | --g | --md] --d=<day> --y=<year>
+    node aoc [--r | --s] --d=<day> --y=<year> --p=<part>
+    node aoc [--h | --help]
+            
+Options:
+    --d, --day          Day of the puzzle (defaults to current day if nothing is provided)
+    --f, --fetcher      Gets the puzzle input and creates new solution folder for the day
+    --g, --generate     Generates the solution folder without getting the input
+    --h, --help         Shows the help message
+    --m, --readme       Generates a README for the day with information like results and writeup
+    --p, --part         Part of the puzzle (defaults to both if nothing is provided)
+    --r, --run          Run day's solution for testing
+    --s, --submit       Submits the puzzle solutions to the website and gets a response
+    --w, --writeup      Generates a write up file
+    --y, --year         Year of the puzzle (defaults to current year if nothing is provided)
+`
+    );
+}
+
 if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
     const currentDay = new Date(new Date().toLocaleString("en-US", {
         timeZone: 'America/New_York'
@@ -144,6 +195,10 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
             case '--help':
                 options.mode = 'HELP';
                 break;
+            case '--m':
+            case '--readme':
+                options.mode = 'README';
+                break;
             case '--r':
             case '--run':
                 options.mode = 'RUN';
@@ -151,6 +206,10 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
             case '--s':
             case '--submit':
                 options.mode = 'SUBMIT';
+                break;
+            case '--w':
+            case '--writeup':
+                options.mode = 'WRITEUP';
                 break;
             case '--d':
             case '--day':
@@ -194,6 +253,10 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
             case 'HELP':
                 printHelpMessage();
                 break;
+            case 'README':
+                await generateREADME(options.day, options.year);
+                console.log(`\x1b[33mCreated README.js for day ${options.day}, year ${options.year}!\x1b[0m`);
+                break;
             case 'RUN':
                 const results = await runDay(options.day, options.year, options.part);
                 console.log('\x1b[32m~~~~~~~~~~~~~~~~\x1b[31m Advent of Code \x1b[32m~~~~~~~~~~~~~~~~\x1b[0m');
@@ -204,8 +267,12 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
                 const outcome = await submitDay(options.day, options.year, options.part);
                 console.log(outcome.message);
                 break;
+            case 'WRITEUP':
+                await generateWriteUp(options.day, options.year);
+                console.log(`\x1b[33mCreated a write up for day ${options.day}, year ${options.year}!\x1b[0m`);
+                break;
         }
     }
 }
 
-export { fetchDay, generateDay, runDay, submitDay };
+export { fetchDay, generateDay, generateREADME, runDay, submitDay };

@@ -28,7 +28,6 @@ const part2 = async input => {
         for (let i = 0; i < element.length; i++) {
             if (pairs[element[i] + element[i + 1]] == null) pairs[element[i] + element[i + 1]] = 0;
             pairs[element[i] + element[i + 1]]++;
-
             if (element[i] == element[i + 1] && element[i] == element[i - 1]) pairs[element[i] + element[i + 1]]--;
             
             if (element[i - 1] == element[i + 1]) xyxRule = true;
