@@ -82,11 +82,22 @@ const generateWriteUp = async (day, year) => {
     await fs.writeFile(directory + `/day${day}_writeup.md`, writeup);
 }
 
-const runDay = async (day, year, part) => {
+const runDay = async (day, year, part = 'BOTH', inputmode = 'STRING_TRIMMED') => {
     const directory = `./profiles/${settings.currentProfile}/${year}/day${day}`;
     const { part1, part2 } = await import(directory + '/solution.js');
 
-    const input = (await fs.readFile(directory + '/input.txt')).toString().trim();
+    let input = await fs.readFile(directory + '/input.txt');
+
+    switch (inputmode) {
+        case 'STRING_TRIMMED':
+            input = input.toString().trim();
+            break;
+        case 'STRING':
+            input = input.toString();
+            break;
+        case 'BYTES':
+            break;
+    }
     let results = {};
 
     if (part == '1' || part == 'BOTH') {
@@ -108,8 +119,8 @@ const runDay = async (day, year, part) => {
     return results;
 }
 
-const submitDay = async (day, year, part) => {
-    const results = await runDay(day, year, part);
+const submitDay = async (day, year, part = 'BOTH', inputmode = 'STRING_TRIMMED') => {
+    const results = await runDay(day, year, part, inputmode);
 
     const response = await fetch(`https://adventofcode.com/${year}/day/${day}/answer`, {
         method: 'POST',
@@ -149,7 +160,7 @@ const printHelpMessage = () => {
 
 Usage:
     node aoc [--c | --f | --g | --md] --d=<day> --y=<year>
-    node aoc [--r | --s] --d=<day> --y=<year> --p=<part>
+    node aoc [--r | --s] --d=<day> --y=<year> --p=<part> --i=<inputmode> 
     node aoc [--h | --help]
             
 Options:
@@ -157,6 +168,7 @@ Options:
     --f, --fetcher      Gets the puzzle input and creates new solution folder for the day
     --g, --generate     Generates the solution folder without getting the input
     --h, --help         Shows the help message
+    --i, --inputmode    Set's the inputs mode (string/bytes, trimmed/not trimmed, etc.). Defaults to trimmed string.
     --m, --readme       Generates a README for the day with information like results and writeup
     --p, --part         Part of the puzzle (defaults to both if nothing is provided)
     --r, --run          Run day's solution for testing
@@ -177,6 +189,7 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
         day: currentDay.getDay(),
         year: currentDay.getFullYear(),
         part: 'BOTH',
+        inputmode: 'STRING_TRIMMED',
         error: false
     }
 
@@ -218,6 +231,13 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
                     options.error = true;
                 } else options.day = tokens[1];
                 break;
+            case '--i':
+            case '--inputmode':
+                if (tokens[1] != 'string_trimmed' && tokens[1] != 'string' && tokens[1] != 'bytes') {
+                    console.log(`\x1b[31mERROR: inputmode is not a valid value (expected string_trimmed, string, or bytes; got ${tokens[1]})\x1b[0m`);
+                    options.error = true;
+                } else options.inputmode = tokens[1].toUpperCase();
+                break;
             case '--p':
             case '--part':
                 if (tokens[1] != '1' && tokens[1] != '2' && tokens[1] != 'both') {
@@ -258,13 +278,13 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
                 console.log(`\x1b[33mCreated README.js for day ${options.day}, year ${options.year}!\x1b[0m`);
                 break;
             case 'RUN':
-                const results = await runDay(options.day, options.year, options.part);
+                const results = await runDay(options.day, options.year, options.part, options.inputmode);
                 console.log('\x1b[32m~~~~~~~~~~~~~~~~\x1b[31m Advent of Code \x1b[32m~~~~~~~~~~~~~~~~\x1b[0m');
                 if (options.part == '1' || options.part == 'BOTH') console.log(`\x1b[33mPart 1: \x1b[30m\x1b[47m${results.part1.answer}\x1b[0m\t\t(${results.part1.time} ms)`);
                 if (options.part == '2' || options.part == 'BOTH') console.log(`\x1b[33mPart 2: \x1b[30m\x1b[47m${results.part2.answer}\x1b[0m\t\t(${results.part2.time} ms)`);
                 break;
             case 'SUBMIT':
-                const outcome = await submitDay(options.day, options.year, options.part);
+                const outcome = await submitDay(options.day, options.year, options.part, options.inputmode);
                 console.log(outcome.message);
                 break;
             case 'WRITEUP':
