@@ -10,7 +10,8 @@ const fetchDay = async (day, year) => {
 
     const response = await fetch(`https://adventofcode.com/${year}/day/${day}/input`, {
         headers: {
-            cookie: `session=${settings.tokens[settings.currentProfile]}`
+            cookie: `session=${settings.tokens[settings.currentProfile]}`,
+            'User-Agent': 'https://www.github.com/CodingAP/advent-of-code aoc-manager (Discord AP#1519)',
         }
     });
 
@@ -34,7 +35,12 @@ const generateDay = async (day, year) => {
 }
 
 const generateREADME = async (day, year) => {
-    let response = await fetch(`https://adventofcode.com/${year}/day/${day}`);
+    let response = await fetch(`https://adventofcode.com/${year}/day/${day}`, {
+        headers: {
+            cookie: `session=${settings.tokens[settings.currentProfile]}`,
+            'User-Agent': 'https://www.github.com/CodingAP/advent-of-code aoc-manager (Discord AP#1519)',
+        }
+    });
     let text = await response.text();
     let title = [...text.matchAll(/<h2>\s*.*<\/h2>/g)][0][0].split(': ')[1].split(' ---')[0];
 
@@ -60,7 +66,12 @@ const generateREADME = async (day, year) => {
 }
 
 const generateWriteUp = async (day, year) => {
-    let response = await fetch(`https://adventofcode.com/${year}/day/${day}`);
+    let response = await fetch(`https://adventofcode.com/${year}/day/${day}`, {
+        headers: {
+            cookie: `session=${settings.tokens[settings.currentProfile]}`,
+            'User-Agent': 'https://www.github.com/CodingAP/advent-of-code aoc-manager (Discord AP#1519)',
+        }
+    });
     let text = await response.text();
     let title = [...text.matchAll(/<h2>\s*.*<\/h2>/g)][0][0].split(': ')[1].split(' ---')[0];
 
@@ -126,7 +137,7 @@ const submitDay = async (day, year, part = 'BOTH', inputmode = 'STRING_TRIMMED')
         method: 'POST',
         headers: {
             cookie: `session=${token.SESSION_ID}`,
-            'User-Agent': 'advent-of-code-manager v2.0.0',
+            'User-Agent': 'https://www.github.com/CodingAP/advent-of-code aoc-manager (Discord AP#1519)',
             'cache-control': 'no-cache',
             'Content-Type': 'application/x-www-form-urlencoded'
         },
