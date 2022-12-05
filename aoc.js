@@ -34,7 +34,7 @@ const generateDay = async (day, year) => {
     await fs.writeFile(directory + `/solution.js`, mainCode);
 }
 
-const generateREADME = async (day, year) => {
+const generateREADME = async (day, year, inputmode = 'STRING_TRIMMED') => {
     let response = await fetch(`https://adventofcode.com/${year}/day/${day}`, {
         headers: {
             cookie: `session=${settings.tokens[settings.currentProfile]}`,
@@ -44,7 +44,7 @@ const generateREADME = async (day, year) => {
     let text = await response.text();
     let title = [...text.matchAll(/<h2>\s*.*<\/h2>/g)][0][0].split(': ')[1].split(' ---')[0];
 
-    let results = await runDay(day, year, 'BOTH');
+    let results = await runDay(day, year, 'BOTH', inputmode);
     let readme = await fs.readFile('./scripts/day_readme.md');
     readme = readme.toString()
         .replace(/%year%/g, year)
@@ -285,7 +285,7 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
                 printHelpMessage();
                 break;
             case 'README':
-                await generateREADME(options.day, options.year);
+                await generateREADME(options.day, options.year, options.inputmode);
                 console.log(`\x1b[33mCreated README.js for day ${options.day}, year ${options.year}!\x1b[0m`);
                 break;
             case 'RUN':

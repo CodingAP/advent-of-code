@@ -31,3 +31,15 @@ Use the provided ```aoc.js```. That will automatically run the files given.
 
 ### Other information
 In this repo, there are two profiles; ```github``` and ```google```. ```github``` is my original profile where most of my code before 2022 was written. ```google``` is my new profile where I will make my push for 400 stars. You can say that there will be a difference of expertise in the code, so you can check that out if you want! Each year should have all the results if complete, and each day should have a write up.
+
+## TODO
+* Get 400 stars
+  * See TODO.md for specific days and notes
+* Allow for better integration with Advent of Code
+  * Puzzle to be viewed in VSCode
+  * All-in-one puzzle solver
+  * Automatic updates to code
+* Finish write ups for old puzzles
+  * See TODO.md for specific days and notes
+* Visualization Page
+* Better solution viewer

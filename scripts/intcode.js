@@ -7,6 +7,10 @@ class IntcodeComputer {
         this.outputs = [];
         this.relativeBase = 0;
 
+        for (let i = 0; i < 1000; i++) {
+            if (this.program[i] == null) this.program[i] = 0;
+        }
+
         this.opcodes = {
             1: args => { // ADD
                 let arg1 = this.parseArg(args[0]), arg2 = this.parseArg(args[1]), arg3 = this.parseArg(args[2], true);
@@ -96,6 +100,11 @@ class IntcodeComputer {
         let args = this.parseOpcode(opcode);
         let forward = this.opcodes[opcode % 100](args);
         this.programCounter += forward;
+    }
+
+    runUntilOutput() {
+        while (this.outputs.length == 0 && !this.halted) this.runInstruction();
+        return this.outputs.shift();
     }
 
     run() {
