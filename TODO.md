@@ -11,9 +11,9 @@ Current year! Hopefully I reach a leaderboard position
 | [Day 2](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day2)   | ✔️ | ✔️ | ✔️ |
 | [Day 3](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day3)   | ✔️ | ✔️ | ✔️ |
 | [Day 4](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day4)   | ✔️ | ✔️ | ✔️ |
-| [Day 5](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day5)   | ❌ | ❌ | ❌ |
-| [Day 6](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day6)   | ❌ | ❌ | ❌ |
-| [Day 7](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day7)   | ❌ | ❌ | ❌ |
+| [Day 5](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day5)   | ✔️ | ✔️ | ✔️ |
+| [Day 6](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day6)   | ✔️ | ✔️ | ✔️ |
+| [Day 7](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day7)   | ✔️ | ✔️ | ✔️ |
 | [Day 8](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day8)   | ❌ | ❌ | ❌ |
 | [Day 9](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day9)   | ❌ | ❌ | ❌ |
 | [Day 10](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day10) | ❌ | ❌ | ❌ |
