@@ -105,3 +105,6 @@ dist
 
 # my settings file
 settings.json
+
+# removing inputs from github
+**/input.txt

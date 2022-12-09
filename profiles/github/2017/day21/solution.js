@@ -1,66 +1,113 @@
+let rotate = grid => new Array(grid.length).fill(0).map((element, row) => new Array(grid[row].length).fill(0).map((element, col) => grid[grid[row].length - col - 1][row]));
+let flipHorizontally = grid => new Array(grid.length).fill(0).map((element, row) => grid[row].reverse());
+let flipVertically = grid => [...grid].reverse();
+let convertToString = grid => grid.map(element => element.join('')).join('');
+
+const getAllVersions = image => {
+    let rows = image.split('/');
+    let grid = new Array(rows.length).fill(0).map((element, row) => new Array(rows[row].length).fill(0).map((element, col) => rows[row][col]));
+
+    return [...new Set(
+        [
+            convertToString(grid),
+            convertToString(flipVertically(grid)),
+            convertToString(flipHorizontally(grid)),
+            convertToString(flipVertically(flipHorizontally(grid))),
+            convertToString(rotate(grid)),
+            convertToString(flipVertically(rotate(grid))),
+            convertToString(flipHorizontally(rotate(grid))),
+            convertToString(rotate(rotate(grid))),
+            convertToString(rotate(rotate(rotate(grid))))
+        ]
+    )];
+}
+
 const part1 = async input => {
-    let rotate = grid => new Array(grid.length).fill(0).map((element, row) => new Array(grid[row].length).fill(0).map((element, col) => grid[grid[row].length - col - 1][row]));
-    let flipHorizontally = grid => new Array(grid.length).fill(0).map((element, row) => grid[row].reverse());
-    let flipVertically = grid => [...grid].reverse();
-    let convertToString = grid => grid.map(element => element.join('')).join('');
-
-    const getAllVersions = image => {
-        let rows = image.split('/');
-        let grid = new Array(rows.length).fill(0).map((element, row) => new Array(rows[row].length).fill(0).map((element, col) => rows[row][col]));
-
-        return [...new Set(
-            [
-                convertToString(grid),
-                convertToString(flipVertically(grid)),
-                convertToString(flipHorizontally(grid)),
-                convertToString(rotate(grid)),
-                convertToString(flipVertically(rotate(grid))),
-                convertToString(flipHorizontally(rotate(grid))),
-                convertToString(rotate(rotate(grid))),
-                convertToString(rotate(rotate(rotate(grid))))
-            ]
-        )];
-    }
-
-    let conversions = input.split('\n').reduce((obj, line) => {
+    let rules = input.split('\n').reduce((obj, line) => {
         let [left, right] = line.split(' => ');
 
         let allVersions = getAllVersions(left);
         left = left.replace(/\//g, '');
-        if (left.length == 4) allVersions.forEach(num => obj[left.length][num] = right.replace(/\//g, ''));
-        else allVersions.forEach(num => {
-            let lines = right.split('/');
-            obj[left.length][num] = [
-                lines[0].slice(0, 2) + lines[1].slice(0, 2),
-                lines[0].slice(2) + lines[1].slice(2),
-                lines[2].slice(0, 2) + lines[3].slice(0, 2),
-                lines[2].slice(2) + lines[3].slice(2)
-            ];
-        });
+        allVersions.forEach(num => obj[left.length][num] = right.replace(/\//g, ''));
         
         return obj;
     }, { 4: {}, 9: {} });
 
-    let image = ['.#...####'];
-    // image = ['#..#', '....', '....', '#..#']
-    for (let count = 0; count < 2; count++) {
+    let image = ['.#.', '..#', '###'];
+    for (let count = 0; count < 5; count++) {
         let tileSize = (image.length % 2 == 0) ? 2 : 3;
-        let imageSize = image.length / tileSize;
-        let newImage = [];
+        let dimension = image.length / tileSize;
 
-        for (let y = 0; y < imageSize; y++) {
-            for (let x = 0; x < imageSize; x++) {
-                let tile = image[y * imageSize + x];
-                let conversion = conversions[tile.length][tile];
-                image.splice(y * imageSize + x, ) = conversion;
+        let newImage = [];
+        for (let y = 0; y < dimension; y++) {
+            for (let x = 0; x < dimension; x++) {
+                let tile = '';
+                for (let j = 0; j < tileSize; j++) {
+                    tile += image[y * tileSize + j].slice(x * tileSize, x * tileSize + tileSize);
+                }
+                let conversion = rules[tile.length][tile];
+                newImage.push(new Array(tileSize + 1).fill(0).map((element, index) => conversion.slice(index * (tileSize + 1), index * (tileSize + 1) + (tileSize + 1))));
             }
         }
+
+        let imageString = [];
+        for (let y = 0; y < dimension; y++) {
+            for (let i = 0; i < tileSize + 1; i++) {
+                let string = '';
+                for (let x = 0; x < dimension; x++) {
+                    string += newImage[y * dimension + x][i];
+                }
+                imageString.push(string);
+            }
+        }
+        image = imageString;
     }
-    return 0;
+    
+    return image.join('').split('').filter(element => element == '#').length;
 }
 
 const part2 = async input => {
-    return 0;
+    let rules = input.split('\n').reduce((obj, line) => {
+        let [left, right] = line.split(' => ');
+
+        let allVersions = getAllVersions(left);
+        left = left.replace(/\//g, '');
+        allVersions.forEach(num => obj[left.length][num] = right.replace(/\//g, ''));
+
+        return obj;
+    }, { 4: {}, 9: {} });
+
+    let image = ['.#.', '..#', '###'];
+    for (let count = 0; count < 18; count++) {
+        let tileSize = (image.length % 2 == 0) ? 2 : 3;
+        let dimension = image.length / tileSize;
+
+        let newImage = [];
+        for (let y = 0; y < dimension; y++) {
+            for (let x = 0; x < dimension; x++) {
+                let tile = '';
+                for (let j = 0; j < tileSize; j++) {
+                    tile += image[y * tileSize + j].slice(x * tileSize, x * tileSize + tileSize);
+                }
+                let conversion = rules[tile.length][tile];
+                newImage.push(new Array(tileSize + 1).fill(0).map((element, index) => conversion.slice(index * (tileSize + 1), index * (tileSize + 1) + (tileSize + 1))));
+            }
+        }
+
+        let imageString = [];
+        for (let y = 0; y < dimension; y++) {
+            for (let i = 0; i < tileSize + 1; i++) {
+                let string = '';
+                for (let x = 0; x < dimension; x++) {
+                    string += newImage[y * dimension + x][i];
+                }
+                imageString.push(string);
+            }
+        }
+        image = imageString;
+    }
+
+    return image.join('').split('').filter(element => element == '#').length;
 }
 
 export { part1, part2 };
