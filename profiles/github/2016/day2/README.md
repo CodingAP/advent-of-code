@@ -1,0 +1,7 @@
+# Advent of Code 2016 - Day 2: [Bathroom Security](https://adventofcode.com/2016/day/2)
+
+## [Write Up](https://github.com/CodingAP/advent-of-code/blob/main/writeups/2016/day2_writeup.md)
+## Results
+| Part 1 | Part 2 | 
+|:---:|:---:|
+| 73597 | A47DA |
