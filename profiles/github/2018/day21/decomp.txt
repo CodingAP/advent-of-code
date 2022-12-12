@@ -1,13 +1,17 @@
-c = 0
+c = 0;
+
 while (true) {
-    f = c | 65536
-    c = 4843319
+    f = c | 65536;
+    c = 4843319;
+    while (true) {
+        e = f & 0xff;
+        c = (((c + e) & 16777215) * 65899) & 16777215
 
-    e = f & 255
-    c = (((c + e) & 16777215) * 65899) & 16777215
-
-    if (f < 256 && c != a) break;
-    f = Math.floor(f / 256) + 1
+        if (256 > f) {
+            if (c == num) return # valid num
+        }
+        f = Math.floor(f / 256); 
+    }  
 }
 
 c = 0
