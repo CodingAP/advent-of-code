@@ -1,0 +1,6 @@
+# Advent of Code 2022 - Day 13: [Distress Signal](https://adventofcode.com/2022/day/13)
+By Alex Prosser
+
+Leaderboard: 1328 (Part 1) / 1977 (Part 2)
+
+In this puzzle, we are sorting arrays based on the values that are contained in them. We do this by going through each element and comparing them, recursively. If both elements are numbers, then we see if the right is larger than the left and return true/false based on that. If one of them is a number, we make the single number into an array and recursively search into that. If both elements are arrays, we start another recursive search as well. If the left is longer than the right, it is not in the right order. If you need more specific examples, please go to the puzzle as it is hard to explain. Anyways, in part 1, we are just comparing pairs of arrays and add a running total of the indices (one-based indexing). Then in part 2, we are using the function to compare and sort all the arrays while adding `[[2]]` and `[[6]]` and divider arrays to decode some value (we actual don't do any decoding).

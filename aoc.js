@@ -197,7 +197,7 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
 
     const options = {
         mode: 'HELP',
-        day: currentDay.getDay(),
+        day: currentDay.getDate(),
         year: currentDay.getFullYear(),
         part: 'BOTH',
         inputmode: 'STRING_TRIMMED',
@@ -290,7 +290,7 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
                 break;
             case 'RUN':
                 const results = await runDay(options.day, options.year, options.part, options.inputmode);
-                console.log('\x1b[32m~~~~~~~~~~~~~~~~\x1b[31m Advent of Code \x1b[32m~~~~~~~~~~~~~~~~\x1b[0m');
+                console.log(`\x1b[32m~~~~~~~~~~~~~~~~\x1b[31m Advent of Code ${options.year}, Day ${options.day} \x1b[32m~~~~~~~~~~~~~~~~\x1b[0m`);
                 if (options.part == '1' || options.part == 'BOTH') console.log(`\x1b[33mPart 1: \x1b[30m\x1b[47m${results.part1.answer}\x1b[0m\t\t(${results.part1.time} ms)`);
                 if (options.part == '2' || options.part == 'BOTH') console.log(`\x1b[33mPart 2: \x1b[30m\x1b[47m${results.part2.answer}\x1b[0m\t\t(${results.part2.time} ms)`);
                 break;
