@@ -2,8 +2,9 @@
 
 ## 2022
 
-### 18/50🌟
+### 28/50🌟
 Current year! Hopefully I reach a leaderboard position
+EDIT: I DID!
 
 | Day | Part 1 | Part 2 | Write Up |
 |:---:|:---:|:---:|:---:|
@@ -16,11 +17,11 @@ Current year! Hopefully I reach a leaderboard position
 | [Day 7](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day7)   | ✔️ | ✔️ | ✔️ |
 | [Day 8](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day8)   | ✔️ | ✔️ | ✔️ |
 | [Day 9](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day9)   | ✔️ | ✔️ | ✔️ |
-| [Day 10](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day10) | ❌ | ❌ | ❌ |
-| [Day 11](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day11) | ❌ | ❌ | ❌ |
-| [Day 12](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day12) | ❌ | ❌ | ❌ |
-| [Day 13](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day13) | ❌ | ❌ | ❌ |
-| [Day 14](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day14) | ❌ | ❌ | ❌ |
+| [Day 10](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day10) | ✔️ | ✔️ | ✔️ |
+| [Day 11](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day11) | ✔️ | ✔️ | ✔️ |
+| [Day 12](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day12) | ✔️ | ✔️ | ✔️ |
+| [Day 13](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day13) | ✔️ | ✔️ | ✔️ |
+| [Day 14](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day14) | ✔️ | ✔️ | ✔️ |
 | [Day 15](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day15) | ❌ | ❌ | ❌ |
 | [Day 16](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day16) | ❌ | ❌ | ❌ |
 | [Day 17](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day17) | ❌ | ❌ | ❌ |
@@ -128,7 +129,7 @@ Current year! Hopefully I reach a leaderboard position
 
 ## 2018
 
-### 27/50🌟
+### 28/50🌟
 | Day | Part 1 | Part 2 | Write Up |
 |:---:|:---:|:---:|:---:|
 | [Day 1](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day1)   | ✔️ | ✔️ | ❌ |
@@ -151,7 +152,7 @@ Current year! Hopefully I reach a leaderboard position
 | [Day 18](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day18) | ✔️ | ✔️ | ❌ |
 | [Day 19](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day19) | ✔️ | ✔️ | ❌ |
 | [Day 20](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day20) | ❌ | ❌ | ❌ |
-| [Day 21](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day21) | ✔️ | ❌ | ❌ |
+| [Day 21](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day21) | ✔️ | ✔️ | ❌ |
 | [Day 22](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day22) | ❌ | ❌ | ❌ |
 | [Day 23](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day23) | ✔️ | ❌ | ❌ |
 | [Day 24](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day24) | ❌ | ❌ | ❌ |
@@ -190,7 +191,7 @@ Current year! Hopefully I reach a leaderboard position
 
 ## 2016
 
-### 40/50🌟
+### 50/50🌟 ALL DONE!
 | Day | Part 1 | Part 2 | Write Up |
 |:---:|:---:|:---:|:---:|
 | [Day 1](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day1)   | ✔️ | ✔️ | ❌ |
@@ -203,20 +204,20 @@ Current year! Hopefully I reach a leaderboard position
 | [Day 8](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day8)   | ✔️ | ✔️ | ❌ |
 | [Day 9](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day9)   | ✔️ | ✔️ | ❌ |
 | [Day 10](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day10) | ✔️ | ✔️ | ❌ |
-| [Day 11](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day11) | ❌ | ❌ | ❌ |
+| [Day 11](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day11) | ✔️ | ✔️ | ❌ |
 | [Day 12](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day12) | ✔️ | ✔️ | ❌ |
-| [Day 13](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day13) | ✔️ | ❌ | ❌ |
+| [Day 13](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day13) | ✔️ | ✔️ | ❌ |
 | [Day 14](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day14) | ✔️ | ✔️ | ❌ |
 | [Day 15](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day15) | ✔️ | ✔️ | ❌ |
 | [Day 16](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day16) | ✔️ | ✔️ | ❌ |
-| [Day 17](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day17) | ❌ | ❌ | ❌ |
+| [Day 17](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day17) | ✔️ | ✔️ | ❌ |
 | [Day 18](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day18) | ✔️ | ✔️ | ❌ |
-| [Day 19](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day19) | ✔️ | ❌ | ❌ |
+| [Day 19](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day19) | ✔️ | ✔️ | ❌ |
 | [Day 20](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day20) | ✔️ | ✔️ | ❌ |
 | [Day 21](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day21) | ✔️ | ✔️ | ❌ |
-| [Day 22](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day22) | ✔️ | ❌ | ❌ |
+| [Day 22](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day22) | ✔️ | ✔️ | ❌ |
 | [Day 23](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day23) | ✔️ | ✔️ | ❌ |
-| [Day 24](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day24) | ❌ | ❌ | ❌ |
+| [Day 24](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day24) | ✔️ | ✔️ | ❌ |
 | [Day 25](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day25) | ✔️ | ✔️ | ❌ |
 
 ## 2015
