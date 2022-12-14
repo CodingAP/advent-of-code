@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advent of Code 2022, Day 14 Visualization</title>
+    <style>
+        body {
+            margin: auto;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" id="input-file" />
+    <canvas></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const context = canvas.getContext('2d');
+        let walls = {}, min = { x: 0, y: 0 }, max = { x: 0, y: 0 };
+        let sand = [];
+        let current = [{ x: 500, y: 0 }];
+        let cycles = 0;
+
+        const processInputFile = file => {
+            walls = file.split('\n').reduce((obj, line) => {
+                let points = line.split(' -> ').map(element => element.split(',').map(num => parseInt(num)));
+
+                for (let i = 1; i < points.length; i++) {
+                    let minX = Math.min(points[i - 1][0], points[i][0]);
+                    let maxX = Math.max(points[i - 1][0], points[i][0]);
+                    let minY = Math.min(points[i - 1][1], points[i][1]);
+                    let maxY = Math.max(points[i - 1][1], points[i][1]);
+                    for (let y = minY; y <= maxY; y++) {
+                        for (let x = minX; x <= maxX; x++) {
+                            obj[`${x},${y}`] = 'wall';
+                        }
+                    }
+                }
+                return obj;
+            }, {});
+
+            let coords = Object.keys(walls).map(line => {
+                let [x, y] = line.split(',').map(num => parseInt(num));
+                return { x, y };
+            });
+
+            min.x = coords.reduce((lowest, wall) => Math.min(wall.x, lowest), Infinity);
+            min.y = coords.reduce((lowest, wall) => Math.min(wall.y, lowest), Infinity);
+            max.x = coords.reduce((highest, wall) => Math.max(wall.x, highest), -Infinity);
+            max.y = coords.reduce((highest, wall) => Math.max(wall.y, highest), -Infinity);
+
+            // for part 2
+            for (let i = -100; i <= 1100; i++) walls[`${i},${max.y + 2}`] = 'wall';
+
+            setInterval(draw, 1000/60);
+        }
+
+        const readFile = event => {
+            if (event.target.files[0] != null) {
+                let reader = new FileReader();
+                reader.onload = e => processInputFile(e.target.result);
+                reader.readAsText(event.target.files[0]);
+            } else {
+                alert('ERROR WITH FILE!');
+            }
+        }
+
+        let draw = () => {
+            let scale = 3;
+            let translate = (x, y) => {
+                return {
+                    x: (x - min.x) * scale + ((canvas.width - (max.x - min.x)) / 2),
+                    y: (y - min.y) * scale + 50
+                }
+            }
+
+            // Sand logic
+            for (let times = 0; times < 5; times++) {
+                for (let i = 0; i < current.length; i++) {
+                    let bit = current[i];
+
+                    if (walls[`${bit.x},${bit.y + 1}`] != null) {
+                        if (walls[`${bit.x - 1},${bit.y + 1}`] == null) {
+                            bit.x--;
+                            bit.y++;
+                        } else if (walls[`${bit.x + 1},${bit.y + 1}`] == null) {
+                            bit.x++;
+                            bit.y++;
+                        } else {
+                            walls[`${bit.x},${bit.y}`] = 'sand';
+                            current[i] = null;
+                        }
+                    } else {
+                        bit.y++;
+                    }
+                }
+
+                current = current.filter(element => element != null);
+                current.push({ x: 500, y: 0 });
+            }
+
+            // Draw stuff
+            context.fillStyle = '#000';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            Object.keys(walls).forEach(wall => {
+                let [x, y] = wall.split(',').map(num => parseInt(num));
+                context.fillStyle = (walls[wall] == 'wall') ? '#fff' : '#ff0';
+                context.fillRect(translate(x, y).x, translate(x, y).y, scale, scale)
+            });
+
+            context.fillStyle = '#ff0';
+            for (let bit of current) {
+                context.fillRect(translate(bit.x, bit.y).x, translate(bit.x, bit.y).y, scale, scale);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            document.querySelector('#input-file').addEventListener('change', readFile);
+        });
+    </script>
+</body>
+
+</html>
