@@ -26,4 +26,8 @@ This makes it easy to find where the edges are as the distance from the center t
 
 Example: `2 * (5 - 3) + 1 = 5`
 
+Using this, we can find the range that the row hold using the diamond's positions...
+Farthest Left: `position.x - (radius - distance_to_center)`
+Farthest Right: `position.x - (radius - distance_to_center)`
+
 With this, you can easily find how many spaces collide with a specific line, which helps solve this problem.
