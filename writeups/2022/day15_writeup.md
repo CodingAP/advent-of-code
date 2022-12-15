@@ -26,4 +26,4 @@ This makes it easy to find where the edges are as the distance from the center t
 
 Example: `2 * (5 - 3) + 1 = 5`
 
-With this, you can easily find how many spaces collide with a specific line, which helps solve this problem
+With this, you can easily find how many spaces collide with a specific line, which helps solve this problem.
