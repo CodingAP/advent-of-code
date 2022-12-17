@@ -1,0 +1,6 @@
+# Advent of Code 2022 - Day 17: [Pyroclastic Flow](https://adventofcode.com/2022/day/17)
+By Alex Prosser
+
+Leaderboard: 439 (Part 1) / 628 (Part 2)
+
+Ah, Tetris. In this puzzle, we are simulating rocks falling into cave and seeing the highest point. The input is how we should move the rock left and right (looped if we go more than the length), and it should fall once everytime we move it. The rock follows Tetris rules where if it hits the side, it stops, and if it hits the bottom, a new piece is created 3 places above the highest piece. With these rules, we can easily simulate any amount of pieces. In part 1, we just need to drop `2022` pieces, which doesn't take too much time. In part 2, we need to drop `1000000000000` (one trillion!) pieces, which does take quite a while; however, one interesting thing about this is that with all the looping (looping input, looping pieces), there are possible cycles in this. So, if we find a cycle in the pieces, then we can just "simulate" the dropping by counting how many cycles can fit in one trillion and adding the height there. Then, we can simulate before and after the cycle to get the accurate count. 

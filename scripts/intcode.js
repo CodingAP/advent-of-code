@@ -7,7 +7,7 @@ class IntcodeComputer {
         this.outputs = [];
         this.relativeBase = 0;
 
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 10000; i++) {
             if (this.program[i] == null) this.program[i] = 0;
         }
 
@@ -104,6 +104,7 @@ class IntcodeComputer {
 
     runUntilOutput() {
         while (this.outputs.length == 0 && !this.halted) this.runInstruction();
+        if (this.halted) return null;
         return this.outputs.shift();
     }
 
