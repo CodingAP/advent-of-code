@@ -98,7 +98,7 @@ EDIT: I DID!
 
 ## 2019
 
-### 27/50🌟
+### 30/50🌟
 | Day | Part 1 | Part 2 | Write Up |
 |:---:|:---:|:---:|:---:|
 | [Day 1](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day1)   | ✔️ | ✔️ | ❌ |
@@ -121,11 +121,11 @@ EDIT: I DID!
 | [Day 18](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day18) | ❌ | ❌ | ❌ |
 | [Day 19](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day19) | ✔️ | ❌ | ❌ |
 | [Day 20](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day20) | ❌ | ❌ | ❌ |
-| [Day 21](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day21) | ❌ | ❌ | ❌ |
+| [Day 21](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day21) | ✔️ | ✔️ | ❌ |
 | [Day 22](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day22) | ❌ | ❌ | ❌ |
 | [Day 23](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day23) | ❌ | ❌ | ❌ |
 | [Day 24](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day24) | ✔️ | ❌ | ❌ |
-| [Day 25](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day25) | ❌ | ❌ | ❌ |
+| [Day 25](https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day25) | ✔️ | ❌ | ❌ |
 
 ## 2018
 

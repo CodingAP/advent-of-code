@@ -6,6 +6,7 @@ class IntcodeComputer {
         this.inputs = [];
         this.outputs = [];
         this.relativeBase = 0;
+        this.waitingForInput = false;
 
         for (let i = 0; i < 10000; i++) {
             if (this.program[i] == null) this.program[i] = 0;
@@ -24,8 +25,9 @@ class IntcodeComputer {
             },
             3: args => { // INPUT
                 let arg1 = this.parseArg(args[0], true);
-                this.program[arg1] = this.inputs.shift();
-                return 2;
+                if (this.inputs.length == 0) this.waitingForInput = true;
+                else this.program[arg1] = this.inputs.shift();
+                return (this.waitingForInput) ? 0 : 2;
             },
             4: args => { // OUTPUT
                 let arg1 = this.parseArg(args[0]);
@@ -94,7 +96,7 @@ class IntcodeComputer {
     }
 
     runInstruction() {
-        if (this.halted) return;
+        if (this.halted || this.waitingForInput) return;
 
         let opcode = this.program[this.programCounter];
         let args = this.parseOpcode(opcode);
@@ -104,8 +106,12 @@ class IntcodeComputer {
 
     runUntilOutput() {
         while (this.outputs.length == 0 && !this.halted) this.runInstruction();
-        if (this.halted) return null;
+        if (this.halted || this.waitingForInput) return null;
         return this.outputs.shift();
+    }
+
+    runUntilInput() {
+        while (!this.waitingForInput && !this.halted) this.runInstruction();
     }
 
     run() {
