@@ -170,7 +170,7 @@ const printHelpMessage = () => {
 `Advent of Code Manager
 
 Usage:
-    node aoc [--c | --f | --g | --md] --d=<day> --y=<year>
+    node aoc [--f | --g | --m | --w] --d=<day> --y=<year>
     node aoc [--r | --s] --d=<day> --y=<year> --p=<part> --i=<inputmode> 
     node aoc [--h | --help]
             
@@ -306,4 +306,4 @@ if ((process.argv[1] + '.js') === fileURLToPath(import.meta.url)) {
     }
 }
 
-export { fetchDay, generateDay, generateREADME, runDay, submitDay };
+export { fetchDay, generateDay, generateREADME, runDay, submitDay, generateWriteUp };
