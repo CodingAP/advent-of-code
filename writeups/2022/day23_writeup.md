@@ -1,0 +1,6 @@
+# Advent of Code 2022 - Day 23: [Unstable Diffusion](https://adventofcode.com/2022/day/23)
+By Alex Prosser
+
+Leaderboard: 10400 (Part 1) / 10137 (Part 2)
+
+In this puzzle, we need to find the positions of elves based on the movements describe in the prose. For each elf, they look in the 8 neighboring cells for other elves. If there are no elves, then the elf doesn't move. If there are, they check the cardinal directions (north, south, west, and east) for any elves. If there are no elves, they decide to move there. We run this for all elves before they move, and if there any that move to the same spot, then they don't move. Then, the cardinal directions choices rotates (NSWE turns into SWEN). In part 1, we just run 10 rounds of this. Then, we find the smalles box around all the elves and count how many empty spaces there are. In part 2, we find how many rounds it takes until there is no more movement. The only strategy is to make sure that the detection and movement are different steps to prevent any collisions.

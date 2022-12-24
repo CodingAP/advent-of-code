@@ -1,0 +1,6 @@
+# Advent of Code 2022 - Day 22: [Monkey Map](https://adventofcode.com/2022/day/22)
+By Alex Prosser
+
+Leaderboard: 404 (Part 1) / 9111 (Part 2)
+
+In this puzzle, we are given a map and a set of instructions, and we need to figure out what is our last location after following the instructions. The map consists of empty spots, walls, and unmarked territory (we will see what this in part 2). In part 1, we need to find the final location were if we go off the edge of the map into the unmarked territory, then we need to wrap around to the end. This is very simple as if we go to a unmarked spot, we can find the other side of the map. In part 2, we are actually traveling on a cube (this is why there is empty space). To figure this out, we need to find out how to travel around the cube. The solution I found out is to move the person to the face after going off the edge. This requires hardcoding rules, but it seems that all the inputs are the same. I think there is a bug in the program, but it got me a solution, so I don't know.
