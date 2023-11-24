@@ -1,0 +1,8 @@
+# Advent of Code <steve> return Steve.data.year; </steve> - Day <steve> return Steve.data.day; </steve>: [<steve> return Steve.data.title; </steve>](<steve> return `https://adventofcode.com/${Steve.data.year}/day/${Steve.data.day}`; </steve>)
+
+## [Write Up](<steve> return `https://codingap.github.io/advent-of-code/writeups/${Steve.data.year}/day${Steve.data.day}`; </steve>)
+## Results
+|| **Part 1** | **Part 2** |
+|:--:|:---:|:---:|
+| **Results** | <steve> return Steve.data.part1.result; </steve> | <steve> return Steve.data.part2.result; </steve> |
+| **Time (in ms)** | <steve> return Steve.data.part1.time; </steve> | <steve> return Steve.data.part2.time; </steve> |

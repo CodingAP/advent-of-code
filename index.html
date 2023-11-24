@@ -1,0 +1,5662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="\static\favicon\browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<link href="\static\css\main.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180"
+    href="\static\favicon\apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+    href="\static\favicon\favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+    href="\static\favicon\favicon-16x16.png">
+<link rel="manifest" href="\static\favicon\site.webmanifest">
+<link rel="shortcut icon" href="\static\favicon\favicon.ico">
+
+<title>CodingAP's Advent of Code Hub</title>
+    <script src="\static\js\main.js"></script>
+</head>
+
+<body>
+    <p class="header text-center" style="font-size: 30px;">-- CodingAP's Advent of Code Hub --</p>
+    <p class="text-center" style="font-size: 24px;">
+        <a id="year-selector-2015" class="year-selector" onclick="switchYear(2015)">[2015]</a>·<a id="year-selector-2016" class="year-selector" onclick="switchYear(2016)">[2016]</a>·<a id="year-selector-2017" class="year-selector" onclick="switchYear(2017)">[2017]</a>·<a id="year-selector-2018" class="year-selector" onclick="switchYear(2018)">[2018]</a>·<a id="year-selector-2019" class="year-selector" onclick="switchYear(2019)">[2019]</a>·<a id="year-selector-2020" class="year-selector" onclick="switchYear(2020)">[2020]</a>·<a id="year-selector-2021" class="year-selector" onclick="switchYear(2021)">[2021]</a>·<a id="year-selector-2022" class="year-selector" onclick="switchYear(2022)">[2022]</a>·<a id="year-selector-2023" class="year-selector current" onclick="switchYear(2023)">[2023]</a>
+    </p>
+
+    <div id="snowflakes">
+        <div class="snowflake snowflake-3" style="top: -2.719883321873761em; left: 45.1649806688546vw; animation-delay: -6.4579741140321545s"></div><div class="snowflake snowflake-0" style="top: -1.5856618882900675em; left: 47.36192342024776vw; animation-delay: -13.845383163136864s"></div><div class="snowflake snowflake-3" style="top: -0.45460660433443656em; left: 12.281525116302783vw; animation-delay: -7.499101979602458s"></div><div class="snowflake snowflake-1" style="top: -2.0772894961745427em; left: 84.19190633558205vw; animation-delay: -1.3748304200326178s"></div><div class="snowflake snowflake-0" style="top: -1.4376147674157436em; left: 45.92695520478507vw; animation-delay: -19.891054058196758s"></div><div class="snowflake snowflake-0" style="top: -2.4979487710728265em; left: 40.45372023080396vw; animation-delay: -16.2862963239693s"></div><div class="snowflake snowflake-3" style="top: -0.6189716600786466em; left: 49.9270640369534vw; animation-delay: -8.026845519148292s"></div><div class="snowflake snowflake-3" style="top: -1.547933120503071em; left: 17.521054973183237vw; animation-delay: -18.510109330175663s"></div><div class="snowflake snowflake-1" style="top: -2.9749310582088517em; left: 5.127811129951643vw; animation-delay: -11.821162721547505s"></div><div class="snowflake snowflake-3" style="top: -1.065098796532663em; left: 50.6980936642432vw; animation-delay: -17.51470647234285s"></div><div class="snowflake snowflake-3" style="top: -3.156696308815171em; left: 14.493707652483078vw; animation-delay: -14.166720377403923s"></div><div class="snowflake snowflake-0" style="top: -4.588393767123051em; left: 29.716964641976663vw; animation-delay: -14.731462248016193s"></div><div class="snowflake snowflake-3" style="top: -4.766860440702333em; left: 83.91414675790007vw; animation-delay: -13.281351409443198s"></div><div class="snowflake snowflake-2" style="top: -2.9663274304887954em; left: 46.14641994478035vw; animation-delay: -3.666464827713134s"></div><div class="snowflake snowflake-0" style="top: -3.4821174313372194em; left: 26.87377682638694vw; animation-delay: -8.398782285018275s"></div><div class="snowflake snowflake-1" style="top: -2.8200319653393358em; left: 82.77056450585225vw; animation-delay: -18.289629608531442s"></div><div class="snowflake snowflake-2" style="top: -1.4199635013804346em; left: 71.57212968278235vw; animation-delay: -7.555090479973892s"></div><div class="snowflake snowflake-2" style="top: -0.2753685882666934em; left: 88.49525852723129vw; animation-delay: -17.840306840895348s"></div><div class="snowflake snowflake-2" style="top: -1.5236837430129713em; left: 39.02465883545743vw; animation-delay: -9.646521421296836s"></div><div class="snowflake snowflake-2" style="top: -0.3992408119797308em; left: 28.02121433542586vw; animation-delay: -15.345028858925023s"></div><div class="snowflake snowflake-2" style="top: -2.3160542080155655em; left: 29.283650473889324vw; animation-delay: -13.508159076018003s"></div><div class="snowflake snowflake-2" style="top: -3.7244323783766706em; left: 37.78486747692003vw; animation-delay: -6.135627185104742s"></div><div class="snowflake snowflake-3" style="top: -3.186140782515212em; left: 37.67926808770723vw; animation-delay: -17.634458867138342s"></div><div class="snowflake snowflake-0" style="top: -3.727809424323947em; left: 0.4417958102808983vw; animation-delay: -14.959089760850507s"></div><div class="snowflake snowflake-3" style="top: -1.4214683657261373em; left: 86.91380393164856vw; animation-delay: -10.460255326354048s"></div><div class="snowflake snowflake-1" style="top: -1.5927532805356537em; left: 77.56295010465011vw; animation-delay: -9.018473368373488s"></div><div class="snowflake snowflake-1" style="top: -1.106261642917682em; left: 96.57755540201943vw; animation-delay: -9.315065673038635s"></div><div class="snowflake snowflake-2" style="top: -4.932519804306896em; left: 99.03093046089208vw; animation-delay: -3.111856345622339s"></div><div class="snowflake snowflake-2" style="top: -2.4149643611155778em; left: 18.42512897215498vw; animation-delay: -6.352906281804609s"></div><div class="snowflake snowflake-2" style="top: -1.6640184063839136em; left: 20.974600101523656vw; animation-delay: -17.753301893727027s"></div><div class="snowflake snowflake-1" style="top: -1.0457681103600591em; left: 18.746572154211695vw; animation-delay: -4.130142169723987s"></div><div class="snowflake snowflake-0" style="top: -4.464128482582921em; left: 49.16952321271653vw; animation-delay: -12.67586524654893s"></div><div class="snowflake snowflake-0" style="top: -4.433708075249068em; left: 15.87797113073577vw; animation-delay: -9.629868724440005s"></div><div class="snowflake snowflake-3" style="top: -0.7451215517151355em; left: 18.142173471111423vw; animation-delay: -6.545771021591267s"></div><div class="snowflake snowflake-3" style="top: -4.941754634484971em; left: 86.27084432741539vw; animation-delay: -6.1098562173065s"></div><div class="snowflake snowflake-0" style="top: -4.769508565360773em; left: 93.06076963402347vw; animation-delay: -10.380066920325142s"></div><div class="snowflake snowflake-2" style="top: -3.590101316018254em; left: 77.87106957647609vw; animation-delay: -10.839354938066919s"></div><div class="snowflake snowflake-0" style="top: -1.2655722848740725em; left: 37.02210341976744vw; animation-delay: -13.34415842564252s"></div><div class="snowflake snowflake-1" style="top: -1.7092488094139369em; left: 81.24988975595942vw; animation-delay: -19.653142429442028s"></div><div class="snowflake snowflake-0" style="top: -1.160409406982701em; left: 22.450103598428118vw; animation-delay: -3.937454674999241s"></div><div class="snowflake snowflake-1" style="top: -0.34443283383663315em; left: 17.5615605491503vw; animation-delay: -4.244613750032404s"></div><div class="snowflake snowflake-2" style="top: -4.161383145424669em; left: 24.136071282542517vw; animation-delay: -19.14938716003324s"></div><div class="snowflake snowflake-2" style="top: -1.6844409735541688em; left: 87.99746134361668vw; animation-delay: -7.566406350871375s"></div><div class="snowflake snowflake-2" style="top: -0.41568812137912525em; left: 8.688408429920603vw; animation-delay: -9.77309106321622s"></div><div class="snowflake snowflake-0" style="top: -1.7286629235588513em; left: 91.62466189165275vw; animation-delay: -8.862900170475934s"></div><div class="snowflake snowflake-0" style="top: -0.31157820973429007em; left: 40.57102690951429vw; animation-delay: -2.2077356691148653s"></div><div class="snowflake snowflake-1" style="top: -1.201850936409905em; left: 99.54211284460293vw; animation-delay: -1.3927288589499565s"></div><div class="snowflake snowflake-3" style="top: -4.00169016475121em; left: 73.63187871208703vw; animation-delay: -14.819929126401608s"></div><div class="snowflake snowflake-1" style="top: -2.086573022485126em; left: 40.93895365899958vw; animation-delay: -16.15142059178103s"></div><div class="snowflake snowflake-3" style="top: -0.7532901943847403em; left: 57.33123303316776vw; animation-delay: -0.03110815016666546s"></div><div class="snowflake snowflake-1" style="top: -1.6444022301859063em; left: 30.308823750591408vw; animation-delay: -11.155466059445507s"></div><div class="snowflake snowflake-1" style="top: -2.841356599275561em; left: 94.20701455775398vw; animation-delay: -1.398836241214103s"></div><div class="snowflake snowflake-1" style="top: -0.0904019870641426em; left: 51.50177255065272vw; animation-delay: -2.2264089717608515s"></div><div class="snowflake snowflake-2" style="top: -1.0987196488926443em; left: 35.019527849248824vw; animation-delay: -13.694812792105031s"></div><div class="snowflake snowflake-0" style="top: -2.672493471803298em; left: 64.09119429838854vw; animation-delay: -5.622571513457975s"></div><div class="snowflake snowflake-0" style="top: -1.1152913879512982em; left: 80.18940655125483vw; animation-delay: -8.313228173429676s"></div><div class="snowflake snowflake-1" style="top: -3.7727056816209736em; left: 25.637959139823717vw; animation-delay: -0.0434935094848754s"></div><div class="snowflake snowflake-3" style="top: -3.321314014874739em; left: 38.36187282122574vw; animation-delay: -17.808378150654754s"></div><div class="snowflake snowflake-2" style="top: -2.886335202285739em; left: 35.336104800561266vw; animation-delay: -2.489227861471486s"></div><div class="snowflake snowflake-1" style="top: -0.7113721885048563em; left: 51.643644626212584vw; animation-delay: -9.815842788590388s"></div><div class="snowflake snowflake-0" style="top: -0.9875609810502173em; left: 21.315218907293023vw; animation-delay: -7.3609956561102985s"></div><div class="snowflake snowflake-3" style="top: -4.2626663154575315em; left: 93.98506840220473vw; animation-delay: -4.216087156191866s"></div><div class="snowflake snowflake-2" style="top: -0.4789738150810796em; left: 84.66715041651443vw; animation-delay: -7.252010376340192s"></div><div class="snowflake snowflake-2" style="top: -1.882901039186371em; left: 69.34265285575137vw; animation-delay: -3.0752848716870895s"></div><div class="snowflake snowflake-0" style="top: -1.301069410338217em; left: 81.45649113949978vw; animation-delay: -17.771147353415152s"></div><div class="snowflake snowflake-2" style="top: -2.4502046138168176em; left: 49.347909228646046vw; animation-delay: -10.935014568392152s"></div><div class="snowflake snowflake-0" style="top: -3.075599139840377em; left: 26.800201248837887vw; animation-delay: -4.120528524433755s"></div><div class="snowflake snowflake-3" style="top: -4.476530080870265em; left: 88.40015992813493vw; animation-delay: -19.960784837616053s"></div><div class="snowflake snowflake-1" style="top: -3.318213854821752em; left: 17.06300797292912vw; animation-delay: -0.9774865097031116s"></div><div class="snowflake snowflake-1" style="top: -2.5228547449126584em; left: 51.30327241049384vw; animation-delay: -8.209930466687014s"></div><div class="snowflake snowflake-1" style="top: -0.9272813878492014em; left: 69.2399008125759vw; animation-delay: -3.2626932111591467s"></div><div class="snowflake snowflake-2" style="top: -0.3018347253751663em; left: 62.18742232843795vw; animation-delay: -8.197977474500618s"></div><div class="snowflake snowflake-1" style="top: -3.8967280481335442em; left: 91.90339238755756vw; animation-delay: -16.25030514573476s"></div><div class="snowflake snowflake-3" style="top: -2.713618000242386em; left: 58.80359182878525vw; animation-delay: -19.597975972456155s"></div><div class="snowflake snowflake-3" style="top: -1.2120110730038525em; left: 37.942465575752735vw; animation-delay: -17.872518859055585s"></div><div class="snowflake snowflake-1" style="top: -4.583162329631661em; left: 83.13999622468064vw; animation-delay: -12.645436819957796s"></div><div class="snowflake snowflake-1" style="top: -1.5248075477247836em; left: 86.05101046030346vw; animation-delay: -19.78597506041996s"></div><div class="snowflake snowflake-1" style="top: -4.316387996487117em; left: 20.263680003648577vw; animation-delay: -10.34906010523525s"></div><div class="snowflake snowflake-3" style="top: -2.158081553133676em; left: 50.74360430426319vw; animation-delay: -6.733385861980219s"></div><div class="snowflake snowflake-3" style="top: -0.9379992357913458em; left: 4.473361815267629vw; animation-delay: -12.385985013073974s"></div><div class="snowflake snowflake-0" style="top: -0.45637383233180673em; left: 82.57185052329152vw; animation-delay: -8.247682281576477s"></div><div class="snowflake snowflake-3" style="top: -4.202191517358646em; left: 96.41792656001216vw; animation-delay: -5.819254923194017s"></div><div class="snowflake snowflake-1" style="top: -4.967362159265636em; left: 56.51952107014333vw; animation-delay: -2.5613362917051274s"></div><div class="snowflake snowflake-0" style="top: -4.325673491081631em; left: 70.5994403819464vw; animation-delay: -16.19345820057655s"></div><div class="snowflake snowflake-3" style="top: -3.8621067861758105em; left: 62.89872621504837vw; animation-delay: -6.382115381163764s"></div><div class="snowflake snowflake-2" style="top: -3.6052790065273923em; left: 26.762060991868907vw; animation-delay: -5.092441413844893s"></div><div class="snowflake snowflake-1" style="top: -0.366730731078293em; left: 29.522205660983648vw; animation-delay: -4.714015470952173s"></div><div class="snowflake snowflake-2" style="top: -1.9715660215656772em; left: 23.605715031408604vw; animation-delay: -0.22003257933262965s"></div><div class="snowflake snowflake-3" style="top: -2.9045524522356936em; left: 75.29671942991654vw; animation-delay: -7.984695902580925s"></div><div class="snowflake snowflake-2" style="top: -1.8871209706951186em; left: 59.844283864757216vw; animation-delay: -11.082709920264886s"></div><div class="snowflake snowflake-2" style="top: -1.6080614171217045em; left: 53.38103002179937vw; animation-delay: -4.7320792672909695s"></div><div class="snowflake snowflake-3" style="top: -3.9556903031722057em; left: 41.958430758373446vw; animation-delay: -1.815056119599654s"></div><div class="snowflake snowflake-3" style="top: -0.6499724904039561em; left: 98.88999503570687vw; animation-delay: -7.041875182672301s"></div><div class="snowflake snowflake-1" style="top: -4.494987006430383em; left: 88.90383780848379vw; animation-delay: -17.388641491404275s"></div><div class="snowflake snowflake-1" style="top: -4.715980563729092em; left: 42.75271627629324vw; animation-delay: -11.153981860342036s"></div><div class="snowflake snowflake-2" style="top: -0.9629482758508945em; left: 15.759774756804035vw; animation-delay: -3.382256500159948s"></div><div class="snowflake snowflake-2" style="top: -2.1838807653707084em; left: 29.146954192016604vw; animation-delay: -7.366815759113323s"></div><div class="snowflake snowflake-1" style="top: -2.256722718616293em; left: 87.41004405546067vw; animation-delay: -2.101480277785366s"></div><div class="snowflake snowflake-2" style="top: -3.7998236866427613em; left: 77.35161309162169vw; animation-delay: -3.0411771163013457s"></div><div class="snowflake snowflake-3" style="top: -3.242638313511348em; left: 38.02690586771915vw; animation-delay: -9.117960221242406s"></div><div class="snowflake snowflake-3" style="top: -4.475177769719955em; left: 77.11636841525325vw; animation-delay: -16.17162449943104s"></div><div class="snowflake snowflake-3" style="top: -0.987156127869433em; left: 27.243907925644063vw; animation-delay: -17.184228121812986s"></div><div class="snowflake snowflake-3" style="top: -4.93990824523527em; left: 9.014988654781497vw; animation-delay: -14.987991639668333s"></div><div class="snowflake snowflake-2" style="top: -0.9225947349186403em; left: 7.580610449828562vw; animation-delay: -15.45900338986776s"></div><div class="snowflake snowflake-0" style="top: -4.959346771354491em; left: 91.00376507993437vw; animation-delay: -0.7194545506565664s"></div><div class="snowflake snowflake-2" style="top: -1.1167697036629876em; left: 86.99832488530916vw; animation-delay: -10.492137389603693s"></div><div class="snowflake snowflake-3" style="top: -4.211292654432487em; left: 94.58389068484763vw; animation-delay: -6.389795434305494s"></div><div class="snowflake snowflake-2" style="top: -1.0498612916424577em; left: 23.74989512860988vw; animation-delay: -0.9718657050914237s"></div><div class="snowflake snowflake-3" style="top: -4.69913067008898em; left: 69.5870604628649vw; animation-delay: -4.699822651041492s"></div><div class="snowflake snowflake-3" style="top: -4.64250685542266em; left: 73.85026843589368vw; animation-delay: -3.685885663763817s"></div><div class="snowflake snowflake-2" style="top: -2.97936510387689em; left: 84.0398643368945vw; animation-delay: -11.011421115740854s"></div><div class="snowflake snowflake-0" style="top: -2.511005423141909em; left: 75.28966988623358vw; animation-delay: -4.121945993374014s"></div><div class="snowflake snowflake-0" style="top: -2.703188013526675em; left: 43.22920748402193vw; animation-delay: -6.707536439306989s"></div><div class="snowflake snowflake-1" style="top: -0.9725566129899288em; left: 2.6085071192432085vw; animation-delay: -15.139965924182231s"></div><div class="snowflake snowflake-2" style="top: -3.491182258326929em; left: 99.80283811887685vw; animation-delay: -4.217322992413175s"></div><div class="snowflake snowflake-2" style="top: -2.0480506428362943em; left: 73.25041607716389vw; animation-delay: -8.280309984905315s"></div><div class="snowflake snowflake-2" style="top: -2.6902594288185657em; left: 61.25051599332838vw; animation-delay: -4.7747568080741765s"></div><div class="snowflake snowflake-1" style="top: -0.8833481929789944em; left: 67.45927065284687vw; animation-delay: -14.815345370827755s"></div><div class="snowflake snowflake-0" style="top: -0.38771315902863535em; left: 3.088188524676583vw; animation-delay: -5.707019243381781s"></div><div class="snowflake snowflake-2" style="top: -4.955874772914656em; left: 69.89554002138996vw; animation-delay: -6.385746290322669s"></div><div class="snowflake snowflake-1" style="top: -3.980918425923271em; left: 70.27263896970067vw; animation-delay: -7.156544063982109s"></div><div class="snowflake snowflake-1" style="top: -2.4870368730544987em; left: 38.634696702180364vw; animation-delay: -8.268664967307636s"></div><div class="snowflake snowflake-2" style="top: -3.111909890036373em; left: 80.73813728745934vw; animation-delay: -15.967272794996559s"></div><div class="snowflake snowflake-3" style="top: -2.164880283838848em; left: 71.34611695780373vw; animation-delay: -18.900034815057822s"></div><div class="snowflake snowflake-3" style="top: -3.5348895796179702em; left: 91.35724910393685vw; animation-delay: -14.332949913422407s"></div><div class="snowflake snowflake-0" style="top: -2.708575793651662em; left: 8.653244210214496vw; animation-delay: -13.473246553850426s"></div><div class="snowflake snowflake-0" style="top: -4.486491256819757em; left: 7.691096790170415vw; animation-delay: -12.924795927637383s"></div><div class="snowflake snowflake-2" style="top: -1.4848502080119652em; left: 62.68952197183546vw; animation-delay: -2.4329398886121067s"></div><div class="snowflake snowflake-2" style="top: -0.831374229075752em; left: 61.80265161294789vw; animation-delay: -16.502946388009416s"></div><div class="snowflake snowflake-2" style="top: -1.4694065620444519em; left: 77.68258104247971vw; animation-delay: -5.325209589651005s"></div><div class="snowflake snowflake-1" style="top: -1.9554391453487385em; left: 58.83359533899364vw; animation-delay: -2.6806040182713353s"></div><div class="snowflake snowflake-0" style="top: -0.42658569960192794em; left: 14.748824262934557vw; animation-delay: -0.9904247218182771s"></div><div class="snowflake snowflake-3" style="top: -4.680510239877495em; left: 40.83150945529397vw; animation-delay: -10.635993620651526s"></div><div class="snowflake snowflake-1" style="top: -2.498437562182575em; left: 18.864406016600576vw; animation-delay: -17.29611771889545s"></div><div class="snowflake snowflake-2" style="top: -3.2027911436639735em; left: 14.165712563379461vw; animation-delay: -1.3473381709827992s"></div><div class="snowflake snowflake-1" style="top: -3.9505151516418078em; left: 51.89755019828759vw; animation-delay: -17.438255712993307s"></div><div class="snowflake snowflake-3" style="top: -2.5013206334713436em; left: 44.93348654138476vw; animation-delay: -19.37109474928075s"></div><div class="snowflake snowflake-2" style="top: -4.2414270061512855em; left: 65.32161101653075vw; animation-delay: -6.421397143332945s"></div><div class="snowflake snowflake-0" style="top: -4.874618414127571em; left: 10.448525212280856vw; animation-delay: -11.733606952322745s"></div><div class="snowflake snowflake-0" style="top: -0.2569816402895708em; left: 94.4895238510197vw; animation-delay: -0.7491730652130668s"></div><div class="snowflake snowflake-3" style="top: -1.3318929326074147em; left: 65.4064076190541vw; animation-delay: -7.340227949529443s"></div><div class="snowflake snowflake-0" style="top: -4.326132251652117em; left: 39.90926436236584vw; animation-delay: -1.082381518188904s"></div><div class="snowflake snowflake-2" style="top: -1.0313818503650063em; left: 72.20691659904173vw; animation-delay: -9.024050231865699s"></div><div class="snowflake snowflake-0" style="top: -3.90046818795403em; left: 44.926008308990475vw; animation-delay: -5.314466810692924s"></div><div class="snowflake snowflake-2" style="top: -0.7051702237786384em; left: 16.05790334718973vw; animation-delay: -17.790036040500866s"></div><div class="snowflake snowflake-1" style="top: -4.1389604435583385em; left: 66.61024239155118vw; animation-delay: -8.723559591707915s"></div><div class="snowflake snowflake-0" style="top: -1.0268606814441983em; left: 41.91655351469053vw; animation-delay: -9.634981495871342s"></div><div class="snowflake snowflake-0" style="top: -0.6909557075137662em; left: 40.58422204588508vw; animation-delay: -4.854632566228156s"></div><div class="snowflake snowflake-0" style="top: -3.07804984007078em; left: 15.63101587730129vw; animation-delay: -11.211312358283948s"></div><div class="snowflake snowflake-2" style="top: -1.9455440769000687em; left: 41.45148656367967vw; animation-delay: -7.5842604840400085s"></div><div class="snowflake snowflake-2" style="top: -1.9592038246827803em; left: 34.560986340473534vw; animation-delay: -5.097056599637497s"></div><div class="snowflake snowflake-3" style="top: -4.104666288295452em; left: 20.935359517610188vw; animation-delay: -6.443506980248559s"></div><div class="snowflake snowflake-1" style="top: -4.879552573342709em; left: 11.593467741991192vw; animation-delay: -13.887523019018321s"></div><div class="snowflake snowflake-1" style="top: -3.8894426963723405em; left: 35.79013256003927vw; animation-delay: -9.60728859782539s"></div><div class="snowflake snowflake-0" style="top: -2.531914617942541em; left: 69.92127970127824vw; animation-delay: -10.491854446827272s"></div><div class="snowflake snowflake-0" style="top: -1.2793891508506883em; left: 26.984680604514377vw; animation-delay: -18.796009905758268s"></div><div class="snowflake snowflake-0" style="top: -4.680893489419581em; left: 14.342710815009285vw; animation-delay: -16.02195506952059s"></div><div class="snowflake snowflake-0" style="top: -2.314743740788381em; left: 19.452994241066545vw; animation-delay: -15.628296279086168s"></div><div class="snowflake snowflake-2" style="top: -2.2123056984634895em; left: 23.76459811373355vw; animation-delay: -17.471567561789815s"></div><div class="snowflake snowflake-2" style="top: -2.0972162892273847em; left: 92.0718329685894vw; animation-delay: -3.997771032125761s"></div><div class="snowflake snowflake-2" style="top: -0.9996891797007712em; left: 79.27109550095292vw; animation-delay: -0.3574394930557645s"></div><div class="snowflake snowflake-2" style="top: -2.0663546381379594em; left: 16.3018212855373vw; animation-delay: -12.866329893288881s"></div><div class="snowflake snowflake-2" style="top: -2.3450084789585546em; left: 72.66312233048092vw; animation-delay: -17.46284989243053s"></div><div class="snowflake snowflake-2" style="top: -4.165932953016803em; left: 73.38846732530655vw; animation-delay: -12.120001220266126s"></div><div class="snowflake snowflake-0" style="top: -0.6603989606589111em; left: 3.8529878092989467vw; animation-delay: -12.963498961043483s"></div><div class="snowflake snowflake-0" style="top: -3.4943378086066232em; left: 5.809446417606878vw; animation-delay: -7.31219501873007s"></div><div class="snowflake snowflake-1" style="top: -1.2311930638538726em; left: 71.25592052991303vw; animation-delay: -14.860163250367169s"></div><div class="snowflake snowflake-1" style="top: -1.2170713279574752em; left: 77.59515808965656vw; animation-delay: -5.956086411906343s"></div><div class="snowflake snowflake-3" style="top: -2.990223264713986em; left: 55.8419813518378vw; animation-delay: -12.6615016720034s"></div><div class="snowflake snowflake-2" style="top: -3.271071761499913em; left: 71.57929739748978vw; animation-delay: -13.217896758171337s"></div><div class="snowflake snowflake-3" style="top: -0.6475546371880903em; left: 7.60350062919275vw; animation-delay: -2.3118357339924955s"></div><div class="snowflake snowflake-0" style="top: -1.112217413393659em; left: 22.19167989402728vw; animation-delay: -14.720334376545896s"></div><div class="snowflake snowflake-1" style="top: -0.45674020378631663em; left: 2.077119004221961vw; animation-delay: -9.904380859423254s"></div><div class="snowflake snowflake-2" style="top: -4.281960139006143em; left: 84.62937649369759vw; animation-delay: -5.843132225015797s"></div><div class="snowflake snowflake-0" style="top: -2.1069623497978296em; left: 62.57035528618138vw; animation-delay: -19.743068734825393s"></div><div class="snowflake snowflake-0" style="top: -4.49763840132817em; left: 68.14046253232699vw; animation-delay: -18.23271901663813s"></div><div class="snowflake snowflake-3" style="top: -1.2330398238383677em; left: 76.24037402886682vw; animation-delay: -17.848596800881914s"></div><div class="snowflake snowflake-1" style="top: -0.5629203887931644em; left: 45.03472024749071vw; animation-delay: -13.08053680658324s"></div><div class="snowflake snowflake-0" style="top: -3.472918300085829em; left: 4.148013982601628vw; animation-delay: -15.810192684321876s"></div><div class="snowflake snowflake-2" style="top: -2.0637787571126043em; left: 68.14034389732215vw; animation-delay: -1.4981718823944767s"></div><div class="snowflake snowflake-2" style="top: -0.3452072671161954em; left: 68.52748449922275vw; animation-delay: -6.021292096131932s"></div><div class="snowflake snowflake-1" style="top: -1.2938817090926746em; left: 50.92111256714633vw; animation-delay: -12.949918263135665s"></div><div class="snowflake snowflake-0" style="top: -3.418493937513113em; left: 41.56305575546788vw; animation-delay: -15.745422960420846s"></div><div class="snowflake snowflake-1" style="top: -3.6349225748887024em; left: 3.912232713406505vw; animation-delay: -16.484542815909332s"></div><div class="snowflake snowflake-2" style="top: -4.266174834282022em; left: 21.971383692008594vw; animation-delay: -8.093789869871554s"></div><div class="snowflake snowflake-2" style="top: -4.558201500163529em; left: 85.65796175910627vw; animation-delay: -3.274812956933375s"></div><div class="snowflake snowflake-1" style="top: -0.9946986628518262em; left: 15.065769937522134vw; animation-delay: -11.743968745527006s"></div><div class="snowflake snowflake-3" style="top: -0.48032491907363695em; left: 43.87944470600087vw; animation-delay: -7.567844466431044s"></div><div class="snowflake snowflake-1" style="top: -3.713251781717682em; left: 73.34994540824138vw; animation-delay: -0.5502772594603922s"></div><div class="snowflake snowflake-0" style="top: -0.29340753264297414em; left: 27.496426126687346vw; animation-delay: -12.621021055871031s"></div><div class="snowflake snowflake-1" style="top: -1.1784606724802926em; left: 24.16225004068957vw; animation-delay: -12.647689882991626s"></div><div class="snowflake snowflake-3" style="top: -1.835572861752146em; left: 92.28263426583842vw; animation-delay: -12.410343132180245s"></div><div class="snowflake snowflake-2" style="top: -1.2555955639195504em; left: 19.229828713827946vw; animation-delay: -7.29828637181023s"></div><div class="snowflake snowflake-0" style="top: -3.3422719494801068em; left: 24.970623349424482vw; animation-delay: -5.179175946112919s"></div><div class="snowflake snowflake-0" style="top: -2.01546023549779em; left: 3.538350786600586vw; animation-delay: -8.021638473240898s"></div><div class="snowflake snowflake-2" style="top: -2.4492237234398493em; left: 27.451535113017165vw; animation-delay: -12.99638417994245s"></div><div class="snowflake snowflake-2" style="top: -1.2353319554555175em; left: 67.16164459419826vw; animation-delay: -12.789080658830043s"></div><div class="snowflake snowflake-2" style="top: -0.15783499497246334em; left: 52.10653585375382vw; animation-delay: -2.471679624403853s"></div><div class="snowflake snowflake-2" style="top: -0.6310239487520608em; left: 36.73354107364744vw; animation-delay: -18.214336851516265s"></div><div class="snowflake snowflake-0" style="top: -1.5058741993909452em; left: 51.08188093622117vw; animation-delay: -8.734404147264222s"></div>
+    </div>
+
+    <div id="year-2015" class="day-container"><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/1">
+            Day 1 - Not Quite Lisp
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day1">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day1">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day1">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/6">
+            Day 6 - Probably a Fire Hazard
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day6">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day6">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day6">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/11">
+            Day 11 - Corporate Policy
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day11">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day11">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day11">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/16">
+            Day 16 - Aunt Sue
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day16">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day16">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day16">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/21">
+            Day 21 - RPG Simulator 20XX
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day21">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day21">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day21">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/2">
+            Day 2 - I Was Told There Would Be No Math
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day2">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day2">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day2">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/7">
+            Day 7 - Some Assembly Required
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day7">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day7">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day7">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/12">
+            Day 12 - JSAbacusFramework.io
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day12">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day12">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day12">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/17">
+            Day 17 - No Such Thing as Too Much
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day17">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day17">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day17">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/22">
+            Day 22 - Wizard Simulator 20XX
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day22">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day22">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day22">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/3">
+            Day 3 - Perfectly Spherical Houses in a Vacuum
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day3">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day3">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day3">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/8">
+            Day 8 - Matchsticks
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day8">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day8">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day8">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/13">
+            Day 13 - Knights of the Dinner Table
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day13">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day13">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day13">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/18">
+            Day 18 - Like a GIF For Your Yard
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day18">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day18">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day18">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/23">
+            Day 23 - Opening the Turing Lock
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day23">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day23">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day23">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/4">
+            Day 4 - The Ideal Stocking Stuffer
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day4">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day4">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day4">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/9">
+            Day 9 - All in a Single Night
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day9">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day9">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day9">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/14">
+            Day 14 - Reindeer Olympics
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day14">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day14">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day14">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/19">
+            Day 19 - Medicine for Rudolph
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day19">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day19">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day19">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/24">
+            Day 24 - It Hangs in the Balance
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day24">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day24">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day24">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/5">
+            Day 5 - Doesn&apos;t He Have InternElves For This?
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day5">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day5">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day5">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/10">
+            Day 10 - Elves Look, Elves Say
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day10">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day10">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day10">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/15">
+            Day 15 - Science for Hungry People
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day15">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day15">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day15">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/20">
+            Day 20 - Infinite Elves and Infinite Houses
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day20">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day20">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day20">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2015/day/25">
+            Day 25 - Let It Snow
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2015/day25">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2015\day25">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2015\day25">
+        [Visualization]
+    </a>
+</div></div></div><div id="year-2016" class="day-container"><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/1">
+            Day 1 - No Time for a Taxicab
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day1">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day1">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day1">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/6">
+            Day 6 - Signals and Noise
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day6">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day6">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day6">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/11">
+            Day 11 - Radioisotope Thermoelectric Generators
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day11">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day11">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day11">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/16">
+            Day 16 - Dragon Checksum
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day16">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day16">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day16">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/21">
+            Day 21 - Scrambled Letters and Hash
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day21">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day21">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day21">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/2">
+            Day 2 - Bathroom Security
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day2">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day2">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day2">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/7">
+            Day 7 - Internet Protocol Version 7
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day7">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day7">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day7">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/12">
+            Day 12 - Leonardo&apos;s Monorail
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day12">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day12">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day12">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/17">
+            Day 17 - Two Steps Forward
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day17">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day17">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day17">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/22">
+            Day 22 - Grid Computing
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day22">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day22">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day22">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/3">
+            Day 3 - Squares With Three Sides
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day3">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day3">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day3">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/8">
+            Day 8 - TwoFactor Authentication
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day8">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day8">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day8">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/13">
+            Day 13 - A Maze of Twisty Little Cubicles
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day13">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day13">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day13">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/18">
+            Day 18 - Like a Rogue
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day18">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day18">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day18">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/23">
+            Day 23 - Safe Cracking
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day23">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day23">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day23">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/4">
+            Day 4 - Security Through Obscurity
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day4">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day4">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day4">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/9">
+            Day 9 - Explosives in Cyberspace
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day9">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day9">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day9">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/14">
+            Day 14 - OneTime Pad
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day14">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day14">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day14">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/19">
+            Day 19 - An Elephant Named Joseph
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day19">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day19">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day19">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/24">
+            Day 24 - Air Duct Spelunking
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day24">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day24">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day24">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/5">
+            Day 5 - How About a Nice Game of Chess?
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day5">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day5">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day5">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/10">
+            Day 10 - Balance Bots
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day10">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day10">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day10">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/15">
+            Day 15 - Timing is Everything
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day15">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day15">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day15">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/20">
+            Day 20 - Firewall Rules
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day20">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day20">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day20">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2016/day/25">
+            Day 25 - Clock Signal
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2016/day25">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2016\day25">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2016\day25">
+        [Visualization]
+    </a>
+</div></div></div><div id="year-2017" class="day-container"><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/1">
+            Day 1 - Inverse Captcha
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day1">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day1">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day1">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/6">
+            Day 6 - Memory Reallocation
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day6">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day6">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day6">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/11">
+            Day 11 - Hex Ed
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day11">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day11">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day11">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/16">
+            Day 16 - Permutation Promenade
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day16">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day16">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day16">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/21">
+            Day 21 - Fractal Art
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day21">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day21">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day21">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/2">
+            Day 2 - Corruption Checksum
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day2">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day2">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day2">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/7">
+            Day 7 - Recursive Circus
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day7">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day7">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day7">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/12">
+            Day 12 - Digital Plumber
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day12">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day12">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day12">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/17">
+            Day 17 - Spinlock
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day17">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day17">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day17">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/22">
+            Day 22 - Sporifica Virus
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day22">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day22">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day22">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/3">
+            Day 3 - Spiral Memory
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day3">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day3">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day3">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/8">
+            Day 8 - I Heard You Like Registers
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day8">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day8">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day8">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/13">
+            Day 13 - Packet Scanners
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day13">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day13">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day13">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/18">
+            Day 18 - Duet
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day18">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day18">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day18">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/23">
+            Day 23 - Coprocessor Conflagration
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day23">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day23">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day23">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/4">
+            Day 4 - HighEntropy Passphrases
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day4">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day4">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day4">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/9">
+            Day 9 - Stream Processing
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day9">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day9">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day9">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/14">
+            Day 14 - Disk Defragmentation
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day14">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day14">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day14">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/19">
+            Day 19 - A Series of Tubes
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day19">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day19">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day19">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/24">
+            Day 24 - Electromagnetic Moat
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day24">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day24">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day24">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/5">
+            Day 5 - A Maze of Twisty Trampolines, All Alike
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day5">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day5">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day5">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/10">
+            Day 10 - Knot Hash
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day10">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day10">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day10">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/15">
+            Day 15 - Dueling Generators
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day15">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day15">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day15">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/20">
+            Day 20 - Particle Swarm
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day20">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day20">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day20">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2017/day/25">
+            Day 25 - The Halting Problem
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2017/day25">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2017\day25">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2017\day25">
+        [Visualization]
+    </a>
+</div></div></div><div id="year-2018" class="day-container"><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/1">
+            Day 1 - Chronal Calibration
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day1">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day1">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day1">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/6">
+            Day 6 - Chronal Coordinates
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day6">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day6">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day6">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/11">
+            Day 11 - Chronal Charge
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day11">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day11">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day11">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/16">
+            Day 16 - Chronal Classification
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day16">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day16">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day16">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/21">
+            Day 21 - Chronal Conversion
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day21">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day21">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day21">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/2">
+            Day 2 - Inventory Management System
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day2">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day2">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day2">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/7">
+            Day 7 - The Sum of Its Parts
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day7">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day7">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day7">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/12">
+            Day 12 - Subterranean Sustainability
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day12">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day12">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day12">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/17">
+            Day 17 - Reservoir Research
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day17">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day17">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day17">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/22">
+            Day 22 - Mode Maze
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day22">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day22">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day22">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/3">
+            Day 3 - No Matter How You Slice It
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day3">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day3">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day3">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/8">
+            Day 8 - Memory Maneuver
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day8">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day8">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day8">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/13">
+            Day 13 - Mine Cart Madness
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day13">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day13">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day13">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/18">
+            Day 18 - Settlers of The North Pole
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day18">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day18">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day18">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/23">
+            Day 23 - Experimental Emergency Teleportation
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day23">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day23">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day23">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/4">
+            Day 4 - Repose Record
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day4">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day4">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day4">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/9">
+            Day 9 - Marble Mania
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day9">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day9">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day9">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/14">
+            Day 14 - Chocolate Charts
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day14">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day14">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day14">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/19">
+            Day 19 - Go With The Flow
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day19">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day19">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day19">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/24">
+            Day 24 - Immune System Simulator 20XX
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day24">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day24">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day24">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/5">
+            Day 5 - Alchemical Reduction
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day5">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day5">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day5">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/10">
+            Day 10 - The Stars Align
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day10">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day10">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day10">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/15">
+            Day 15 - Beverage Bandits
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day15">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day15">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day15">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/20">
+            Day 20 - A Regular Map
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day20">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day20">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day20">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2018/day/25">
+            Day 25 - FourDimensional Adventure
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2018/day25">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2018\day25">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2018\day25">
+        [Visualization]
+    </a>
+</div></div></div><div id="year-2019" class="day-container"><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/1">
+            Day 1 - The Tyranny of the Rocket Equation
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day1">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day1">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day1">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/6">
+            Day 6 - Universal Orbit Map
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day6">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day6">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day6">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/11">
+            Day 11 - Space Police
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day11">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day11">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day11">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/16">
+            Day 16 - Flawed Frequency Transmission
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day16">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day16">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day16">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/21">
+            Day 21 - Springdroid Adventure
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day21">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day21">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day21">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/2">
+            Day 2 - 1202 Program Alarm
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day2">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day2">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day2">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/7">
+            Day 7 - Amplification Circuit
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day7">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day7">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day7">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/12">
+            Day 12 - The NBody Problem
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day12">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day12">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day12">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/17">
+            Day 17 - Set and Forget
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day17">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day17">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day17">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/22">
+            Day 22 - Slam Shuffle
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day22">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day22">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day22">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/3">
+            Day 3 - Crossed Wires
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day3">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day3">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day3">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/8">
+            Day 8 - Space Image Format
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day8">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day8">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day8">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/13">
+            Day 13 - Care Package
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day13">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day13">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day13">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/18">
+            Day 18 - ManyWorlds Interpretation
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day18">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day18">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day18">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/23">
+            Day 23 - Category Six
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day23">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day23">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day23">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/4">
+            Day 4 - Secure Container
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day4">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day4">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day4">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/9">
+            Day 9 - Sensor Boost
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day9">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day9">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day9">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/14">
+            Day 14 - Space Stoichiometry
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day14">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day14">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day14">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/19">
+            Day 19 - Tractor Beam
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day19">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day19">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day19">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/24">
+            Day 24 - Planet of Discord
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day24">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day24">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day24">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/5">
+            Day 5 - Sunny with a Chance of Asteroids
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day5">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day5">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day5">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/10">
+            Day 10 - Monitoring Station
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day10">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day10">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day10">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/15">
+            Day 15 - Oxygen System
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day15">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day15">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day15">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/20">
+            Day 20 - Donut Maze
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day20">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day20">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day20">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2019/day/25">
+            Day 25 - Cryostasis
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2019/day25">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2019\day25">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2019\day25">
+        [Visualization]
+    </a>
+</div></div></div><div id="year-2020" class="day-container"><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/1">
+            Day 1 - Report Repair
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day1">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day1">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day1">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/6">
+            Day 6 - Custom Customs
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day6">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day6">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day6">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/11">
+            Day 11 - Seating System
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day11">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day11">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day11">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/16">
+            Day 16 - Ticket Translation
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day16">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day16">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day16">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/21">
+            Day 21 - Allergen Assessment
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day21">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day21">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day21">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/2">
+            Day 2 - Password Philosophy
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day2">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day2">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day2">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/7">
+            Day 7 - Handy Haversacks
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day7">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day7">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day7">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/12">
+            Day 12 - Rain Risk
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day12">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day12">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day12">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/17">
+            Day 17 - Conway Cubes
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day17">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day17">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day17">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/22">
+            Day 22 - Crab Combat
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day22">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day22">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day22">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/3">
+            Day 3 - Toboggan Trajectory
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day3">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day3">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day3">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/8">
+            Day 8 - Handheld Halting
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day8">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day8">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day8">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/13">
+            Day 13 - Shuttle Search
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day13">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day13">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day13">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/18">
+            Day 18 - Operation Order
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day18">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day18">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day18">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/23">
+            Day 23 - Crab Cups
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day23">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day23">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day23">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/4">
+            Day 4 - Passport Processing
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day4">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day4">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day4">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/9">
+            Day 9 - Encoding Error
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day9">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day9">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day9">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/14">
+            Day 14 - Docking Data
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day14">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day14">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day14">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/19">
+            Day 19 - Monster Messages
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day19">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day19">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day19">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/24">
+            Day 24 - Lobby Layout
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day24">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day24">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day24">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/5">
+            Day 5 - Binary Boarding
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day5">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day5">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day5">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/10">
+            Day 10 - Adapter Array
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day10">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day10">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day10">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/15">
+            Day 15 - Rambunctious Recitation
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day15">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day15">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day15">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/20">
+            Day 20 - Jurassic Jigsaw
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day20">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day20">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day20">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2020/day/25">
+            Day 25 - Combo Breaker
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2020/day25">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2020\day25">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2020\day25">
+        [Visualization]
+    </a>
+</div></div></div><div id="year-2021" class="day-container"><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/1">
+            Day 1 - Sonar Sweep
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day1">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day1">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day1">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/6">
+            Day 6 - Lanternfish
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day6">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day6">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day6">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/11">
+            Day 11 - Dumbo Octopus
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day11">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day11">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day11">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/16">
+            Day 16 - Packet Decoder
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day16">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day16">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day16">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/21">
+            Day 21 - Dirac Dice
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day21">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day21">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day21">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/2">
+            Day 2 - Dive!
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day2">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day2">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day2">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/7">
+            Day 7 - The Treachery of Whales
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day7">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day7">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day7">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/12">
+            Day 12 - Passage Pathing
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day12">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day12">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day12">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/17">
+            Day 17 - Trick Shot
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day17">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day17">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day17">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/22">
+            Day 22 - Reactor Reboot
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day22">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day22">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day22">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/3">
+            Day 3 - Binary Diagnostic
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day3">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day3">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day3">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/8">
+            Day 8 - Seven Segment Search
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day8">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day8">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day8">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/13">
+            Day 13 - Transparent Origami
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day13">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day13">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day13">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/18">
+            Day 18 - Snailfish
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day18">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day18">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day18">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/23">
+            Day 23 - Amphipod
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day23">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day23">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day23">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/4">
+            Day 4 - Giant Squid
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day4">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day4">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day4">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/9">
+            Day 9 - Smoke Basin
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day9">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day9">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day9">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/14">
+            Day 14 - Extended Polymerization
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day14">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day14">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day14">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/19">
+            Day 19 - Beacon Scanner
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day19">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day19">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day19">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/24">
+            Day 24 - Arithmetic Logic Unit
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day24">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day24">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day24">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/5">
+            Day 5 - Hydrothermal Venture
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day5">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day5">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day5">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/10">
+            Day 10 - Syntax Scoring
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day10">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day10">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day10">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/15">
+            Day 15 - Chiton
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day15">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day15">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day15">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/20">
+            Day 20 - Trench Map
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day20">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day20">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day20">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2021/day/25">
+            Day 25 - Sea Cucumber
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2021/day25">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2021\day25">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2021\day25">
+        [Visualization]
+    </a>
+</div></div></div><div id="year-2022" class="day-container"><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/1">
+            Day 1 - Calorie Counting
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day1">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day1">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day1">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/6">
+            Day 6 - Tuning Trouble
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day6">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day6">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day6">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/11">
+            Day 11 - Monkey in the Middle
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day11">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day11">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day11">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/16">
+            Day 16 - Proboscidea Volcanium
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day16">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day16">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day16">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/21">
+            Day 21 - Monkey Math
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day21">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day21">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day21">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/2">
+            Day 2 - Rock Paper Scissors
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day2">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day2">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day2">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/7">
+            Day 7 - No Space Left On Device
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day7">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day7">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day7">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/12">
+            Day 12 - Hill Climbing Algorithm
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day12">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day12">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day12">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/17">
+            Day 17 - Pyroclastic Flow
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day17">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day17">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day17">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/22">
+            Day 22 - Monkey Map
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day22">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day22">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day22">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/3">
+            Day 3 - Rucksack Reorganization
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day3">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day3">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day3">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/8">
+            Day 8 - Treetop Tree House
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day8">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day8">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day8">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/13">
+            Day 13 - Distress Signal
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day13">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day13">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day13">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/18">
+            Day 18 - Boiling Boulders
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day18">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day18">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day18">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/23">
+            Day 23 - Unstable Diffusion
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day23">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day23">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day23">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/4">
+            Day 4 - Camp Cleanup
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day4">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day4">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day4">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/9">
+            Day 9 - Rope Bridge
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day9">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day9">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day9">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/14">
+            Day 14 - Regolith Reservoir
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day14">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day14">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day14">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/19">
+            Day 19 - Not Enough Minerals
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day19">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day19">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day19">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/24">
+            Day 24 - Blizzard Basin
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day24">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day24">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day24">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/5">
+            Day 5 - Supply Stacks
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day5">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day5">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day5">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/10">
+            Day 10 - CathodeRay Tube
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day10">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day10">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day10">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/15">
+            Day 15 - Beacon Exclusion Zone
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day15">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day15">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day15">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/20">
+            Day 20 - Grove Positioning System
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day20">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day20">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day20">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header" href="https://adventofcode.com/2022/day/25">
+            Day 25 - Full of Hot Air
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2022/day25">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2022\day25">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2022\day25">
+        [Visualization]
+    </a>
+</div></div></div><div id="year-2023" class="day-container current"><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/1">
+            Day 1 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day1">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day1">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day1">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/6">
+            Day 6 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day6">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day6">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day6">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/11">
+            Day 11 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day11">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day11">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day11">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/16">
+            Day 16 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day16">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day16">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day16">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/21">
+            Day 21 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day21">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day21">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day21">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/2">
+            Day 2 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day2">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day2">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day2">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/7">
+            Day 7 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day7">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day7">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day7">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/12">
+            Day 12 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day12">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day12">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day12">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/17">
+            Day 17 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day17">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day17">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day17">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/22">
+            Day 22 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day22">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day22">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day22">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/3">
+            Day 3 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day3">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day3">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day3">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/8">
+            Day 8 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day8">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day8">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day8">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/13">
+            Day 13 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day13">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day13">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day13">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/18">
+            Day 18 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day18">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day18">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day18">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/23">
+            Day 23 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day23">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day23">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day23">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/4">
+            Day 4 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day4">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day4">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day4">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/9">
+            Day 9 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day9">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day9">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day9">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/14">
+            Day 14 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day14">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day14">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day14">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/19">
+            Day 19 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day19">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day19">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day19">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/24">
+            Day 24 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day24">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day24">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day24">
+        [Visualization]
+    </a>
+</div></div><div class="day-column"><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/5">
+            Day 5 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day5">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day5">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day5">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/10">
+            Day 10 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day10">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day10">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day10">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/15">
+            Day 15 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day15">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day15">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day15">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/20">
+            Day 20 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day20">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day20">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day20">
+        [Visualization]
+    </a>
+</div><div class="day">
+    <div class="text-center">
+        <a class="header disabled" href="https://adventofcode.com/2023/day/25">
+            Day 25 - Not Available
+        </a><br />
+        <span class="claimed-stars">**</span><span class="unclaimed-stars"></span>
+    </div>
+
+    <a
+        class=""
+        href="https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/2023/day25">
+        [Source Code]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\writeups\2023\day25">
+        [Writeup]
+    </a><br />
+
+    <a
+        class="disabled"
+        href="\visualizations\2023\day25">
+        [Visualization]
+    </a>
+</div></div></div>
+</body>
+
+</html>

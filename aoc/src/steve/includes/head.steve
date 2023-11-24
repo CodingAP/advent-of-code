@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="<steve> return Steve.staticFile('/favicon/browserconfig.xml'); </steve>">
+<meta name="theme-color" content="#ffffff">
+<link href="<steve> return Steve.staticFile('/css/main.css'); </steve>" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180"
+    href="<steve> return Steve.staticFile('/favicon/apple-touch-icon.png'); </steve>">
+<link rel="icon" type="image/png" sizes="32x32"
+    href="<steve> return Steve.staticFile('/favicon/favicon-32x32.png'); </steve>">
+<link rel="icon" type="image/png" sizes="16x16"
+    href="<steve> return Steve.staticFile('/favicon/favicon-16x16.png'); </steve>">
+<link rel="manifest" href="<steve> return Steve.staticFile('/favicon/site.webmanifest'); </steve>">
+<link rel="shortcut icon" href="<steve> return Steve.staticFile('/favicon/favicon.ico'); </steve>">
+
+<title>CodingAP's Advent of Code Hub<steve> return Steve.data ? ` - ${Steve.data.title}` : ''; </steve></title>

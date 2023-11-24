@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <steve> return Steve.include('head'); </steve>
+    <script src="<steve> return Steve.staticFile('/js/main.js'); </steve>"></script>
+</head>
+
+<body>
+    <p class="header text-center" style="font-size: 30px;">-- CodingAP's Advent of Code Hub --</p>
+    <p class="text-center" style="font-size: 24px;">
+        <steve>
+            let content = '';
+            for (let year = 2015; year <= Steve.data.currentYear; year++) {
+                content += `·<a id="year-selector-${year}" class="year-selector${(year == Steve.data.currentYear) ? ' current' : ''}" onclick="switchYear(${year})">[${year}]</a>`;
+            }
+            return content.slice(1);
+        </steve>
+    </p>
+
+    <div id="snowflakes">
+        <steve>
+            let content = '';
+            for (let i = 0; i < 200; i++) {
+                content += `<div class="snowflake snowflake-${Math.floor(Math.random() * 4)}" style="top: ${Math.random() * -5}em; left: ${Math.random() * 100}vw; animation-delay: ${Math.random() * -20}s"></div>`;
+            }
+            return content;
+        </steve>
+    </div>
+
+    <steve>
+        let content = '';
+        for (let year = 2015; year <= Steve.data.currentYear; year++) {
+            let container = `<div id="year-${year}" class="day-container${(year == Steve.data.currentYear) ? ' current' : ''}">`;
+            for (let i = 0; i < 5; i++) {
+                let column = `<div class="day-column">`;
+                for (let j = 0; j < 5; j++) {
+                    let day = (i + j * 5) + 1;
+                    column += Steve.include('day', {
+                        day: day,
+                        year: year,
+                        title: Steve.data.titles[year][day - 1],
+                        starCount: 2,
+                        available: { puzzle: Steve.data.titles[year][day - 1], code: true, writeup: false, visualization: false }
+                    });
+                }
+                container += column + '</div>';
+            }
+            content += container + '</div>';
+        }
+        return content;
+    </steve>
+</body>
+
+</html>
