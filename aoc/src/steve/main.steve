@@ -51,6 +51,8 @@
         }
         return content;
     </steve>
+
+    <steve> return Steve.include('footer'); </steve>
 </body>
 
 </html>

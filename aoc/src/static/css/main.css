@@ -97,6 +97,11 @@ a.disabled {
     text-shadow: 0px 0px 5px var(--linkgreen);
 }
 
+.footer {
+    text-align: center;
+    padding-top: 15px;
+}
+
 /* Snowflake Animation Background (straight from Advent of Code) */
 
 .snowflake {

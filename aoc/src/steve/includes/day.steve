@@ -12,19 +12,19 @@
 
     <a
         class="<steve> return Steve.data.available.code ? '' : 'disabled' </steve>"
-        href="<steve> return `https://github.com/CodingAP/advent-of-code/tree/main/aoc/puzzles/${Steve.data.year}/day${Steve.data.day}`; </steve>">
+        href="<steve> return `https://github.com/CodingAP/advent-of-code/tree/main/aoc/puzzles/${Steve.data.year}/day${Steve.data.day.toString().padStart(2, '0')}`; </steve>">
         [Source Code]
     </a><br />
 
     <a
         class="<steve> return Steve.data.available.writeup ? '' : 'disabled' </steve>"
-        href="<steve> return Steve.joinPaths('/writeups', Steve.data.year.toString(), `day${Steve.data.day}`); </steve>">
+        href="<steve> return Steve.joinPaths('/writeups', Steve.data.year.toString(), `day${Steve.data.day.toString().padStart(2, '0')}`); </steve>">
         [Writeup]
     </a><br />
 
     <a
         class="<steve> return Steve.data.available.visualization ? '' : 'disabled' </steve>"
-        href="<steve> return Steve.joinPaths('/visualizations', Steve.data.year.toString(), `day${Steve.data.day}`); </steve>">
+        href="<steve> return Steve.joinPaths('/visualizations', Steve.data.year.toString(), `day${Steve.data.day.toString().padStart(2, '0')}`); </steve>">
         [Visualization]
     </a>
 </div>

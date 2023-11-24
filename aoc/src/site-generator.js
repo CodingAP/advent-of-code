@@ -125,7 +125,7 @@ const generateSite = async () => {
                 available[year][day - 1].writeup = true;
 
                 const content = await fs.readFile(path.join(baseDirectory, 'writeups', year.toString(), `day${day.toString().padStart(2, '0')}.md`), { encoding: 'utf-8' });
-                writeups.push({ name: `${year}.day${day.padStart(2, '0')}`, data: { day, year, title: titles[year][day - 1], content: marked.parse(content) } });
+                writeups.push({ name: `${year}.day${day.toString().padStart(2, '0')}`, data: { day, year, title: puzzles[year][day - 1].title, content: marked.parse(content) } });
             }
 
             // check to see if a visualization exists
@@ -133,7 +133,7 @@ const generateSite = async () => {
                 available[year][day - 1].visualization = true;
 
                 const content = await fs.readFile(path.join(baseDirectory, 'visualizations', year.toString(), `day${day.toString().padStart(2, '0')}.html`), { encoding: 'utf-8' });
-                visualizations.push({ name: `${year}.day${day.padStart(2, '0')}`, data: { content: STEVE.render(content, { debug: DEBUG }) } });
+                visualizations.push({ name: `${year}.day${day.toString().padStart(2, '0')}`, data: { content: STEVE.render(content, { debug: DEBUG }) } });
             }
         }
     }

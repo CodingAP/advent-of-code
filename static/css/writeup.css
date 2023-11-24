@@ -33,3 +33,8 @@ code:before {
     border: 1px solid #333340;
     background: #10101a;
 }
+
+article {
+    margin: auto;
+    width: 70vw;
+}
