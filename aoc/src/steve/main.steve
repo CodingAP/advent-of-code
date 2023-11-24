@@ -3,7 +3,7 @@
 
 <head>
     <steve> return Steve.include('head'); </steve>
-    <script src="<steve> return Steve.staticFile('/js/main.js'); </steve>"></script>
+    <script src="/advent-of-code/static/js/main.js"></script>
 </head>
 
 <body>
