@@ -1,4 +1,0 @@
-# Advent of Code 2015 - Day 4: [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4)
-By Alex Prosser
-
-In this puzzle, we are using md5 hashing to find certain string occurences. In my `github` profile, I used a library that did it for me, but this was before I knew of the `crypto` module built into NodeJS. That is why I replaced `common` with a simple wrapper to that so it creates more portability (I sadly couldn't get it complete dependency free as `combinatorics-js` is needed for some of the more advanced functionality). For the first part, we need to use the input and an increasing number to find a hash that starts with 5 zeros (`00000`). This is very simple as JavaScript has a `startsWith()` method that returns true/false if it does or doesn't start with the argument. The second part is also simple as we need to find the hash that starts with six zeros (`000000`).

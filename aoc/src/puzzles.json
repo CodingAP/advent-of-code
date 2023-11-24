@@ -1,0 +1,819 @@
+{
+    "2015": [
+        {
+            "title": "Not Quite Lisp",
+            "stars": 0
+        },
+        {
+            "title": "I Was Told There Would Be No Math",
+            "stars": 0
+        },
+        {
+            "title": "Perfectly Spherical Houses in a Vacuum",
+            "stars": 0
+        },
+        {
+            "title": "The Ideal Stocking Stuffer",
+            "stars": 0
+        },
+        {
+            "title": "Doesn&apos;t He Have InternElves For This?",
+            "stars": 0
+        },
+        {
+            "title": "Probably a Fire Hazard",
+            "stars": 0
+        },
+        {
+            "title": "Some Assembly Required",
+            "stars": 0
+        },
+        {
+            "title": "Matchsticks",
+            "stars": 0
+        },
+        {
+            "title": "All in a Single Night",
+            "stars": 0
+        },
+        {
+            "title": "Elves Look, Elves Say",
+            "stars": 0
+        },
+        {
+            "title": "Corporate Policy",
+            "stars": 0
+        },
+        {
+            "title": "JSAbacusFramework.io",
+            "stars": 0
+        },
+        {
+            "title": "Knights of the Dinner Table",
+            "stars": 0
+        },
+        {
+            "title": "Reindeer Olympics",
+            "stars": 0
+        },
+        {
+            "title": "Science for Hungry People",
+            "stars": 0
+        },
+        {
+            "title": "Aunt Sue",
+            "stars": 0
+        },
+        {
+            "title": "No Such Thing as Too Much",
+            "stars": 0
+        },
+        {
+            "title": "Like a GIF For Your Yard",
+            "stars": 0
+        },
+        {
+            "title": "Medicine for Rudolph",
+            "stars": 0
+        },
+        {
+            "title": "Infinite Elves and Infinite Houses",
+            "stars": 0
+        },
+        {
+            "title": "RPG Simulator 20XX",
+            "stars": 0
+        },
+        {
+            "title": "Wizard Simulator 20XX",
+            "stars": 0
+        },
+        {
+            "title": "Opening the Turing Lock",
+            "stars": 0
+        },
+        {
+            "title": "It Hangs in the Balance",
+            "stars": 0
+        },
+        {
+            "title": "Let It Snow",
+            "stars": 0
+        }
+    ],
+    "2016": [
+        {
+            "title": "No Time for a Taxicab",
+            "stars": 0
+        },
+        {
+            "title": "Bathroom Security",
+            "stars": 0
+        },
+        {
+            "title": "Squares With Three Sides",
+            "stars": 0
+        },
+        {
+            "title": "Security Through Obscurity",
+            "stars": 0
+        },
+        {
+            "title": "How About a Nice Game of Chess?",
+            "stars": 0
+        },
+        {
+            "title": "Signals and Noise",
+            "stars": 0
+        },
+        {
+            "title": "Internet Protocol Version 7",
+            "stars": 0
+        },
+        {
+            "title": "TwoFactor Authentication",
+            "stars": 0
+        },
+        {
+            "title": "Explosives in Cyberspace",
+            "stars": 0
+        },
+        {
+            "title": "Balance Bots",
+            "stars": 0
+        },
+        {
+            "title": "Radioisotope Thermoelectric Generators",
+            "stars": 0
+        },
+        {
+            "title": "Leonardo&apos;s Monorail",
+            "stars": 0
+        },
+        {
+            "title": "A Maze of Twisty Little Cubicles",
+            "stars": 0
+        },
+        {
+            "title": "OneTime Pad",
+            "stars": 0
+        },
+        {
+            "title": "Timing is Everything",
+            "stars": 0
+        },
+        {
+            "title": "Dragon Checksum",
+            "stars": 0
+        },
+        {
+            "title": "Two Steps Forward",
+            "stars": 0
+        },
+        {
+            "title": "Like a Rogue",
+            "stars": 0
+        },
+        {
+            "title": "An Elephant Named Joseph",
+            "stars": 0
+        },
+        {
+            "title": "Firewall Rules",
+            "stars": 0
+        },
+        {
+            "title": "Scrambled Letters and Hash",
+            "stars": 0
+        },
+        {
+            "title": "Grid Computing",
+            "stars": 0
+        },
+        {
+            "title": "Safe Cracking",
+            "stars": 0
+        },
+        {
+            "title": "Air Duct Spelunking",
+            "stars": 0
+        },
+        {
+            "title": "Clock Signal",
+            "stars": 0
+        }
+    ],
+    "2017": [
+        {
+            "title": "Inverse Captcha",
+            "stars": 0
+        },
+        {
+            "title": "Corruption Checksum",
+            "stars": 0
+        },
+        {
+            "title": "Spiral Memory",
+            "stars": 0
+        },
+        {
+            "title": "HighEntropy Passphrases",
+            "stars": 0
+        },
+        {
+            "title": "A Maze of Twisty Trampolines, All Alike",
+            "stars": 0
+        },
+        {
+            "title": "Memory Reallocation",
+            "stars": 0
+        },
+        {
+            "title": "Recursive Circus",
+            "stars": 0
+        },
+        {
+            "title": "I Heard You Like Registers",
+            "stars": 0
+        },
+        {
+            "title": "Stream Processing",
+            "stars": 0
+        },
+        {
+            "title": "Knot Hash",
+            "stars": 0
+        },
+        {
+            "title": "Hex Ed",
+            "stars": 0
+        },
+        {
+            "title": "Digital Plumber",
+            "stars": 0
+        },
+        {
+            "title": "Packet Scanners",
+            "stars": 0
+        },
+        {
+            "title": "Disk Defragmentation",
+            "stars": 0
+        },
+        {
+            "title": "Dueling Generators",
+            "stars": 0
+        },
+        {
+            "title": "Permutation Promenade",
+            "stars": 0
+        },
+        {
+            "title": "Spinlock",
+            "stars": 0
+        },
+        {
+            "title": "Duet",
+            "stars": 0
+        },
+        {
+            "title": "A Series of Tubes",
+            "stars": 0
+        },
+        {
+            "title": "Particle Swarm",
+            "stars": 0
+        },
+        {
+            "title": "Fractal Art",
+            "stars": 0
+        },
+        {
+            "title": "Sporifica Virus",
+            "stars": 0
+        },
+        {
+            "title": "Coprocessor Conflagration",
+            "stars": 0
+        },
+        {
+            "title": "Electromagnetic Moat",
+            "stars": 0
+        },
+        {
+            "title": "The Halting Problem",
+            "stars": 0
+        }
+    ],
+    "2018": [
+        {
+            "title": "Chronal Calibration",
+            "stars": 0
+        },
+        {
+            "title": "Inventory Management System",
+            "stars": 0
+        },
+        {
+            "title": "No Matter How You Slice It",
+            "stars": 0
+        },
+        {
+            "title": "Repose Record",
+            "stars": 0
+        },
+        {
+            "title": "Alchemical Reduction",
+            "stars": 0
+        },
+        {
+            "title": "Chronal Coordinates",
+            "stars": 0
+        },
+        {
+            "title": "The Sum of Its Parts",
+            "stars": 0
+        },
+        {
+            "title": "Memory Maneuver",
+            "stars": 0
+        },
+        {
+            "title": "Marble Mania",
+            "stars": 0
+        },
+        {
+            "title": "The Stars Align",
+            "stars": 0
+        },
+        {
+            "title": "Chronal Charge",
+            "stars": 0
+        },
+        {
+            "title": "Subterranean Sustainability",
+            "stars": 0
+        },
+        {
+            "title": "Mine Cart Madness",
+            "stars": 0
+        },
+        {
+            "title": "Chocolate Charts",
+            "stars": 0
+        },
+        {
+            "title": "Beverage Bandits",
+            "stars": 0
+        },
+        {
+            "title": "Chronal Classification",
+            "stars": 0
+        },
+        {
+            "title": "Reservoir Research",
+            "stars": 0
+        },
+        {
+            "title": "Settlers of The North Pole",
+            "stars": 0
+        },
+        {
+            "title": "Go With The Flow",
+            "stars": 0
+        },
+        {
+            "title": "A Regular Map",
+            "stars": 0
+        },
+        {
+            "title": "Chronal Conversion",
+            "stars": 0
+        },
+        {
+            "title": "Mode Maze",
+            "stars": 0
+        },
+        {
+            "title": "Experimental Emergency Teleportation",
+            "stars": 0
+        },
+        {
+            "title": "Immune System Simulator 20XX",
+            "stars": 0
+        },
+        {
+            "title": "FourDimensional Adventure",
+            "stars": 0
+        }
+    ],
+    "2019": [
+        {
+            "title": "The Tyranny of the Rocket Equation",
+            "stars": 0
+        },
+        {
+            "title": "1202 Program Alarm",
+            "stars": 0
+        },
+        {
+            "title": "Crossed Wires",
+            "stars": 0
+        },
+        {
+            "title": "Secure Container",
+            "stars": 0
+        },
+        {
+            "title": "Sunny with a Chance of Asteroids",
+            "stars": 0
+        },
+        {
+            "title": "Universal Orbit Map",
+            "stars": 0
+        },
+        {
+            "title": "Amplification Circuit",
+            "stars": 0
+        },
+        {
+            "title": "Space Image Format",
+            "stars": 0
+        },
+        {
+            "title": "Sensor Boost",
+            "stars": 0
+        },
+        {
+            "title": "Monitoring Station",
+            "stars": 0
+        },
+        {
+            "title": "Space Police",
+            "stars": 0
+        },
+        {
+            "title": "The NBody Problem",
+            "stars": 0
+        },
+        {
+            "title": "Care Package",
+            "stars": 0
+        },
+        {
+            "title": "Space Stoichiometry",
+            "stars": 0
+        },
+        {
+            "title": "Oxygen System",
+            "stars": 0
+        },
+        {
+            "title": "Flawed Frequency Transmission",
+            "stars": 0
+        },
+        {
+            "title": "Set and Forget",
+            "stars": 0
+        },
+        {
+            "title": "ManyWorlds Interpretation",
+            "stars": 0
+        },
+        {
+            "title": "Tractor Beam",
+            "stars": 0
+        },
+        {
+            "title": "Donut Maze",
+            "stars": 0
+        },
+        {
+            "title": "Springdroid Adventure",
+            "stars": 0
+        },
+        {
+            "title": "Slam Shuffle",
+            "stars": 0
+        },
+        {
+            "title": "Category Six",
+            "stars": 0
+        },
+        {
+            "title": "Planet of Discord",
+            "stars": 0
+        },
+        {
+            "title": "Cryostasis",
+            "stars": 0
+        }
+    ],
+    "2020": [
+        {
+            "title": "Report Repair",
+            "stars": 0
+        },
+        {
+            "title": "Password Philosophy",
+            "stars": 0
+        },
+        {
+            "title": "Toboggan Trajectory",
+            "stars": 0
+        },
+        {
+            "title": "Passport Processing",
+            "stars": 0
+        },
+        {
+            "title": "Binary Boarding",
+            "stars": 0
+        },
+        {
+            "title": "Custom Customs",
+            "stars": 0
+        },
+        {
+            "title": "Handy Haversacks",
+            "stars": 0
+        },
+        {
+            "title": "Handheld Halting",
+            "stars": 0
+        },
+        {
+            "title": "Encoding Error",
+            "stars": 0
+        },
+        {
+            "title": "Adapter Array",
+            "stars": 0
+        },
+        {
+            "title": "Seating System",
+            "stars": 0
+        },
+        {
+            "title": "Rain Risk",
+            "stars": 0
+        },
+        {
+            "title": "Shuttle Search",
+            "stars": 0
+        },
+        {
+            "title": "Docking Data",
+            "stars": 0
+        },
+        {
+            "title": "Rambunctious Recitation",
+            "stars": 0
+        },
+        {
+            "title": "Ticket Translation",
+            "stars": 0
+        },
+        {
+            "title": "Conway Cubes",
+            "stars": 0
+        },
+        {
+            "title": "Operation Order",
+            "stars": 0
+        },
+        {
+            "title": "Monster Messages",
+            "stars": 0
+        },
+        {
+            "title": "Jurassic Jigsaw",
+            "stars": 0
+        },
+        {
+            "title": "Allergen Assessment",
+            "stars": 0
+        },
+        {
+            "title": "Crab Combat",
+            "stars": 0
+        },
+        {
+            "title": "Crab Cups",
+            "stars": 0
+        },
+        {
+            "title": "Lobby Layout",
+            "stars": 0
+        },
+        {
+            "title": "Combo Breaker",
+            "stars": 0
+        }
+    ],
+    "2021": [
+        {
+            "title": "Sonar Sweep",
+            "stars": 0
+        },
+        {
+            "title": "Dive!",
+            "stars": 0
+        },
+        {
+            "title": "Binary Diagnostic",
+            "stars": 0
+        },
+        {
+            "title": "Giant Squid",
+            "stars": 0
+        },
+        {
+            "title": "Hydrothermal Venture",
+            "stars": 0
+        },
+        {
+            "title": "Lanternfish",
+            "stars": 0
+        },
+        {
+            "title": "The Treachery of Whales",
+            "stars": 0
+        },
+        {
+            "title": "Seven Segment Search",
+            "stars": 0
+        },
+        {
+            "title": "Smoke Basin",
+            "stars": 0
+        },
+        {
+            "title": "Syntax Scoring",
+            "stars": 0
+        },
+        {
+            "title": "Dumbo Octopus",
+            "stars": 0
+        },
+        {
+            "title": "Passage Pathing",
+            "stars": 0
+        },
+        {
+            "title": "Transparent Origami",
+            "stars": 0
+        },
+        {
+            "title": "Extended Polymerization",
+            "stars": 0
+        },
+        {
+            "title": "Chiton",
+            "stars": 0
+        },
+        {
+            "title": "Packet Decoder",
+            "stars": 0
+        },
+        {
+            "title": "Trick Shot",
+            "stars": 0
+        },
+        {
+            "title": "Snailfish",
+            "stars": 0
+        },
+        {
+            "title": "Beacon Scanner",
+            "stars": 0
+        },
+        {
+            "title": "Trench Map",
+            "stars": 0
+        },
+        {
+            "title": "Dirac Dice",
+            "stars": 0
+        },
+        {
+            "title": "Reactor Reboot",
+            "stars": 0
+        },
+        {
+            "title": "Amphipod",
+            "stars": 0
+        },
+        {
+            "title": "Arithmetic Logic Unit",
+            "stars": 0
+        },
+        {
+            "title": "Sea Cucumber",
+            "stars": 0
+        }
+    ],
+    "2022": [
+        {
+            "title": "Calorie Counting",
+            "stars": 0
+        },
+        {
+            "title": "Rock Paper Scissors",
+            "stars": 0
+        },
+        {
+            "title": "Rucksack Reorganization",
+            "stars": 0
+        },
+        {
+            "title": "Camp Cleanup",
+            "stars": 0
+        },
+        {
+            "title": "Supply Stacks",
+            "stars": 0
+        },
+        {
+            "title": "Tuning Trouble",
+            "stars": 0
+        },
+        {
+            "title": "No Space Left On Device",
+            "stars": 0
+        },
+        {
+            "title": "Treetop Tree House",
+            "stars": 0
+        },
+        {
+            "title": "Rope Bridge",
+            "stars": 0
+        },
+        {
+            "title": "CathodeRay Tube",
+            "stars": 0
+        },
+        {
+            "title": "Monkey in the Middle",
+            "stars": 0
+        },
+        {
+            "title": "Hill Climbing Algorithm",
+            "stars": 0
+        },
+        {
+            "title": "Distress Signal",
+            "stars": 0
+        },
+        {
+            "title": "Regolith Reservoir",
+            "stars": 0
+        },
+        {
+            "title": "Beacon Exclusion Zone",
+            "stars": 0
+        },
+        {
+            "title": "Proboscidea Volcanium",
+            "stars": 0
+        },
+        {
+            "title": "Pyroclastic Flow",
+            "stars": 0
+        },
+        {
+            "title": "Boiling Boulders",
+            "stars": 0
+        },
+        {
+            "title": "Not Enough Minerals",
+            "stars": 0
+        },
+        {
+            "title": "Grove Positioning System",
+            "stars": 0
+        },
+        {
+            "title": "Monkey Math",
+            "stars": 0
+        },
+        {
+            "title": "Monkey Map",
+            "stars": 0
+        },
+        {
+            "title": "Unstable Diffusion",
+            "stars": 0
+        },
+        {
+            "title": "Blizzard Basin",
+            "stars": 0
+        },
+        {
+            "title": "Full of Hot Air",
+            "stars": 0
+        }
+    ],
+    "2023": []
+}

@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <steve> return Steve.include('head'); </steve>
-    <script src="/advent-of-code/static/js/main.js"></script>
+    <steve> return Steve.include('head', { debug: Steve.data.debug }); </steve>
+    <script src="<steve> return Steve.data.debug ? '' : '/advent-of-code'; </steve>/static/js/main.js"></script>
 </head>
 
 <body>
@@ -39,9 +39,10 @@
                     column += Steve.include('day', {
                         day: day,
                         year: year,
-                        title: Steve.data.titles[year][day - 1],
-                        starCount: 2,
-                        available: { puzzle: Steve.data.titles[year][day - 1], code: true, writeup: false, visualization: false }
+                        title: (Steve.data.puzzles[year][day - 1]) ? Steve.data.puzzles[year][day - 1].title : '',
+                        starCount: (Steve.data.puzzles[year][day - 1]) ? Steve.data.puzzles[year][day - 1].stars : 0,
+                        available: Steve.data.available[year][day - 1],
+                        debug: Steve.data.debug
                     });
                 }
                 container += column + '</div>';

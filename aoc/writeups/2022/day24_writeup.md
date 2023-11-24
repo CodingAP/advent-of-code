@@ -1,6 +1,0 @@
-# Advent of Code 2022 - Day 24: [Blizzard Basin](https://adventofcode.com/2022/day/24)
-By Alex Prosser
-
-Leaderboard: 8982 (Part 1) / 8729 (Part 2)
-
-In this puzzle, we need to find the shortest path between the start and the end while traversing through moving blizzards. The blizzards are denoted by `^`, `<`, `>`, or `v` in the input, which defines the direction the blizzard is moving in. In part 1, we only need to traverse one time to the end. In part 2, we need to traverse to the end, back to the start, and once again back to the end. This calls for a simple BFS algorithm but with the ability to change the "walls" (which are blizzards in this case) for each traversal. This is simple enough as we can keep the minute the path is on, and we don't even have to store all the positions, just current position. Also, the input is another cyclic algorithm that cycles every (`width * height`) times. This, along with typical BFS optimizations, means that the program runs at a good enough speed to be acceptable (under 5 minutes is good enough for me).

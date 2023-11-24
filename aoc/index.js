@@ -8,7 +8,7 @@
  */
 
 import { fetchPuzzle, profilePuzzle, runPuzzle } from './src/aoc.js';
-import { generateSite } from './src/site-generator.js';
+import { generateWriteup, generateSite, generateVisualization } from './src/site-generator.js';
 
 /**
  * all arguments to be used by a command
@@ -101,8 +101,8 @@ const commandLineInfo = {
                     });
             }
         },
-        generate: {
-            aliases: ['g'],
+        generate_frontend: {
+            aliases: ['gf'],
             description: 'generates the frontend.',
             arguments: [],
             command: args => {
@@ -110,6 +110,40 @@ const commandLineInfo = {
                     .then(() => {
                         console.log(`${RED_COLOR}manager: ${GREEN_COLOR}generated the frontend!${DEFAULT_COLOR}`);
                         console.log();
+                    })
+            }
+        },
+        generate_writeup: {
+            aliases: ['gw'],
+            description: 'generates a writeup for the specified day.',
+            arguments: ['day', 'year'],
+            command: args => {
+                generateWriteup(args.day, args.year)
+                    .then(results => {
+                        if (results.error) {
+                            console.log(`${RED_COLOR}manager: error - ${results.message}${DEFAULT_COLOR}`);
+                            console.log();
+                        } else {
+                            console.log(`${RED_COLOR}manager: ${GREEN_COLOR}generated writeup for day ${YELLOW_COLOR}${args.day}${GREEN_COLOR}, year ${YELLOW_COLOR}${args.year}${GREEN_COLOR}!${DEFAULT_COLOR}\n`);
+                            console.log();
+                        }
+                    })
+            }
+        },
+        generate_visualization: {
+            aliases: ['gv'],
+            description: 'generates a visualization for the specified day.',
+            arguments: ['day', 'year'],
+            command: args => {
+                generateVisualization(args.day, args.year)
+                    .then(results => {
+                        if (results.error) {
+                            console.log(`${RED_COLOR}manager: error - ${results.message}${DEFAULT_COLOR}`);
+                            console.log();
+                        } else {
+                            console.log(`${RED_COLOR}manager: ${GREEN_COLOR}generated visualization for day ${YELLOW_COLOR}${args.day}${GREEN_COLOR}, year ${YELLOW_COLOR}${args.year}${GREEN_COLOR}!${DEFAULT_COLOR}\n`);
+                            console.log();
+                        }
                     })
             }
         }

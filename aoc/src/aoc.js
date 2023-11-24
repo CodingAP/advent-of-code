@@ -38,6 +38,21 @@ const FETCH_OPTIONS = {
 const baseDirectory = path.resolve('./aoc');
 
 /**
+ * checks if a file/directory exists
+ * 
+ * @param {string} path path to check
+ * @returns {Promise<boolean>} whether or not something exists there
+ */
+const checkForExistance = async path => {
+    try {
+        await fs.stat(path);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
+/**
  * tries to get the puzzle title for the specified puzzle from titles.json
  * 
  * fetches and stores if no title is found
@@ -47,22 +62,43 @@ const baseDirectory = path.resolve('./aoc');
  * @returns {Promise<string>} title of the puzzle
  */
 const getTitle = async (day, year) => {
-    // check titles.json for title
-    const titles = JSON.parse(await fs.readFile(path.join(baseDirectory, 'src/titles.json'), { encoding: 'utf-8' }));
-    let title = titles[year][parseInt(day) - 1];
-    if (title != null) {
-        return title;
+    // check puzzles.json for title
+    const puzzles = JSON.parse(await fs.readFile(path.join(baseDirectory, 'src/puzzles.json'), { encoding: 'utf-8' }));
+    let puzzle = puzzles[year][parseInt(day) - 1];
+    if (puzzle != null) {
+        return puzzle.title;
     }
 
-    // if no title, fetch it and add to titles.json
+    // if no title, fetch it and add to puzzles.json
     const response = await fetch(`https://adventofcode.com/${year}/day/${day}`, FETCH_OPTIONS);
     const text = await response.text();
     title = [...text.matchAll(/<h2>\s*.*<\/h2>/g)][0][0].split(': ')[1].split(' ---')[0];
 
-    titles[year][parseInt(day) - 1] = title;
+    puzzles[year][parseInt(day) - 1].title = title;
+    puzzles[year][parseInt(day) - 1].stars = 0;
 
-    await fs.writeFile(path.join(baseDirectory, 'src/titles.json'), JSON.stringify(titles, null, 4));
+    await fs.writeFile(path.join(baseDirectory, 'src/puzzles.json'), JSON.stringify(puzzles, null, 4));
     return title;
+}
+
+/**
+ * Update the stars in puzzles.json
+ * 
+ * @param {string} day day of the puzzle to update
+ * @param {string} year year of the puzzle to update
+ * @param {string} starCount number of stars earned
+ * @return {Promise<void>} nothing
+ */
+const updateStars = async (day, year, starCount) => {
+    // check puzzles.json for title
+    const puzzles = JSON.parse(await fs.readFile(path.join(baseDirectory, 'src/puzzles.json'), { encoding: 'utf-8' }));
+    let puzzle = puzzles[year][parseInt(day) - 1];
+    if (puzzle != null) {
+        await getTitle(day, year);
+    }
+
+    puzzles[year][parseInt(day) - 1].stars = parseInt(starCount);
+    await fs.writeFile(path.join(baseDirectory, 'src/puzzles.json'), JSON.stringify(puzzles, null, 4));
 }
 
 /**
@@ -80,8 +116,8 @@ const fetchInput = async (day, year) => {
 /**
  * Generates the files necessary for the puzzle specified
  * 
- * @param {string} day day of the puzzle to be processed
- * @param {string} year year of the puzzle to be processed
+ * @param {string} day day of the puzzle to be fetched
+ * @param {string} year year of the puzzle to be fetched
  * @param {string} inputmode tells how to parse the input
  * @returns {Promise<void>} nothing
  */
@@ -89,12 +125,11 @@ const fetchPuzzle = async (day, year, inputmode) => {
     // read all sources
     const input = await fetchInput(day, year);
     const templateScript = await fs.readFile(path.join(baseDirectory, 'src/steve/template.steve'), { encoding: 'utf8' });
-    const solutionDirectory = path.join(baseDirectory, 'scripts', year, `day${day}`);
+    const solutionDirectory = path.join(baseDirectory, 'puzzles', year, `day${day.padStart(2, '0')}`);
+    const exists = await checkForExistance(solutionDirectory);
 
-    // if directory doesn't exist, create it
-    try {
-        await fs.stat(solutionDirectory)
-    } catch (e) {
+    // if directory doesn't exist, throw error
+    if (!exists) {
         await fs.mkdir(solutionDirectory, { recursive: true });
     }
 
@@ -117,12 +152,11 @@ const fetchPuzzle = async (day, year, inputmode) => {
  * @returns {Promise<PuzzleRunResult>} the result of the puzzle
  */
 const runPuzzle = async (day, year, inputmode, part) => {
-    const solutionDirectory = path.join(baseDirectory, 'scripts', year, `day${day}`);
+    const solutionDirectory = path.join(baseDirectory, 'puzzles', year, `day${day.padStart(2, '0')}`);
+    const exists = await checkForExistance(solutionDirectory);
 
     // if directory doesn't exist, throw error
-    try {
-        await fs.stat(solutionDirectory)
-    } catch (e) {
+    if (!exists) {
         return { error: true, message: `this puzzle hasn't been generated yet! run 'fetch --day=${day} --year=${year}' first!` };
     }
 
@@ -159,18 +193,17 @@ const runPuzzle = async (day, year, inputmode, part) => {
  * Runs the puzzles while timing them and reports all results to a README file in the solution directory
  * 
  * @param {string} day day of the puzzle to be profiled
- * @param {string} year year of the puzzle to be ran
+ * @param {string} year year of the puzzle to be profiled
  * @param {string} stars amount of stars obtained by puzzle
  * @param {string} inputmode tells how to parse the input
  * @returns {Promise<PuzzleRunResult>} the result of the puzzle
  */
 const profilePuzzle = async (day, year, stars, inputmode) => {
-    const solutionDirectory = path.join(baseDirectory, 'scripts', year, `day${day}`);
-
+    const solutionDirectory = path.join(baseDirectory, 'puzzles', year, `day${day.padStart(2, '0')}`);
+    const exists = await checkForExistance(solutionDirectory);
+    
     // if directory doesn't exist, throw error
-    try {
-        await fs.stat(solutionDirectory)
-    } catch (e) {
+    if (!exists) {
         return { error: true, message: `this puzzle hasn't been generated yet! run 'fetch --day=${day} --year=${year}' first!` };
     }
 
@@ -211,6 +244,9 @@ const profilePuzzle = async (day, year, stars, inputmode) => {
         part2Time += end - start;
     }
 
+    // update the stars in puzzle.json
+    await updateStars(day, year, stars);
+
     // generate the readme file
     const templateReadme = await fs.readFile(path.join(baseDirectory, 'src/steve/readme.steve'), { encoding: 'utf8' });
     const title = await getTitle(day, year);
@@ -232,4 +268,4 @@ const profilePuzzle = async (day, year, stars, inputmode) => {
     return { error: false };
 }
 
-export { fetchPuzzle, runPuzzle, profilePuzzle };
+export { checkForExistance, fetchPuzzle, runPuzzle, profilePuzzle };
