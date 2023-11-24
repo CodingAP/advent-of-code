@@ -18,13 +18,13 @@
 
     <a
         class="<steve> return Steve.data.available.writeup ? '' : 'disabled' </steve>"
-        href="<steve> return Steve.joinPaths('/writeups', Steve.data.year.toString(), `day${Steve.data.day.toString().padStart(2, '0')}`); </steve>">
+        href="<steve> return Steve.joinPaths((Steve.data.debug) ? '': '/advent-of-code', '/writeups', Steve.data.year.toString(), `day${Steve.data.day.toString().padStart(2, '0')}`); </steve>">
         [Writeup]
     </a><br />
 
     <a
         class="<steve> return Steve.data.available.visualization ? '' : 'disabled' </steve>"
-        href="<steve> return Steve.joinPaths('/visualizations', Steve.data.year.toString(), `day${Steve.data.day.toString().padStart(2, '0')}`); </steve>">
+        href="<steve> return Steve.joinPaths((Steve.data.debug) ? '': '/advent-of-code', '/visualizations', Steve.data.year.toString(), `day${Steve.data.day.toString().padStart(2, '0')}`); </steve>">
         [Visualization]
     </a>
 </div>
