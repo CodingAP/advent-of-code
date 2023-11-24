@@ -12,7 +12,7 @@
 
     <a
         class="<steve> return Steve.data.available.code ? '' : 'disabled' </steve>"
-        href="<steve> return `https://github.com/CodingAP/advent-of-code/tree/main/profiles/github/${Steve.data.year}/day${Steve.data.day}`; </steve>">
+        href="<steve> return `https://github.com/CodingAP/advent-of-code/tree/main/aoc/puzzles/${Steve.data.year}/day${Steve.data.day}`; </steve>">
         [Source Code]
     </a><br />
 
