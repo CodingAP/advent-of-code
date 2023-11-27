@@ -1,11 +1,11 @@
 /**
- * .advent-of-code/scripts/2015/day1/solution.js
+ * aoc/puzzles/2015/day1/solution.js
  * 
  * ~~ Not Quite Lisp ~~
  * this is my solution for this advent of code puzzle
  * 
  * by alex prosser
- * 11/24/2023
+ * 11/26/2023
  */
 
 /**

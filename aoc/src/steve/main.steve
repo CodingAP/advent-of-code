@@ -33,10 +33,9 @@
         for (let year = 2015; year <= Steve.data.currentYear; year++) {
             let container = `<div id="year-${year}" class="day-container${(year == Steve.data.currentYear) ? ' current' : ''}">`;
             for (let i = 0; i < 5; i++) {
-                let column = `<div class="day-column">`;
                 for (let j = 0; j < 5; j++) {
-                    let day = (i + j * 5) + 1;
-                    column += Steve.include('day', {
+                    let day = (j + i * 5) + 1;
+                    container += Steve.include('day', {
                         day: day,
                         year: year,
                         title: (Steve.data.puzzles[year][day - 1]) ? Steve.data.puzzles[year][day - 1].title : '',
@@ -45,9 +44,20 @@
                         debug: Steve.data.debug
                     });
                 }
-                container += column + '</div>';
             }
             content += container + '</div>';
+        }
+        return content;
+    </steve>
+
+    <steve>
+        let content = '';
+        for (let year = 2015; year <= Steve.data.currentYear; year++) {
+            let stars = 0;
+            for (let day = 0; day < 25; day++) {
+                stars += (Steve.data.puzzles[year][day]) ? Steve.data.puzzles[year][day].stars : 0;
+            }
+            content += `<p id="star-count-${year}" class="star-count${(year == Steve.data.currentYear) ? ' current' : ''}">Stars: <span class="claimed-stars">${stars}/50</span></p>`;
         }
         return content;
     </steve>

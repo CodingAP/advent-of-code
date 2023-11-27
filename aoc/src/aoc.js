@@ -18,6 +18,7 @@
  */
 
 import { STEVE } from 'steve-template-engine';
+import { parse } from 'node-html-parser';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import 'dotenv/config';
@@ -71,8 +72,8 @@ const getTitle = async (day, year) => {
 
     // if no title, fetch it and add to puzzles.json
     const response = await fetch(`https://adventofcode.com/${year}/day/${day}`, FETCH_OPTIONS);
-    const text = await response.text();
-    title = [...text.matchAll(/<h2>\s*.*<\/h2>/g)][0][0].split(': ')[1].split(' ---')[0];
+    const root = parse(await response.text());
+    const title = root.querySelectorAll('h2')[0].innerText.replace(/-/g, '').trim().split(': ')[1];
 
     puzzles[year][parseInt(day) - 1].title = title;
     puzzles[year][parseInt(day) - 1].stars = 0;

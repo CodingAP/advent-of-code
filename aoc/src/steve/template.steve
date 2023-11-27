@@ -1,5 +1,5 @@
 /**
- * <steve> return `.advent-of-code/scripts/${Steve.data.year}/day${Steve.data.day}/solution.js`; </steve>
+ * <steve> return `aoc/puzzles/${Steve.data.year}/day${Steve.data.day.padStart(2, '0')}/solution.js`; </steve>
  * 
  * ~~ <steve> return Steve.data.title; </steve> ~~
  * this is my solution for this advent of code puzzle

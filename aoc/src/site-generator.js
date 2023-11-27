@@ -28,7 +28,7 @@ const currentYear = 2023;
 /**
  * whether or not the source is localhost or the actual website
  */
-const DEBUG = false;
+const DEBUG = true;
 
 /**
  * generates a writeup for the puzzle specified
