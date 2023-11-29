@@ -46,7 +46,7 @@ const spells = {
     }
 }
 
-const doRound = (state, spell) => {
+const doRound = (state, spell, constantDamage) => {
     // do current spell effects at player's turn
     state.currentSpells.forEach(spellInfo => {
         spells[spellInfo.name].activate(state.player, state.boss);
@@ -58,6 +58,9 @@ const doRound = (state, spell) => {
     state.player.mana -= spells[spell].cost;
     state.manaCost += spells[spell].cost;
     state.currentSpells.push({ name: spell, timer: spells[spell].timer });
+
+    // remove constant damage (for part 2)
+    state.player.health -= constantDamage;
 
     // remove expired spells
     let ongoing = state.currentSpells.map(spellInfo => {
@@ -92,7 +95,7 @@ const doRound = (state, spell) => {
     state.player.health -= Math.max(state.boss.damage - state.player.armor, 1);
 }
 
-const simulateAllBattles = startingState => {
+const simulateAllBattles = (startingState, constantDamage) => {
     let minimum = Infinity;
 
     const simulateBattle = (state, depth) => {
@@ -106,16 +109,18 @@ const simulateAllBattles = startingState => {
         }
 
         // find all spells that can be casted and try them
+        // WOW: the bit I was missing was that spells can be casted on the same turn they end :(
         let availableSpells = Object.keys(spells).filter(spell => {
             for (let i = 0; i < state.currentSpells.length; i++) {
-                if (spell == state.currentSpells[i].name || state.player.mana < spells[spell].cost) return false;
+                if (state.player.mana < spells[spell].cost) return false;
+                if (spell == state.currentSpells[i].name && state.currentSpells[i].timer != 1) return false;
             }
             return true;
         });
 
         availableSpells.forEach(spellName => {
             let newState = structuredClone(state);
-            doRound(newState, spellName);
+            doRound(newState, spellName, constantDamage);
             simulateBattle(newState, depth + 1);
         });
     }
@@ -140,7 +145,7 @@ const part1 = async input => {
         manaCost: 0
     }
     
-    return simulateAllBattles(startingState);
+    return simulateAllBattles(startingState, 0);
 }
 
 /**
@@ -150,7 +155,16 @@ const part1 = async input => {
  * @returns {Promise<string | number>} the result of part 2
  */
 const part2 = async input => {
-    return 0;
+    let [bossHitPoints, bossDamage] = input.split(/\n/g).map(line => parseInt(line.split(': ')[1]));
+
+    const startingState = {
+        player: { health: 50, armor: 0, mana: 500 },
+        boss: { health: bossHitPoints, damage: bossDamage },
+        currentSpells: [],
+        manaCost: 0
+    }
+
+    return simulateAllBattles(startingState, 1);
 }
 
 export { part1, part2 };
