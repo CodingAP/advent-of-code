@@ -75,8 +75,10 @@ const getTitle = async (day, year) => {
     const root = parse(await response.text());
     const title = root.querySelectorAll('h2')[0].innerText.replace(/-/g, '').trim().split(': ')[1];
 
-    puzzles[year][parseInt(day) - 1].title = title;
-    puzzles[year][parseInt(day) - 1].stars = 0;
+    puzzles[year][parseInt(day) - 1] = {
+        title: title,
+        stars: 0
+    };
 
     await fs.writeFile(path.join(baseDirectory, 'src/puzzles.json'), JSON.stringify(puzzles, null, 4));
     return title;

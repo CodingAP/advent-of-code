@@ -536,7 +536,7 @@
         },
         {
             "title": "Handy Haversacks",
-            "stars": 0
+            "stars": 2
         },
         {
             "title": "Handheld Halting",
@@ -815,5 +815,10 @@
             "stars": 0
         }
     ],
-    "2023": []
+    "2023": [
+        {
+            "title": "Trebuchet?!",
+            "stars": 2
+        }
+    ]
 }
