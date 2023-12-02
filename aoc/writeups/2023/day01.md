@@ -6,6 +6,8 @@ For Day 1 this year, we are trying to calibrate a trebuchet (cool, btw) by addin
 
 For part 2, however, things were much harder. Each line also had the numbers spelled out as well, so we had to account for those as well; however, those spelled out numbers could overlap to give something like `eightwo`. My first naive method was to just do a search and replace, but it would do it in numerical order! So instead of `eightwo` producing `8wo`, it would produce `eigh2`, which was incorrect. To account for this, I had to check if the beginning of a sliding window was the number, like this...
 
+*EDIT: Apparently, the intended result for `eightwo` is `82`, so no wonder I was extremely off. Please take the past paragraph with a grain of salt...*
+
 ```
 i = 0: 7pqrstsixteen
 i = 1:  pqrstsixteen

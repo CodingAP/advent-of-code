@@ -544,7 +544,7 @@
         },
         {
             "title": "Encoding Error",
-            "stars": 0
+            "stars": 2
         },
         {
             "title": "Adapter Array",
@@ -818,6 +818,10 @@
     "2023": [
         {
             "title": "Trebuchet?!",
+            "stars": 2
+        },
+        {
+            "title": "Cube Conundrum",
             "stars": 2
         }
     ]

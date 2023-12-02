@@ -73,15 +73,20 @@ const getTitle = async (day, year) => {
     // if no title, fetch it and add to puzzles.json
     const response = await fetch(`https://adventofcode.com/${year}/day/${day}`, FETCH_OPTIONS);
     const root = parse(await response.text());
-    const title = root.querySelectorAll('h2')[0].innerText.replace(/-/g, '').trim().split(': ')[1];
 
-    puzzles[year][parseInt(day) - 1] = {
-        title: title,
-        stars: 0
-    };
+    if (root.querySelectorAll('h2').length > 0) {
+        const title = root.querySelectorAll('h2')[0].innerText.replace(/-/g, '').trim().split(': ')[1];
 
-    await fs.writeFile(path.join(baseDirectory, 'src/puzzles.json'), JSON.stringify(puzzles, null, 4));
-    return title;
+        puzzles[year][parseInt(day) - 1] = {
+            title: title,
+            stars: 0
+        };
+
+        await fs.writeFile(path.join(baseDirectory, 'src/puzzles.json'), JSON.stringify(puzzles, null, 4));
+        return title;
+    }
+    
+    return 'No Title Available';
 }
 
 /**

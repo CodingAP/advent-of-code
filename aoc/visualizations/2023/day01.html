@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <steve> return Steve.include('head', { title: 'Day 1, 2023 Visualization', debug: Steve.data.debug }) </steve>
+    
+    <script>
+        /**
+         * token that holds all the information to render text inline
+         * 
+         * @typedef {Object} TextToken
+         * @property {string[]?} formats list of formats that text takes
+         * @property {string} text the literal text
+         * @property {string?} color color of text
+         * @property {string?} font font of text
+         * @property {string?} align how text is aligned
+         * @property {string?} baseline how text is placed on baseline
+         * @property {number} x x position
+         * @property {number} y y position
+         * @property {number} size size of text
+         */
+
+        const AOC_VISUALIZATION = {
+            LIGHT_GREEN_COLOR: '#00cc00',
+            GREEN_COLOR: '#009900',
+            YELLOW_COLOR: '#ffff66',
+            WHITE_COLOR: '#cccccc',
+            BACKGROUND_COLOR: '#0f0f23',
+
+            BOLD: 'bold',
+            ITALIC: 'italic',
+            GLOWING: 'glowing',
+            ALIGN_START: 'start',
+            ALIGN_CENTER: 'center',
+            ALIGN_END: 'end',
+            BASELINE_TOP: 'top',
+            BASELINE_MIDDLE: 'middle',
+            BASELINE_BOTTOM: 'bottom',
+
+            /**
+             * render all the tokens
+             * 
+             * allows for multiple colors, formatting, and multiline rendering
+             * 
+             * @param {CanvasRenderingContext2D} context context to draw on
+             * @param {number} x starting x position
+             * @param {number} y starting y position
+             * @param {TextToken[]} textTokens list of text tokens to render
+             */
+            renderText: (context, x, y, textTokens) => {
+                let currentPosition = null;
+                for (let i = 0; i < textTokens.length; i++) {
+                    const formats = { bold: false, italic: false, glowing: false };
+                    
+                    // parse formats
+                    if (textTokens[i].formats != null) {
+                        for (let j = 0; j < textTokens[i].formats.length; j++) {
+                            formats[textTokens[i].formats[j]] = true;
+                        }
+                    }
+
+                    let fontFormatting = '';
+                    if (formats.bold && formats.italic) fontFormatting = 'italic bolder ';
+                    else if (formats.bold) fontFormatting = 'bolder ';
+                    else if (formats.italic) fontFormatting = 'italic ';
+
+                    // create text profile
+                    context.font = `${fontFormatting}${textTokens[i].size}pt ${textTokens[i].font || 'Source Code Pro'}`;
+                    context.textAlign = textTokens[i].align || 'start';
+                    context.textBaseline = textTokens[i].baseline || 'bottom';
+                    context.fillStyle = textTokens[i].color || AOC_VISUALIZATION.WHITE_COLOR;
+                    context.shadowBlur = (formats.glowing) ? 7 : 0;
+                    context.shadowColor = textTokens[i].color || AOC_VISUALIZATION.WHITE_COLOR;
+                    
+                    // split by new line and render text accordingly
+                    let lines = textTokens[i].text.split(/\n/g);
+                    for (let line = 0; line < lines.length; line++) {
+                        let width = context.measureText(lines[line]).width;
+                        
+                        if (currentPosition == null) {
+                            currentPosition = { x, y };
+                            if (context.textAlign == 'center') currentPosition.x = x - width / 2;
+                            else if (context.textAlign == 'end') currentPosition.x = x - width;
+                        }
+
+                        if (line != 0) {
+                            if (context.textAlign == 'center') currentPosition.x = x - width / 2;
+                            else if (context.textAlign == 'end') currentPosition.x = x - width;
+                            currentPosition.y += textTokens[i].size * 1.125;
+                        }
+
+                        context.fillText(lines[line], currentPosition.x, currentPosition.y);
+                        currentPosition.x += width;
+                    }
+                }
+            },
+            /**
+             * returns the literal text
+             * 
+             * @param {TextToken[]} tokens list of text tokens
+             * @returns {string}
+             */
+            getLiteralText: tokens => {
+                return tokens.map(token => token.text).join('');
+            }
+        };
+    </script>
+
+    <style>
+        body {
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .container canvas {
+            position: absolute;
+        }
+
+        .overlay {
+            position: absolute;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <canvas></canvas>
+        <div class="overlay">
+            <label for="input">Load Input:</label>
+            <input type="file" name="input">
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.querySelector('canvas');
+            const context = canvas.getContext('2d');
+            const inputLoaderInput = document.querySelector('input');
+
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', () => {
+                inputLoaderInput.addEventListener('change', () => {
+                    // load and parse input
+                    if (inputLoaderInput.files.length != 0) {
+                        const reader = new FileReader();
+                        reader.addEventListener('load', () => {
+                            startSimulation(reader.result);
+                        });
+                        reader.readAsText(inputLoaderInput.files[0]);
+                    }
+                });
+
+                resize();
+            });
+
+            /**
+             * @param {string} input 
+             */
+            const startSimulation = input => {
+                // TODO: actual write text renderer code for visualization
+                const textSize = 30;
+                AOC_VISUALIZATION.renderText(context, canvas.width / 2, textSize, [
+                    {
+                        align: AOC_VISUALIZATION.ALIGN_CENTER,
+                        baseline: AOC_VISUALIZATION.BASELINE_TOP,
+                        text: 'hcpjs', size: textSize
+                    },
+                    {
+                        formats: [AOC_VISUALIZATION.GLOWING],
+                        align: AOC_VISUALIZATION.ALIGN_CENTER,
+                        baseline: AOC_VISUALIZATION.BASELINE_TOP,
+                        text: 'sql4kjhbcq', size: textSize, color: AOC_VISUALIZATION.LIGHT_GREEN_COLOR
+                    },
+                    {
+                        formats: [AOC_VISUALIZATION.ITALIC],
+                        align: AOC_VISUALIZATION.ALIGN_CENTER,
+                        baseline: AOC_VISUALIZATION.BASELINE_TOP,
+                        text: 'zkvr2five', size: textSize, color: AOC_VISUALIZATION.YELLOW_COLOR
+                    },
+                    {
+                        align: AOC_VISUALIZATION.ALIGN_CENTER,
+                        baseline: AOC_VISUALIZATION.BASELINE_TOP,
+                        text: 'bpllzqbkhg', size: textSize
+                    }
+                ]);
+            }
+    </script>
+</body>
+
+</html>
