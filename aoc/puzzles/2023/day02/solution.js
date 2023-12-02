@@ -50,7 +50,11 @@ const part1 = async input => {
  * @returns {Promise<string | number>} the result of part 2
  */
 const part2 = async input => {
-    // parse input
+    /**
+     * parsed input to get a list of games
+     * 
+     * @type {{ red?: number, green?: number, blue?: number }[][]}
+     */
     const games = input.split(/\n/g).map(line => {
         return line.split(/: /g)[1].split(/;/g).reduce((array, sets) => {
             array.push(sets.trim().split(/, /).reduce((obj, colors) => {
