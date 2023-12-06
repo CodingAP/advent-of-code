@@ -2,10 +2,7 @@
 <html lang="en">
 
 <head>
-    <steve>
-        // to get around nested steve tags
-        return '<' + `steve> return Steve.include('head', { title: 'Day ${Steve.data.day}, ${Steve.data.year} Visualization', debug: Steve.data.debug }) </steve` + '>';
-    </steve>
+    <steve> return Steve.include('head', { title: 'Day 2, 2023 Visualization', debug: Steve.data.debug }) </steve>
     
     <style>
         body {
@@ -34,6 +31,7 @@
         <div class="overlay">
             <label for="input">Load Input:</label>
             <input type="file" name="input">
+            <select id="all-games"></select>
         </div>
     </div>
 
@@ -41,6 +39,7 @@
         const canvas = document.querySelector('canvas');
         const context = canvas.getContext('2d');
         const inputLoaderInput = document.querySelector('input');
+        const allGamesSelect = document.querySelector('#all-games');
 
         const resize = () => {
             canvas.width = window.innerWidth;
