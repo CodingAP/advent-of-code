@@ -548,15 +548,15 @@
         },
         {
             "title": "Adapter Array",
-            "stars": 0
+            "stars": 2
         },
         {
             "title": "Seating System",
-            "stars": 0
+            "stars": 2
         },
         {
             "title": "Rain Risk",
-            "stars": 0
+            "stars": 2
         },
         {
             "title": "Shuttle Search",
@@ -854,6 +854,10 @@
         },
         {
             "title": "Pipe Maze",
+            "stars": 2
+        },
+        {
+            "title": "Cosmic Expansion",
             "stars": 2
         }
     ]

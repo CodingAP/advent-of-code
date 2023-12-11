@@ -20,6 +20,7 @@ const part1 = async input => {
     plugs.push(plugs[plugs.length - 1] + 3);
     plugs.unshift(0);
 
+    // count the differences between the sorted plugs
     let ones = 0;
     let threes = 0;
     for (let i = 0; i < plugs.length - 1; i++) {
@@ -28,6 +29,7 @@ const part1 = async input => {
         else threes++;
     }
 
+    // multiply those differences
     return ones * threes;
 }
 
@@ -41,24 +43,22 @@ const part2 = async input => {
     // parse input and add starting and ending plug
     let plugs = input.split(/\n/g).map(num => parseInt(num)).sort((a, b) => a - b);
     plugs.push(plugs[plugs.length - 1] + 3);
-    plugs.unshift(0);
 
-    /**
-     * counts all possible plug combinations
-     * 
-     * @param {number} starting plug we are counting from
-     * @returns {number} 
-     */
-    const countConnections = starting => {
-        let count = 1;
-        for (let i = 1; i <= 3; i++) {
-            if (plugs.includes(starting + i)) count += countConnections(starting + i);
+    // find each group of increasing plugs (ex: 1, 2, 3; 6, 7, 8; 10, 11, 12)
+    let groups = [];
+    let currentGroup = [0];
+    for (let i = 0; i < plugs.length; i++) {
+        if (plugs[i] - currentGroup[currentGroup.length - 1] < 3) currentGroup.push(plugs[i]);
+        else {
+            groups.push(structuredClone(currentGroup));
+            currentGroup = [plugs[i]];
         }
-        console.log(starting, count);
-        return count;
     }
+    groups.push(structuredClone(currentGroup));
 
-    return countConnections(0);
+    // use the tribonacci numbers to find out how many ways to rearrange each group,
+    // which can multiplied to find how all can be rearranged
+    return groups.reduce((mul, group) => mul * [1, 1, 2, 4, 7][group.length - 1], 1);
 }
 
 export { part1, part2 };
