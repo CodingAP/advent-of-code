@@ -867,6 +867,10 @@
         {
             "title": "Point of Incidence",
             "stars": 2
+        },
+        {
+            "title": "Parabolic Reflector Dish",
+            "stars": 0
         }
     ]
 }
