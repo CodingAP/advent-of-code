@@ -870,7 +870,15 @@
         },
         {
             "title": "Parabolic Reflector Dish",
-            "stars": 0
+            "stars": 2
+        },
+        {
+            "title": "Lens Library",
+            "stars": 2
+        },
+        {
+            "title": "The Floor Will Be Lava",
+            "stars": 2
         }
     ]
 }

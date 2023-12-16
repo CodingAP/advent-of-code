@@ -10,17 +10,6 @@
 
 const directions = { NORTH: 0, EAST: 1, SOUTH: 2, WEST: 3 };
 
-const printGrid = grid => {
-    let print = '';
-    for (let y = 0; y < grid.length; y++) {
-        for (let x = 0; x < grid[y].length; x++) {
-            print += grid[y][x];
-        }
-        print += '\n';
-    }
-    console.log(print);
-}
-
 const slideGrid = (grid, direction) => {
     if (direction == directions.NORTH) {
         for (let x = 0; x < grid[0].length; x++) {
