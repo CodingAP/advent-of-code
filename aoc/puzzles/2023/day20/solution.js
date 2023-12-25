@@ -58,7 +58,7 @@ const pressButton = (modules, pulses, cycles, count) => {
                         if (current.value) pulses.high++;
                         else pulses.low++;
                     }
-                    
+
                     queue.push({ from: 'broadcaster', to: module, value: current.value });
                 }
             } else if (modules[current.to].type == 'FLIPFLOP') {
@@ -124,7 +124,7 @@ const part1 = async input => {
     for (let button = 0; button < 1000; button++) {
         pressButton(modules, pulses);
     }
-    
+
     return pulses.low * pulses.high;
 }
 

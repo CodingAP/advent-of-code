@@ -177,7 +177,7 @@ const part2 = async input => {
         let [heatLoss, current] = MinHeap.pop(queue);
 
         // the first path to reach the end will be the shortest
-        if (current.x == grid[0].length - 1 && current.y == grid.length - 1) return heatLoss;
+        if (current.x == grid[0].length - 1 && current.y == grid.length - 1 && current.run >= 4) return heatLoss;
 
         // find all neighbors that can be accessed
         for (let neighbor of neighbors(grid, current, 4, 10)) {

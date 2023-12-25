@@ -560,11 +560,11 @@
         },
         {
             "title": "Shuttle Search",
-            "stars": 0
+            "stars": 2
         },
         {
             "title": "Docking Data",
-            "stars": 0
+            "stars": 2
         },
         {
             "title": "Rambunctious Recitation",
@@ -882,7 +882,7 @@
         },
         {
             "title": "Clumsy Crucible",
-            "stars": 0
+            "stars": 2
         },
         {
             "title": "Lavaduct Lagoon",
@@ -892,13 +892,24 @@
             "title": "Aplenty",
             "stars": 2
         },
-        null,
+        {
+            "title": "Pulse Propagation",
+            "stars": 2
+        },
         {
             "title": "Step Counter",
             "stars": 2
         },
         {
             "title": "Sand Slabs",
+            "stars": 2
+        },
+        {
+            "title": "A Long Walk",
+            "stars": 2
+        },
+        {
+            "title": "Never Tell Me The Odds",
             "stars": 2
         }
     ]
