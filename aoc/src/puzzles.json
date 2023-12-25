@@ -568,7 +568,7 @@
         },
         {
             "title": "Rambunctious Recitation",
-            "stars": 0
+            "stars": 2
         },
         {
             "title": "Ticket Translation",
@@ -910,6 +910,10 @@
         },
         {
             "title": "Never Tell Me The Odds",
+            "stars": 2
+        },
+        {
+            "title": "Snowverload",
             "stars": 2
         }
     ]
