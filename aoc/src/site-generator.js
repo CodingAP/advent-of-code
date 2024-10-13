@@ -4,7 +4,7 @@
  * this handles the site generation side of things for the advent of code manager
  * 
  * by alex prosser
- * 11/23/2023
+ * 10/12/2024
  */
 
 import { STEVE, SiteGenerator, SingleRoute, GeneratorRoute } from 'steve-template-engine';
@@ -40,7 +40,7 @@ const DEBUG = false;
 const generateWriteup = async (day, year) => {
     // if directory doesn't exist, throw error
     let exists = await aoc.checkForExistance(path.join(baseDirectory, 'puzzles', year, `day${day.padStart(2, '0')}`));
-    
+
     if (!exists) {
         return { error: true, message: `this puzzle hasn't been generated yet! run 'fetch --day=${day} --year=${year}' first!` };
     }
@@ -114,12 +114,12 @@ const generateSite = async () => {
             if (puzzles[year][day - 1] != null) {
                 available[year][day - 1].puzzle = true;
             }
-            
+
             // check to see if source code exists
             if (await aoc.checkForExistance(path.join(baseDirectory, 'puzzles', year.toString(), `day${day.toString().padStart(2, '0')}`))) {
                 available[year][day - 1].code = true;
             }
-            
+
             // check to see if a writeup exists
             if (await aoc.checkForExistance(path.join(baseDirectory, 'writeups', year.toString(), `day${day.toString().padStart(2, '0')}.md`))) {
                 available[year][day - 1].writeup = true;

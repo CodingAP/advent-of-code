@@ -4,7 +4,7 @@
  * this handles the command line interface for the advent of code manager
  * 
  * by alex prosser
- * 11/23/2023
+ * 10/12/2024
  */
 
 import { fetchPuzzle, profilePuzzle, runPuzzle } from './src/aoc.js';
@@ -159,7 +159,7 @@ const commandLineInfo = {
             aliases: ['y'],
             description: 'year of the puzzle to process.',
             default: new Date().getFullYear().toString(),
-            expects: new Array(9).fill(0).map((_, index) => (index + 2015).toString())
+            expects: new Array(10).fill(0).map((_, index) => (index + 2015).toString())
         },
         part: {
             aliases: ['p'],

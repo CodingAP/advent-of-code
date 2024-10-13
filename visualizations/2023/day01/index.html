@@ -3,22 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="msapplication-config" content="/advent-of-code/static/favicon/browserconfig.xml">
-<meta name="theme-color" content="#ffffff">
-<link href="/advent-of-code/static/css/main.css" rel="stylesheet">
-<link rel="apple-touch-icon" sizes="180x180"
-    href="/advent-of-code/static/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32"
-    href="/advent-of-code/static/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16"
-    href="/advent-of-code/static/favicon/favicon-16x16.png">
-<link rel="manifest" href="/advent-of-code/static/favicon/site.webmanifest">
-<link rel="shortcut icon" href="/advent-of-code/static/favicon/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
 
-<title>CodingAP's Advent of Code Hub - Day 1, 2023 Visualization</title>
-    
+    <title>CodingAP's Advent of Code Hub - Day 1, 2023 Visualization</title>
+
     <script>
         /**
          * token that holds all the information to render text inline
@@ -66,7 +63,7 @@
                 let currentPosition = null;
                 for (let i = 0; i < textTokens.length; i++) {
                     const formats = { bold: false, italic: false, glowing: false };
-                    
+
                     // parse formats
                     if (textTokens[i].formats != null) {
                         for (let j = 0; j < textTokens[i].formats.length; j++) {
@@ -86,12 +83,12 @@
                     context.fillStyle = textTokens[i].color || AOC_VISUALIZATION.WHITE_COLOR;
                     context.shadowBlur = (formats.glowing) ? 7 : 0;
                     context.shadowColor = textTokens[i].color || AOC_VISUALIZATION.WHITE_COLOR;
-                    
+
                     // split by new line and render text accordingly
                     let lines = textTokens[i].text.split(/\n/g);
                     for (let line = 0; line < lines.length; line++) {
                         let width = context.measureText(lines[line]).width;
-                        
+
                         if (currentPosition == null) {
                             currentPosition = { x, y };
                             if (context.textAlign == 'center') currentPosition.x = x - width / 2;
@@ -153,61 +150,61 @@
 
     <script>
         const canvas = document.querySelector('canvas');
-            const context = canvas.getContext('2d');
-            const inputLoaderInput = document.querySelector('input');
+        const context = canvas.getContext('2d');
+        const inputLoaderInput = document.querySelector('input');
 
-            const resize = () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
 
-            window.addEventListener('resize', resize);
-            window.addEventListener('load', () => {
-                inputLoaderInput.addEventListener('change', () => {
-                    // load and parse input
-                    if (inputLoaderInput.files.length != 0) {
-                        const reader = new FileReader();
-                        reader.addEventListener('load', () => {
-                            startSimulation(reader.result);
-                        });
-                        reader.readAsText(inputLoaderInput.files[0]);
-                    }
-                });
-
-                resize();
+        window.addEventListener('resize', resize);
+        window.addEventListener('load', () => {
+            inputLoaderInput.addEventListener('change', () => {
+                // load and parse input
+                if (inputLoaderInput.files.length != 0) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', () => {
+                        startSimulation(reader.result);
+                    });
+                    reader.readAsText(inputLoaderInput.files[0]);
+                }
             });
 
-            /**
-             * @param {string} input 
-             */
-            const startSimulation = input => {
-                // TODO: actual write text renderer code for visualization
-                const textSize = 30;
-                AOC_VISUALIZATION.renderText(context, canvas.width / 2, textSize, [
-                    {
-                        align: AOC_VISUALIZATION.ALIGN_CENTER,
-                        baseline: AOC_VISUALIZATION.BASELINE_TOP,
-                        text: 'hcpjs', size: textSize
-                    },
-                    {
-                        formats: [AOC_VISUALIZATION.GLOWING],
-                        align: AOC_VISUALIZATION.ALIGN_CENTER,
-                        baseline: AOC_VISUALIZATION.BASELINE_TOP,
-                        text: 'sql4kjhbcq', size: textSize, color: AOC_VISUALIZATION.LIGHT_GREEN_COLOR
-                    },
-                    {
-                        formats: [AOC_VISUALIZATION.ITALIC],
-                        align: AOC_VISUALIZATION.ALIGN_CENTER,
-                        baseline: AOC_VISUALIZATION.BASELINE_TOP,
-                        text: 'zkvr2five', size: textSize, color: AOC_VISUALIZATION.YELLOW_COLOR
-                    },
-                    {
-                        align: AOC_VISUALIZATION.ALIGN_CENTER,
-                        baseline: AOC_VISUALIZATION.BASELINE_TOP,
-                        text: 'bpllzqbkhg', size: textSize
-                    }
-                ]);
-            }
+            resize();
+        });
+
+        /**
+         * @param {string} input 
+         */
+        const startSimulation = input => {
+            // TODO: actual write text renderer code for visualization
+            const textSize = 30;
+            AOC_VISUALIZATION.renderText(context, canvas.width / 2, textSize, [
+                {
+                    align: AOC_VISUALIZATION.ALIGN_CENTER,
+                    baseline: AOC_VISUALIZATION.BASELINE_TOP,
+                    text: 'hcpjs', size: textSize
+                },
+                {
+                    formats: [AOC_VISUALIZATION.GLOWING],
+                    align: AOC_VISUALIZATION.ALIGN_CENTER,
+                    baseline: AOC_VISUALIZATION.BASELINE_TOP,
+                    text: 'sql4kjhbcq', size: textSize, color: AOC_VISUALIZATION.LIGHT_GREEN_COLOR
+                },
+                {
+                    formats: [AOC_VISUALIZATION.ITALIC],
+                    align: AOC_VISUALIZATION.ALIGN_CENTER,
+                    baseline: AOC_VISUALIZATION.BASELINE_TOP,
+                    text: 'zkvr2five', size: textSize, color: AOC_VISUALIZATION.YELLOW_COLOR
+                },
+                {
+                    align: AOC_VISUALIZATION.ALIGN_CENTER,
+                    baseline: AOC_VISUALIZATION.BASELINE_TOP,
+                    text: 'bpllzqbkhg', size: textSize
+                }
+            ]);
+        }
     </script>
 </body>
 

@@ -4,7 +4,7 @@
  * this handles the interactions between the advent of code manager and the website
  * 
  * by alex prosser
- * 11/23/2023
+ * 10/12/2024
  */
 
 /**
@@ -85,7 +85,7 @@ const getTitle = async (day, year) => {
         await fs.writeFile(path.join(baseDirectory, 'src/puzzles.json'), JSON.stringify(puzzles, null, 4));
         return title;
     }
-    
+
     return 'No Title Available';
 }
 
@@ -209,7 +209,7 @@ const runPuzzle = async (day, year, inputmode, part) => {
 const profilePuzzle = async (day, year, stars, inputmode) => {
     const solutionDirectory = path.join(baseDirectory, 'puzzles', year, `day${day.padStart(2, '0')}`);
     const exists = await checkForExistance(solutionDirectory);
-    
+
     // if directory doesn't exist, throw error
     if (!exists) {
         return { error: true, message: `this puzzle hasn't been generated yet! run 'fetch --day=${day} --year=${year}' first!` };
@@ -267,7 +267,7 @@ const profilePuzzle = async (day, year, stars, inputmode) => {
         },
         part2: {
             result: part2Result,
-            time: (part2Time / codeRunTimes).toFixed(2) 
+            time: (part2Time / codeRunTimes).toFixed(2)
         }
     });
 

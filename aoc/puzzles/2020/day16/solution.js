@@ -55,6 +55,28 @@ const part2 = async input => {
     const myTicket = input.split(/\n\n/)[1].split(/\n/)[1].split(/,/).map(num => parseInt(num));
     const otherTickets = input.split(/\n\n/)[2].split(/\n/).slice(1).map(line => line.split(/,/).map(num => parseInt(num)));
 
+    let attributes = Object.keys(ticketInfo);
+    let validColumns = new Array(attributes.length);
+    for (let col = 0; col < attributes.length; col++) {
+        for (let attribute of attributes) {
+            let valid = true;
+            for (let i = 0; i < otherTickets.length; i++) {
+                let inRanges = false;
+                ticketInfo[attribute].forEach(range => {
+                    if (range.start <= otherTickets[i][col] && range.end >= otherTickets[i][col]) inRanges = true;
+                });
+                if (!inRanges) valid = false;
+            }
+
+            if (valid) {
+                if (validColumns[col] == null) validColumns[col] = [];
+                validColumns[col].push(attribute);
+            }
+        }
+    }
+
+    console.log(validColumns);
+
     return 0;
 }
 
