@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <steve> return Steve.include('head', { title: 'Day 1, 2023 Visualization', debug: Steve.data.debug }) </steve>  
+    <steve> return Steve.include('head', { title: 'Day 1, 2023 Visualization', debug: Steve.data.debug }) </steve>
     
     <style>
         body {
@@ -78,8 +78,9 @@
                     const reader = new FileReader();
                     reader.addEventListener('load', () => {
                         input = reader.result;
-                        solveInput(input);
-                        draw();
+                        if (solveInput(input)) {
+                            draw();
+                        }
                     });
                     reader.readAsText(inputLoaderInput.files[0]);
                 }
@@ -130,6 +131,11 @@
         let floors = [], basementIndexes = [];
 
         const solveInput = input => {
+            const regex = /^[()]*$/;
+            if (!regex.test(input)) {
+                return false;
+            }
+
             let floor = 0, basementIndex = null;
             for (let i = 0; i < input.length; i++) {
                 floors.push(floor);
@@ -143,6 +149,7 @@
 
             floors.push(floor);
             basementIndexes.push(basementIndex);
+            return true;
         }
 
         const resetSimulation = () => {

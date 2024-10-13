@@ -119,8 +119,9 @@
                         const reader = new FileReader();
                         reader.addEventListener("load", () => {
                             input = reader.result;
-                            solveInput(input);
-                            draw();
+                            if (solveInput(input)) {
+                                draw();
+                            }
                         });
                         reader.readAsText(inputLoaderInput.files[0]);
                     }
@@ -187,6 +188,11 @@
                 basementIndexes = [];
 
             const solveInput = (input) => {
+                const regex = /^[()]*$/;
+                if (!regex.test(input)) {
+                    return false;
+                }
+
                 let floor = 0,
                     basementIndex = null;
                 for (let i = 0; i < input.length; i++) {
@@ -202,6 +208,7 @@
 
                 floors.push(floor);
                 basementIndexes.push(basementIndex);
+                return true;
             };
 
             const resetSimulation = () => {
