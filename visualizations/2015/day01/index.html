@@ -3,19 +3,22 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    <link href="/static/css/main.css" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/static/favicon/site.webmanifest">
-    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/advent-of-code/static/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<link href="/advent-of-code/static/css/main.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180"
+    href="/advent-of-code/static/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+    href="/advent-of-code/static/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+    href="/advent-of-code/static/favicon/favicon-16x16.png">
+<link rel="manifest" href="/advent-of-code/static/favicon/site.webmanifest">
+<link rel="shortcut icon" href="/advent-of-code/static/favicon/favicon.ico">
 
-    <title>CodingAP's Advent of Code Hub - Day 1, 2023 Visualization</title>
-
+<title>CodingAP's Advent of Code Hub - Day 1, 2023 Visualization</title>  
+    
     <style>
         body {
             margin: auto;
@@ -169,7 +172,7 @@
 
             // update current step according to step speed and delta time
             currentStep += (singleStep) ? 1 : (deltaTime || 0) * stepsPerSecond;
-
+            
             if (currentStep >= input.length) {
                 currentStep = input.length;
                 clearInterval(simulationInterval);
@@ -311,14 +314,14 @@
                     } else {
                         rightSide = asciiFloors.rightSideClear[i % 8];
                     }
-
+                    
                     totalWidth = context.measureText(leftSide + middle + rightSide).width;
-
+                    
                     // draw left side
                     context.fillStyle = GREEN;
                     context.shadowColor = GREEN;
                     context.fillText(leftSide, (canvas.width - totalWidth) / 2, 100 + i * 15);
-
+                    
                     // draw middle
                     context.fillStyle = WHITE;
                     context.shadowColor = WHITE;
@@ -332,12 +335,12 @@
                         context.fillText(asciiFloors.stickman[(i - 11) % 3], canvas.width / 2, 105 + i * 15);
                         context.textAlign = 'left';
                     }
-
+                    
                     // draw right side
                     context.fillStyle = GREEN;
                     context.shadowColor = GREEN;
                     context.fillText(rightSide, (canvas.width - totalWidth) / 2 + context.measureText(leftSide + middle).width, 100 + i * 15);
-
+                
                     // draw floor numbers
                     if (i % 8 === 4) {
                         context.fillStyle = YELLOW;
@@ -368,7 +371,7 @@
                         context.fillStyle = WHITE;
                         context.shadowColor = WHITE;
                     }
-
+                    
                     context.fillText(input[index], canvas.width / 2 + i * spacing, canvas.height - 40);
                 }
 
