@@ -23,12 +23,12 @@ const baseDirectory = path.resolve('./aoc');
 /**
  * the current year for advent of code
  */
-const currentYear = 2023;
+const currentYear = 2024;
 
 /**
  * whether or not the source is localhost or the actual website
  */
-const DEBUG = false;
+const DEBUG = true;
 
 /**
  * generates a writeup for the puzzle specified

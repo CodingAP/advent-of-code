@@ -132,28 +132,20 @@
             stepsPerSecond = document.querySelector('#sim-speed').value;
         });
 
-        let floors = [], basementIndexes = [];
+        let dimensions = [], paperAmount = [], sums = [];
 
         const solveInput = input => {
-            const regex = /^[()]*$/;
-            if (!regex.test(input)) {
+            try {
+                let lines = input.split('\n');
+                for (let i = 0; i < lines.length; i++) {
+                    let [l, w, h] = dimensions.split(/x/g).map(num => parseInt(num)).sort((a, b) => a - b);
+                    let surfaceArea = 2 * l * w + 2 * w * h + 2 * h * l;
+                    let extra = l * w;
+                }
+                return true;
+            } catch (e) {
                 return false;
             }
-
-            let floor = 0, basementIndex = null;
-            for (let i = 0; i < input.length; i++) {
-                floors.push(floor);
-                basementIndexes.push(basementIndex);
-
-                if (input[i] == '(') floor++;
-                else floor--;
-
-                if (floor < 0 && basementIndex === null) basementIndex = i + 1;
-            }
-
-            floors.push(floor);
-            basementIndexes.push(basementIndex);
-            return true;
         }
 
         const resetSimulation = () => {
