@@ -108,3 +108,7 @@ settings.json
 
 # removing inputs from github
 **/input.txt
+
+# remove dev stuff
+dev.md
+**/dev.html
