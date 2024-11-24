@@ -1,0 +1,43 @@
+<div class="day">
+    <div class="text-center">
+        <a
+            class="header<steve> return steve.data.available.puzzle ? '' : ' disabled' </steve>"
+            href="<steve> return `https://adventofcode.com/${steve.data.year}/day/${steve.data.day}`; </steve>"
+        >
+            Day <steve> return steve.data.day; </steve> - <steve>
+                return steve.data.available.puzzle ? steve.data.title : 'Not Available';
+            </steve>
+        </a>
+        <br />
+        <steve>
+            let claimed = `<span class="claimed-stars"
+            >${new Array(steve.data.starCount).fill('*').join('')}</span>`; let
+            unclaimed = `<span class="unclaimed-stars"
+            >${new Array(2 - steve.data.starCount).fill('*').join('')}</span>`;
+            return claimed + unclaimed;
+        </steve>
+    </div>
+
+    <a
+        class="<steve> return steve.data.available.code ? '' : 'disabled' </steve>"
+        href="<steve> return `https://github.com/CodingAP/advent-of-code/tree/main/puzzles/${steve.data.year}/day${steve.data.day.toString().padStart(2, '0')}`; </steve>"
+    >
+        [Source Code]
+    </a>
+    <br />
+
+    <a
+        class="<steve> return steve.data.available.writeup ? '' : 'disabled' </steve>"
+        href="<steve> return steve.joinPaths((steve.data.debug) ? '': '/advent-of-code', '/writeups', steve.data.year.toString(), `day${steve.data.day.toString().padStart(2, '0')}`); </steve>"
+    >
+        [Writeup]
+    </a>
+    <br />
+
+    <a
+        class="<steve> return steve.data.available.visualization ? '' : 'disabled' </steve>"
+        href="<steve> return steve.joinPaths((steve.data.debug) ? '': '/advent-of-code', '/visualizations', steve.data.year.toString(), `day${steve.data.day.toString().padStart(2, '0')}`); </steve>"
+    >
+        [Visualization]
+    </a>
+</div>

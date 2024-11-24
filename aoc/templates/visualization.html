@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <steve>
+        // to get around nested steve tags
+        return '<' + `steve> return steve.include('head.html', { title: 'Day ${steve.data.day}, ${steve.data.year} Visualization', debug: steve.data.debug }) </steve` + '>';
+    </steve>
+    
+    <style>
+        body {
+            margin: auto;
+            overflow: hidden;
+
+            text-decoration: none;
+            user-select: none;
+            color: var(--linkgreen);
+            outline: 0;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .container canvas {
+            position: absolute;
+        }
+
+        .overlay {
+            position: absolute;
+            width: 100%;
+            padding: 20px;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        input[type="file"] {
+            font-family: Source Code Pro;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <canvas></canvas>
+        <div class="overlay">
+            <label for="input">Load Input:</label>
+            <input type="file" name="input">
+
+            <!-- Simulation Controls -->
+            <a id="sim-start">[Start]</a>
+            <a id="sim-stop">[Stop]</a>
+            <a id="sim-step">[Step]</a>
+            <a id="sim-reset">[Reset]</a>
+            Speed: <input id="sim-speed" type="range" min="1" max="500" currentStep="10">
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.querySelector('canvas');
+        const context = canvas.getContext('2d');
+        const inputLoaderInput = document.querySelector('input');
+
+        let input = '';
+
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            draw();
+        }
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('load', () => {
+            inputLoaderInput.addEventListener('change', () => {
+                // load and parse input
+                if (inputLoaderInput.files.length != 0) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', () => {
+                        input = reader.result;
+                        if (solveInput(input)) {
+                            draw();
+                        }
+                    });
+                    reader.readAsText(inputLoaderInput.files[0]);
+                }
+            });
+
+            resize();
+        });
+
+        const FRAME_RATE = 30;
+        let simulationInterval = null;
+        let stepsPerSecond = 0, currentStep = 0;
+        let lastTime;
+
+        document.querySelector('#sim-start').addEventListener('click', () => {
+            if (!simulationInterval && input !== '') {
+                stepsPerSecond = document.querySelector('#sim-speed').value;
+                lastTime = new Date().getTime();
+                simulationInterval = setInterval(stepSimulation, 1000 / FRAME_RATE);
+            }
+        });
+
+        document.querySelector('#sim-stop').addEventListener('click', () => {
+            if (simulationInterval !== null) {
+                clearInterval(simulationInterval);
+                simulationInterval = null;
+            }
+        });
+
+        document.querySelector('#sim-step').addEventListener('click', () => {
+            if (!simulationInterval && input !== '') {
+                let temp = stepsPerSecond;
+                stepsPerSecond = 1;
+                stepSimulation(true);
+                stepsPerSecond = temp;
+            }
+        });
+
+        document.querySelector('#sim-reset').addEventListener('click', () => {
+            resetSimulation();
+            clearInterval(simulationInterval);
+            simulationInterval = null;
+        });
+
+        document.querySelector('#sim-speed').addEventListener('change', () => {
+            stepsPerSecond = document.querySelector('#sim-speed').value;
+        });
+
+        const solveInput = input => {
+            // this is where i can solve the input and store the results for the visualization
+        }
+
+        const resetSimulation = () => {
+            currentStep = 0;
+            draw();
+        }
+
+        const stepSimulation = (singleStep) => {
+            let time = new Date().getTime();
+            let deltaTime = (time - lastTime) / 1000;
+            lastTime = time;
+
+            // update current step according to step speed and delta time
+            currentStep += (singleStep) ? 1 : (deltaTime || 0) * stepsPerSecond;
+            
+            if (currentStep >= input.length) {
+                currentStep = input.length;
+                clearInterval(simulationInterval);
+            }
+            draw();
+        }
+
+        const WHITE = '#fff';
+        const GREEN = '#00cc00';
+        const YELLOW = '#ffff66';
+
+        const draw = () => {
+            // clear previous frame
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+</body>
+
+</html>

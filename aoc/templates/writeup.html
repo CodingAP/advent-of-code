@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <steve> return steve.include('head.html', { debug: steve.data.debug }); </steve>
+    <link rel="stylesheet" href="<steve> return steve.data.debug ? '' : '/advent-of-code'; </steve>/static/css/writeup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <p class="header text-center" style="font-size: 30px;">-- CodingAP's Advent of Code Hub --</p>
+    <a style="font-size: 24px;" href="<steve> return steve.data.debug ? '/' : '/advent-of-code'; </steve>">[Back to Hub]</a>
+
+    <div id="snowflakes">
+        <steve>
+            let content = '';
+            for (let i = 0; i < 200; i++) {
+                content += `<div class="snowflake snowflake-${Math.floor(Math.random() * 4)}" style="top: ${Math.random() * -5}em; left: ${Math.random() * 100}vw; animation-delay: ${Math.random() * -20}s"></div>`;
+            }
+            return content;
+        </steve>
+    </div>
+
+    <h2>
+        <steve> return `Advent of Code ${steve.data.year}, Day ${steve.data.day}`; </steve>
+    </h2>
+
+    <h3>
+        <steve> return `-- ${steve.data.title} --`; </steve>
+    </h3>
+
+    <article>
+        <steve>
+            return steve.data.content;
+        </steve>
+    </article>
+    
+    <steve> return steve.include('footer.html'); </steve>
+</body>
+
+</html>

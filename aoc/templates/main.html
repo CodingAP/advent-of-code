@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <steve> return steve.include('head.html', { debug: steve.data.debug }); </steve>
+    <script src="<steve> return steve.data.debug ? '' : '/advent-of-code'; </steve>/static/js/main.js"></script>
+</head>
+
+<body>
+    <p class="header text-center" style="font-size: 30px;">-- CodingAP's Advent of Code Hub --</p>
+    <p class="text-center" style="font-size: 24px;">
+        <steve>
+            let content = '';
+            for (let year = 2015; year <= steve.data.currentYear; year++) {
+                content += `·<a id="year-selector-${year}" class="year-selector${(year == steve.data.currentYear) ? ' current' : ''}" onclick="switchYear(${year})">[${year}]</a>`;
+            }
+            return content.slice(1);
+        </steve>
+    </p>
+
+    <div id="snowflakes">
+        <steve>
+            let content = '';
+            for (let i = 0; i < 200; i++) {
+                content += `<div class="snowflake snowflake-${Math.floor(Math.random() * 4)}" style="top: ${Math.random() * -5}em; left: ${Math.random() * 100}vw; animation-delay: ${Math.random() * -20}s"></div>`;
+            }
+            return content;
+        </steve>
+    </div>
+
+    <steve>
+        let content = '';
+        for (let year = 2015; year <= steve.data.currentYear; year++) {
+            let container = `<div id="year-${year}" class="day-container${(year == steve.data.currentYear) ? ' current' : ''}">`;
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < 5; j++) {
+                    let day = (j + i * 5) + 1;
+                    container += steve.include('day.html', {
+                        day: day,
+                        year: year,
+                        title: (steve.data.puzzles[year][day - 1]) ? steve.data.puzzles[year][day - 1].title : '',
+                        starCount: (steve.data.puzzles[year][day - 1]) ? steve.data.puzzles[year][day - 1].stars : 0,
+                        available: steve.data.available[year][day - 1],
+                        debug: steve.data.debug
+                    });
+                }
+            }
+            content += container + '</div>';
+        }
+        return content;
+    </steve>
+
+    <steve>
+        let content = '';
+        for (let year = 2015; year <= steve.data.currentYear; year++) {
+            let stars = 0;
+            for (let day = 0; day < 25; day++) {
+                stars += (steve.data.puzzles[year][day]) ? steve.data.puzzles[year][day].stars : 0;
+            }
+            content += `<p id="star-count-${year}" class="star-count${(year == steve.data.currentYear) ? ' current' : ''}">Stars: <span class="claimed-stars">${stars}/50</span></p>`;
+        }
+        return content;
+    </steve>
+
+    <steve> return steve.include('footer.html'); </steve>
+</body>
+
+</html>

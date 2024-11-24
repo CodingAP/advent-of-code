@@ -1,0 +1,22 @@
+{
+    "tasks": {
+        "aoc": "deno run -A --env-file --unstable-ffi index.ts",
+        "generate": "deno run -A --env-file --unstable-ffi site-generator.ts"
+    },
+    "imports": {
+        "@b-fuze/deno-dom": "jsr:@b-fuze/deno-dom@^0.1.48",
+        "@codingap/steve": "jsr:@codingap/steve@^2.0.10",
+        "@db/sqlite": "jsr:@db/sqlite@^0.12.0",
+        "@libs/markdown": "jsr:@libs/markdown@^2.0.0",
+        "@std/html": "jsr:@std/html@1",
+        "@std/path": "jsr:@std/path@1",
+        "@std/fs": "jsr:@std/fs@1"
+    },
+    "fmt": {
+        "indentWidth": 4,
+        "singleQuote": true,
+        "include": ["../"],
+        "exclude": ["../puzzles", "templates", "**/*.md"],
+        "lineWidth": 160
+    }
+}
