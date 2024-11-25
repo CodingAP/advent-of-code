@@ -38,18 +38,18 @@ const part2Comment = `/**
  */
 const part2 = input => {`;
 
-for (let i = 1; i <= 25; i++) {
+for (let i = 19; i <= 25; i++) {
     const solutionDirectory = join(baseDirectory, year, `day${i.toString().padStart(2, '0')}`);
     console.log('day', i, year);
 
-    await Deno.remove(join(solutionDirectory, 'README.md'));
+    // await Deno.remove(join(solutionDirectory, 'README.md'));
 
-    // await updatePuzzle(i.toString(), year);
     // const response = await runPuzzle(i.toString(), year, 'both');
     // console.log(response.part1);
     // console.log(response.part2);
-    // await profilePuzzle(i.toString(), year, '3');
-    // await submitAnswer(i.toString(), year, 'both', 'true');
+    // await updatePuzzle(i.toString(), year);
+    await profilePuzzle(i.toString(), year, '1');
+    await submitAnswer(i.toString(), year, 'both', 'true');
 
     // let script = await Deno.readTextFile(join(solutionDirectory, 'solution.js'));
     // script = script.replace(/async /g, '');
