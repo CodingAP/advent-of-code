@@ -1,420 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta
+            name="msapplication-config"
+            content="/static/favicon/browserconfig.xml"
+        >
+        <meta name="theme-color" content="#ffffff">
+        <link
+            href="/static/css/main.css"
+            rel="stylesheet"
+        >
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/favicon/apple-touch-icon.png"
+        >
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/static/favicon/favicon-32x32.png"
+        >
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/static/favicon/favicon-16x16.png"
+        >
+        <link
+            rel="manifest"
+            href="/static/favicon/site.webmanifest"
+        >
+        <link
+            rel="shortcut icon"
+            href="/static/favicon/favicon.ico"
+        >
 
-<head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta
-    name="msapplication-config"
-    content="/advent-of-code/static/favicon/browserconfig.xml"
->
-<meta name="theme-color" content="#ffffff">
-<link
-    href="/advent-of-code/static/css/main.css"
-    rel="stylesheet"
->
-<link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/advent-of-code/static/favicon/apple-touch-icon.png"
->
-<link
-    rel="icon"
-    type="image/png"
-    sizes="32x32"
-    href="/advent-of-code/static/favicon/favicon-32x32.png"
->
-<link
-    rel="icon"
-    type="image/png"
-    sizes="16x16"
-    href="/advent-of-code/static/favicon/favicon-16x16.png"
->
-<link
-    rel="manifest"
-    href="/advent-of-code/static/favicon/site.webmanifest"
->
-<link
-    rel="shortcut icon"
-    href="/advent-of-code/static/favicon/favicon.ico"
->
+        <title>
+            CodingAP's Advent of Code Hub - Day 1, 2015 Visualization
+        </title>
 
-<title>
-    CodingAP's Advent of Code Hub - Day 1, 2015 Visualization
-</title>
+        <style>
+            body {
+                margin: auto;
+                overflow: hidden;
 
-    
-    <style>
-        body {
-            margin: auto;
-            overflow: hidden;
+                text-decoration: none;
+                user-select: none;
+                color: var(--linkgreen);
+                outline: 0;
+            }
 
-            text-decoration: none;
-            user-select: none;
-            color: var(--linkgreen);
-            outline: 0;
-        }
+            .container {
+                position: relative;
+            }
 
-        .container {
-            position: relative;
-        }
+            .container canvas {
+                position: absolute;
+            }
 
-        .container canvas {
-            position: absolute;
-        }
+            .overlay {
+                position: absolute;
+                width: 100%;
+                padding: 20px;
 
-        .overlay {
-            position: absolute;
-            width: 100%;
-            padding: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+            }
 
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 20px;
-        }
+            input[type='file'] {
+                font-family: Source Code Pro;
+            }
+        </style>
+    </head>
 
-        input[type="file"] {
-            font-family: Source Code Pro;
-        }
-    </style>
-</head>
+    <body>
+        <div class="container">
+            <canvas></canvas>
+            <div class="overlay">
+                <label for="input">Load Input:</label>
+                <input type="file" name="input">
 
-<body>
-    <div class="container">
-        <canvas></canvas>
-        <div class="overlay">
-            <label for="input">Load Input:</label>
-            <input type="file" name="input">
-
-            <!-- Simulation Controls -->
-            <a id="sim-start">[Start]</a>
-            <a id="sim-stop">[Stop]</a>
-            <a id="sim-step">[Step]</a>
-            <a id="sim-reset">[Reset]</a>
-            Speed: <input id="sim-speed" type="range" min="1" max="500" currentStep="10">
+                <!-- Simulation Controls -->
+                <a id="sim-start">[Start]</a>
+                <a id="sim-stop">[Stop]</a>
+                <a id="sim-step">[Step]</a>
+                <a id="sim-reset">[Reset]</a>
+                Speed: <input id="sim-speed" type="range" min="1" max="500" currentStep="10">
+            </div>
         </div>
-    </div>
 
-    <script>
-        const canvas = document.querySelector('canvas');
-        const context = canvas.getContext('2d');
-        const inputLoaderInput = document.querySelector('input');
+        <script>
+            const canvas = document.querySelector('canvas');
+            const context = canvas.getContext('2d');
+            const inputLoaderInput = document.querySelector('input');
 
-        let input = '';
+            let input = '';
 
-        const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
 
-            draw();
-        }
+                draw();
+            };
 
-        window.addEventListener('resize', resize);
-        window.addEventListener('load', () => {
-            inputLoaderInput.addEventListener('change', () => {
-                // load and parse input
-                if (inputLoaderInput.files.length != 0) {
-                    const reader = new FileReader();
-                    reader.addEventListener('load', () => {
-                        input = reader.result;
-                        if (solveInput(input)) {
-                            draw();
-                        }
-                    });
-                    reader.readAsText(inputLoaderInput.files[0]);
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', () => {
+                inputLoaderInput.addEventListener('change', () => {
+                    // load and parse input
+                    if (inputLoaderInput.files.length != 0) {
+                        const reader = new FileReader();
+                        reader.addEventListener('load', () => {
+                            input = reader.result;
+                            if (solveInput(input)) {
+                                draw();
+                            }
+                        });
+                        reader.readAsText(inputLoaderInput.files[0]);
+                    }
+                });
+
+                resize();
+            });
+
+            const FRAME_RATE = 30;
+            let simulationInterval = null;
+            let stepsPerSecond = 0, currentStep = 0;
+            let lastTime;
+
+            document.querySelector('#sim-start').addEventListener('click', () => {
+                if (!simulationInterval && input !== '') {
+                    stepsPerSecond = document.querySelector('#sim-speed').value;
+                    lastTime = new Date().getTime();
+                    simulationInterval = setInterval(stepSimulation, 1000 / FRAME_RATE);
                 }
             });
 
-            resize();
-        });
+            document.querySelector('#sim-stop').addEventListener('click', () => {
+                if (simulationInterval !== null) {
+                    clearInterval(simulationInterval);
+                    simulationInterval = null;
+                }
+            });
 
-        const FRAME_RATE = 30;
-        let simulationInterval = null;
-        let stepsPerSecond = 0, currentStep = 0;
-        let lastTime;
+            document.querySelector('#sim-step').addEventListener('click', () => {
+                if (!simulationInterval && input !== '') {
+                    let temp = stepsPerSecond;
+                    stepsPerSecond = 1;
+                    stepSimulation(true);
+                    stepsPerSecond = temp;
+                }
+            });
 
-        document.querySelector('#sim-start').addEventListener('click', () => {
-            if (!simulationInterval && input !== '') {
-                stepsPerSecond = document.querySelector('#sim-speed').value;
-                lastTime = new Date().getTime();
-                simulationInterval = setInterval(stepSimulation, 1000 / FRAME_RATE);
-            }
-        });
-
-        document.querySelector('#sim-stop').addEventListener('click', () => {
-            if (simulationInterval !== null) {
+            document.querySelector('#sim-reset').addEventListener('click', () => {
+                resetSimulation();
                 clearInterval(simulationInterval);
                 simulationInterval = null;
-            }
-        });
+            });
 
-        document.querySelector('#sim-step').addEventListener('click', () => {
-            if (!simulationInterval && input !== '') {
-                let temp = stepsPerSecond;
-                stepsPerSecond = 1;
-                stepSimulation(true);
-                stepsPerSecond = temp;
-            }
-        });
+            document.querySelector('#sim-speed').addEventListener('change', () => {
+                stepsPerSecond = document.querySelector('#sim-speed').value;
+            });
 
-        document.querySelector('#sim-reset').addEventListener('click', () => {
-            resetSimulation();
-            clearInterval(simulationInterval);
-            simulationInterval = null;
-        });
+            let floors = [], basementIndexes = [];
 
-        document.querySelector('#sim-speed').addEventListener('change', () => {
-            stepsPerSecond = document.querySelector('#sim-speed').value;
-        });
+            const solveInput = (input) => {
+                const regex = /^[()]*$/;
+                if (!regex.test(input)) {
+                    return false;
+                }
 
-        let floors = [], basementIndexes = [];
+                let floor = 0, basementIndex = null;
+                for (let i = 0; i < input.length; i++) {
+                    floors.push(floor);
+                    basementIndexes.push(basementIndex);
 
-        const solveInput = input => {
-            const regex = /^[()]*$/;
-            if (!regex.test(input)) {
-                return false;
-            }
+                    if (input[i] == '(') floor++;
+                    else floor--;
 
-            let floor = 0, basementIndex = null;
-            for (let i = 0; i < input.length; i++) {
+                    if (floor < 0 && basementIndex === null) basementIndex = i + 1;
+                }
+
                 floors.push(floor);
                 basementIndexes.push(basementIndex);
+                return true;
+            };
 
-                if (input[i] == '(') floor++;
-                else floor--;
+            const resetSimulation = () => {
+                currentStep = 0;
+                draw();
+            };
 
-                if (floor < 0 && basementIndex === null) basementIndex = i + 1;
-            }
+            const stepSimulation = (singleStep) => {
+                let time = new Date().getTime();
+                let deltaTime = (time - lastTime) / 1000;
+                lastTime = time;
 
-            floors.push(floor);
-            basementIndexes.push(basementIndex);
-            return true;
-        }
+                // update current step according to step speed and delta time
+                currentStep += singleStep ? 1 : (deltaTime || 0) * stepsPerSecond;
 
-        const resetSimulation = () => {
-            currentStep = 0;
-            draw();
-        }
+                if (currentStep >= input.length) {
+                    currentStep = input.length;
+                    clearInterval(simulationInterval);
+                }
+                draw();
+            };
 
-        const stepSimulation = (singleStep) => {
-            let time = new Date().getTime();
-            let deltaTime = (time - lastTime) / 1000;
-            lastTime = time;
+            let asciiFloors = {
+                leftSideClear: [
+                    '                |',
+                    '                |',
+                    '                |',
+                    '                |',
+                    '                |',
+                    '                |',
+                    '                |',
+                ],
+                leftSideWindows: [
+                    '                |',
+                    '                |',
+                    '    ___  ___    |',
+                    '   /   \\/   \\   |',
+                    '   [   ||   ]   |',
+                    '   \\___/\\___/   |',
+                    '                |',
+                ],
+                lastLeftSideClear: '                |',
+                lastLeftSideGround: '________________|',
+                rightSideClear: [
+                    '|                ',
+                    '|                ',
+                    '|                ',
+                    '|                ',
+                    '|                ',
+                    '|                ',
+                    '|                ',
+                ],
+                rightSideWindows: [
+                    '|                ',
+                    '|                ',
+                    '|    ___  ___    ',
+                    '|   /   \\/   \\   ',
+                    '|   [   ||   ]   ',
+                    '|   \\___/\\___/   ',
+                    '|                ',
+                ],
+                lastRightSideClear: '|                ',
+                lastRightSideGround: '|________________',
+                middleClear: [
+                    '    I   I    ',
+                    '    I   I    ',
+                    '    I   I    ',
+                    '    I   I    ',
+                    '    I   I    ',
+                    '    I   I    ',
+                    '    I   I    ',
+                    '    I   I    ',
+                ],
+                middleElevator: [
+                    '    I   I    ',
+                    '    I   I    ',
+                    '   _I___I_   ',
+                    '   [     ]   ',
+                    '   [     ]   ',
+                    '   [     ]   ',
+                    '   \\_____/   ',
+                    '    I   I    ',
+                ],
+                stickman: [
+                    ' O ',
+                    '/|\\',
+                    '/ \\',
+                ],
+            };
 
-            // update current step according to step speed and delta time
-            currentStep += (singleStep) ? 1 : (deltaTime || 0) * stepsPerSecond;
-            
-            if (currentStep >= input.length) {
-                currentStep = input.length;
-                clearInterval(simulationInterval);
-            }
-            draw();
-        }
+            const WHITE = '#fff';
+            const GREEN = '#00cc00';
+            const YELLOW = '#ffff66';
 
-        let asciiFloors = {
-            leftSideClear: [
-                '                |',
-                '                |',
-                '                |',
-                '                |',
-                '                |',
-                '                |',
-                '                |',
-            ],
-            leftSideWindows: [
-                '                |',
-                '                |',
-                '    ___  ___    |',
-                '   /   \\/   \\   |',
-                '   [   ||   ]   |',
-                '   \\___/\\___/   |',
-                '                |',
-            ],
-            lastLeftSideClear: '                |',
-            lastLeftSideGround: '________________|',
-            rightSideClear: [
-                '|                ',
-                '|                ',
-                '|                ',
-                '|                ',
-                '|                ',
-                '|                ',
-                '|                ',
-            ],
-            rightSideWindows: [
-                '|                ',
-                '|                ',
-                '|    ___  ___    ',
-                '|   /   \\/   \\   ',
-                '|   [   ||   ]   ',
-                '|   \\___/\\___/   ',
-                '|                ',
-            ],
-            lastRightSideClear: '|                ',
-            lastRightSideGround: '|________________',
-            middleClear: [
-                '    I   I    ',
-                '    I   I    ',
-                '    I   I    ',
-                '    I   I    ',
-                '    I   I    ',
-                '    I   I    ',
-                '    I   I    ',
-                '    I   I    ',
-            ],
-            middleElevator: [
-                '    I   I    ',
-                '    I   I    ',
-                '   _I___I_   ',
-                '   [     ]   ',
-                '   [     ]   ',
-                '   [     ]   ',
-                '   \\_____/   ',
-                '    I   I    '
-            ],
-            stickman: [
-                ' O ',
-                '/|\\',
-                '/ \\'
-            ]
-        }
+            const draw = () => {
+                // clear previous frame
+                context.clearRect(0, 0, canvas.width, canvas.height);
 
-        const WHITE = '#fff';
-        const GREEN = '#00cc00';
-        const YELLOW = '#ffff66';
-
-        const draw = () => {
-            // clear previous frame
-            context.clearRect(0, 0, canvas.width, canvas.height);
-
-            if (!input) {
-                // input loading text
-                context.fillStyle = WHITE;
-                context.textAlign = 'center';
-                context.textBaseline = 'middle';
-                context.shadowBlur = 7;
-                context.shadowColor = WHITE;
-                context.font = '30px Source Code Pro';
-                context.fillText('Please upload input!', canvas.width / 2, canvas.height / 2);
-            } else {
-                // draw stats
-                context.fillStyle = GREEN;
-                context.textAlign = 'left';
-                context.textBaseline = 'middle';
-                context.shadowBlur = 7;
-                context.shadowColor = GREEN;
-                context.font = '20px Source Code Pro';
-                context.fillText('Current Floor: ', 30, canvas.height / 2 - 15);
-                context.fillText('Basement Index: ', 30, canvas.height / 2 + 15);
-
-                context.fillStyle = WHITE;
-                context.shadowColor = WHITE;
-                context.fillText(floors[Math.floor(currentStep)], 30 + context.measureText('Current Floor: ').width, canvas.height / 2 - 15);
-                context.fillText(basementIndexes[Math.floor(currentStep)] || 'Not Found!', 30 + context.measureText('Basement Index: ').width, canvas.height / 2 + 15);
-
-                // draw elevator man
-                context.shadowBlur = 7;
-                context.textAlign = 'left';
-                context.textBaseline = 'middle';
-                context.font = '15px Source Code Pro';
-                let totalWidth;
-                for (let i = 0; i < 24; i++) {
-                    let currentLine = '';
-                    let part = Math.floor(i / 8) - 1;
-                    let currentFloor = floors[Math.floor(currentStep)] - part;
-
-                    // handle left side
-                    let leftSide = '';
-                    if (i % 8 === 7) {
-                        leftSide = (currentFloor == 0) ? asciiFloors.lastLeftSideGround : asciiFloors.lastLeftSideClear;
-                    } else if (currentFloor % 3 === 0) {
-                        leftSide = asciiFloors.leftSideWindows[i % 8];
-                    } else {
-                        leftSide = asciiFloors.leftSideClear[i % 8];
-                    }
-
-                    // handle middle
-                    let middle = (part !== 0) ? asciiFloors.middleClear[i % 8] : asciiFloors.middleElevator[i % 8];
-
-                    // handle right side
-                    let rightSide = '';
-                    if (i % 8 === 7) {
-                        rightSide = (currentFloor == 0) ? asciiFloors.lastRightSideGround : asciiFloors.lastRightSideClear;
-                    } else if (currentFloor % 5 === 0) {
-                        rightSide = asciiFloors.rightSideWindows[i % 8];
-                    } else {
-                        rightSide = asciiFloors.rightSideClear[i % 8];
-                    }
-                    
-                    totalWidth = context.measureText(leftSide + middle + rightSide).width;
-                    
-                    // draw left side
+                if (!input) {
+                    // input loading text
+                    context.fillStyle = WHITE;
+                    context.textAlign = 'center';
+                    context.textBaseline = 'middle';
+                    context.shadowBlur = 7;
+                    context.shadowColor = WHITE;
+                    context.font = '30px Source Code Pro';
+                    context.fillText('Please upload input!', canvas.width / 2, canvas.height / 2);
+                } else {
+                    // draw stats
                     context.fillStyle = GREEN;
+                    context.textAlign = 'left';
+                    context.textBaseline = 'middle';
+                    context.shadowBlur = 7;
                     context.shadowColor = GREEN;
-                    context.fillText(leftSide, (canvas.width - totalWidth) / 2, 100 + i * 15);
-                    
-                    // draw middle
+                    context.font = '20px Source Code Pro';
+                    context.fillText('Current Floor: ', 30, canvas.height / 2 - 15);
+                    context.fillText('Basement Index: ', 30, canvas.height / 2 + 15);
+
                     context.fillStyle = WHITE;
                     context.shadowColor = WHITE;
-                    context.fillText(middle, (canvas.width - totalWidth) / 2 + context.measureText(leftSide).width, 100 + i * 15);
+                    context.fillText(floors[Math.floor(currentStep)], 30 + context.measureText('Current Floor: ').width, canvas.height / 2 - 15);
+                    context.fillText(
+                        basementIndexes[Math.floor(currentStep)] || 'Not Found!',
+                        30 + context.measureText('Basement Index: ').width,
+                        canvas.height / 2 + 15,
+                    );
 
-                    // draw stickman
-                    if (part === 0 && i >= 11 && i <= 13) {
-                        context.fillStyle = YELLOW;
-                        context.shadowColor = YELLOW;
-                        context.textAlign = 'center';
-                        context.fillText(asciiFloors.stickman[(i - 11) % 3], canvas.width / 2, 105 + i * 15);
-                        context.textAlign = 'left';
-                    }
-                    
-                    // draw right side
-                    context.fillStyle = GREEN;
-                    context.shadowColor = GREEN;
-                    context.fillText(rightSide, (canvas.width - totalWidth) / 2 + context.measureText(leftSide + middle).width, 100 + i * 15);
-                
-                    // draw floor numbers
-                    if (i % 8 === 4) {
-                        context.fillStyle = YELLOW;
-                        context.shadowColor = YELLOW;
-                        context.fillText(currentFloor, (canvas.width + totalWidth) / 2 + 50, 100 + i * 15);
-                    }
-                }
-                context.strokeStyle = GREEN;
-                context.shadowColor = GREEN;
-                context.shadowBlur = 7;
-                context.strokeRect((canvas.width - totalWidth) / 2, 80, totalWidth, 380);
+                    // draw elevator man
+                    context.shadowBlur = 7;
+                    context.textAlign = 'left';
+                    context.textBaseline = 'middle';
+                    context.font = '15px Source Code Pro';
+                    let totalWidth;
+                    for (let i = 0; i < 24; i++) {
+                        let currentLine = '';
+                        let part = Math.floor(i / 8) - 1;
+                        let currentFloor = floors[Math.floor(currentStep)] - part;
 
-                // input text scrolling at bottom
-                let spacing = 20;
-                context.textAlign = 'center';
-                context.textBaseline = 'middle';
-                context.shadowBlur = 7;
-                context.font = '30px Source Code Pro';
+                        // handle left side
+                        let leftSide = '';
+                        if (i % 8 === 7) {
+                            leftSide = (currentFloor == 0) ? asciiFloors.lastLeftSideGround : asciiFloors.lastLeftSideClear;
+                        } else if (currentFloor % 3 === 0) {
+                            leftSide = asciiFloors.leftSideWindows[i % 8];
+                        } else {
+                            leftSide = asciiFloors.leftSideClear[i % 8];
+                        }
 
-                for (let i = -25; i <= 25; i++) {
-                    let index = Math.floor(currentStep) + i;
-                    if (index < 0 || index >= input.length) continue;
+                        // handle middle
+                        let middle = (part !== 0) ? asciiFloors.middleClear[i % 8] : asciiFloors.middleElevator[i % 8];
 
-                    if (i == 0) {
-                        context.fillStyle = YELLOW;
-                        context.shadowColor = YELLOW;
-                    } else {
+                        // handle right side
+                        let rightSide = '';
+                        if (i % 8 === 7) {
+                            rightSide = (currentFloor == 0) ? asciiFloors.lastRightSideGround : asciiFloors.lastRightSideClear;
+                        } else if (currentFloor % 5 === 0) {
+                            rightSide = asciiFloors.rightSideWindows[i % 8];
+                        } else {
+                            rightSide = asciiFloors.rightSideClear[i % 8];
+                        }
+
+                        totalWidth = context.measureText(leftSide + middle + rightSide).width;
+
+                        // draw left side
+                        context.fillStyle = GREEN;
+                        context.shadowColor = GREEN;
+                        context.fillText(leftSide, (canvas.width - totalWidth) / 2, 100 + i * 15);
+
+                        // draw middle
                         context.fillStyle = WHITE;
                         context.shadowColor = WHITE;
+                        context.fillText(middle, (canvas.width - totalWidth) / 2 + context.measureText(leftSide).width, 100 + i * 15);
+
+                        // draw stickman
+                        if (part === 0 && i >= 11 && i <= 13) {
+                            context.fillStyle = YELLOW;
+                            context.shadowColor = YELLOW;
+                            context.textAlign = 'center';
+                            context.fillText(asciiFloors.stickman[(i - 11) % 3], canvas.width / 2, 105 + i * 15);
+                            context.textAlign = 'left';
+                        }
+
+                        // draw right side
+                        context.fillStyle = GREEN;
+                        context.shadowColor = GREEN;
+                        context.fillText(rightSide, (canvas.width - totalWidth) / 2 + context.measureText(leftSide + middle).width, 100 + i * 15);
+
+                        // draw floor numbers
+                        if (i % 8 === 4) {
+                            context.fillStyle = YELLOW;
+                            context.shadowColor = YELLOW;
+                            context.fillText(currentFloor, (canvas.width + totalWidth) / 2 + 50, 100 + i * 15);
+                        }
                     }
-                    
-                    context.fillText(input[index], canvas.width / 2 + i * spacing, canvas.height - 40);
+                    context.strokeStyle = GREEN;
+                    context.shadowColor = GREEN;
+                    context.shadowBlur = 7;
+                    context.strokeRect((canvas.width - totalWidth) / 2, 80, totalWidth, 380);
+
+                    // input text scrolling at bottom
+                    let spacing = 20;
+                    context.textAlign = 'center';
+                    context.textBaseline = 'middle';
+                    context.shadowBlur = 7;
+                    context.font = '30px Source Code Pro';
+
+                    for (let i = -25; i <= 25; i++) {
+                        let index = Math.floor(currentStep) + i;
+                        if (index < 0 || index >= input.length) continue;
+
+                        if (i == 0) {
+                            context.fillStyle = YELLOW;
+                            context.shadowColor = YELLOW;
+                        } else {
+                            context.fillStyle = WHITE;
+                            context.shadowColor = WHITE;
+                        }
+
+                        context.fillText(input[index], canvas.width / 2 + i * spacing, canvas.height - 40);
+                    }
+
+                    // currentStep indicator
+                    context.fillStyle = GREEN;
+                    context.shadowColor = GREEN;
+                    context.fillText(`${Math.floor(currentStep)}/${input.length}`, canvas.width / 2, canvas.height - 80);
                 }
-
-                // currentStep indicator
-                context.fillStyle = GREEN;
-                context.shadowColor = GREEN;
-                context.fillText(`${Math.floor(currentStep)}/${input.length}`, canvas.width / 2, canvas.height - 80);
-            }
-        }
-    </script>
-</body>
-
+            };
+        </script>
+    </body>
 </html>

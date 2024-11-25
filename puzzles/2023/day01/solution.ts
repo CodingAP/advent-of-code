@@ -1,3 +1,5 @@
+// @ts-nocheck previous years was written in javascript, so disable it here
+
 /**
  * puzzles/2023/day01/solution.ts
  * 
@@ -11,12 +13,12 @@
 /**
  * code for part 1 of the advent of code puzzle
  * 
- * @param input 
- * @returns the result of part 1
+ * @param {string} input 
+ * @returns {string | number} the result of part 1
  */
-const part1 = (input: string) => {
+const part1 = input => {
     return input.split(/\r\n/g).reduce((sum, line) => {
-        let nums = line.split('').filter(character => character.match(/[0-9]/g));
+        let nums = line.split('').filter(character => !isNaN(character));
         return sum + parseInt(nums[0] + nums[nums.length - 1]);
     }, 0);
 }
@@ -24,11 +26,11 @@ const part1 = (input: string) => {
 /**
  * code for part 2 of the advent of code puzzle
  * 
- * @param input 
- * @returns the result of part 2
+ * @param {string} input 
+ * @returns {string | number} the result of part 2
  */
-const part2 = (input: string) => {
-    const numbers: { [key: string]: number } = {
+const part2 = input => {
+    const numbers = {
         one: 1,
         two: 2,
         three: 3,
@@ -41,12 +43,13 @@ const part2 = (input: string) => {
     };
 
     return input.split(/\r\n/g).reduce((sum, line) => {
-        let nums: number[] = [];
+        let nums = [];
         for (let i = 0; i < line.length; i++) {
+
             Object.keys(numbers).forEach(num => {
                 if (line.slice(i).startsWith(num)) nums.push(numbers[num]);
             });
-            if (line[i].match(/[0-9]/g)) nums.push(parseInt(line[i]));
+            if (!isNaN(line[i])) nums.push(parseInt(line[i]));
         }
         return sum + nums[0] * 10 + nums[nums.length - 1];
     }, 0);

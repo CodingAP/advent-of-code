@@ -1,3 +1,5 @@
+// @ts-nocheck previous years was written in javascript, so disable it here
+
 /**
  * puzzles/2023/day02/solution.ts
  * 
@@ -10,8 +12,11 @@
 
 /**
  * code for part 1 of the advent of code puzzle
+ * 
+ * @param {string} input 
+ * @returns {string | number} the result of part 1
  */
-const part1 = (input: string) => {
+const part1 = input => {
     // parse input
     const games = input.split(/\n/g).map(line => {
         return line.split(/: /g)[1].split(/;/g).reduce((array, sets) => {
@@ -21,7 +26,7 @@ const part1 = (input: string) => {
                 return obj;
             }, {}));
             return array;
-        }, [] as { [key: string]: number }[]);
+        }, []);
     });
 
     // if any set shows more than the limit, don't add to sum
@@ -42,8 +47,11 @@ const part1 = (input: string) => {
 
 /**
  * code for part 2 of the advent of code puzzle
+ * 
+ * @param {string} input 
+ * @returns {string | number} the result of part 2
  */
-const part2 = (input: string) => {
+const part2 = input => {
     /**
      * parsed input to get a list of games
      * 
@@ -57,7 +65,7 @@ const part2 = (input: string) => {
                 return obj;
             }, {}));
             return array;
-        }, [] as { [key: string]: number }[]);
+        }, []);
     });
 
     // find the max that was pulled out, multiply them together, and sum all of them up

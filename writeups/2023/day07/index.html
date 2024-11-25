@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta
+            name="msapplication-config"
+            content="/static/favicon/browserconfig.xml"
+        >
+        <meta name="theme-color" content="#ffffff">
+        <link
+            href="/static/css/main.css"
+            rel="stylesheet"
+        >
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/favicon/apple-touch-icon.png"
+        >
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/static/favicon/favicon-32x32.png"
+        >
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/static/favicon/favicon-16x16.png"
+        >
+        <link
+            rel="manifest"
+            href="/static/favicon/site.webmanifest"
+        >
+        <link
+            rel="shortcut icon"
+            href="/static/favicon/favicon.ico"
+        >
+
+        <title>
+            CodingAP's Advent of Code Hub
+        </title>
+
+        <link rel="stylesheet" href="/static/css/writeup.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    </head>
+
+    <body>
+        <p class="header text-center" style="font-size: 30px">-- CodingAP's Advent of Code Hub --</p>
+        <a style="font-size: 24px" href="/">[Back to Hub]</a>
+
+        <div id="snowflakes">
+            <div class="snowflake snowflake-1" style="top: -1.9511317097853698em; left: 23.767531325004086vw; animation-delay: -6.89468629182445s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.3212950633067297em; left: 22.176719794393883vw; animation-delay: -9.173297655146708s"></div>
+            <div class="snowflake snowflake-0" style="top: -1.4053304013644474em; left: 96.93750916764729vw; animation-delay: -8.11556779060275s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.6896666590391467em; left: 64.21408284754023vw; animation-delay: -6.750512857779176s"></div>
+            <div class="snowflake snowflake-0" style="top: -1.8219585683996986em; left: 58.709907472830295vw; animation-delay: -12.716437371037292s"></div>
+            <div class="snowflake snowflake-0" style="top: -3.4819114790193506em; left: 58.11076382971203vw; animation-delay: -3.0339264899119245s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.8502673003460937em; left: 87.2486610558654vw; animation-delay: -7.838653479925388s"></div>
+            <div class="snowflake snowflake-0" style="top: -3.026958656707955em; left: 68.55712087792021vw; animation-delay: -0.4174308495077206s"></div>
+            <div class="snowflake snowflake-0" style="top: -1.2028409342650614em; left: 78.19501133724016vw; animation-delay: -4.076215639526444s"></div>
+            <div class="snowflake snowflake-0" style="top: -1.5690675017871614em; left: 97.06543371321746vw; animation-delay: -13.914935832980788s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.9318998337971263em; left: 1.898918123059623vw; animation-delay: -5.163894681753622s"></div>
+            <div class="snowflake snowflake-2" style="top: -1.5752885882339884em; left: 2.715932774379004vw; animation-delay: -9.822583607709978s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.3135890690555163em; left: 88.89232598720211vw; animation-delay: -3.8795343441931207s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.200449236124321em; left: 78.63837249621442vw; animation-delay: -19.43449319556375s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.006565544796395em; left: 95.16832827106288vw; animation-delay: -10.289807114593664s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.9232563124019295em; left: 95.73443193596746vw; animation-delay: -16.255454278393685s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.932525054742751em; left: 79.40389715932471vw; animation-delay: -13.025425835079432s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.9661378915727576em; left: 76.7930504792558vw; animation-delay: -13.955139833662793s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.745277641705488em; left: 66.60319362000757vw; animation-delay: -8.024626362727126s"></div>
+            <div class="snowflake snowflake-0" style="top: -4.671918583753339em; left: 39.091345389953446vw; animation-delay: -7.163509880775245s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.143851842225075em; left: 41.07597733045185vw; animation-delay: -11.334206070442736s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.3494121385082305em; left: 73.85069610771909vw; animation-delay: -18.70992961870776s"></div>
+            <div class="snowflake snowflake-1" style="top: -1.0715708926900935em; left: 78.10313149759429vw; animation-delay: -5.415236246635344s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.8267654120303458em; left: 91.6263058486351vw; animation-delay: -4.730265105932143s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.736349465611639em; left: 48.84268593061458vw; animation-delay: -1.0731644925709993s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.448860932331194em; left: 92.62528364847373vw; animation-delay: -13.979758584396777s"></div>
+            <div class="snowflake snowflake-2" style="top: -1.858363362566029em; left: 7.005452818488789vw; animation-delay: -18.378473873757088s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.4787100968247255em; left: 12.656017552686283vw; animation-delay: -11.121658839604361s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.6722005372897484em; left: 98.0272529271562vw; animation-delay: -19.55239899832219s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.9586861059850704em; left: 67.28346595773849vw; animation-delay: -17.984026624802265s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.18617519476336164em; left: 32.88952816666455vw; animation-delay: -12.883701262295283s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.0021832363770873em; left: 21.783688408764167vw; animation-delay: -17.83079216524932s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.47537744514944524em; left: 63.09346469652046vw; animation-delay: -0.8644549805753554s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.9896303475989017em; left: 38.91763694997461vw; animation-delay: -3.7785262887237536s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.488639080048328em; left: 94.91041045043119vw; animation-delay: -13.160052652308597s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.8427513692730393em; left: 96.18999300190801vw; animation-delay: -16.5565659008982s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.4969293409378013em; left: 50.95732325683158vw; animation-delay: -12.854345675360275s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.6125087466454371em; left: 74.55113222123vw; animation-delay: -4.20596260882518s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.580966841912344em; left: 6.7033306692868555vw; animation-delay: -6.220294723622564s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.436192530547235em; left: 51.975080984701314vw; animation-delay: -2.0200264450784777s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.9505007105065999em; left: 39.45112151570882vw; animation-delay: -3.8152394118202437s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.18422363214665838em; left: 61.81629120539309vw; animation-delay: -2.9459373922235965s"></div>
+            <div class="snowflake snowflake-0" style="top: -2.4682910891216867em; left: 71.450207622193vw; animation-delay: -13.9520894933835s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.8378605577432585em; left: 37.0319029873134vw; animation-delay: -3.2150491797101743s"></div>
+            <div class="snowflake snowflake-3" style="top: -1.2992415672778879em; left: 42.59729237248382vw; animation-delay: -15.13980848961815s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.5655002614451563em; left: 33.04299867178337vw; animation-delay: -11.803289063715049s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.3337179883244379em; left: 55.55387706164987vw; animation-delay: -16.803219990882646s"></div>
+            <div class="snowflake snowflake-0" style="top: -3.6983092260129737em; left: 92.55800836134536vw; animation-delay: -14.040395935265245s"></div>
+            <div class="snowflake snowflake-3" style="top: -1.1172637591728896em; left: 95.59922462471779vw; animation-delay: -2.1059533160388577s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.055145565206973224em; left: 79.16896602553226vw; animation-delay: -10.4540283763082s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.7267422292046883em; left: 43.22329454858205vw; animation-delay: -7.2817390415585415s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.703857446615874em; left: 89.45731548107607vw; animation-delay: -1.6513919920401499s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.026540062854778em; left: 81.01761224060016vw; animation-delay: -11.84034487936174s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.475792035697632em; left: 17.21049855458996vw; animation-delay: -10.062232706023263s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.739052150626815em; left: 92.63636933507766vw; animation-delay: -4.122062684825636s"></div>
+            <div class="snowflake snowflake-0" style="top: -3.168336453832048em; left: 90.71823795366139vw; animation-delay: -2.4927576438310206s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.8117745800537213em; left: 78.76493227759698vw; animation-delay: -6.8601100890442845s"></div>
+            <div class="snowflake snowflake-2" style="top: -1.0176019876875986em; left: 88.725964786768vw; animation-delay: -2.7698849542746196s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.7827190867367166em; left: 11.530814591747763vw; animation-delay: -18.992033907130015s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.819907237809731em; left: 99.84759646911047vw; animation-delay: -14.427265393902346s"></div>
+            <div class="snowflake snowflake-0" style="top: -2.0506065387423855em; left: 54.960403873680086vw; animation-delay: -12.794700335169136s"></div>
+            <div class="snowflake snowflake-0" style="top: -0.35808538461851724em; left: 0.49069184316896663vw; animation-delay: -15.400395004139877s"></div>
+            <div class="snowflake snowflake-3" style="top: -3.5226253402394745em; left: 20.684581200254513vw; animation-delay: -8.414592548386736s"></div>
+            <div class="snowflake snowflake-3" style="top: -3.965953269684379em; left: 49.96532664201065vw; animation-delay: -16.157406514648855s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.089439074359893em; left: 40.782444646988814vw; animation-delay: -8.272151049773058s"></div>
+            <div class="snowflake snowflake-0" style="top: -3.6432689109270533em; left: 37.40062434652729vw; animation-delay: -18.6867071132012s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.120995592657575em; left: 72.17316656860673vw; animation-delay: -13.216263680620571s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.125928175524741em; left: 25.575906218613763vw; animation-delay: -12.009150672103598s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.468436986825262em; left: 38.59898999643423vw; animation-delay: -7.3460561289526805s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.795588389231881em; left: 75.80117758554475vw; animation-delay: -18.006801176562618s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.695813623226115em; left: 56.6981139894001vw; animation-delay: -12.405793662261368s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.88721964427196em; left: 90.22398657388462vw; animation-delay: -3.5398845519925404s"></div>
+            <div class="snowflake snowflake-0" style="top: -0.8311147791641627em; left: 52.839298434447635vw; animation-delay: -2.646027916035014s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.882827822123609em; left: 4.37728903035679vw; animation-delay: -19.98817696169607s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.0708889909992765em; left: 85.68793630598277vw; animation-delay: -16.245466458294707s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.7357530424414787em; left: 56.54534881619382vw; animation-delay: -15.322582358004304s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.662345568069411em; left: 85.22429185935869vw; animation-delay: -3.490617500675688s"></div>
+            <div class="snowflake snowflake-0" style="top: -0.7663036654046096em; left: 95.59918559354188vw; animation-delay: -2.6053117482850974s"></div>
+            <div class="snowflake snowflake-2" style="top: -1.3635182178331418em; left: 31.666952698895614vw; animation-delay: -8.988653196162248s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.942934066057317em; left: 20.563412069566954vw; animation-delay: -5.820227896899062s"></div>
+            <div class="snowflake snowflake-1" style="top: -1.0413430909517274em; left: 70.01665738798425vw; animation-delay: -6.474899841113451s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.2361693837235785em; left: 1.214957090413904vw; animation-delay: -13.644013104689584s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.089157344178801em; left: 44.650259930579736vw; animation-delay: -11.87799270355844s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.2709109085101191em; left: 4.233116279716431vw; animation-delay: -11.483549084136587s"></div>
+            <div class="snowflake snowflake-3" style="top: -1.3858766238847486em; left: 72.78652252829056vw; animation-delay: -10.07455703182683s"></div>
+            <div class="snowflake snowflake-2" style="top: -1.8523028227087301em; left: 55.12340634532158vw; animation-delay: -15.596020411842337s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.6210697780072949em; left: 10.464131269201227vw; animation-delay: -18.91218177125961s"></div>
+            <div class="snowflake snowflake-1" style="top: -1.6573601141140193em; left: 85.21966882740205vw; animation-delay: -14.79494619716284s"></div>
+            <div class="snowflake snowflake-0" style="top: -1.1238328833820577em; left: 85.9218218630082vw; animation-delay: -15.158515278923446s"></div>
+            <div class="snowflake snowflake-1" style="top: -3.999198935155439em; left: 38.8336158717403vw; animation-delay: -12.923178772954401s"></div>
+            <div class="snowflake snowflake-2" style="top: -1.1564416956620316em; left: 5.026967821697825vw; animation-delay: -6.315737732101696s"></div>
+            <div class="snowflake snowflake-0" style="top: -0.5824646113103726em; left: 25.908844507410087vw; animation-delay: -12.753703563889477s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.5674951243243616em; left: 19.50537751181438vw; animation-delay: -9.289211470844293s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.1369281000114304em; left: 25.551001440833176vw; animation-delay: -5.410271671145304s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.1935736566480357em; left: 64.173889469334vw; animation-delay: -1.845800314572501s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.4069163210823501em; left: 50.4797322548296vw; animation-delay: -13.1906515101047s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.689900980012647em; left: 21.819416044936446vw; animation-delay: -13.834440852167283s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.435304999188356em; left: 32.63254302737892vw; animation-delay: -2.3520032924419s"></div>
+            <div class="snowflake snowflake-0" style="top: -1.6742196386081853em; left: 98.237497641426vw; animation-delay: -2.98403390650428s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.3503070897889824em; left: 22.568284320527354vw; animation-delay: -5.5708671255375375s"></div>
+            <div class="snowflake snowflake-2" style="top: -1.2810329755291372em; left: 76.17762336498797vw; animation-delay: -4.491874537624909s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.737170291340763em; left: 28.189229412035523vw; animation-delay: -4.036618156794205s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.036840458068151em; left: 14.305021439372755vw; animation-delay: -9.094067147848396s"></div>
+            <div class="snowflake snowflake-1" style="top: -1.5326877776925418em; left: 57.478016767693376vw; animation-delay: -7.607638204833367s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.963629794767189em; left: 19.7524990995964vw; animation-delay: -16.47085933365457s"></div>
+            <div class="snowflake snowflake-0" style="top: -2.1941594619812577em; left: 31.996753538046406vw; animation-delay: -13.313561788231262s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.5374467977097757em; left: 59.27233029856236vw; animation-delay: -8.41549752169293s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.268969408517648em; left: 69.27772710748971vw; animation-delay: -11.120171301200186s"></div>
+            <div class="snowflake snowflake-0" style="top: -2.3280769359623212em; left: 39.95518825816164vw; animation-delay: -0.7797362702187982s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.161188196674997em; left: 34.253907946384324vw; animation-delay: -17.514356100670227s"></div>
+            <div class="snowflake snowflake-0" style="top: -4.04897938436142em; left: 67.77713775525187vw; animation-delay: -6.15771811561125s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.13594146969779897em; left: 12.684698312349463vw; animation-delay: -11.602365244706183s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.10160705582481055em; left: 36.11411570277436vw; animation-delay: -14.061744015120734s"></div>
+            <div class="snowflake snowflake-0" style="top: -3.001085548630964em; left: 54.37108523587144vw; animation-delay: -19.550590297735763s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.7278970600763068em; left: 14.597430902435104vw; animation-delay: -17.398984121932415s"></div>
+            <div class="snowflake snowflake-0" style="top: -4.106962128088164em; left: 47.00854665018328vw; animation-delay: -19.211977421977178s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.3042475894381784em; left: 47.01729409552789vw; animation-delay: -1.6172578286233197s"></div>
+            <div class="snowflake snowflake-1" style="top: -1.3070166825709773em; left: 8.212448611311164vw; animation-delay: -18.617560208200317s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.157686921693572em; left: 36.72288973226146vw; animation-delay: -6.621669276881832s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.14306314638160122em; left: 10.869949237751575vw; animation-delay: -3.6005930843726786s"></div>
+            <div class="snowflake snowflake-3" style="top: -3.1511636094922513em; left: 6.598538079629845vw; animation-delay: -15.736533337026843s"></div>
+            <div class="snowflake snowflake-0" style="top: -3.047178583361113em; left: 33.682415417709485vw; animation-delay: -8.70216762045963s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.1024374736843725em; left: 68.8357033164296vw; animation-delay: -16.54946184555653s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.17486877723968064em; left: 49.46734544805624vw; animation-delay: -4.361911430161016s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.9476371669104922em; left: 43.73651743719724vw; animation-delay: -12.888965565119417s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.0984232642124145em; left: 68.28063742672639vw; animation-delay: -17.972119187160533s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.731220013189899em; left: 84.35358994200126vw; animation-delay: -1.9274431890751176s"></div>
+            <div class="snowflake snowflake-0" style="top: -2.781693145438785em; left: 25.942611250017535vw; animation-delay: -10.751989536436518s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.863761889646664em; left: 32.26370187573742vw; animation-delay: -17.35721936167195s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.251924451640221em; left: 43.309275250422296vw; animation-delay: -10.157025555467346s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.160355074923459em; left: 21.74275103251613vw; animation-delay: -9.695946263966992s"></div>
+            <div class="snowflake snowflake-1" style="top: -1.2347883264788118em; left: 47.78268401021104vw; animation-delay: -7.868273573572377s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.156500038195187em; left: 88.87005317006465vw; animation-delay: -18.823787641017738s"></div>
+            <div class="snowflake snowflake-0" style="top: -2.3458502993109462em; left: 27.387988625941162vw; animation-delay: -18.16889485841611s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.0192279709089345em; left: 54.36785177534207vw; animation-delay: -2.123645225390356s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.817661298443568em; left: 2.400832671878339vw; animation-delay: -10.133575063471s"></div>
+            <div class="snowflake snowflake-3" style="top: -3.0696987352217997em; left: 56.30438095914734vw; animation-delay: -10.831309628430791s"></div>
+            <div class="snowflake snowflake-0" style="top: -2.7191264901188017em; left: 59.470357572280676vw; animation-delay: -18.66105792908804s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.4673625583806524em; left: 53.03720368927873vw; animation-delay: -0.9497260090648485s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.0637670825232528em; left: 54.468630917627394vw; animation-delay: -12.43449947892644s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.2970795887142534em; left: 46.21554976110585vw; animation-delay: -18.9850716060958s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.9876827493138034em; left: 29.024795845620744vw; animation-delay: -1.5071243233782239s"></div>
+            <div class="snowflake snowflake-1" style="top: -1.981836678255835em; left: 23.631061467662672vw; animation-delay: -10.215043684221055s"></div>
+            <div class="snowflake snowflake-0" style="top: -0.5737654611848286em; left: 20.650541933633583vw; animation-delay: -12.42541244917402s"></div>
+            <div class="snowflake snowflake-0" style="top: -4.443940165454276em; left: 34.306163979344916vw; animation-delay: -13.645069850501837s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.19562119547260615em; left: 23.393242944563617vw; animation-delay: -12.29652565451666s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.8373101342593259em; left: 42.734834380259045vw; animation-delay: -8.278708889264191s"></div>
+            <div class="snowflake snowflake-1" style="top: -3.485444561298894em; left: 24.94374469011733vw; animation-delay: -1.067072153367894s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.321883705050465em; left: 83.95766989142129vw; animation-delay: -1.0499774063022604s"></div>
+            <div class="snowflake snowflake-0" style="top: -4.100984209582883em; left: 47.28482655852766vw; animation-delay: -16.37197607644715s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.996981804232782em; left: 45.248817492395176vw; animation-delay: -17.679079605904278s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.9628223156231415em; left: 10.382533360933422vw; animation-delay: -8.541698161976772s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.435266549969957em; left: 76.73884440363548vw; animation-delay: -19.725896968584404s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.8193616928801104em; left: 31.01024263195491vw; animation-delay: -3.243896875022898s"></div>
+            <div class="snowflake snowflake-0" style="top: -3.639425433922753em; left: 75.18090310285517vw; animation-delay: -15.602089740166821s"></div>
+            <div class="snowflake snowflake-3" style="top: -1.2385465029862963em; left: 11.705397174017529vw; animation-delay: -5.32385921789543s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.387491318033015em; left: 81.32270970411845vw; animation-delay: -15.530797064782401s"></div>
+            <div class="snowflake snowflake-2" style="top: -2.9254268474718703em; left: 41.62070024388302vw; animation-delay: -17.921381240015933s"></div>
+            <div class="snowflake snowflake-1" style="top: -1.8683552552860194em; left: 38.6198930604549vw; animation-delay: -9.308922982979372s"></div>
+            <div class="snowflake snowflake-0" style="top: -0.8886517908775549em; left: 37.685529640591575vw; animation-delay: -5.758459611802027s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.4574283655491307em; left: 97.72378688756329vw; animation-delay: -3.642038738820075s"></div>
+            <div class="snowflake snowflake-3" style="top: -0.2848845087568985em; left: 60.15077026993823vw; animation-delay: -7.2848076590505295s"></div>
+            <div class="snowflake snowflake-3" style="top: -3.3545583978283355em; left: 50.72241769981345vw; animation-delay: -7.515984272389744s"></div>
+            <div class="snowflake snowflake-3" style="top: -3.600127103128461em; left: 43.781817742449vw; animation-delay: -16.300318472923742s"></div>
+            <div class="snowflake snowflake-0" style="top: -2.342578503254813em; left: 85.09133479299868vw; animation-delay: -18.58944002380322s"></div>
+            <div class="snowflake snowflake-0" style="top: -3.219726283376345em; left: 1.4285770570802159vw; animation-delay: -1.414815685052564s"></div>
+            <div class="snowflake snowflake-1" style="top: -3.680129643470135em; left: 80.37169135713582vw; animation-delay: -16.427866554976177s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.2968331649668325em; left: 62.61964728870291vw; animation-delay: -10.599241220431978s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.274880953994216em; left: 10.195094374960334vw; animation-delay: -17.182951226994504s"></div>
+            <div class="snowflake snowflake-3" style="top: -3.552244658732292em; left: 29.122698625513486vw; animation-delay: -12.682941826248015s"></div>
+            <div class="snowflake snowflake-0" style="top: -2.783260433048679em; left: 54.68524751330528vw; animation-delay: -12.997285454904034s"></div>
+            <div class="snowflake snowflake-3" style="top: -3.2103346334037743em; left: 87.57178222394562vw; animation-delay: -11.464042279841511s"></div>
+            <div class="snowflake snowflake-1" style="top: -3.6216320927633348em; left: 57.688586541099205vw; animation-delay: -11.904567951688723s"></div>
+            <div class="snowflake snowflake-1" style="top: -2.4950913840512956em; left: 43.26422527119269vw; animation-delay: -15.001859231563643s"></div>
+            <div class="snowflake snowflake-2" style="top: -1.274436813143781em; left: 21.886167830003167vw; animation-delay: -3.8515789066144324s"></div>
+            <div class="snowflake snowflake-1" style="top: -3.7805055002355195em; left: 86.6385377975899vw; animation-delay: -13.592955337146954s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.3797044140176125em; left: 19.247866133622814vw; animation-delay: -1.3826435877553322s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.8558203705021361em; left: 87.72601650122205vw; animation-delay: -18.462953931538408s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.931065670265981em; left: 75.48625840568081vw; animation-delay: -17.28414506165493s"></div>
+            <div class="snowflake snowflake-0" style="top: -4.608429191837875em; left: 25.17652135353825vw; animation-delay: -12.187638799662821s"></div>
+            <div class="snowflake snowflake-3" style="top: -1.791291365058293em; left: 17.992216581993613vw; animation-delay: -12.342145221890402s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.881512084641396em; left: 94.39816107750485vw; animation-delay: -13.440815065999097s"></div>
+            <div class="snowflake snowflake-2" style="top: -3.9558010346465378em; left: 12.194232848067887vw; animation-delay: -12.751275212865396s"></div>
+            <div class="snowflake snowflake-0" style="top: -4.557116883697793em; left: 93.72598087411954vw; animation-delay: -9.288168998908057s"></div>
+            <div class="snowflake snowflake-0" style="top: -4.16852802115983em; left: 4.7593114245834345vw; animation-delay: -10.44473019383345s"></div>
+            <div class="snowflake snowflake-2" style="top: -4.478233914621716em; left: 37.68462098655132vw; animation-delay: -17.878244834966143s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.17974458257880466em; left: 67.5096641479695vw; animation-delay: -16.625612836152847s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.750128866502801em; left: 91.20708292314414vw; animation-delay: -9.235730352977885s"></div>
+            <div class="snowflake snowflake-3" style="top: -4.137223659811094em; left: 59.90837295125979vw; animation-delay: -15.02186666044134s"></div>
+            <div class="snowflake snowflake-1" style="top: -1.2279937791082018em; left: 8.557515112445646vw; animation-delay: -15.234994666747905s"></div>
+            <div class="snowflake snowflake-1" style="top: -4.974895277376227em; left: 48.91264427155042vw; animation-delay: -19.73913072757545s"></div>
+            <div class="snowflake snowflake-0" style="top: -1.0106372795783791em; left: 89.9451600648179vw; animation-delay: -18.64938552763512s"></div>
+            <div class="snowflake snowflake-0" style="top: -0.753033470443053em; left: 52.863496978965884vw; animation-delay: -5.056369019524007s"></div>
+            <div class="snowflake snowflake-3" style="top: -2.801455935291537em; left: 93.55613651780625vw; animation-delay: -0.001381346209514689s"></div>
+            <div class="snowflake snowflake-1" style="top: -0.4914346004276904em; left: 59.59684742406557vw; animation-delay: -18.986359711233142s"></div>
+            <div class="snowflake snowflake-3" style="top: -3.5865751755227206em; left: 24.135582641999797vw; animation-delay: -17.363000701583648s"></div>
+            <div class="snowflake snowflake-3" style="top: -1.0400356197196003em; left: 77.74392517447517vw; animation-delay: -2.179531844892151s"></div>
+            <div class="snowflake snowflake-0" style="top: -1.8910929323627135em; left: 23.29111497747851vw; animation-delay: -4.319957310560931s"></div>
+            <div class="snowflake snowflake-2" style="top: -1.2977188065649359em; left: 20.24925778409379vw; animation-delay: -17.53591673282954s"></div>
+            <div class="snowflake snowflake-2" style="top: -0.4903354527785597em; left: 26.638838888879455vw; animation-delay: -7.528682327437322s"></div>
+        </div>
+
+        <h2>
+            Advent of Code 2023, Day 7
+        </h2>
+
+        <h3>
+            -- Camel Cards --
+        </h3>
+
+        <article>
+            <p>
+                Leaderboard Positions - <strong>Part 1</strong>: 92, <strong>Part 2</strong>: 1304
+            </p>
+            <p>
+                Wow, the odd day wasn't as bad! Wasn't pleasant either, but comparing to Day 5, it was simple. I also got on the global leaderboard for the
+                first time this year. This was my second time overall, too.
+            </p>
+            <p>
+                For this puzzle, we have a list of hands that are being played under 'Camel Card' rules. They are similar to Poker, but the High Card is
+                determined from left to right, not the highest overall. The ranks are as such: 5 of a Kind, 4 of a Kind, Full House, 3 of a Kind, Two Pair, One
+                Pair, and the High Card. For part 1, we need to sort the hands worst to best, multiply the rank number by the bid, and add them up. The way I do
+                this is by passing the hand to <code>getHandRank()</code> and it returns a number depending on what rank it is. That can be passed in <code
+                >.sort()</code> to do the sorting for me. As mentioned above, the High Card is from left to right, so indexes worked for this one.
+            </p>
+            <p>
+                For part 2, the <code>J's</code> are not Jacks but Jokers, which means that they could be any of the cards. This complicates it a bit as there
+                are many options, but we can optimize because if there is 4 or 5 Jokers, we know the best can be a 5 of a kind. If there is less, we generate
+                all possible combinations and find the highest rank. Technically, we can apply more rules to optimize further, but it ran in a reasonable amount
+                of time with this rule, so I'm fine with it.
+            </p>
+            <p>This one should be the best for a visualization, and I want to try and make a deck of cards in the AOC ASCII style, so look out for that!</p>
+        </article>
+
+        <div class="footer">
+            Created by <a href="https://codingap.github.io/">CodingAP</a>, <a href="https://adventofcode.com/">Advent of Code</a> created by Eric Wastl
+        </div>
+    </body>
+</html>

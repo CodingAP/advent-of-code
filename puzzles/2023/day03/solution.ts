@@ -1,3 +1,5 @@
+// @ts-nocheck previous years was written in javascript, so disable it here
+
 /**
  * puzzles/2023/day03/solution.ts
  * 
@@ -10,8 +12,11 @@
 
 /**
  * code for part 1 of the advent of code puzzle
+ * 
+ * @param {string} input 
+ * @returns {string | number} the result of part 1
  */
-const part1 = (input: string) => {
+const part1 = input => {
     // parse input
     const grid = input.split(/\n/g).map(line => line.split(''));
     let sum = 0;
@@ -56,13 +61,16 @@ const part1 = (input: string) => {
 
 /**
  * code for part 2 of the advent of code puzzle
+ * 
+ * @param {string} input 
+ * @returns {string | number} the result of part 2
  */
-const part2 = (input: string) => {
+const part2 = input => {
     const grid = input.split(/\n/g).map(line => line.split(''));
-    let gearNumbers: { [key: string]: number[] } = {};
+    let gearNumbers = {};
 
     for (let y = 0; y < grid.length; y++) {
-        let currentNumber = '', checkNumber = false, gearLocation: string | null =  null;
+        let currentNumber = '', checkNumber = false, gearLocation = null;
 
         for (let x = 0; x < grid[y].length; x++) {
             // if current spot is a number and we aren't checking them yet, start checking

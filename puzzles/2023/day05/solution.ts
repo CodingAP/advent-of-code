@@ -1,3 +1,5 @@
+// @ts-nocheck previous years was written in javascript, so disable it here
+
 /**
  * puzzles/2023/day05/solution.ts
  * 
@@ -10,16 +12,27 @@
 
 /**
  * code for part 1 of the advent of code puzzle
+ * 
+ * @param {string} input 
+ * @returns {string | number} the result of part 1
  */
-const part1 = (input: string) => {
+const part1 = input => {
     // seperate each group for parsing
     let groups = input.split(/\n\n/g);
 
-    // seed numbers from input
-    let seeds: number[] = groups[0].split(/: /)[1].split(/ /g).map(num => parseInt(num));
+    /**
+     * seed numbers from input
+     * 
+     * @type {number[]}
+     */
+    let seeds = groups[0].split(/: /)[1].split(/ /g).map(num => parseInt(num));
 
-    // mapping between ids
-    const maps: { [key: string]: { destStart: number, sourceStart: number, range: number }[] } = groups.slice(1).reduce((obj, map) => {
+    /**
+     * mapping between ids
+     * 
+     * @type {Record<string, { destStart: number, sourceStart: number, range: number }[]>}
+     */
+    const maps = groups.slice(1).reduce((obj, map) => {
         let [name, ...locations] = map.split(/\n/g);
         obj[name.split(/ /)[0]] = locations.map(numbers => {
             let [destStart, sourceStart, range] = numbers.split(/ /g).map(num => parseInt(num));
@@ -46,16 +59,27 @@ const part1 = (input: string) => {
 
 /**
  * code for part 2 of the advent of code puzzle
+ * 
+ * @param {string} input 
+ * @returns {string | number} the result of part 2
  */
-const part2 = (input: string) => {
+const part2 = input => {
     // seperate each group for parsing
     let groups = input.split(/\n\n/g);
 
-    // seed numbers from input
-    let seeds: number[] = groups[0].split(/: /)[1].split(/ /g).map(num => parseInt(num));
+    /**
+     * seed numbers from input
+     * 
+     * @type {number[]}
+     */
+    let seeds = groups[0].split(/: /)[1].split(/ /g).map(num => parseInt(num));
 
-    // mapping between ids
-    const maps: { [key: string]: { destStart: number, sourceStart: number, range: number }[] } = groups.slice(1).reduce((obj, map) => {
+    /**
+     * mapping between ids
+     * 
+     * @type {Record<string, { destStart: number, sourceStart: number, range: number }[]>}
+     */
+    const maps = groups.slice(1).reduce((obj, map) => {
         let [name, ...locations] = map.split(/\n/g);
         obj[name.split(/ /)[0]] = locations.map(numbers => {
             let [destStart, sourceStart, range] = numbers.split(/ /g).map(num => parseInt(num));
@@ -65,10 +89,12 @@ const part2 = (input: string) => {
     }, {});
 
     /**
-     * find the smallest id of the entire range using range intersections
+     * find the smallest id of the entire range using range intersectioms
+     * 
+     * @param {{ start: number, end: number }} range the range to be mapped
      */
-    const findMinimum = (range: { start: number, end: number }) => {
-        let unmapped: { start: number, end: number }[] = [structuredClone(range)], mapped: { start: number, end: number }[] = [];
+    const findMinimum = range => {
+        let unmapped = [structuredClone(range)], mapped = [];
 
         // go through all mappings to map the entire range
         Object.values(maps).forEach(mapping => {
@@ -76,7 +102,7 @@ const part2 = (input: string) => {
             // putting mapped ranges in 'mapped' and unmapped in 'unmapped' to keep attempting to map
             for (let i = 0; i < mapping.length; i++) {
                 let mappingRange = { start: mapping[i].sourceStart, end: mapping[i].sourceStart + mapping[i].range };
-                let newUnmapped: { start: number, end: number }[] = [];
+                let newUnmapped = [];
                 unmapped.map(range => {
                     // check for range collision
                     if (range.start <= mappingRange.end && range.end >= mappingRange.start) {

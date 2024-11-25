@@ -10,6 +10,7 @@
     "jsr:@std/assert@0.217": "0.217.0",
     "jsr:@std/assert@0.221": "0.221.0",
     "jsr:@std/assert@~0.213.1": "0.213.1",
+    "jsr:@std/crypto@^1.0.3": "1.0.3",
     "jsr:@std/encoding@0.213.1": "0.213.1",
     "jsr:@std/encoding@0.221": "0.221.0",
     "jsr:@std/fmt@0.213.1": "0.213.1",
@@ -129,6 +130,9 @@
     },
     "@std/assert@0.221.0": {
       "integrity": "a5f1aa6e7909dbea271754fd4ab3f4e687aeff4873b4cef9a320af813adb489a"
+    },
+    "@std/crypto@1.0.3": {
+      "integrity": "a2a32f51ddef632d299e3879cd027c630dcd4d1d9a5285d6e6788072f4e51e7f"
     },
     "@std/encoding@0.213.1": {
       "integrity": "fcbb6928713dde941a18ca5db88ca1544d0755ec8fb20fe61e2dc8144b390c62"
@@ -2294,6 +2298,7 @@
       "jsr:@codingap/steve@^2.0.10",
       "jsr:@db/sqlite@0.12",
       "jsr:@libs/markdown@2",
+      "jsr:@std/crypto@^1.0.3",
       "jsr:@std/fs@1",
       "jsr:@std/html@1",
       "jsr:@std/path@1"

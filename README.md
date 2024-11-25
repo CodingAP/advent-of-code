@@ -7,6 +7,7 @@ These are all my solutions for the years of [Advent of Code](https://adventofcod
 ### How to Use Locally
 
 Clone this repository on your computer and run...
+
 ```
 > npm i
 ```
@@ -18,10 +19,12 @@ SESSION=YOUR_TOKEN_HERE
 ```
 
 ### How to Run
+
 To see how it works, run `node aoc` to see all commands and arguments.
 
-Also, to lint:
-`npx prettier . --write`
+Also, to lint: `npx prettier . --write`
 
 ### Note for AOC moderators
-The automated requests are served from `aoc.js`, where they have the a User-Agent header that points to this page. Nothing is done automatically, all done by a function call by the built in command line tool or a call from another script. Also, there are no inputs stored on the GitHub repository
+
+The automated requests are served from `aoc.js`, where they have the a User-Agent header that points to this page. Nothing is done automatically, all done by a
+function call by the built in command line tool or a call from another script. Also, there are no inputs stored on the GitHub repository

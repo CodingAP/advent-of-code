@@ -1,3 +1,5 @@
+// @ts-nocheck previous years was written in javascript, so disable it here
+
 /**
  * puzzles/2023/day04/solution.ts
  * 
@@ -8,17 +10,25 @@
  * 12/3/2023
  */
 
-interface Card {
-    winning: number[];
-    numbers: number[];
-};
+/**
+ * @typedef {Object} Card 
+ * @property {number[]} winning
+ * @property {number[]} numbers
+ */
 
 /**
  * code for part 1 of the advent of code puzzle
+ * 
+ * @param {string} input 
+ * @returns {string | number} the result of part 1
  */
-const part1 = (input: string) => {
-    // parses input to return a list of cards with winning numbers and numbers drawn
-    const cards: Card[] = input.split(/\n/g).map(line => {
+const part1 = input => {
+    /**
+     * parses input to return a list of cards with winning numbers and numbers drawn
+     * 
+     * @type {Card[]}
+     */
+    const cards = input.split(/\n/g).map(line => {
         let [winning, numbers] = line.split(/: /)[1].split(/ \| /).map(numbers => numbers.split(/ /).filter(number => number != '').map(num => parseInt(num)));
         return { winning, numbers };
     });
@@ -33,24 +43,32 @@ const part1 = (input: string) => {
 
 /**
  * code for part 2 of the advent of code puzzle
+ * 
+ * @param {string} input 
+ * @returns {string | number} the result of part 2
  */
-const part2 = (input: string) => {
-    // parses input to return a list of cards with winning numbers and numbers drawn
+const part2 = input => {
+    /**
+     * parses input to return a list of cards with winning numbers and numbers drawn
+     * 
+     * @type {Card[]}
+     */
     const cards = input.split(/\n/g).map(line => {
         let [winning, numbers] = line.split(/: /)[1].split(/ \| /).map(numbers => numbers.split(/ /).filter(number => number != '').map(num => parseInt(num)));
         return { winning, numbers };
     });
 
     // use memoization to run the recursive function faster (skips cards already counted)
-    let memoization: number[] = [];
+    let memoization = [];
 
     /**
      * returns the number of scratch cards that the card generates
      * 
-     * @param card the card being counted
-     * @param index index of card being counted
+     * @param {Card} card the card being counted
+     * @param {number} index index of card beign counted 
+     * @returns {number}
      */
-    let countScratchCards = (card: Card, index: number): number => {
+    let countScratchCards = (card, index) => {
         if (memoization[index] != null) return memoization[index];
 
         let cardCount = 1;
