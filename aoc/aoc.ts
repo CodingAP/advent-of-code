@@ -234,11 +234,11 @@ const runPuzzle = async (
     const results = { part1: 'n/a', part2: 'n/a' };
 
     if (part === '1' || part === 'both') {
-        results.part1 = part1(input.replace(/\r/g, '').trim());
+        results.part1 = part1(input.replace(/\r/g, ''));
     }
 
     if (part === '2' || part === 'both') {
-        results.part2 = part2(input.replace(/\r/g, '').trim());
+        results.part2 = part2(input.replace(/\r/g, ''));
     }
 
     return { error: false, part1: results.part1, part2: results.part2 };
@@ -283,7 +283,7 @@ const profilePuzzle = async (
 
     for (let i = 0; i < parseInt(iterations); i++) {
         const start = performance.now();
-        part1Result = part1(input.replace(/\r/g, '').trim());
+        part1Result = part1(input.replace(/\r/g, ''));
         const end = performance.now();
 
         part1Time += end - start;
@@ -292,7 +292,7 @@ const profilePuzzle = async (
     // time part2
     for (let i = 0; i < parseInt(iterations); i++) {
         const start = performance.now();
-        part2Result = part2(input.replace(/\r/g, '').trim());
+        part2Result = part2(input.replace(/\r/g, ''));
         const end = performance.now();
 
         part2Time += end - start;

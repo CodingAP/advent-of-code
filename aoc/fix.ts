@@ -1,7 +1,7 @@
 import { join, resolve } from '@std/path';
 import { getTitle, profilePuzzle, runPuzzle, submitAnswer, updatePuzzle } from './aoc.ts';
 
-const year = '2016';
+const year = '2022';
 
 const baseDirectory = resolve('../puzzles');
 
@@ -41,23 +41,23 @@ const part2 = input => {`;
 for (let i = 1; i <= 25; i++) {
     const solutionDirectory = join(baseDirectory, year, `day${i.toString().padStart(2, '0')}`);
 
-    await profilePuzzle(i.toString(), year, '3');
-    await submitAnswer(i.toString(), year, 'both', 'true');
+    // await updatePuzzle(i.toString(), year);
+    const response = await runPuzzle(i.toString(), year, 'both');
+    console.log(response.part1);
+    console.log(response.part2);
+    // await profilePuzzle(i.toString(), year, '3');
+    // await submitAnswer(i.toString(), year, 'both', 'true');
     console.log('day', i, year);
 
-    // const response = await submitAnswer(i.toString(), year, 'both', 'true');
-    // console.log(response.part1);
-    // console.log(response.part2);
+    let script = await Deno.readTextFile(join(solutionDirectory, 'solution.js'));
+    script = script.replace(/async /g, '');
+    script = script.replace(/const part1 = input => {/g, part1Comment);
+    script = script.replace(/const part2 = input => {/g, part2Comment);
+    const lines = script.replace(/\r/g, '').split('\n');
+    const commentLines = await getComment(i.toString(), year);
 
-    // let script = await Deno.readTextFile(join(solutionDirectory, 'solution.js'));
-    // script = script.replace(/async /g, '');
-    // script = script.replace(/const part1 = input => {/g, part1Comment);
-    // script = script.replace(/const part2 = input => {/g, part2Comment);
-    // const lines = script.replace(/\r/g, '').split('\n');
-    // const commentLines = await getComment(i.toString(), year);
+    commentLines.split('\n').reverse().forEach(line => lines.unshift(line));
 
-    // commentLines.split('\n').reverse().forEach(line => lines.unshift(line));
-
-    // await Deno.writeTextFile(join(baseDirectory, year, `day${i.toString().padStart(2, '0')}`, 'solution.ts'), lines.join('\n'));
+    await Deno.writeTextFile(join(baseDirectory, year, `day${i.toString().padStart(2, '0')}`, 'solution.ts'), lines.join('\n'));
     // await Deno.remove(join(baseDirectory, year, `day${i.toString().padStart(2, '0')}`, 'solution.js'))
 }
