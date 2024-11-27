@@ -1,4 +1,19 @@
-const part1 = async input => {
+// @ts-nocheck previous years was written in javascript, so disable it here
+
+/**
+ * puzzles/2017/day19/solution.ts
+ *
+ * ~~ A Series of Tubes ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 11/26/2024
+ */
+
+/**
+ * the code of part 1 of the puzzle
+ */
+const part1 = (input: string) => {
     let rows = input.split('\n');
     let position = { x: rows[0].indexOf('|'), y: 0 };
     let directionVectors = [{ x: 0, y: -1 }, { x: 1, y: 0 }, { x: 0, y: 1 }, { x: -1, y: 0 }];
@@ -21,9 +36,12 @@ const part1 = async input => {
         } else if (rows[position.y][position.x].match(/[A-Z]/g)) string += rows[position.y][position.x];
     }
     return string;
-}
+};
 
-const part2 = async input => {
+/**
+ * the code of part 2 of the puzzle
+ */
+const part2 = (input: string) => {
     let rows = input.split('\n');
     let position = { x: rows[0].indexOf('|'), y: 0 };
     let directionVectors = [{ x: 0, y: -1 }, { x: 1, y: 0 }, { x: 0, y: 1 }, { x: -1, y: 0 }];
@@ -47,6 +65,6 @@ const part2 = async input => {
         }
     }
     return steps;
-}
+};
 
 export { part1, part2 };

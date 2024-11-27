@@ -12,6 +12,8 @@
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
+    input = input.trim();
+
     let sum = 0;
     for (let i = 0; i < input.length; i++) {
         if (input[i] === input[(i + 1) % input.length]) sum += parseInt(input[i]);
@@ -23,6 +25,8 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
+    input = input.trim();
+
     let sum = 0;
     for (let i = 0; i < input.length; i++) {
         if (input[i] === input[(i + input.length / 2) % input.length]) sum += parseInt(input[i]);

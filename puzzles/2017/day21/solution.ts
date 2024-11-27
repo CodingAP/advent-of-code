@@ -1,3 +1,15 @@
+// @ts-nocheck previous years was written in javascript, so disable it here
+
+/**
+ * puzzles/2017/day21/solution.ts
+ *
+ * ~~ Fractal Art ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 11/26/2024
+ */
+
 let rotate = grid => new Array(grid.length).fill(0).map((element, row) => new Array(grid[row].length).fill(0).map((element, col) => grid[grid[row].length - col - 1][row]));
 let flipHorizontally = grid => new Array(grid.length).fill(0).map((element, row) => grid[row].reverse());
 let flipVertically = grid => [...grid].reverse();
@@ -22,8 +34,11 @@ const getAllVersions = image => {
     )];
 }
 
-const part1 = async input => {
-    let rules = input.split('\n').reduce((obj, line) => {
+/**
+ * the code of part 1 of the puzzle
+ */
+const part1 = (input: string) => {
+    let rules = input.trim().split('\n').reduce((obj, line) => {
         let [left, right] = line.split(' => ');
 
         let allVersions = getAllVersions(left);
@@ -64,10 +79,13 @@ const part1 = async input => {
     }
     
     return image.join('').split('').filter(element => element == '#').length;
-}
+};
 
-const part2 = async input => {
-    let rules = input.split('\n').reduce((obj, line) => {
+/**
+ * the code of part 2 of the puzzle
+ */
+const part2 = (input: string) => {
+    let rules = input.trim().split('\n').reduce((obj, line) => {
         let [left, right] = line.split(' => ');
 
         let allVersions = getAllVersions(left);
@@ -108,6 +126,6 @@ const part2 = async input => {
     }
 
     return image.join('').split('').filter(element => element == '#').length;
-}
+};
 
 export { part1, part2 };

@@ -1,3 +1,15 @@
+// @ts-nocheck previous years was written in javascript, so disable it here
+
+/**
+ * puzzles/2017/day14/solution.ts
+ *
+ * ~~ Disk Defragmentation ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 11/26/2024
+ */
+
 let computeKnotHash = string => {
     let hash = new Array(256).fill(0).map((element, index) => index);
     let sizes = string.split('').map(element => element.charCodeAt(0));
@@ -26,19 +38,25 @@ let computeKnotHash = string => {
     return hashString;
 }
 
-const part1 = async input => {
+/**
+ * the code of part 1 of the puzzle
+ */
+const part1 = (input: string) => {
     let bits = 0;
     for (let i = 0; i < 128; i++) {
-        let hash = computeKnotHash(`${input}-${i}`);
+        let hash = computeKnotHash(`${input.trim()}-${i}`);
         bits += hash.split('').reduce((acc, element) => acc + (parseInt(element, 16).toString(2).split('').filter(element => element == '1').length), 0);
     }
     return bits;
-}
+};
 
-const part2 = async input => {
+/**
+ * the code of part 2 of the puzzle
+ */
+const part2 = (input: string) => {
     let grid = new Array(128).fill(0).map(element => new Array(128).fill(0));
     for (let i = 0; i < 128; i++) {
-        let hash = computeKnotHash(`${input}-${i}`);
+        let hash = computeKnotHash(`${input.trim()}-${i}`);
         let bits = hash.split('').reduce((acc, element) => acc + parseInt(element, 16).toString(2).padStart(4, '0'), '');
         bits.split('').map(element => parseInt(element)).forEach((num, index) => grid[i][index] = num);
     }
@@ -61,6 +79,6 @@ const part2 = async input => {
         }
     }
     return groupCount;
-}
+};
 
 export { part1, part2 };

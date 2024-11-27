@@ -1,5 +1,11 @@
-const part1 = async input => {
-    let connections = input.split('\n').reduce((array, element) => {
+// @ts-nocheck previous years was written in javascript, so disable it here
+
+// this code was from my original solve
+// i didn't know disjoint sets at the time, so this was my best solution
+// it runs very slow, but it is cool to look at history, right?
+
+const part1 = input => {
+    let connections = input.trim().split('\n').reduce((array, element) => {
         let [index, contains] = element.replace(/ /g, '').split('<->');
         array[parseInt(index)] = contains.split(',').map(num => parseInt(num));
         return array;
@@ -20,8 +26,8 @@ const part1 = async input => {
     return connections.reduce((acc, element, index) => acc + (checkForConnection(index, 0) ? 1 : 0), 0);
 }
 
-const part2 = async input => {
-    let connections = input.split('\n').reduce((array, element) => {
+const part2 = input => {
+    let connections = input.trim().split('\n').reduce((array, element) => {
         let [index, contains] = element.replace(/ /g, '').split('<->');
         array[parseInt(index)] = contains.split(',').map(num => parseInt(num));
         return array;

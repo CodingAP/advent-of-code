@@ -1,6 +1,21 @@
-const part1 = async input => {
+// @ts-nocheck previous years was written in javascript, so disable it here
+
+/**
+ * puzzles/2017/day10/solution.ts
+ *
+ * ~~ Knot Hash ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 11/26/2024
+ */
+
+/**
+ * the code of part 1 of the puzzle
+ */
+const part1 = (input: string) => {
     let hash = new Array(256).fill(0).map((element, index) => index);
-    let sizes = input.split(',').map(element => parseInt(element));
+    let sizes = input.trim().split(',').map(element => parseInt(element));
 
     let position = 0;
     sizes.forEach((size, index) => {
@@ -12,11 +27,14 @@ const part1 = async input => {
         position = (position + size + index) % hash.length;
     });
     return hash[0] * hash[1];
-}
+};
 
-const part2 = async input => {
+/**
+ * the code of part 2 of the puzzle
+ */
+const part2 = (input: string) => {
     let hash = new Array(256).fill(0).map((element, index) => index);
-    let sizes = input.split('').map(element => element.charCodeAt(0));
+    let sizes = input.trim().split('').map(element => element.charCodeAt(0));
     sizes.push(17, 31, 73, 47, 23);
 
     let position = 0, skip = 0;
@@ -40,6 +58,6 @@ const part2 = async input => {
     }
     
     return hashString;
-}
+};
 
 export { part1, part2 };

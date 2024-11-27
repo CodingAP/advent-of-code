@@ -1,4 +1,19 @@
-const part1 = async input => {
+// @ts-nocheck previous years was written in javascript, so disable it here
+
+/**
+ * puzzles/2017/day22/solution.ts
+ *
+ * ~~ Sporifica Virus ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 11/26/2024
+ */
+
+/**
+ * the code of part 1 of the puzzle
+ */
+const part1 = (input: string) => {
     let grid = {};
     input.split('\n').forEach((element, row) => {
         element.split('').forEach((space, col) => {
@@ -24,9 +39,12 @@ const part1 = async input => {
     }
     
     return bursts;
-}
+};
 
-const part2 = async input => {
+/**
+ * the code of part 2 of the puzzle
+ */
+const part2 = (input: string) => {
     let grid = {};
     input.split('\n').forEach((element, row) => {
         element.split('').forEach((space, col) => {
@@ -55,6 +73,6 @@ const part2 = async input => {
     }
 
     return bursts;
-}
+};
 
 export { part1, part2 };

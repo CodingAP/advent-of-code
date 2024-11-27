@@ -1,0 +1,30 @@
+this program counts how many composite numbers there are between b and c in increments of 17
+below is the code decompiled:
+
+a: whether of not in part 1 or 2
+b: start
+c: end
+d: factor 1
+e: factor 2
+f: isPrime flag
+g: if statement compare
+h: count
+
+start = 93
+end = 93
+
+if part2:
+    start = 109300
+    end = 126300
+
+count = 0
+for i in start..end; i += 17:
+    isPrime = true
+    for a in 2..i:
+        for b in 2..i:
+            if a * b == i:
+                isPrime = false
+    
+    if not isPrime:
+        count++
+    

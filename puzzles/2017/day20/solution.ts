@@ -1,5 +1,20 @@
-const part1 = async input => {
-    let particles = input.split('\n').reduce((array, element) => {
+// @ts-nocheck previous years was written in javascript, so disable it here
+
+/**
+ * puzzles/2017/day20/solution.ts
+ *
+ * ~~ Particle Swarm ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 11/26/2024
+ */
+
+/**
+ * the code of part 1 of the puzzle
+ */
+const part1 = (input: string) => {
+    let particles = input.trim().split('\n').reduce((array, element) => {
         let [position, velocity, acceleration] = element.split(', ').map(vector => vector.split('=')[1].replace(/[<>]/g, '').split(',').map(num => parseInt(num)));
         array.push({ position, velocity, acceleration });
         return array;
@@ -24,10 +39,13 @@ const part1 = async input => {
         if (current.position.reduce((acc, num) => acc + Math.abs(num), 0) < smallestDistance) return index;
         return smallest; 
     }, 0);
-}
+};
 
-const part2 = async input => {
-    let particles = input.split('\n').reduce((array, element) => {
+/**
+ * the code of part 2 of the puzzle
+ */
+const part2 = (input: string) => {
+    let particles = input.trim().split('\n').reduce((array, element) => {
         let [position, velocity, acceleration] = element.split(', ').map(vector => vector.split('=')[1].replace(/[<>]/g, '').split(',').map(num => parseInt(num)));
         array.push({ position, velocity, acceleration });
         return array;
@@ -58,6 +76,6 @@ const part2 = async input => {
     }
 
     return particles.length;
-}
+};
 
 export { part1, part2 };
