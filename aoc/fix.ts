@@ -2,7 +2,7 @@ import { join, resolve } from '@std/path';
 import { getTitle, profilePuzzle, runPuzzle, submitAnswer, updatePuzzle } from './aoc.ts';
 import { STEVE } from '@codingap/steve';
 
-const year = '2020';
+const year = '2021';
 
 const baseDirectory = resolve('../puzzles');
 
@@ -39,7 +39,7 @@ const part2Comment = `/**
  */
 const part2 = input => {`;
 
-for (let i = 1; i <= 25; i++) {
+for (let i = 20; i <= 21; i++) {
     const solutionDirectory = join(baseDirectory, year, `day${i.toString().padStart(2, '0')}`);
     console.log('day', i, year);
 
@@ -62,7 +62,7 @@ for (let i = 1; i <= 25; i++) {
     // for (let i = 0; i < part1.length; i++) {
     //     if (part1[i] === '}') inScript1 = false;
     //     if (inScript1) script1 += part1[i] + '\n';
-    //     if (part1[i].includes('module.exports = () => {')) inScript1 = true;
+    //     if (part1[i].includes('module.exports = input => {')) inScript1 = true;
     // }
 
     // let part2 = (await Deno.readTextFile(join(solutionDirectory, 'part2.js'))).replace(/\r/g, '').split('\n');
@@ -71,7 +71,7 @@ for (let i = 1; i <= 25; i++) {
     // for (let i = 0; i < part2.length; i++) {
     //     if (part2[i] === '}') inScript2 = false;
     //     if (inScript2) script2 += part2[i] + '\n';
-    //     if (part2[i].includes('module.exports = () => {')) inScript2 = true;
+    //     if (part2[i].includes('module.exports = input => {')) inScript2 = true;
     // }
 
     // const script = STEVE.renderFile('templates/solution_temp.ts', { day: i.toString(), year, part1: script1.trimEnd(), part2: script2.trimEnd(), title: await getTitle(i.toString(), year) });
