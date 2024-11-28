@@ -1,7 +1,8 @@
 import { join, resolve } from '@std/path';
 import { getTitle, profilePuzzle, runPuzzle, submitAnswer, updatePuzzle } from './aoc.ts';
+import { STEVE } from '@codingap/steve';
 
-const year = '2017';
+const year = '2020';
 
 const baseDirectory = resolve('../puzzles');
 
@@ -43,14 +44,37 @@ for (let i = 1; i <= 25; i++) {
     console.log('day', i, year);
 
     // await Deno.remove(join(solutionDirectory, 'README.md'));
+    // await Deno.remove(join(solutionDirectory, 'input.txt'));
+    await Deno.remove(join(solutionDirectory, 'part1.js'));
+    await Deno.remove(join(solutionDirectory, 'part2.js'));
 
-    await updatePuzzle(i.toString(), year);
-    const response = await runPuzzle(i.toString(), year, 'both');
-    console.log(response.part1);
-    console.log(response.part2);
+    // await updatePuzzle(i.toString(), year);
+    // const response = await runPuzzle(i.toString(), year, 'both');
+    // console.log(response.part1);
+    // console.log(response.part2);
 
-    // await profilePuzzle(i.toString(), year, '1');
-    // await submitAnswer(i.toString(), year, 'both', 'true');
+    await profilePuzzle(i.toString(), year, '10');
+    await submitAnswer(i.toString(), year, 'both', 'true');
+
+    // let part1 = (await Deno.readTextFile(join(solutionDirectory, 'part1.js'))).replace(/\r/g, '').split('\n');
+    // let script1 = '';
+    // let inScript1 = false;
+    // for (let i = 0; i < part1.length; i++) {
+    //     if (part1[i] === '}') inScript1 = false;
+    //     if (inScript1) script1 += part1[i] + '\n';
+    //     if (part1[i].includes('module.exports = () => {')) inScript1 = true;
+    // }
+
+    // let part2 = (await Deno.readTextFile(join(solutionDirectory, 'part2.js'))).replace(/\r/g, '').split('\n');
+    // let script2 = '';
+    // let inScript2 = false;
+    // for (let i = 0; i < part2.length; i++) {
+    //     if (part2[i] === '}') inScript2 = false;
+    //     if (inScript2) script2 += part2[i] + '\n';
+    //     if (part2[i].includes('module.exports = () => {')) inScript2 = true;
+    // }
+
+    // const script = STEVE.renderFile('templates/solution_temp.ts', { day: i.toString(), year, part1: script1.trimEnd(), part2: script2.trimEnd(), title: await getTitle(i.toString(), year) });
 
     // let script = await Deno.readTextFile(join(solutionDirectory, 'solution.js'));
     // script = script.replace(/async /g, '');
@@ -61,6 +85,6 @@ for (let i = 1; i <= 25; i++) {
 
     // commentLines.split('\n').reverse().forEach(line => lines.unshift(line));
 
-    // await Deno.writeTextFile(join(baseDirectory, year, `day${i.toString().padStart(2, '0')}`, 'solution.ts'), lines.join('\n'));
+    // await Deno.writeTextFile(join(baseDirectory, year, `day${i.toString().padStart(2, '0')}`, 'solution.ts'), script);
     // await Deno.remove(join(baseDirectory, year, `day${i.toString().padStart(2, '0')}`, 'solution.js'))
 }
