@@ -27,6 +27,7 @@ const currentDate = new Date();
 const currentMonth = currentDate.getMonth() + 1;
 let currentYear = currentDate.getFullYear();
 if (currentMonth != 12) currentYear--;
+if (currentDate.getDate() === 30 && currentMonth === 11) currentYear++;
 
 /**
  * gets the information needed for generation
