@@ -105,7 +105,7 @@ const commandLineInfo: {
         submit: {
             aliases: ['s'],
             description: 'submits the answer of the puzzle specified.',
-            arguments: ['day', 'year', 'part'],
+            arguments: ['day', 'year', 'part', 'fake'],
             command: (args: CommandArguments) => {
                 console.log(
                     `${RED_COLOR}manager: ${GREEN_COLOR}submitting answers for day ${YELLOW_COLOR}${args.day}${GREEN_COLOR}, year ${YELLOW_COLOR}${args.year}${GREEN_COLOR}!${DEFAULT_COLOR}`,
