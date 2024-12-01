@@ -22,13 +22,13 @@ const part1 = (input: string) => {
         rightList.push(right);
     });
 
+    // we must compare them in sorted order
     leftList.sort((a, b) => a - b);
     rightList.sort((a, b) => a - b);
 
+    // add up all the distances
     let sum = 0;
-    for (let i = 0; i < leftList.length; i++) {
-        sum += Math.abs(leftList[i] - rightList[i]);
-    }
+    for (let i = 0; i < leftList.length; i++) sum += Math.abs(leftList[i] - rightList[i]);
     return sum;
 };
 
@@ -38,16 +38,18 @@ const part1 = (input: string) => {
 const part2 = (input: string) => {
     const leftList: number[] = [];
     const rightOccurences: { [key: number]: number } = {};
+
+    // get list of left and right numbers
+    // turn the right list into a number of occurences
     input.trim().split('\n').forEach(line => {
         const [left, right] = line.split(/\s+/).map(num => parseInt(num));
         leftList.push(left);
         rightOccurences[right] = (rightOccurences[right] || 0) + 1; 
     });
 
+    // add up all the "similarity scores"
     let sum = 0;
-    for (let i = 0; i < leftList.length; i++) {
-        sum += leftList[i] * (rightOccurences[leftList[i]] || 0);
-    }
+    for (let i = 0; i < leftList.length; i++) sum += leftList[i] * (rightOccurences[leftList[i]] || 0);
     return sum;
 };
 
