@@ -1,3 +1,15 @@
+// @ts-nocheck previous years was written in javascript, so disable it here
+
+/**
+ * puzzles/2018/day08/solution.ts
+ *
+ * ~~ Memory Maneuver ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 12/1/2024
+ */
+
 const parseData = data => {
     let node = { children: [], metadata: [] };
     let nodeCount = data[0];
@@ -20,7 +32,10 @@ const parseData = data => {
     return { node, forward };
 }
 
-const part1 = async input => {
+/**
+ * the code of part 1 of the puzzle
+ */
+const part1 = (input: string) => {
     let data = input.split(' ').map(num => parseInt(num));
     
     const addUpEntries = node => {
@@ -32,9 +47,12 @@ const part1 = async input => {
     }
 
     return addUpEntries(parseData(data).node);
-}
+};
 
-const part2 = async input => {
+/**
+ * the code of part 2 of the puzzle
+ */
+const part2 = (input: string) => {
     let data = input.split(' ').map(num => parseInt(num));
 
     let findValue = node => {
@@ -48,6 +66,6 @@ const part2 = async input => {
     }
 
     return findValue(parseData(data).node);
-}
+};
 
 export { part1, part2 };
