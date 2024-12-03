@@ -48,9 +48,7 @@ const part2 = (input: string) => {
         let isSafe = false;
         
         for (let j = 0; j < list.length; j++) {
-            const newNumbers = [...list];
-            newNumbers.splice(j, 1);
-            if (testSafety(newNumbers)) isSafe = true;
+            if (testSafety(list.toSpliced(j, 1))) isSafe = true;
         }
 
         if (isSafe) sum++;
