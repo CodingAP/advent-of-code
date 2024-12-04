@@ -44,7 +44,7 @@ const part2 = (input: string) => {
     input.trim().split('\n').forEach(line => {
         const [left, right] = line.split(/\s+/).map(num => parseInt(num));
         leftList.push(left);
-        rightOccurences[right] = (rightOccurences[right] || 0) + 1; 
+        rightOccurences[right] = (rightOccurences[right] || 0) + 1;
     });
 
     // add up all the "similarity scores"
