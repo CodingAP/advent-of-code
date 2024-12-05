@@ -8,6 +8,9 @@
  * 12/4/2024
  */
 
+/**
+ * set of instructions and the functions of the computer
+ */
 const INSTRUCTIONS: { [key: string]: (registers: number[], args: number[]) => void } = {
     addr: (registers, args) => {
         registers[args[2]] = registers[args[0]] + registers[args[1]];
@@ -65,15 +68,18 @@ const INSTRUCTIONS: { [key: string]: (registers: number[], args: number[]) => vo
 const part1 = (input: string) => {
     const tests = input.trim().split('\n\n\n\n')[0].split('\n\n');
 
+    // run all instructions on the before registers to see how many instructions
+    // have the same after registers
     return tests.reduce((sum, test) => {
         const [before, instruction, after] = test.split('\n');
-        const registers = JSON.parse(before.split(': ')[1]);
+        const beforeRegisters: number[] = JSON.parse(before.split(/:\s+/g)[1]);
+        const afterRegisters: number[] = JSON.parse(after.split(/:\s+/g)[1]);
 
         let same = 0;
-        Object.entries(INSTRUCTIONS).forEach(([name, callback]) => {
+        Object.values(INSTRUCTIONS).forEach(callback => {
+            const registers = structuredClone(beforeRegisters);
             callback(registers, instruction.split(/\s/g).map(num => parseInt(num)).slice(1));
-            console.log(name, JSON.stringify(registers), after.split(/:\s+/g)[1].replace(/\s/g, ''));
-            if (JSON.stringify(registers) === after.split(/:\s+/g)[1].replace(/\s/g, '')) same++;
+            if (registers.every((num, i) => num === afterRegisters[i])) same++;
         });
 
         return sum + (same >= 3 ? 1 : 0); 
@@ -84,7 +90,39 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    return 0;
+    const [tests, program] = input.trim().split('\n\n\n\n');
+    const instructions: string[] = new Array(16).fill('');
+
+    // figure out which instruction is which number
+    while (!instructions.every(line => line !== '')) {
+        tests.split('\n\n').forEach(test => {
+            const [before, instruction, after] = test.split('\n');
+            const beforeRegisters: number[] = JSON.parse(before.split(/:\s+/g)[1]);
+            const afterRegisters: number[] = JSON.parse(after.split(/:\s+/g)[1]);
+            const opcodes = instruction.split(/\s/g).map(num => parseInt(num));
+    
+            let works: string[] = [];
+            Object.entries(INSTRUCTIONS).forEach(([name, callback]) => {
+                const registers = structuredClone(beforeRegisters);
+                callback(registers, opcodes.slice(1));
+                if (registers.every((num, i) => num === afterRegisters[i])) works.push(name);
+            });
+    
+            // find all instructions that haven't been assigned yet
+            works = works.filter(instruction => !instructions.includes(instruction));
+            if (works.length === 1) instructions[opcodes[0]] = works[0];
+        });
+    }
+
+    // run the program
+    const registers = new Array(4).fill(0);
+    const lines = program.split('\n');
+    for (let i = 0; i < lines.length; i++) {
+        const opcodes = lines[i].split(/\s/g).map(num => parseInt(num));
+        INSTRUCTIONS[instructions[opcodes[0]]](registers, opcodes.slice(1));
+    }
+
+    return registers[0];
 };
 
 export { part1, part2 };

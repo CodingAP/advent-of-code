@@ -9,11 +9,12 @@
  */
 
 /**
- * circular linked list node
+ * doubly linked list node
  */
 interface Node {
     value: number;
     next?: Node;
+    previous?: Node;
 }
 
 /**
@@ -24,8 +25,13 @@ interface Node {
  * @returns the new node created
  */
 const insertAfter = (node: Node, value: number): Node => {
-    const newNode: Node = { value, next: node.next };
-    node.next = newNode;
+    const newNode: Node = { value, next: node.next, previous: node };
+
+    if (node.next !== undefined) {
+        node.next.previous = newNode;
+        node.next = newNode;
+    }
+
     return newNode;
 }
 
@@ -33,13 +39,13 @@ const insertAfter = (node: Node, value: number): Node => {
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    // setup array with 3, 7 and elves at both spots
+    // setup circular doubly linked list with 3 and 7
     const number = parseInt(input);
     let start: Node = { value: 3 };
     let end: Node = { value: 7 };
     let size = 2;
-    start.next = end;
-    end.next = start;
+    start.next = end; start.previous = end;
+    end.next = start; end.previous = start;
 
     let elf1 = start, elf2 = end;
 
@@ -80,23 +86,44 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    // setup array with 3, 7 and elves at both spots
-    let recipes = '37';
-    let elf1 = 0, elf2 = 1;
+    // setup circular doubly linked list with 3 and 7
+    let start: Node = { value: 3 };
+    let end: Node = { value: 7 };
+    let size = 2;
+    start.next = end; start.previous = end;
+    end.next = start; end.previous = start;
 
-    // keep going until enough recipes are made to see input
+    let elf1 = start, elf2 = end;
+
+    // keep going until enough recipes are made
     while (true) {
-        const sum = parseInt(recipes[elf1]) + parseInt(recipes[elf2]);
+        const sum = elf1.value + elf2.value;
 
-        if (sum >= 10) recipes += '1';
-        recipes += (sum % 10).toString();
+        if (sum >= 10) {
+            end = insertAfter(end, 1);
+            size++;
+        }
+        
+        end = insertAfter(end, sum % 10);
+        size++;
 
-        elf1 = (elf1 + 1 + parseInt(recipes[elf1])) % recipes.length;
-        elf2 = (elf2 + 1 + parseInt(recipes[elf2])) % recipes.length;
-    
-        const end = recipes.slice(-7) 
-        if (end.includes(input)) return recipes.length + end.indexOf(input);
-        if (recipes.length % 1000 === 0) console.log(recipes.length);
+        const elf1Move = 1 + elf1.value;
+        for (let i = 0; i < elf1Move; i++) if (elf1.next !== undefined) elf1 = elf1.next;
+        
+        const elf2Move = 1 + elf2.value;
+        for (let i = 0; i < elf2Move; i++) if (elf2.next !== undefined) elf2 = elf2.next;
+
+        // check if end of list has input
+        let sliced = '';
+        let check = end;
+        for (let i = 0; i < input.length; i++) {
+            if (check.previous !== undefined) {
+                sliced = check.value.toString() + sliced;
+                check = check.previous;
+            }
+        }
+
+        if (sliced.includes(input.trim())) return size - input.length;
     }
 };
 
