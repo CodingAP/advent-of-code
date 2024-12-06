@@ -72,7 +72,7 @@ const part2 = (input: string) => {
         }
 
         return sum;
-    }, 0);    
+    }, 0);
 };
 
 export { part1, part2 };

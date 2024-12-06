@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2018/day08/solution.ts
  *
@@ -10,10 +8,15 @@
  * 12/1/2024
  */
 
-const parseData = data => {
-    let node = { children: [], metadata: [] };
+interface Node {
+    children: Node[];
+    metadata: number[];
+}
+
+const parseData = (data: number[]) => {
+    const node: Node = { children: [], metadata: [] };
     let nodeCount = data[0];
-    let metaDataCount = data[1];
+    const metadataCount = data[1];
     let forward = 2;
 
     let childrenNodes = data.slice(forward);
@@ -26,8 +29,8 @@ const parseData = data => {
         nodeCount--;
     }
 
-    node.metadata = data.slice(forward, forward + metaDataCount)
-    forward += metaDataCount;
+    node.metadata = data.slice(forward, forward + metadataCount)
+    forward += metadataCount;
 
     return { node, forward };
 }
@@ -36,17 +39,14 @@ const parseData = data => {
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    let data = input.split(' ').map(num => parseInt(num));
+    const data = input.split(' ').map(num => parseInt(num));
     
-    const addUpEntries = node => {
-        let sum = node.metadata.reduce((acc, num) => acc + num, 0);
-        node.children.forEach(child => {
-            sum += addUpEntries(child);
-        });
-        return sum;
+    const countEntries = (node: Node): number => {
+        const metadataSum = node.metadata.reduce((sum, num) => sum + num, 0);
+        return node.children.reduce((sum, child) => sum + countEntries(child), metadataSum);
     }
 
-    return addUpEntries(parseData(data).node);
+    return countEntries(parseData(data).node);
 };
 
 /**
@@ -55,14 +55,9 @@ const part1 = (input: string) => {
 const part2 = (input: string) => {
     let data = input.split(' ').map(num => parseInt(num));
 
-    let findValue = node => {
-        if (node.children.length == 0) return node.metadata.reduce((acc, num) => acc + num, 0);
-    
-        return node.metadata.reduce((acc, data) => {
-            if ((data - 1) >= node.children.length) acc += 0;
-            else acc += findValue(node.children[data - 1]);
-            return acc;
-        }, 0);
+    const findValue = (node: Node): number => {
+        if (node.children.length == 0) return node.metadata.reduce((sum, num) => sum + num, 0);
+        return node.metadata.reduce((sum, data) => sum + (((data - 1) >= node.children.length) ? 0 : findValue(node.children[data - 1])), 0);
     }
 
     return findValue(parseData(data).node);

@@ -12,55 +12,23 @@
  * set of instructions and the functions of the computer
  */
 const INSTRUCTIONS: { [key: string]: (registers: number[], args: number[]) => void } = {
-    addr: (registers, args) => {
-        registers[args[2]] = registers[args[0]] + registers[args[1]];
-    },
-    addi: (registers, args) => {
-        registers[args[2]] = registers[args[0]] + args[1];
-    },
-    mulr: (registers, args) => {
-        registers[args[2]] = registers[args[0]] * registers[args[1]];
-    },
-    muli: (registers, args) => {
-        registers[args[2]] = registers[args[0]] * args[1];
-    },
-    banr: (registers, args) => {
-        registers[args[2]] = registers[args[0]] & registers[args[1]];
-    },
-    bani: (registers, args) => {
-        registers[args[2]] = registers[args[0]] & args[1];
-    },
-    bonr: (registers, args) => {
-        registers[args[2]] = registers[args[0]] | registers[args[1]];
-    },
-    boni: (registers, args) => {
-        registers[args[2]] = registers[args[0]] | args[1];
-    },
-    setr: (registers, args) => {
-        registers[args[2]] = registers[args[0]]
-    },
-    seti: (registers, args) => {
-        registers[args[2]] = args[0];
-    },
-    gtir: (registers, args) => {
-        registers[args[2]] = (args[0] > registers[args[1]]) ? 1 : 0;
-    },
-    gtri: (registers, args) => {
-        registers[args[2]] = (registers[args[0]] > args[1]) ? 1 : 0;
-    },
-    gtrr: (registers, args) => {
-        registers[args[2]] = (registers[args[0]] > registers[args[1]]) ? 1 : 0;
-    },
-    eqir: (registers, args) => {
-        registers[args[2]] = (args[0] === registers[args[1]]) ? 1 : 0;
-    },
-    eqri: (registers, args) => {
-        registers[args[2]] = (registers[args[0]] === args[1]) ? 1 : 0;
-    },
-    eqrr: (registers, args) => {
-        registers[args[2]] = (registers[args[0]] === registers[args[1]]) ? 1 : 0;
-    },
-}
+    addr: (registers, args) => registers[args[2]] = registers[args[0]] + registers[args[1]],
+    addi: (registers, args) => registers[args[2]] = registers[args[0]] + args[1],
+    mulr: (registers, args) => registers[args[2]] = registers[args[0]] * registers[args[1]],
+    muli: (registers, args) => registers[args[2]] = registers[args[0]] * args[1],
+    banr: (registers, args) => registers[args[2]] = registers[args[0]] & registers[args[1]],
+    bani: (registers, args) => registers[args[2]] = registers[args[0]] & args[1],
+    borr: (registers, args) => registers[args[2]] = registers[args[0]] | registers[args[1]],
+    bori: (registers, args) => registers[args[2]] = registers[args[0]] | args[1],
+    setr: (registers, args) => registers[args[2]] = registers[args[0]],
+    seti: (registers, args) => registers[args[2]] = args[0],
+    gtir: (registers, args) => registers[args[2]] = (args[0] > registers[args[1]]) ? 1 : 0,
+    gtri: (registers, args) => registers[args[2]] = (registers[args[0]] > args[1]) ? 1 : 0,
+    gtrr: (registers, args) => registers[args[2]] = (registers[args[0]] > registers[args[1]]) ? 1 : 0,
+    eqir: (registers, args) => registers[args[2]] = (args[0] == registers[args[1]]) ? 1 : 0,
+    eqri: (registers, args) => registers[args[2]] = (registers[args[0]] == args[1]) ? 1 : 0,
+    eqrr: (registers, args) => registers[args[2]] = (registers[args[0]] == registers[args[1]]) ? 1 : 0
+};
 
 /**
  * the code of part 1 of the puzzle
