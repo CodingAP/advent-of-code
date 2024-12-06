@@ -12,7 +12,7 @@
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    // note: this program just calculates the sum of all the factors of a number. in part 1, the number is 920. in part 2, the number is 10551320
+    // note: this program just calculates the sum of all the factors of a number. in part 1, the number is 920
     const num = 920;
     let sum = 0;
 
@@ -32,7 +32,7 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    // note: this program just calculates the sum of all the factors of a number. in part 1, the number is 920. in part 2, the number is 10551320
+    // note: this program just calculates the sum of all the factors of a number. in part 2, the number is 10551320
     const num = 10551320;
     let sum = 0;
 

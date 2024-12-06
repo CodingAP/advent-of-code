@@ -13,7 +13,6 @@ import { getDatabase, getSolutionDirectory, getTitle, PuzzleAnswerEntry } from '
 import { exists } from '@std/fs';
 import { Renderer } from '@libs/markdown';
 import highlighting from '@libs/markdown/plugins/highlighting';
-import { unescape } from '@std/html';
 
 /**
  * base directory where all code is stored
@@ -132,9 +131,7 @@ const generateSite = async (debug: boolean) => {
                             available[year][day - 1].writeup = true;
 
                             const customRenderer = new Renderer({ plugins: [highlighting] });
-                            const rendered = unescape(
-                                await customRenderer.render(content[1]),
-                            );
+                            const rendered = await customRenderer.render(content[1]);
                             writeups.push({
                                 name: `${year}.day${day.toString().padStart(2, '0')}`,
                                 data: { day, year, title: puzzles[year][day - 1]?.title, content: rendered },

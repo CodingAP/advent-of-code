@@ -1,0 +1,62 @@
+manual code decomp:
+
+if 123 & 456 != 72:
+    // loop forever, shouldn't hit though
+    exit
+
+c = 0
+
+while true:
+    f = c | 65536
+    c = 4843319
+
+    while true:
+        e = f & 255
+        c = (((c + e) & 16777215) * 65899) & 16777215
+
+        if f < 256:
+            if c == a:
+                exit
+            else:
+                break
+
+        e = 0
+        d = 1
+        while d < f:
+            e++
+            d *= 256
+        f = e 
+
+simple auto decomp:
+
+ 0: c = 123
+ 1: c = c & 456
+ 2: c = c == 72
+ 3: ip = c + ip
+ 4: ip = 0
+ 5: c = 0
+ 6: f = c | 65536
+ 7: c = 4843319
+ 8: e = f & 255
+ 9: c = c + e
+10: c = c & 16777215
+11: c = c * 65899
+12: c = c & 16777215
+13: e = 256 > f
+14: ip = e + ip
+15: ip = ip + 1
+16: ip = 27
+17: e = 0
+18: d = e + 1
+19: d = d * 256
+20: d = d > f
+21: ip = d + ip
+22: ip = ip + 1
+23: ip = 25
+24: e = e + 1
+25: ip = 17
+26: f = e
+27: ip = 7
+28: e = c == a
+29: ip = e + ip
+30: ip = 5

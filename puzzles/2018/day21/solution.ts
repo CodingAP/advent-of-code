@@ -8,10 +8,41 @@
  * 12/5/2024
  */
 
+const REGISTER_MAPPINGS = ['a', 'ip', 'c', 'd', 'e', 'f'];
+
+const INSTRUCTIONS_DECOMPILED: { [key: string]: (args: number[]) => string } = {
+    addr: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} + ${REGISTER_MAPPINGS[args[1]]}`,
+    addi: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} + ${args[1]}`,
+    mulr: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} * ${REGISTER_MAPPINGS[args[1]]}`,
+    muli: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} * ${args[1]}`,
+    banr: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} & ${REGISTER_MAPPINGS[args[1]]}`,
+    bani: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} & ${args[1]}`,
+    borr: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} | ${REGISTER_MAPPINGS[args[1]]}`,
+    bori: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} | ${args[1]}`,
+    setr: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]}`,
+    seti: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${args[0]}`,
+    gtir: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${args[0]} > ${REGISTER_MAPPINGS[args[1]]}`,
+    gtri: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} > ${args[1]}`,
+    gtrr: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} > ${REGISTER_MAPPINGS[args[1]]}`,
+    eqir: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${args[0]} == ${REGISTER_MAPPINGS[args[1]]}`,
+    eqri: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} == ${args[1]}`,
+    eqrr: (args) => `${REGISTER_MAPPINGS[args[2]]} = ${REGISTER_MAPPINGS[args[0]]} == ${REGISTER_MAPPINGS[args[1]]}`
+};
+
+const decompile = (input: string) => {
+    let content = '';
+    input.trim().split('\n').slice(1).forEach((line, i) => {
+        const [instruction, ...args] = line.split(' ');
+        content += i.toString().padStart(2, ' ') + ': ' + INSTRUCTIONS_DECOMPILED[instruction](args.map(num => parseInt(num))) + '\n';
+    });
+    return content;
+}
+
 /**
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
+    console.log(decompile(input));
     // this is from reverse engineering the program
     // we take the first value that works
     let c = 4843319;
