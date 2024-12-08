@@ -309,7 +309,11 @@
 
                     context.fillStyle = WHITE;
                     context.shadowColor = WHITE;
-                    context.fillText(floors[Math.floor(currentStep)], 30 + context.measureText('Current Floor: ').width, canvas.height / 2 - 15);
+                    context.fillText(
+                        floors[Math.floor(currentStep)],
+                        30 + context.measureText('Current Floor: ').width,
+                        canvas.height / 2 - 15,
+                    );
                     context.fillText(
                         basementIndexes[Math.floor(currentStep)] || 'Not Found!',
                         30 + context.measureText('Basement Index: ').width,
@@ -374,7 +378,11 @@
                         // draw right side
                         context.fillStyle = GREEN;
                         context.shadowColor = GREEN;
-                        context.fillText(rightSide, (canvas.width - totalWidth) / 2 + context.measureText(leftSide + middle).width, 100 + i * 15);
+                        context.fillText(
+                            rightSide,
+                            (canvas.width - totalWidth) / 2 + context.measureText(leftSide + middle).width,
+                            100 + i * 15,
+                        );
 
                         // draw floor numbers
                         if (i % 8 === 4) {
