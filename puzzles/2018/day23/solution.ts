@@ -142,17 +142,18 @@ const part2 = (input: string) => {
     while (queue.size() != 0) {
         const current = queue.extractMin();
 
-        if (current.data.size === 1) return current.data.distance;
+        // find the closest 1x1x1 square
+        if (current.data.size === -1) return current.data.distance;
 
         // we use negative numbers to use a minheap as a maxheap
         const size = Math.floor(current.data.size / -2);
         [{ x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 1 }, { x: 0, y: 1, z: 0 }, { x: 0, y: 1, z: 1 }, { x: 1, y: 0, z: 0 }, { x: 1, y: 0, z: 1 }, { x: 1, y: 1, z: 0 }, { x: 1, y: 1, z: 1 }].forEach(octant => {
-            const start = { x: (current.data.boundingBox.start.x + size) * octant.x, y: (current.data.boundingBox.start.y + size) * octant.y, z: (current.data.boundingBox.start.z + size) * octant.z };
+            const start = { x: (current.data.boundingBox.start.x + size * octant.x), y: (current.data.boundingBox.start.y + size * octant.y), z: (current.data.boundingBox.start.z + size * octant.z) };
             const end = { x: start.x + size, y: start.y + size, z: start.z + size };
             const intersectionCount = intersectCount(bots, start, end);
 
             queue.insert({ score: -intersectionCount, data: { size: -size, distance: manhattan({ x: 0, y: 0, z: 0 }, start), boundingBox: { start, end } }});
-        })
+        });
     }
 
     return 0;
