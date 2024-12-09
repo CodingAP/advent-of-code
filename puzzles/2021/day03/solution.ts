@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2021/day03/solution.ts
  *
@@ -14,24 +12,21 @@
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    let binary = input.split('\n');
-    let gamma = '';
-    let ones = 0, zeros = 0;
+    const binary = input.split('\n');
+    
+    // calculate gamma/epsilon from the most/least common digits in each column
+    let gamma = '', epsilon = '';
     for (let j = 0; j < binary[0].length; j++) {
+        let ones = 0, zeros = 0;
+        
         for (let i = 0; i < binary.length; i++) {
-            if (binary[i][j] == '1') ones++;
+            if (binary[i][j] === '1') ones++;
             else zeros++;
         }
-        if (ones > zeros) gamma += '1';
-        else gamma += '0';
-        ones = 0;
-        zeros = 0;
-    }
 
-    let epsilon = gamma.split('').map(element => {
-        if (element == '1') return '0';
-        else return '1';
-    }).join('');
+        gamma += (ones > zeros) ? '1' : '0';
+        epsilon += (ones > zeros) ? '0' : '1';
+    }
     
     return parseInt(gamma, 2) * parseInt(epsilon, 2);
 };
@@ -40,48 +35,41 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    let binary = input.split('\n');
-    let ones = 0, zeros = 0;
+    let oxygen = input.split('\n');
+    for (let j = 0; j < oxygen[0].length; j++) {
+        let ones = 0, zeros = 0;
 
-    let oxygen = '';
-    for (let j = 0; j < binary[0].length; j++) {
-        for (let i = 0; i < binary.length; i++) {
-            if (binary[i][j] == '1') ones++;
+        // find most common in column
+        for (let i = 0; i < oxygen.length; i++) {
+            if (oxygen[i][j] == '1') ones++;
             else zeros++;
         }
 
-        if (ones >= zeros) binary = binary.filter(element => element[j] === '1');
-        else binary = binary.filter(element => element[j] === '0');
+        // filter oxygen down until one is left
+        if (ones >= zeros) oxygen = oxygen.filter(element => element[j] === '1');
+        else oxygen = oxygen.filter(element => element[j] === '0');
 
-        ones = 0;
-        zeros = 0;
-        if (binary.length == 1) {
-            oxygen = binary[0];
-            break;
-        }
+        if (oxygen.length === 1) break;
     }
 
-    binary = input.split('\n');
+    let carbon = input.split('\n');;
+    for (let j = 0; j < carbon[0].length; j++) {
+        let ones = 0, zeros = 0;
 
-    let carbon = '';
-    for (let j = 0; j < binary[0].length; j++) {
-        for (let i = 0; i < binary.length; i++) {
-            if (binary[i][j] == '1') ones++;
+        // find most common in column
+        for (let i = 0; i < carbon.length; i++) {
+            if (carbon[i][j] == '1') ones++;
             else zeros++;
         }
 
-        if (ones < zeros) binary = binary.filter(element => element[j] === '1');
-        else binary = binary.filter(element => element[j] === '0');
+        // filter carbon down until one is left
+        if (ones < zeros) carbon = carbon.filter(element => element[j] === '1');
+        else carbon = carbon.filter(element => element[j] === '0');
 
-        ones = 0;
-        zeros = 0;
-        if (binary.length == 1) {
-            carbon = binary[0];
-            break;
-        }
+        if (carbon.length == 1) break;
     }
     
-    return parseInt(oxygen, 2) * parseInt(carbon, 2);
+    return parseInt(oxygen[0], 2) * parseInt(carbon[0], 2);
 };
 
 export { part1, part2 };

@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2020/day01/solution.ts
  *
@@ -14,13 +12,11 @@
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    let numbers = input.split('\n').map(value => parseInt(value));
+    const numbers = input.trim().split('\n').map(value => parseInt(value));
 
     for (let i = 0; i < numbers.length; i++) {
-        for (let j = 0; j < numbers.length; j++) {
-            if (i == j) continue;
-            if (numbers[i] + numbers[j] == 2020) return numbers[i] * numbers[j];
-        }
+        const other = 2020 - numbers[i];
+        if (numbers.includes(other)) return numbers[i] * other;
     }
 
     return 0;
@@ -30,14 +26,13 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    let numbers = input.split('\n').map(value => parseInt(value));
+    const numbers = input.trim().split('\n').map(value => parseInt(value));
 
     for (let i = 0; i < numbers.length; i++) {
+        const left = 2020 - numbers[i];
         for (let j = 0; j < numbers.length; j++) {
-            for (let k = 0; k < numbers.length; k++) {
-                if (i == j || i == k || j == k) continue;
-                if (numbers[i] + numbers[j] + numbers[k] == 2020) return numbers[i] * numbers[j] * numbers[k];
-            }
+            const other = left - numbers[j];
+            if (numbers.includes(other)) return numbers[i] * numbers[j] * other;
         }
     }
 

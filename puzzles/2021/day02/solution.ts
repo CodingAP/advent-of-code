@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2021/day02/solution.ts
  *
@@ -14,16 +12,17 @@
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    let commands = {
+    const COMMANDS: { [key: string]: { x: number, y: number } } = {
         forward: { x: 1, y: 0 },
         down: { x: 0, y: 1 },
         up: { x: 0, y: -1 }
     }
 
-    let sub = { x: 0, y: 0 };
+    // control the sub using the commands above
+    const sub = { x: 0, y: 0 };
     input.trim().split('\n').forEach(element => {
-        let [command, amount] = element.split(' ');
-        let vel = commands[command];
+        const [command, amount] = element.split(' ');
+        const vel = COMMANDS[command];
         sub.x += vel.x * parseInt(amount);
         sub.y += vel.y * parseInt(amount);
     });
@@ -34,19 +33,22 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    let sub = { x: 0, y: 0, aim: 0 };
+    const sub = { x: 0, y: 0, aim: 0 };
+
+    // control the subs with the command below as it is more involved
     input.trim().split('\n').forEach(element => {
-        let [command, amount] = element.split(' ');
+        const [command, amount] = element.split(' ');
         
-        if (command == 'forward') {
+        if (command === 'forward') {
             sub.x += parseInt(amount);
             sub.y += parseInt(amount) * sub.aim;
-        } else if (command == 'up') {
+        } else if (command === 'up') {
             sub.aim -= parseInt(amount);
         } else {
             sub.aim += parseInt(amount);
         }
     });
+    
     return sub.x * sub.y;
 };
 
