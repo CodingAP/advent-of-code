@@ -1,5 +1,6 @@
 {
     "tasks": {
+        "update": "deno run -A --env-file --unstable-ffi aoc.ts",
         "aoc": "deno run -A --env-file --unstable-ffi index.ts",
         "generate-debug": "deno run -A --env-file --unstable-ffi site-generator.ts debug && deno fmt",
         "generate": "deno run -A --env-file --unstable-ffi site-generator.ts && deno fmt"

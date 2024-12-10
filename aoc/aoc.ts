@@ -468,11 +468,15 @@ const updatePuzzle = async (day: string, year: string): Promise<void> => {
     await Deno.writeTextFile(join(solutionDirectory, 'input.txt'), input);
 };
 
+// when aoc.ts is ran, update directory given .env
 if (import.meta.main) {
-    for (let year = 2015; year <= 2023; year++) {
-        for (let day = 1; day <= 25; day++) {
+    const today = new Date();
+
+    for (let year = 2015; year <= today.getFullYear(); year++) {
+        const end = (year === today.getFullYear()) ? today.getDate() : 25;
+        for (let day = 1; day <= end; day++) {
             console.log(year, day);
-            await getTitle(day.toString(), year.toString());
+            await updatePuzzle(day.toString(), year.toString());
         }
     }
 }

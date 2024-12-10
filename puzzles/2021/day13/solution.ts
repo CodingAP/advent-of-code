@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2021/day13/solution.ts
  *
@@ -14,16 +12,17 @@
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    let dots = [];
-    let [dotLines, foldLines] = input.trim().split('\n\n');
-    dotLines.split('\n').forEach(element => {
-        let [x, y] = element.split(',').map(num => parseInt(num));
-        dots.push({ x, y });
+    // parse dots and lines
+    const [dotLines, foldLines] = input.trim().split('\n\n');
+    let dots: { x: number, y: number }[] = dotLines.split('\n').map(element => {
+        const [x, y] = element.split(',').map(num => parseInt(num));
+        return { x, y };
     });
 
-    let [direction, place] = foldLines.split('\n')[0].split(' ')[2].split('=');
+    // get first fold and modify points
+    const [direction, place] = foldLines.split('\n')[0].split(' ')[2].split('=');
     
-    if (direction == 'x') {
+    if (direction === 'x') {
         for (let i = 0; i < dots.length; i++) {
             if (dots[i].x > parseInt(place)) dots[i].x -= (dots[i].x - parseInt(place)) * 2;
         }
@@ -33,9 +32,11 @@ const part1 = (input: string) => {
         }
     }
 
-    for (let i = dots.length - 1; i >= 0; i--) {
-        if (dots.filter(element => element.x == dots[i].x && element.y == dots[i].y).length == 2) dots.splice(i, 1);
-    }
+    // remove duplicates
+    dots = Array.from(new Set(dots.map(dot => `${dot.x},${dot.y}`))).map(element => {
+        const [x, y] = element.split(',').map(num => parseInt(num));
+        return { x, y };
+    });
 
     return dots.length;
 };
@@ -44,15 +45,16 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    let dots = [];
-    let [dotLines, foldLines] = input.trim().split('\n\n');
-    dotLines.split('\n').forEach(element => {
-        let [x, y] = element.split(',').map(num => parseInt(num));
-        dots.push({ x, y });
+    // parse dots and lines
+    const [dotLines, foldLines] = input.trim().split('\n\n');
+    let dots: { x: number, y: number }[] = dotLines.split('\n').map(element => {
+        const [x, y] = element.split(',').map(num => parseInt(num));
+        return { x, y };
     });
 
+    // fold upon all lines
     foldLines.split('\n').forEach(line => {
-        let [direction, place] = line.split(' ')[2].split('=');
+        const [direction, place] = line.split(' ')[2].split('=');
 
         if (direction == 'x') {
             for (let i = 0; i < dots.length; i++) {
@@ -65,9 +67,21 @@ const part2 = (input: string) => {
         }
     });
 
-    // dots.forEach(element => {
-    //     console.log(`(${element.x},-${element.y})`);
-    // })
+    // print grid
+    // const grid = new Set(dots.map(dot => `${dot.x},${dot.y}`));
+    // const minX = Math.min(...Array.from(grid).map(dot => parseInt(dot.split(',')[0])));
+    // const maxX = Math.max(...Array.from(grid).map(dot => parseInt(dot.split(',')[0])));
+    // const maxY = Math.max(...Array.from(grid).map(dot => parseInt(dot.split(',')[1])));
+    // const minY = Math.min(...Array.from(grid).map(dot => parseInt(dot.split(',')[1])));
+
+    // for (let y = minY; y <= maxY; y++) {
+    //     let row = '';
+    //     for (let x = minX; x <= maxX; x++) {
+    //         if (grid.has(`${x},${y}`)) row += '#';
+    //         else row += ' ';
+    //     }
+    //     console.log(row);
+    // }
 
     return 'FAGURZHE';
 };
