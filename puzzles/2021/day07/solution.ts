@@ -14,14 +14,16 @@
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    let crabs = input.split(',').map(num => parseInt(num));
+    const crabs = input.split(',').map(num => parseInt(num));
 
+    // try all positions to see which one minimizes the fuel
     let leastFuel = Infinity;
-    let max = crabs.reduce((a, b) => Math.max(a, b));
-    for (let i = 1; i < max; i++) {
+    const maxPosition = Math.max(...crabs);
+    for (let i = 1; i < maxPosition; i++) {
         let fuel = 0;
         for (let j = 0; j < crabs.length; j++) {
-            fuel += Math.abs(crabs[j] - i);
+            const distance = Math.abs(crabs[j] - i);
+            fuel += distance;
         }
         leastFuel = Math.min(leastFuel, fuel)
     }
@@ -33,17 +35,17 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    let crabs = input.split(',').map(num => parseInt(num));
+    const crabs = input.split(',').map(num => parseInt(num));
 
+    // try all positions to see which one minimizes the fuel
     let leastFuel = Infinity;
-    let max = crabs.reduce((a, b) => Math.max(a, b));
-    for (let i = 1; i < max; i++) {
+    const maxPosition = Math.max(...crabs);
+    for (let i = 1; i < maxPosition; i++) {
         let fuel = 0;
         for (let j = 0; j < crabs.length; j++) {
-            let distance = Math.abs(crabs[j] - i);
-            for (let k = 1; k <= distance; k++) {
-                fuel += k;
-            }
+            const distance = Math.abs(crabs[j] - i);
+            // use n(n+1)/2 to quickly find fuel
+            fuel += (distance) * (distance + 1) / 2;
         }
         leastFuel = Math.min(leastFuel, fuel);
     }

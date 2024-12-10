@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2021/day09/solution.ts
  *
@@ -10,45 +8,39 @@
  * 11/27/2024
  */
 
-const create2DArray = (width, height, fill) => {
-    let array = new Array(height).fill('').map(_ => new Array(width));
+/**
+ * flood fill the grid, which stores a reference to the total area
+ */
+const fill = (grid: number[][], x: number, y: number, points: Set<string>) => {
+    const width = grid[0].length, height = grid.length;
 
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            if (typeof fill === 'function') array[y][x] = fill(x, y);
-            else array[y][x] = fill;
-        }
-    }
-
-    return array;
-};
-
-const forEach2DArray = (array, callback) => {
-    for (let y = 0; y < array.length; y++) {
-        for (let x = 0; x < array[y].length; x++) {
-            callback(array[y][x], x, y);
-        }
-    }
-};
+    points.add(`${x},${y}`);
+    if (y > 0 && grid[y - 1][x] != 9 && !points.has(`${x},${y - 1}`)) fill(grid, x, y - 1, points);
+    if (y < height - 1 && grid[y + 1][x] != 9 && !points.has(`${x},${y + 1}`)) fill(grid, x, y + 1, points);
+    if (x > 0 && grid[y][x - 1] != 9 && !points.has(`${x - 1},${y}`)) fill(grid, x - 1, y, points);
+    if (x < width - 1 && grid[y][x + 1] != 9 && !points.has(`${x + 1},${y}`)) fill(grid, x + 1, y, points);
+    return points;
+}
 
 /**
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    let rows = input.trim().split('\n');
-    let grid = create2DArray(rows[0].length, rows.length, (x, y) => {
-        return parseInt(rows[y][x]);
-    });
+    const grid = input.trim().split('\n').map(line => line.split('').map(num => parseInt(num)));
+    const width = grid[0].length, height = grid.length;
 
+    // count all the low point's heights
     let sum = 0;
-    forEach2DArray(grid, (value, x, y) => {
-        if (y > 0 && grid[y - 1][x] <= value) return;
-        if (y < rows.length - 1 && grid[y + 1][x] <= value) return;
-        if (x > 0 && grid[y][x - 1] <= value) return;
-        if (x < rows[0].length - 1 && grid[y][x + 1] <= value) return;
-        
-        sum += value + 1;
-    })
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            if (y > 0 && grid[y - 1][x] <= grid[y][x]) continue;
+            if (y < height - 1 && grid[y + 1][x] <= grid[y][x]) continue;
+            if (x > 0 && grid[y][x - 1] <= grid[y][x]) continue;
+            if (x < width - 1 && grid[y][x + 1] <= grid[y][x]) continue;
+            
+            sum += grid[y][x] + 1;
+        }
+    }
     return sum;
 };
 
@@ -56,39 +48,25 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    let rows = input.trim().split('\n');
-    let grid = create2DArray(rows[0].length, rows.length, (x, y) => {
-        return parseInt(rows[y][x]);
-    });
+    const grid = input.trim().split('\n').map(line => line.split('').map(num => parseInt(num)));
+    const width = grid[0].length, height = grid.length;
+    const areas: Set<string>[] = [];
 
-    let lowPoints = [];
-    let areas = [];
-
-    forEach2DArray(grid, (value, x, y) => {
-        if (y > 0 && grid[y - 1][x] <= value) return;
-        if (y < rows.length - 1 && grid[y + 1][x] <= value) return;
-        if (x > 0 && grid[y][x - 1] <= value) return;
-        if (x < rows[0].length - 1 && grid[y][x + 1] <= value) return;
-
-        lowPoints.push({ x, y });
-    });
-
-    let fill = (x, y, points) => {
-        points.push({ x, y });
-        if (y > 0 && grid[y - 1][x] != 9 && points.findIndex(element => element.x == x && element.y == (y - 1)) == -1) fill(x, y - 1, points);
-        if (y < rows.length - 1 && grid[y + 1][x] != 9 && points.findIndex(element => element.x == x && element.y == (y + 1)) == -1) fill(x, y + 1, points);
-        if (x > 0 && grid[y][x - 1] != 9 && points.findIndex(element => element.x == (x - 1) && element.y == y) == -1) fill(x - 1, y, points);
-        if (x < rows[0].length - 1 && grid[y][x + 1] != 9 && points.findIndex(element => element.x == (x + 1) && element.y == y) == -1) fill(x + 1, y, points);
-        return points;
+    // flood fill the low points to find all the areas
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            if (y > 0 && grid[y - 1][x] <= grid[y][x]) continue;
+            if (y < height - 1 && grid[y + 1][x] <= grid[y][x]) continue;
+            if (x > 0 && grid[y][x - 1] <= grid[y][x]) continue;
+            if (x < width - 1 && grid[y][x + 1] <= grid[y][x]) continue;
+            
+            areas.push(fill(grid, x, y, new Set()));
+        }
     }
 
-    lowPoints.forEach(element => {
-        let basin = fill(element.x, element.y, []);
-        areas.push(basin);
-    });
-
-    areas.sort((a, b) => b.length - a.length);
-    return areas[0].length * areas[1].length * areas[2].length;
+    // return the three biggest areas multiplied together
+    areas.sort((a, b) => b.size - a.size);
+    return areas[0].size * areas[1].size * areas[2].size;
 };
 
 export { part1, part2 };

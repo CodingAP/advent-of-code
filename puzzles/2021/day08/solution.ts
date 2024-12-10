@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2021/day08/solution.ts
  *
@@ -10,16 +8,19 @@
  * 11/27/2024
  */
 
+const stringSort = (str: string) => str.split('').sort().join('');
+
 /**
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    let lines = [];
-    input.trim().split('\n').forEach(element => {
-        let tokens = element.split(' | ');
-        lines.push({ pattern: tokens[0].split(' '), output: tokens[1].split(' ') });
+    // parse lines
+    const lines = input.trim().split('\n').map(element => {
+        const [pattern, output] = element.split(' | ').map(line => line.split(' '));
+        return { pattern, output };
     });
-
+    
+    // because these all have unique lengths, we know which ones those can be
     let one = 0, four = 0, seven = 0, eight = 0;
 
     for (let i = 0; i < lines.length; i++) {
@@ -30,6 +31,8 @@ const part1 = (input: string) => {
             if (lines[i].output[j].length == 7) eight++;
         }
     }
+
+    // return sum of all the known numbers
     return one + four + seven + eight;
 };
 
@@ -37,60 +40,36 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    let lines = [];
-    input.trim().split('\n').forEach(element => {
-        let tokens = element.split(' | ');
-        lines.push({ pattern: tokens[0].split(' '), output: tokens[1].split(' ') });
+    // parse lines
+    const lines = input.trim().split('\n').map(element => {
+        const [pattern, output] = element.split(' | ').map(line => line.split(' '));
+        return { pattern, output };
     });
 
-    let sum = 0;
+    // reverse engineer the 7-segment displays to find what each number is
+    return lines.reduce((sum, { pattern, output }) => {
+        const decoded: { [key: string]: number } = {};
 
-    for (let i = 0; i < lines.length; i++) {
-        let decoded = new Array(10);
+        // parse the unique ones
+        const one = pattern.find(str => str.length === 2) as string;
+        const four = pattern.find(str => str.length === 4) as string;
+        const seven = pattern.find(str => str.length === 3) as string;
+        const eight = pattern.find(str => str.length === 7) as string;
 
-        decoded[1] = lines[i].pattern.find(element => element.length == 2);
-        decoded[4] = lines[i].pattern.find(element => element.length == 4);
-        decoded[7] = lines[i].pattern.find(element => element.length == 3);
-        decoded[8] = lines[i].pattern.find(element => element.length == 7);
-        decoded[3] = lines[i].pattern.find(element => {
-            let split = element.split('');
-            let other = decoded[7].split('');
+        // to figure out the rest, we can use compliments to find where segments are
+        const three = pattern.find(str => str.length === 5 && str.split('').filter(char => !seven.includes(char)).length === 2) as string;
+        const five = pattern.find(str => str.length === 5 && str !== three && str.split('').filter(char => !four.includes(char)).length === 2) as string;
+        const two = pattern.find(str => str.length === 5 && str !== three && str !== five) as string;
 
-            return split.length == 5 && split.filter(val => !other.includes(val)).length == 2;
-        });
-        decoded[5] = lines[i].pattern.find(element => {
-            let split = element.split('');
-            let other = decoded[4].split('');
+        const six = pattern.find(str => str.length === 6 && str.split('').filter(char => !seven.includes(char)).length === 4) as string;
+        const nine = pattern.find(str => str.length === 6 && str !== six && str.split('').filter(char => !four.includes(char)).length === 2) as string;
+        const zero = pattern.find(str => str.length === 6 && str !== six && str !== nine) as string;
 
-            return split.length == 5 && split.filter(val => !other.includes(val)).length == 2 && element != decoded[3];
-        });
-        decoded[2] = lines[i].pattern.find(element => element.length == 5 && element != decoded[3] && element != decoded[5]);
-        decoded[6] = lines[i].pattern.find(element => {
-            let split = element.split('');
-            let other = decoded[1].split('');
+        // create mapping
+        [zero, one, two, three, four, five, six, seven, eight, nine].forEach((num, index) => decoded[stringSort(num)] = index);
 
-            return split.length == 6 && split.filter(val => !other.includes(val)).length == 5;
-        });
-        decoded[9] = lines[i].pattern.find(element => {
-            let split = element.split('');
-            let other = decoded[4].split('');
-
-            return split.length == 6 && split.filter(val => !other.includes(val)).length == 2 && element != decoded[6];
-        });
-        decoded[0] = lines[i].pattern.find(element => element.length == 6 && element != decoded[6] && element != decoded[9]);
-
-        decoded.forEach((element, index) => {
-            decoded[index] = element.split('').sort().join('');
-        });
-
-        let number = '';
-        lines[i].output.forEach(element => {
-            number += decoded.indexOf(element.split('').sort().join(''));
-        });
-
-        sum += parseInt(number);
-    }
-    return sum;
+        return sum + parseInt(output.map(pattern => decoded[stringSort(pattern)]).join(''));
+    }, 0);
 };
 
 export { part1, part2 };
