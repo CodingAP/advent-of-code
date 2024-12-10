@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2021/day15/solution.ts
  *
@@ -10,33 +8,24 @@
  * 11/27/2024
  */
 
-const create2DArray = (width, height, fill) => {
-    let array = new Array(height).fill('').map(_ => new Array(width));
-
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            if (typeof fill === 'function') array[y][x] = fill(x, y);
-            else array[y][x] = fill;
-        }
-    }
-
-    return array;
-};
+interface MinHeapNode {
+    score: number;
+    data: { [key: string]: any };
+}
 
 /**
  * min heap implementation
  */
 class MinHeap {
+    heap: MinHeapNode[];
     constructor() {
         this.heap = [];
     }
 
     /**
      * inserts an element and heapifies it until it is in the correct location
-     * 
-     * @param {{ score: number, data: { [key: string]: any } }} element element to insert with the score 
      */
-    insert(element) {
+    insert(element: MinHeapNode) {
         this.heap.push(element);
         let index = this.heap.length - 1;
 
@@ -50,13 +39,11 @@ class MinHeap {
 
     /**
      * gets the smallest element, which is at the beginning, then heapifies
-     * 
-     * @returns {{ score: number, data: { [key: string]: any } }} the smallest scored element
      */
     extractMin() {
-        if (this.heap.length === 1) return this.heap.pop();
+        if (this.heap.length === 1) return this.heap.pop() as MinHeapNode;
         const min = this.heap[0];
-        this.heap[0] = this.heap.pop();
+        this.heap[0] = this.heap.pop() as MinHeapNode;
         let index = 0;
 
         while (true) {
@@ -76,8 +63,6 @@ class MinHeap {
 
     /**
      * return the size of the heap
-     * 
-     * @returns {number} the size of the heap
      */
     size() {
         return this.heap.length;
@@ -86,13 +71,8 @@ class MinHeap {
 
 /**
  * finds the best path from the starting point to the ending point
- * 
- * @param {number[][]} grid maze grid with the levels 
- * @param {{ x: number, y: number }} start starting point and level
- * @param {{ x: number, y: number }} end ending point and level
- * @returns {number} how many units it takes to travel
  */
-const solveMazeWeighted = (grid, start, end) => {
+const findPath = (grid: number[][], start: { x: number, y: number }, end: { x: number, y: number }): number => {
     const minHeap = new MinHeap();
     minHeap.insert({ score: 0, data: { ...start } });
 
@@ -132,29 +112,28 @@ const solveMazeWeighted = (grid, start, end) => {
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
-    let rows = input.trim().split('\n');
-    let grid = create2DArray(rows[0].length, rows.length, (x, y) => {
-        return parseInt(rows[y][x]);
-    });
-
-    return solveMazeWeighted(grid, { x: 0, y: 0 }, { x: grid[0].length - 1, y: grid[1].length - 1 });
+    const grid = input.trim().split('\n').map(line => line.split('').map(num => parseInt(num)));
+    return findPath(grid, { x: 0, y: 0 }, { x: grid[0].length - 1, y: grid[1].length - 1 });
 };
 
 /**
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    let rows = input.trim().split('\n');
-    let grid = create2DArray(rows[0].length * 5, rows.length * 5, (x, y) => {
-        let quadrantX = Math.floor(x / rows[0].length);
-        let quadrantY = Math.floor(y / rows.length);
+    const smallGrid = input.trim().split('\n').map(line => line.split(''));
+    const width = smallGrid[0].length, height = smallGrid.length;
+    const bigWidth = width * 5, bigHeight = height * 5;
 
-        let value = parseInt(rows[y - (quadrantY * rows.length)][x - (quadrantX * rows[0].length)]) + (quadrantX + quadrantY);
+    const bigGrid = new Array(bigHeight).fill('').map((_, y) => new Array(bigWidth).fill('').map((__, x) => {
+        let quadrantX = Math.floor(x / height);
+        let quadrantY = Math.floor(y / width);
+
+        let value = parseInt(smallGrid[y - (quadrantY * width)][x - (quadrantX * height)]) + (quadrantX + quadrantY);
         if (value > 9) value -= 9;
         return value;
-    });
+    }));
 
-    return solveMazeWeighted(grid, { x: 0, y: 0 }, { x: grid[0].length - 1, y: grid[1].length - 1 });
+    return findPath(bigGrid, { x: 0, y: 0 }, { x: bigWidth - 1, y: bigHeight - 1 });
 };
 
 export { part1, part2 };
