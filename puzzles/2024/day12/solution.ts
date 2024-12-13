@@ -40,6 +40,27 @@ const floodFill = (grid: string[], details: { area: number, perimeter: { [key: s
 }
 
 /**
+ * remove extra perimeter based on axis
+ */
+const filterPerimeters = (array: Perimeter[], primary: 'x' | 'y', secondary: 'x' | 'y') => {
+    // sort from smallest to largest
+    array.sort((a, b) => a[primary] - b[primary]);
+                    
+    // try to remove any perimeters on the same line
+    for (let i = 0; i < array.length; i++) {
+        let check = array[i][primary];
+        while (true) {
+            check++;
+            const nextNode = array.find(node => node[primary] === check && node[secondary] === array[i][secondary]);
+            
+            // end check if not on continuous line
+            if (nextNode !== undefined) nextNode.valid = false;
+            else break;
+        }
+    }
+}
+
+/**
  * the code of part 1 of the puzzle
  */
 const part1 = (input: string) => {
@@ -72,27 +93,6 @@ const part1 = (input: string) => {
 const part2 = (input: string) => {
     const grid = input.trim().split('\n');
     const width = grid[0].length, height = grid.length;
-
-    /**
-     * remove extra perimeter based on axis
-     */
-    const filterPerimeters = (array: Perimeter[], primary: 'x' | 'y', secondary: 'x' | 'y') => {
-        // sort from smallest to largest
-        array.sort((a, b) => a[primary] - b[primary]);
-                        
-        // try to remove any perimeters on the same line
-        for (let i = 0; i < array.length; i++) {
-            let check = array[i][primary];
-            while (true) {
-                check++;
-                const nextNode = array.find(node => node[primary] === check && node[secondary] === array[i][secondary]);
-                
-                // end check if not on continuous line
-                if (nextNode !== undefined) nextNode.valid = false;
-                else break;
-            }
-        }
-    }
 
     let alreadyFlooded = new Set<string>();
     let sum = 0;
