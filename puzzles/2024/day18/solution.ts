@@ -53,14 +53,21 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    const walls = input.split('\n');
-    const currentWalls = new Set<string>();
+    let walls = input.trim().split('\n');
 
-    // keep running until the end cannot be reached
-    for (let i = 0; i < walls.length; i++) {
-        currentWalls.add(walls[i]);
-        if (bfs(currentWalls, { x: 0, y: 0 }, { x: WIDTH, y: HEIGHT }) === -1) return walls[i];
+    // do a binary search to speed up maze calculations
+    let bottom = 0, top = walls.length - 1;
+    while (bottom < top) {
+        // start the maze search from zero, but still keep track of the bottom for the midpoint
+        const mid = Math.floor((top + bottom) / 2);
+        const bottomSearch = bfs(new Set(walls.slice(0, mid)), { x: 0, y: 0 }, { x: WIDTH, y: HEIGHT });
+        const topSearch = bfs(new Set(walls.slice(0, top)), { x: 0, y: 0 }, { x: WIDTH, y: HEIGHT });
+        
+        if (bottomSearch === -1) top = mid - 1;
+        else if (topSearch === -1) bottom = mid + 1;
     }
+
+    return walls[bottom];
 };
 
 export { part1, part2 };

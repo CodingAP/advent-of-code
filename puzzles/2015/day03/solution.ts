@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2015/day03/solution.ts
  * 
@@ -10,21 +8,23 @@
  * 11/27/2023
  */
 
+const DIRECTIONS: { [key: string]: { x: number, y: number } } = {
+    '^': { x: 0, y: 1 },
+    '>': { x: 1, y: 0 },
+    'v': { x: 0, y: -1 },
+    '<': { x: -1, y: 0 },
+};
+
 /**
  * code for part 1 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 1
  */
-const part1 = input => {
+const part1 = (input: string) => {
     let santa = { x: 0, y: 0 };
     let houses = new Set();
 
     for (let i = 0; i < input.length; i++) {
-        if (input[i] == '^') santa.y++;
-        if (input[i] == '>') santa.x++;
-        if (input[i] == 'v') santa.y--;
-        if (input[i] == '<') santa.x--;
+        santa.x += DIRECTIONS[input[i]].x;
+        santa.y += DIRECTIONS[input[i]].y;
 
         houses.add(`${santa.x},${santa.y}`);
     }
@@ -34,21 +34,16 @@ const part1 = input => {
 
 /**
  * code for part 2 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 2
  */
-const part2 = input => {
+const part2 = (input: string) => {
     let santa = { x: 0, y: 0 }, robot = { x: 0, y: 0 };
     let houses = new Set();
 
     for (let i = 0; i < input.length; i++) {
         let current = (i % 2 == 0) ? santa : robot;
         
-        if (input[i] == '^') current.y++;
-        if (input[i] == '>') current.x++;
-        if (input[i] == 'v') current.y--;
-        if (input[i] == '<') current.x--;
+        current.x += DIRECTIONS[input[i]].x;
+        current.y += DIRECTIONS[input[i]].y;
 
         houses.add(`${current.x},${current.y}`);
     }
