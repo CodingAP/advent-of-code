@@ -13,7 +13,7 @@
 
 Leaderboard Positions - **Part 1**: 6365, **Part 2**: 2241
 
-No video replay as I am traveling...
+[Video Explanation](https://youtu.be/GlThEhFC3ls)
 
 Hello all! In this puzzle, we are given a program spec (which is similar to other Advent of Code virtual machines) and we need to run the program given. There are 8 instructions as most of the content centers around 3-bit numbers. Here is a summary of all the instructions (keep in mind that `adv`, `bdv`, and `cdv` do the same thing, which is a bitshift):
 

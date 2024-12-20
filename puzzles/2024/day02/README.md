@@ -13,6 +13,8 @@
 
 Leaderboard Positions - **Part 1**: 1781, **Part 2**: 1152
 
+[Video Explanation](https://youtu.be/6xOMjkf0gyM)
+
 Hello all! In this puzzle, we are checking if a list of numbers is safe or not according to a these rules:
 
 - The levels are either all increasing or all decreasing.
