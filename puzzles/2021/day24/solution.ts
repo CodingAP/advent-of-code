@@ -8,6 +8,12 @@
  * 11/27/2024
  */
 
+interface ProgramState {
+    registers: { x: number, y: number, z: number, w: number };
+}
+
+const INSTRUCTIONS = { [key: string]}
+
 /**
  * the code of part 1 of the puzzle
  */
