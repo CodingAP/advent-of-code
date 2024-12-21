@@ -1,6 +1,19 @@
-const part1 = async input => {
-    let orbits = {};
-    input.replace(/\r/g, '').split('\n').forEach(element => {
+/**
+ * puzzles/2019/day06/solution.ts
+ *
+ * ~~ Universal Orbit Map ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 12/20/2024
+ */
+
+/**
+ * the code of part 1 of the puzzle
+ */
+const part1 = (input: string) => {
+    const orbits: { [key: string]: string } = {};
+    input.trim().split('\n').forEach(element => {
         let tokens = element.split(')');
         orbits[tokens[1]] = tokens[0];
     });
@@ -16,15 +29,18 @@ const part1 = async input => {
     return orbitCount;
 }
 
-const part2 = async input => {
-    let orbits = {};
-    input.replace(/\r/g, '').split('\n').forEach(element => {
+/**
+ * the code of part 2 of the puzzle
+ */
+const part2 = (input: string) => {
+    const orbits: { [key: string]: string } = {};
+    input.trim().split('\n').forEach(element => {
         let tokens = element.split(')');
         orbits[tokens[1]] = tokens[0];
     });
 
-    let person = [];
-    let santa = [];
+    const person: string[] = [];
+    const santa: string[] = [];
 
     let current = 'YOU';
     while (current != 'COM') {
@@ -38,8 +54,8 @@ const part2 = async input => {
         santa.push(current);
     }
 
-    let orbitsToMovePerson = person.filter(element => !santa.includes(element));
-    let orbitsToMoveSanta = santa.filter(element => !person.includes(element));
+    const orbitsToMovePerson = person.filter(element => !santa.includes(element));
+    const orbitsToMoveSanta = santa.filter(element => !person.includes(element));
     return orbitsToMovePerson.length + orbitsToMoveSanta.length;
 }
 

@@ -1,0 +1,96 @@
+0:  push +12
+1:      push +9
+2:          push +8
+3:          pop -8
+4:          push +0
+5:              push +11
+6:                  push +10
+7:                  pop -11
+8:                  push +3
+9:                  pop -1
+10:             pop -8
+11:         pop -5
+12:     pop -16
+13: pop -6
+
+input(0) + 6 == input(13)
+input(1) - 7 == input(12)
+input(2)     == input(3)
+input(4) - 5 == input(11)
+input(5) + 3 == input(10)
+input(6) - 1 == input(7)
+input(8) + 2 == input(9)
+
+ input(0): 1, 2, 3
+ input(1): 8, 9
+ input(2): 1, 2, 3, 4, 5, 6, 7, 8, 9
+ input(3): 1, 2, 3, 4, 5, 6, 7, 8, 9
+ input(4): 6, 7, 8, 9
+ input(5): 1, 2, 3, 4, 5, 6
+ input(6): 2, 3, 4, 5, 6, 7, 8, 9
+ input(7): 1, 2, 3, 4, 5, 6, 7, 8
+ input(8): 1, 2, 3, 4, 5, 6, 7
+ input(9): 3, 4, 5, 6, 7, 8, 9
+input(10): 4, 5, 6, 7, 8, 9
+input(11): 1, 2, 3, 4
+input(12): 1, 2
+input(13): 7, 8, 9
+
+choose minimum and maximum from each list
+
+manual decomp:
+if (z % 26) + 14 != input(0):
+    z = (z * 26) + input(0) + 12
+
+if (z % 26) + 10 != input(1):
+    z = (z * 26) + input(1) + 9
+
+if (z % 26) + 13 != input(2):
+    z = (z * 26) + input(2) + 8
+
+z //= 26
+
+if (z % 26) - 8 != input(3):
+    z = (z * 26) + input(3) + 3
+
+if (z % 26) + 11 != input(4):
+    z = (z * 26) + input(4)
+
+if (z % 26) + 11 != input(5):
+    z = (z * 26) + input(5) + 11
+
+if (z % 26) + 14 != input(6):
+    z = (z * 26) + input(6) + 10
+
+z //= 26
+
+if (z % 26) - 11 != input(7):
+    z = (z * 26) + input(7) + 13
+
+if (z % 26) + 14 != input(8):
+    z = (z * 26) + input(8) + 3
+
+z //= 26
+
+if (z % 26) - 1 != input(9):
+    z = (z * 26) + input(9) + 10
+
+z //= 26
+
+if (z % 26) - 8 != input(10):
+    z = (z * 26) + input(10) + 10
+
+z //= 26
+
+if (z % 26) - 5 != input(11):
+    z = (z * 26) + input(11) + 14
+
+z //= 26
+
+if (z % 26) - 16 != input(12):
+    z = (z * 26) + input(12) + 6 
+
+z //= 26
+
+if (z % 26) - 6 != input(13):
+    z = (z * 26) + input(13) + 5 
