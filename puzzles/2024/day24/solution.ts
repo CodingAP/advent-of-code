@@ -46,16 +46,9 @@ const part1 = (input: string) => {
  * the code of part 2 of the puzzle
  */
 const part2 = (input: string) => {
-    const parts = input.trim().split('\n\n').map(lines => lines.split('\n'));
-    const wires = parts[0].reduce<{ [key: string]: number }>((obj, line) => {
-        const [left, right] = line.split(': ');
-        obj[left] = parseInt(right);
-        return obj;
-    }, {});
-
-    const instructions = parts[1].map(line => {
+    const instructions = input.trim().split('\n\n').map(lines => lines.split('\n'))[1].map(line => {
         const tokens = line.split(' ');
-        return { a: tokens[0], b: tokens[2], c: tokens[4], operation: tokens[1], executed: false };
+        return { a: tokens[0], b: tokens[2], c: tokens[4], operation: tokens[1] };
     });
 
     const BIT_LENGTH = 45;

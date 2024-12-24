@@ -1,3 +1,13 @@
+/**
+ * puzzles/2019/day17/solution.ts
+ *
+ * ~~ Care Package ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 12/24/2024
+ */
+
 class IntcodeComputer {
     program: number[];
     counter: number;
@@ -67,7 +77,7 @@ class IntcodeComputer {
                 this.relativeBase += this.parseArg(args[0]);
                 return 2;
             },
-            99: args => { // HALT
+            99: _args => { // HALT
                 this.halted = true;
                 return 1;
             }
@@ -94,7 +104,7 @@ class IntcodeComputer {
         return opcode.toString().padStart(5, '0').slice(0, 3).split('').reverse().map((digit, index) => {
             return {
                 value: this.program[this.counter + index + 1],
-                mode: ['POSITION', 'IMMEDIATE', 'RELATIVE'][digit]
+                mode: ['POSITION', 'IMMEDIATE', 'RELATIVE'][parseInt(digit)]
             };
         });
     }
@@ -102,9 +112,9 @@ class IntcodeComputer {
     runInstruction() {
         if (this.halted || this.waitingForInput) return;
 
-        let opcode = this.program[this.counter];
-        let args = this.parseOpcode(opcode);
-        let forward = this.OPCODES[opcode % 100](args);
+        const opcode = this.program[this.counter];
+        const args = this.parseOpcode(opcode);
+        const forward = this.OPCODES[opcode % 100](args);
         this.counter += forward;
     }
 
@@ -125,6 +135,9 @@ class IntcodeComputer {
 
 const DIRECTIONS = [{ x: -1, y: 0 }, { x: 0, y: -1 }, { x: 1, y: 0 }, { x: 0, y: 1 }];
 
+/**
+ * the code of part 1 of the puzzle
+ */
 const part1 = (input: string) => {
     const camera: { [key: string]: string } = {};
     const computer = new IntcodeComputer(input.split(',').map(num => parseInt(num)));
@@ -147,6 +160,9 @@ const part1 = (input: string) => {
     }, 0);
 }
 
+/**
+ * the code of part 2 of the puzzle
+ */
 const part2 = (input: string) => {
     const camera: { [key: string]: string } = {};
     const computer = new IntcodeComputer(input.trim().split(',').map(num => parseInt(num)));
@@ -175,8 +191,8 @@ const part2 = (input: string) => {
     while (true) {
         const newPosition = { x: robot.x + DIRECTIONS[robot.direction].x, y: robot.y + DIRECTIONS[robot.direction].y };
         if (camera[`${newPosition.x},${newPosition.y}`] != '#') {
-            let left = { x: robot.x + DIRECTIONS[(robot.direction + 3) % 4].x, y: robot.y + DIRECTIONS[(robot.direction + 3) % 4].y };
-            let right = { x: robot.x + DIRECTIONS[(robot.direction + 1) % 4].x, y: robot.y + DIRECTIONS[(robot.direction + 1) % 4].y };
+            const left = { x: robot.x + DIRECTIONS[(robot.direction + 3) % 4].x, y: robot.y + DIRECTIONS[(robot.direction + 3) % 4].y };
+            const right = { x: robot.x + DIRECTIONS[(robot.direction + 1) % 4].x, y: robot.y + DIRECTIONS[(robot.direction + 1) % 4].y };
         
             if (camera[`${left.x},${left.y}`] == '#') {
                 robot.direction = (robot.direction + 3) % 4;
