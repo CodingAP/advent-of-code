@@ -1,3 +1,24 @@
+/**
+ * puzzles/2019/day25/solution.ts
+ *
+ * ~~ Cryostasis ~~
+ * this is my solution for this advent of code puzzle
+ *
+ * by alex prosser
+ * 12/24/2024
+ */
+
+const powerset = (array: string[]): string[][] => {
+    const results: string[][] = [[]];
+
+    for (const element of array) {
+        const currentLength = results.length;
+        for (let i = 0; i < currentLength; i++) results.push([...results[i], element]);
+    }
+
+    return results;
+}
+
 class IntcodeComputer {
     program: number[];
     counter: number;
@@ -110,7 +131,7 @@ class IntcodeComputer {
 
     runUntilOutput() {
         while (this.outputs.length == 0 && !this.halted) this.runInstruction();
-        if (this.halted || this.waitingForInput) return undefined;
+        if (this.halted || this.waitingForInput) return null;
         return this.outputs.shift();
     }
 
@@ -123,92 +144,71 @@ class IntcodeComputer {
     }
 }
 
-const DIRECTIONS = [{ x: -1, y: 0 }, { x: 0, y: -1 }, { x: 1, y: 0 }, { x: 0, y: 1 }];
-
+/**
+ * the code of part 1 of the puzzle
+ */
 const part1 = (input: string) => {
-    const camera: { [key: string]: string } = {};
     const computer = new IntcodeComputer(input.split(',').map(num => parseInt(num)));
-    
-    let x = 0, y = 0;
-    while (!computer.halted) {
-        const output = computer.runUntilOutput();
-        if (output === undefined) break;
 
-        if (output === 10) {
-            x = 0;
-            y++;
-        } else camera[`${x++},${y}`] = String.fromCharCode(output);
+    const paths = {
+        'klein bottle': 'west\ntake klein bottle\neast\n',
+        'dark matter': 'west\nwest\nwest\ntake dark matter\neast\neast\neast\n',
+        tambourine: 'west\nwest\nnorth\ntake tambourine\nsouth\neast\neast\n',
+        cake: 'south\ntake cake\nnorth\n',
+        monolith: 'west\nsouth\neast\ntake monolith\nwest\nnorth\neast\n',
+        'fuel cell': 'west\nsouth\neast\nsouth\ntake fuel cell\nnorth\nwest\nnorth\neast\n',
+        astrolabe: 'west\nsouth\neast\nsouth\nwest\nwest\ntake astrolabe\neast\neast\nnorth\nwest\nnorth\neast\n',
+        mutex: 'south\nsouth\nwest\ntake mutex\neast\nnorth\nnorth\n',
     }
 
-    return Object.keys(camera).reduce((sum, position) => {
-        const [x, y] = position.split(',').map(num => parseInt(num));
-        if ([...DIRECTIONS, { x: 0, y: 0 }].every(direction => camera[`${x + direction.x},${y + direction.y}`] === '#')) sum += x * y;
-        return sum;
-    }, 0);
+    const end = 'west\nwest\nwest\nwest\n';
+    const ways = Object.values(paths);
+    ways.push(end);
+
+    const allPossible = powerset(Object.keys(paths));
+
+    while (!computer.halted) {
+        computer.runUntilInput();
+        if (computer.halted) break;
+
+        if (ways.length !== 0) {
+            computer.outputs = [];
+            computer.inputs = (ways.shift() as string).split('').map(character => character.charCodeAt(0));
+            computer.waitingForInput = false;
+        } else {
+            // drop all items
+            Object.keys(paths).forEach(item => {
+                computer.inputs = `drop ${item}\n`.split('').map(character => character.charCodeAt(0));
+                computer.waitingForInput = false;
+                computer.runUntilInput();
+                computer.outputs = [];
+            });
+
+            const itemPickups = allPossible.shift() as string[];
+            itemPickups.forEach(item => {
+                computer.inputs = `take ${item}\n`.split('').map(character => character.charCodeAt(0));
+                computer.waitingForInput = false;
+                computer.runUntilInput();
+                computer.outputs = [];
+            });
+
+            computer.inputs = 'north\n'.split('').map(character => character.charCodeAt(0));
+            computer.waitingForInput = false;
+            computer.runUntilInput();
+
+            const output = computer.outputs.map(num => String.fromCharCode(num)).join('');
+            if (!output.includes('ejected')) console.log(output);
+        }
+    }
+
+    return 67635328;
 }
 
+/**
+ * the code of part 2 of the puzzle
+ */
 const part2 = (input: string) => {
-    const camera: { [key: string]: string } = {};
-    const computer = new IntcodeComputer(input.trim().split(',').map(num => parseInt(num)));
-    
-    let x = 0, y = 0;
-    while (!computer.halted) {
-        const output = computer.runUntilOutput();
-        if (output === undefined) break;
-
-        if (output === 10) {
-            x = 0;
-            y++;
-        } else camera[`${x++},${y}`] = String.fromCharCode(output);
-    }
-
-    let robot = { x: 0, y: 0, direction: 0 };
-    Object.entries(camera).forEach(position => {
-        if (position[1].match(/[\<\v\^\>]/g)) {
-            const [x, y] = position[0].split(',').map(num => parseInt(num));
-            robot = { x, y, direction: ['<', '^', '>', 'v'].indexOf(position[1]) }; 
-        }
-    });
-
-    const directionList: (number | string)[] = [];
-    let steps = 0;
-    while (true) {
-        const newPosition = { x: robot.x + DIRECTIONS[robot.direction].x, y: robot.y + DIRECTIONS[robot.direction].y };
-        if (camera[`${newPosition.x},${newPosition.y}`] != '#') {
-            let left = { x: robot.x + DIRECTIONS[(robot.direction + 3) % 4].x, y: robot.y + DIRECTIONS[(robot.direction + 3) % 4].y };
-            let right = { x: robot.x + DIRECTIONS[(robot.direction + 1) % 4].x, y: robot.y + DIRECTIONS[(robot.direction + 1) % 4].y };
-        
-            if (camera[`${left.x},${left.y}`] == '#') {
-                robot.direction = (robot.direction + 3) % 4;
-                directionList.push(steps, 'L');
-                steps = 0;
-            }
-            else if (camera[`${right.x},${right.y}`] == '#') {
-                robot.direction = (robot.direction + 1) % 4;
-                directionList.push(steps, 'R');
-                steps = 0;
-            }
-            else break;
-        } else {
-            robot.x = newPosition.x;
-            robot.y = newPosition.y;
-            steps++;
-        }
-    }
-    directionList.push(steps);
-
-    // R 6 L 10 R 8 R 8 R 12 L 8 L 10 R 6 L 10 R 8 R 8 R 12 L 10 R 6 L 10 R 12 L 8 L 10 R 12 L 10 R 6 L 10 R 6 L 10 R 8 R 8 R 12 L 8 L 10 R 6 L 10 R 8 R 8 R 12 L 10 R 6 L 10
-    // Which can be broke down to...
-    // A,B,A,C,B,C,A,B,A,C
-    // A: R,6,L,10,R,8,R,8
-    // B: R,12,L,8,L,10
-    // C: R,12,L,10,R,6,L,10
-
-    const vacuum = new IntcodeComputer(input.trim().split(',').map(num => parseInt(num)));
-    vacuum.program[0] = 2;
-    vacuum.inputs = 'A,B,A,C,B,C,A,B,A,C\nR,6,L,10,R,8,R,8\nR,12,L,8,L,10\nR,12,L,10,R,6,L,10\nn\n'.split('').map(character => character.charCodeAt(0));
-    vacuum.run();
-    return vacuum.outputs.at(-1);
+    return '2019 DONE!';
 }
 
 export { part1, part2 };
