@@ -49,7 +49,7 @@ const getCommand = (input: { [key: string]: { x: number, y: number } }, start: s
 
     if (start === end) return ['A'];
 
-    let allPaths: string[] = [];
+    const allPaths: string[] = [];
     while (queue.length) {
         const current = queue.shift();
         if (current === undefined) break;

@@ -10,7 +10,7 @@
 
 // find all combinations of array with k entries
 const combination = (array: string[], k: number) => {
-    let result: string[][] = [];
+    const result: string[][] = [];
 
     const helper = (_array: string[], _k: number, _i: number, _current: string[]) => {
         if (_current.length == k) result.push(_current);
@@ -26,10 +26,10 @@ const combination = (array: string[], k: number) => {
 
 // recursively find the set that can loop given a size time
 // note: this function only works for size 3
-const findSet = (graph: { [key: string]: string[] }, path: string[], size: number): string[][] => {
+const findTripleSet = (graph: { [key: string]: string[] }, path: string[]): string[][] => {
     const current = path.at(-1) as string;
-    if (path.length === size + 1) {
-        if (current === path[0]) return [path.slice(0, size)];
+    if (path.length === 4) {
+        if (current === path[0]) return [path.slice(0, 3)];
         else return [];
     }
 
@@ -39,7 +39,7 @@ const findSet = (graph: { [key: string]: string[] }, path: string[], size: numbe
     const allSets: string[][] = [];
     for (let i = 0; i < graph[current].length; i++) {
         path.push(graph[current][i]);
-        const sets = findSet(graph, path, size);
+        const sets = findTripleSet(graph, path);
         path.pop();
 
         if (sets.length > 0) allSets.push(...sets);
@@ -63,7 +63,7 @@ const part1 = (input: string) => {
 
     let allSets = new Set<string>();
     Object.keys(graph).forEach(node => {
-        allSets = allSets.union(new Set(findSet(graph, [node], 3).map(set => set.sort().join(','))));
+        allSets = allSets.union(new Set(findTripleSet(graph, [node]).map(set => set.sort().join(','))));
     });
 
     return Array.from(allSets).reduce((sum, set) => {
