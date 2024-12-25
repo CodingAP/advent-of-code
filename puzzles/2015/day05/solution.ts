@@ -31,7 +31,7 @@ const part2 = (input: string) => {
         const characters = line.split('');
 
         const pairs = characters.reduce<{ [key: string]: number }>((obj, character, index) => {
-            let pair = character + characters[index + 1];
+            const pair = character + characters[index + 1];
             if (!(character === characters[index + 1] && character === characters[index + 2])) obj[pair] = (obj[pair] || 0) + 1;
             return obj;
         }, {});

@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2015/day07/solution.ts
  * 
@@ -12,13 +10,9 @@
 
 /**
  * tries to get the wire or number, null if no wire exists
- * 
- * @param {Record<string, number>} wires all current wires with signals  
- * @param {string} value string from instruction
- * @returns {number | null}
  */
-const checkWire = (wires, value) => {
-    if (isNaN(value)) {
+const checkWire = (wires: { [key: string]: number }, value: string) => {
+    if (value.match(/[a-z]/g)) {
         if (wires[value] == null) return null;
         else return wires[value];
     } else {
@@ -29,17 +23,17 @@ const checkWire = (wires, value) => {
 /**
  * all operations on the wires
  */
-const gates = {
+const GATES: { [key: string]: ( wires: { [key: string]: number }, args: string[], result: string) => boolean } = {
     SET: (wires, args, result) => {
-        let a = checkWire(wires, args[0]);
+        const a = checkWire(wires, args[0]);
         if (a == null) return false;
 
         wires[result] = a;
         return true;
     },
     AND: (wires, args, result) => {
-        let a = checkWire(wires, args[0]);
-        let b = checkWire(wires, args[2]);
+        const a = checkWire(wires, args[0]);
+        const b = checkWire(wires, args[2]);
 
         if (a == null || b == null) return false;
 
@@ -47,8 +41,8 @@ const gates = {
         return true;
     },
     OR: (wires, args, result) => {
-        let a = checkWire(wires, args[0]);
-        let b = checkWire(wires, args[2]);
+        const a = checkWire(wires, args[0]);
+        const b = checkWire(wires, args[2]);
 
         if (a == null || b == null) return false;
 
@@ -56,7 +50,7 @@ const gates = {
         return true;
     },
     NOT: (wires, args, result) => {
-        let a = checkWire(wires, args[1]);
+        const a = checkWire(wires, args[1]);
 
         if (a == null) return false;
 
@@ -64,8 +58,8 @@ const gates = {
         return true;
     },
     LSHIFT: (wires, args, result) => {
-        let a = checkWire(wires, args[0]);
-        let b = checkWire(wires, args[2]);
+        const a = checkWire(wires, args[0]);
+        const b = checkWire(wires, args[2]);
 
         if (a == null || b == null) return false;
 
@@ -73,8 +67,8 @@ const gates = {
         return true;
     },
     RSHIFT: (wires, args, result) => {
-        let a = checkWire(wires, args[0]);
-        let b = checkWire(wires, args[2]);
+        const a = checkWire(wires, args[0]);
+        const b = checkWire(wires, args[2]);
 
         if (a == null || b == null) return false;
 
@@ -85,25 +79,22 @@ const gates = {
 
 /**
  * code for part 1 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 1
  */
-const part1 = input => {
-    let wires = {};
-    let instructions = input.split(/\n/g);
+const part1 = (input: string) => {
+    const wires: { [key: string]: number } = {};
+    const instructions = input.split(/\n/g);
     while (instructions.length > 0) {
         for (let i = instructions.length - 1; i >= 0; i--) {
             let forRemoval = false;
-            let [args, result] = instructions[i].split(' -> ');
-            args = args.split(' ');
+            const [left, right] = instructions[i].split(' -> ');
+            const args = left.split(' ');
             
             if (args.length == 1) {
-                forRemoval = gates.SET(wires, args, result);
+                forRemoval = GATES.SET(wires, args, right);
             } else if (args.length == 2) {
-                forRemoval = gates.NOT(wires, args, result);
+                forRemoval = GATES.NOT(wires, args, right);
             } else {
-                forRemoval = gates[args[1]](wires, args, result);
+                forRemoval = GATES[args[1]](wires, args, right);
             }
 
             if (forRemoval) instructions.splice(i, 1);
@@ -115,26 +106,23 @@ const part1 = input => {
 
 /**
  * code for part 2 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 2
  */
-const part2 = input => {
+const part2 = (input: string) => {
     const value = part1(input);
-    const wires = { b: value };
-    let instructions = input.split(/\n/g);
+    const wires: { [key: string]: number } = { b: value };
+    const instructions = input.split(/\n/g);
     while (instructions.length > 0) {
         for (let i = instructions.length - 1; i >= 0; i--) {
             let forRemoval = false;
-            let [args, result] = instructions[i].split(' -> ');
-            args = args.split(' ');
-
+            const [left, right] = instructions[i].split(' -> ');
+            const args = left.split(' ');
+            
             if (args.length == 1) {
-                forRemoval = gates.SET(wires, args, result);
+                forRemoval = GATES.SET(wires, args, right);
             } else if (args.length == 2) {
-                forRemoval = gates.NOT(wires, args, result);
+                forRemoval = GATES.NOT(wires, args, right);
             } else {
-                forRemoval = gates[args[1]](wires, args, result);
+                forRemoval = GATES[args[1]](wires, args, right);
             }
 
             if (forRemoval) instructions.splice(i, 1);

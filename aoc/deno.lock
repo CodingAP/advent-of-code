@@ -7,6 +7,7 @@
     "jsr:@denosaurs/plug@1": "1.0.6",
     "jsr:@denosaurs/plug@1.0.3": "1.0.3",
     "jsr:@libs/markdown@2": "2.0.0",
+    "jsr:@libs/typing@3": "3.1.2",
     "jsr:@std/assert@0.217": "0.217.0",
     "jsr:@std/assert@0.221": "0.221.0",
     "jsr:@std/assert@~0.213.1": "0.213.1",
@@ -29,6 +30,7 @@
     "jsr:@std/path@~0.213.1": "0.213.1",
     "jsr:@std/text@1": "1.0.8",
     "jsr:@std/yaml@1": "1.0.5",
+    "npm:@types/hast@3": "3.0.4",
     "npm:hastscript@9": "9.0.0",
     "npm:rehype-autolink-headings@7": "7.1.0",
     "npm:rehype-highlight@7": "7.0.1",
@@ -95,8 +97,10 @@
     "@libs/markdown@2.0.0": {
       "integrity": "0a83a57c151f3553c174712348e166c0ee3b89550afdf2084a29e6a4dd4299a8",
       "dependencies": [
+        "jsr:@libs/typing",
         "jsr:@std/text",
         "jsr:@std/yaml",
+        "npm:@types/hast",
         "npm:hastscript",
         "npm:rehype-autolink-headings",
         "npm:rehype-highlight",
@@ -121,6 +125,9 @@
         "npm:unified",
         "npm:unist-util-visit"
       ]
+    },
+    "@libs/typing@3.1.2": {
+      "integrity": "72342a0eaedcc1f3f3ec18f8f9573759011c68f135e2ec6c7282c59843f7a37e"
     },
     "@std/assert@0.213.1": {
       "integrity": "24c28178b30c8e0782c18e8e94ea72b16282207569cdd10ffb9d1d26f2edebfe"

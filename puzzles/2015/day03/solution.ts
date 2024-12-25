@@ -40,7 +40,7 @@ const part2 = (input: string) => {
     let houses = new Set();
 
     for (let i = 0; i < input.length; i++) {
-        let current = (i % 2 == 0) ? santa : robot;
+        let current = (i % 2 === 0) ? santa : robot;
         
         current.x += DIRECTIONS[input[i]].x;
         current.y += DIRECTIONS[input[i]].y;

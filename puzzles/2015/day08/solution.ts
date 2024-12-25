@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2015/day08/solution.ts
  * 
@@ -12,12 +10,9 @@
 
 /**
  * code for part 1 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 1
  */
-const part1 = input => {
-    return input.split(/\n/g).reduce((sum, line) => {
+const part1 = (input: string) => {
+    return input.trim().split(/\n/g).reduce((sum, line) => {
         let stringCount = 0;
         for (let i = 1; i < line.length - 1; i++) {
             if (line[i] == '\\') {
@@ -35,13 +30,10 @@ const part1 = input => {
 
 /**
  * code for part 2 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 2
  */
-const part2 = input => {
+const part2 = (input: string) => {
     // add new quotes to length and add extra if it is quote or backslash
-    return input.split(/\n/g).reduce((sum, line) => {
+    return input.trim().split(/\n/g).reduce((sum, line) => {
         return sum + 2 + line.split('').filter(character => character == '"' || character == '\\').length;
     }, 0);
 }

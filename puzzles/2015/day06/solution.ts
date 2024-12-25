@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2015/day06/solution.ts
  * 
@@ -11,22 +9,19 @@
  */
 
 /**
- * code for part 1 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 1
+ * code for part 1 of the advent of code puzzle=
  */
-const part1 = input => {
-    let size = 1000;
-    let grid = new Array(size * size).fill(false);
+const part1 = (input: string) => {
+    const size = 1000;
+    const grid = new Array(size * size).fill(false);
 
-    input.split(/\n/g).forEach(instruction => {
-        let tokens = instruction.split(' ');
-        let [startX, startY] = tokens[(tokens[0] == 'toggle') ? 1 : 2].split(',').map(num => parseInt(num));
-        let [endX, endY] = tokens[(tokens[0] == 'toggle') ? 3 : 4].split(',').map(num => parseInt(num));
+    input.trim().split(/\n/g).forEach(instruction => {
+        const tokens = instruction.split(' ');
+        const [startX, startY] = tokens[(tokens[0] === 'toggle') ? 1 : 2].split(',').map(num => parseInt(num));
+        const [endX, endY] = tokens[(tokens[0] === 'toggle') ? 3 : 4].split(',').map(num => parseInt(num));
         for (let y = startY; y <= endY; y++) {
             for (let x = startX; x <= endX; x++) {
-                grid[y * size + x] = (tokens[0] == 'toggle') ? !grid[y * size + x] : (tokens[1] == 'on');
+                grid[y * size + x] = (tokens[0] === 'toggle') ? !grid[y * size + x] : (tokens[1] == 'on');
             }
         }
     });
@@ -36,21 +31,18 @@ const part1 = input => {
 
 /**
  * code for part 2 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 2
  */
-const part2 = input => {
-    let size = 1000;
-    let grid = new Array(size * size).fill(0);
+const part2 = (input: string) => {
+    const size = 1000;
+    const grid = new Array(size * size).fill(0);
 
-    input.split(/\n/g).forEach(instruction => {
-        let tokens = instruction.split(' ');
-        let [startX, startY] = tokens[(tokens[0] == 'toggle') ? 1 : 2].split(',').map(num => parseInt(num));
-        let [endX, endY] = tokens[(tokens[0] == 'toggle') ? 3 : 4].split(',').map(num => parseInt(num));
+    input.trim().split(/\n/g).forEach(instruction => {
+        const tokens = instruction.split(' ');
+        const [startX, startY] = tokens[(tokens[0] === 'toggle') ? 1 : 2].split(',').map(num => parseInt(num));
+        const [endX, endY] = tokens[(tokens[0] === 'toggle') ? 3 : 4].split(',').map(num => parseInt(num));
         for (let y = startY; y <= endY; y++) {
             for (let x = startX; x <= endX; x++) {
-                grid[y * size + x] += (tokens[0] == 'toggle') ? 2 : ((tokens[1] == 'on') ? 1 : -1);
+                grid[y * size + x] += (tokens[0] === 'toggle') ? 2 : ((tokens[1] === 'on') ? 1 : -1);
                 grid[y * size + x] = Math.max(0, grid[y * size + x]);
             }
         }

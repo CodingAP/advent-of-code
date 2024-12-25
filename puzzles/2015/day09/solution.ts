@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2015/day09/solution.ts
  * 
@@ -11,12 +9,9 @@
  */
 
 /**
- * Take an array and return all possible permutations
- * 
- * @param {any[]} array some array to permute
- * @returns {any[][]} all possible permutations
+ * take an array and return all possible permutations
  */
-const permuation = array => {
+const permuation = (array: string[]): string[][] => {
     if (!array.length) return [[]];
     return array.flatMap(element => {
         return permuation(array.filter(perm => perm !== element)).map(perms => [element, ...perms]);
@@ -25,14 +20,11 @@ const permuation = array => {
 
 /**
  * code for part 1 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 1
  */
-const part1 = input => {
+const part1 = (input: string) => {
     // parse input
-    const distances = input.split(/\n/g).reduce((obj, distance) => {
-        let words = distance.split(' ');
+    const distances = input.trim().split(/\n/g).reduce<{ [key: string]: { [key: string]: number }}>((obj, distance) => {
+        const words = distance.split(' ');
 
         if (obj[words[0]] == null) obj[words[0]] = {};
         obj[words[0]][words[2]] = parseInt(words[4]);
@@ -57,14 +49,11 @@ const part1 = input => {
 
 /**
  * code for part 2 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 2
  */
-const part2 = input => {
+const part2 = (input: string) => {
     // parse input
-    const distances = input.split(/\n/g).reduce((obj, distance) => {
-        let words = distance.split(' ');
+    const distances = input.trim().split(/\n/g).reduce<{ [key: string]: { [key: string]: number }}>((obj, distance) => {
+        const words = distance.split(' ');
 
         if (obj[words[0]] == null) obj[words[0]] = {};
         obj[words[0]][words[2]] = parseInt(words[4]);

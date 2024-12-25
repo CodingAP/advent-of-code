@@ -1,5 +1,3 @@
-// @ts-nocheck previous years was written in javascript, so disable it here
-
 /**
  * puzzles/2015/day10/solution.ts
  * 
@@ -12,11 +10,8 @@
 
 /**
  * code for part 1 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 1
  */
-const part1 = input => {
+const part1 = (input: string) => {
     let currentString = input;
     for (let gen = 0; gen < 40; gen++) {
         let newString = '';
@@ -37,11 +32,8 @@ const part1 = input => {
 
 /**
  * code for part 2 of the advent of code puzzle
- * 
- * @param {string} input 
- * @returns {string | number} the result of part 2
  */
-const part2 = input => {
+const part2 = (input: string) => {
     let currentString = input;
     for (let gen = 0; gen < 50; gen++) {
         let newString = '';
