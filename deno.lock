@@ -1,28 +1,16 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:dockview-core@^8.8.3": "8.8.3",
-    "npm:monaco-editor@~0.52.2": "0.52.2"
+    "jsr:@std/crypto@^1.0.3": "1.1.0"
   },
-  "npm": {
-    "dockview-core@8.8.3": {
-      "integrity": "sha512-B9v+ibiXnZ5qgFJ7VEqMcNxpG0S5Y7Yx7uuGqqSyEFSC3bRZktUoXWo3HCrFp+QTdFmA1dJD1ye/gI4yL3hU2g=="
-    },
-    "monaco-editor@0.52.2": {
-      "integrity": "sha512-GEQWEZmfkOGLdd3XK8ryrfWz3AIP8YymVXiPHEdewrUq7mh0qrKrfHLNCXcbB6sTnMLnOZ3ztSiKcciFUkIJwQ=="
+  "jsr": {
+    "@std/crypto@1.1.0": {
+      "integrity": "b8d6d0a6377a32b213af2661ed7bf1062d94feac0c57def5526a8e74a95c3ec8"
     }
   },
   "workspace": {
     "dependencies": [
       "jsr:@std/crypto@^1.0.3"
-    ],
-    "members": {
-      "frontend": {
-        "dependencies": [
-          "npm:dockview-core@^8.8.3",
-          "npm:monaco-editor@~0.52.2"
-        ]
-      }
-    }
+    ]
   }
 }

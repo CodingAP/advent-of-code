@@ -1,0 +1,17 @@
+{
+    "id": "advent-of-code",
+    "name": "Advent of Code",
+    "provider": "advent-of-code",
+    "repository": "https://github.com/CodingAP/advent-of-code",
+    "layout": {
+        "puzzle": "puzzles/{group}/day{puzzle:2}",
+        "solution": "solution.ts",
+        "input": "input.txt"
+    },
+    "runner": {
+        "kind": "module",
+        "exports": "part{part}"
+    },
+    "template": "template.ts",
+    "data": "hub.db"
+}
