@@ -6,8 +6,8 @@
 
 import { api } from '../api.ts';
 import { clear, formatMs, h, replace } from '../dom.ts';
+import { debugStore } from '../debugstore.ts';
 import { createLiveLog } from '../livelog.ts';
-import { debugBox } from './runner.ts';
 import { settings } from '../settings.ts';
 import { actions, getState, subscribe } from '../state.ts';
 import type { Example, Part, RunOutcome } from '../types.ts';
@@ -38,7 +38,7 @@ const decode = (value: string): Selection => {
 export const testsPanel: PanelDefinition = {
     id: 'tests',
     title: 'Tests',
-    create(container) {
+    create(container, { workspace }) {
         let saved: Example[] = [];
         let suggested: Example[] = [];
         let selection: Selection = { kind: 'new' };
@@ -63,8 +63,17 @@ export const testsPanel: PanelDefinition = {
         const status = h('span', { className: 'dim' });
         const lineInfo = h('span', { className: 'dim' });
 
-        const runButton = h('button', { className: 'link', onClick: () => run(false) }, '▶ run');
-        const debugButton = h('button', { className: 'link', title: 'run this example under the inspector', onClick: () => run(true) }, '🐞 debug');
+        const runButton = h('button', { className: 'link', onClick: () => run() }, '▶ run');
+        const debugButton = h('button', {
+            className: 'link',
+            title: 'open the debugger panel and run this example under it',
+            onClick: () => {
+                const example = current();
+                if (!example.input.trim()) return setStatus('nothing to debug: the input is empty', 'error');
+                workspace.open('debugger');
+                debugStore.requestSession({ part: part.value as Part, input: example.input, label: example.name });
+            },
+        }, '🐞 debug');
         const cancelButton = h('button', { className: 'link error', style: 'display: none', onClick: () => controller?.abort() }, 'cancel');
         const saveButton = h(
             'button',
@@ -215,17 +224,16 @@ export const testsPanel: PanelDefinition = {
             );
         };
 
-        const run = async (debug: boolean) => {
+        const run = async () => {
             const example = current();
             if (!example.input.trim()) return setStatus('nothing to run: the input is empty', 'error');
             controller = new AbortController();
             cancelButton.style.display = '';
             live.clear();
-            replace(result, h('p', { className: 'dim' }, h('span', { className: 'spinner' }), debug ? ' starting under the debugger…' : ' running…'));
+            replace(result, h('p', { className: 'dim' }, h('span', { className: 'spinner' }), ' running…'));
             setStatus('');
-            const outcome = await actions.runExample({ part: part.value as Part, input: example.input, debug }, controller.signal, {
+            const outcome = await actions.runExample({ part: part.value as Part, input: example.input }, controller.signal, {
                 onLog: (line) => live.append(line),
-                onInspector: ({ token }) => replace(result, debugBox(token)),
             });
             cancelButton.style.display = 'none';
             if (outcome) renderResult(outcome, example);

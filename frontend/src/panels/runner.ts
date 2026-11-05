@@ -4,8 +4,9 @@
  * run / profile / debug / submit controls, live console output, and the latest result
  */
 
+import { debugStore } from '../debugstore.ts';
 import { formatMs, h, replace } from '../dom.ts';
-import { createLiveLog, devtoolsUrl } from '../livelog.ts';
+import { createLiveLog } from '../livelog.ts';
 import { settings } from '../settings.ts';
 import { actions, getState, subscribe } from '../state.ts';
 import type { Part, RunOutcome, SubmitOutcome } from '../types.ts';
@@ -20,38 +21,10 @@ const partSelect = (value: Part) =>
         h('option', { value: '2' }, 'part 2'),
     ) as HTMLSelectElement;
 
-/**
- * the box shown while a debug run waits for chrome devtools
- */
-export const debugBox = (token: string): HTMLElement => {
-    const url = devtoolsUrl(token, settings.get().apiBase);
-    const field = h('input', {
-        type: 'text',
-        readOnly: true,
-        value: url,
-        className: 'devtools-url',
-        onClick: (event: Event) => (event.target as HTMLInputElement).select(),
-    });
-    return h(
-        'div',
-        { className: 'debug-box' },
-        h('p', { className: 'header' }, 'debugger ready'),
-        h(
-            'p',
-            null,
-            'paste this into the address bar of a chromium browser (chrome, edge, brave…), then press resume in devtools: the run is paused at its first line. set breakpoints in solution.ts under sources, or put a ',
-            h('code', null, 'debugger;'),
-            ' line in your code.',
-        ),
-        h('div', { className: 'devtools-row' }, field, h('button', { className: 'link', onClick: () => navigator.clipboard.writeText(url) }, 'copy')),
-        h('p', { className: 'dim' }, 'the run finishes when your code returns; closing devtools early lets it continue on its own.'),
-    );
-};
-
 export const runnerPanel: PanelDefinition = {
     id: 'runner',
     title: 'Runner',
-    create(container) {
+    create(container, { workspace }) {
         const current = settings.get();
         const runPart = partSelect(current.defaultPart);
         const iterations = h('input', {
@@ -73,11 +46,14 @@ export const runnerPanel: PanelDefinition = {
 
         const runButton = h('button', { className: 'link', onClick: () => run('run') }, '▶ run');
         const profileButton = h('button', { className: 'link', onClick: () => run('profile') }, '⏱ profile');
-        const debugButton = h(
-            'button',
-            { className: 'link', title: 'run under the inspector and attach chrome devtools', onClick: () => run('debug') },
-            '🐞 debug',
-        );
+        const debugButton = h('button', {
+            className: 'link',
+            title: 'open the debugger panel and start this run under it',
+            onClick: () => {
+                workspace.open('debugger');
+                debugStore.requestSession({ part: runPart.value as Part });
+            },
+        }, '🐞 debug');
         const submitButton = h('button', { className: 'link', onClick: () => submit() }, '⬆ submit');
         const cancelButton = h('button', { className: 'link error', onClick: () => controller?.abort(), style: 'display: none' }, 'cancel');
 
@@ -94,18 +70,15 @@ export const runnerPanel: PanelDefinition = {
             ticker = undefined;
         };
 
-        const run = async (mode: 'run' | 'profile' | 'debug') => {
+        const run = async (mode: 'run' | 'profile') => {
             controller = new AbortController();
             live.clear();
             replace(summary);
-            startTicker(mode === 'profile' ? 'profiling' : mode === 'debug' ? 'debugging' : 'running');
+            startTicker(mode === 'profile' ? 'profiling' : 'running');
             const options = mode === 'profile'
                 ? { part: 'both' as Part, iterations: Math.max(1, Number(iterations.value) || 1), updateReadme: true, commit: settings.get().profilePush }
-                : { part: runPart.value as Part, iterations: 1, debug: mode === 'debug' };
-            await actions.run(options, controller.signal, {
-                onLog: (line) => live.append(line),
-                onInspector: ({ token }) => replace(summary, debugBox(token)),
-            });
+                : { part: runPart.value as Part, iterations: 1 };
+            await actions.run(options, controller.signal, { onLog: (line) => live.append(line) });
             stopTicker();
             if (controller.signal.aborted) {
                 status.textContent = 'cancelled';

@@ -9,12 +9,12 @@
  */
 
 import { type CallFrame, CdpClient, describeValue, inspectorUrl, type PausedEvent, type PropertyDescriptor, type RemoteObject, SourceMap } from '../cdp.ts';
-import { debugStore } from '../debugstore.ts';
+import { type DebugRequest, debugStore } from '../debugstore.ts';
 import { clear, h, pad, replace } from '../dom.ts';
 import { createLiveLog, devtoolsUrl } from '../livelog.ts';
 import { settings } from '../settings.ts';
 import { actions, getState, subscribe } from '../state.ts';
-import type { Part, PuzzleRef } from '../types.ts';
+import type { Part, PuzzleRef, RunHandlers } from '../types.ts';
 import type { PanelDefinition } from '../workspace.ts';
 
 const solutionRegex = (puzzle: PuzzleRef) => `.*/puzzles/${puzzle.year}/day${pad(puzzle.day)}/solution\\.ts$`;
@@ -101,8 +101,9 @@ export const debuggerPanel: PanelDefinition = {
 
         // ---- session -------------------------------------------------------
 
-        const start = async () => {
+        const start = async (request?: DebugRequest) => {
             if (controller) return;
+            if (request) part.value = request.part;
             sessionPuzzle = getState().puzzle;
             controller = new AbortController();
             firstPause = true;
@@ -113,17 +114,20 @@ export const debuggerPanel: PanelDefinition = {
             clear(scopes);
             clear(evalOutput);
             devtools.style.display = 'none';
-            setStatus('starting…');
+            setStatus(request?.input ? `starting with example '${request.label ?? 'example'}'…` : 'starting…');
             updateButtons();
 
-            const outcome = await actions.run({ part: part.value as Part, iterations: 1, debug: true }, controller.signal, {
+            const handlers: RunHandlers = {
                 onLog: (line) => live.append(line),
                 onInspector: ({ token }) => {
                     devtools.href = devtoolsUrl(token, settings.get().apiBase);
                     devtools.style.display = '';
                     connect(token).catch((error) => setStatus(error instanceof Error ? error.message : String(error), 'error'));
                 },
-            });
+            };
+            const outcome = request?.input
+                ? await actions.runExample({ part: part.value as Part, input: request.input, debug: true }, controller.signal, handlers)
+                : await actions.run({ part: part.value as Part, iterations: 1, debug: true }, controller.signal, handlers);
 
             const cancelled = controller.signal.aborted;
             controller = null;
@@ -441,6 +445,8 @@ export const debuggerPanel: PanelDefinition = {
             debugStore.onChange(() => {
                 renderBreakpoints();
                 if (client && !client.closed) syncBreakpoints();
+                const request = debugStore.takeRequest();
+                if (request) start(request);
             }),
             subscribe(() => {
                 if (controller) stop();
@@ -451,6 +457,9 @@ export const debuggerPanel: PanelDefinition = {
         ];
         renderBreakpoints();
         updateButtons();
+        // another panel may have asked for a session before this one existed
+        const pending = debugStore.takeRequest();
+        if (pending) setTimeout(() => start(pending), 0);
 
         return {
             dispose: () => {

@@ -132,21 +132,32 @@ export const api = {
             else if (event === 'error') failure = payload.message;
         };
 
-        while (true) {
-            const { value, done } = await reader.read();
-            if (done) break;
-            buffer += decoder.decode(value, { stream: true });
-            let index: number;
-            while ((index = buffer.indexOf('\n\n')) !== -1) {
-                const chunk = buffer.slice(0, index);
-                buffer = buffer.slice(index + 2);
-                let event = 'message';
-                const data: string[] = [];
-                for (const line of chunk.split('\n')) {
-                    if (line.startsWith('event:')) event = line.slice(6).trim();
-                    else if (line.startsWith('data:')) data.push(line.slice(5).trimStart());
+        try {
+            while (true) {
+                const { value, done } = await reader.read();
+                if (done) break;
+                buffer += decoder.decode(value, { stream: true });
+                let index: number;
+                while ((index = buffer.indexOf('\n\n')) !== -1) {
+                    const chunk = buffer.slice(0, index);
+                    buffer = buffer.slice(index + 2);
+                    let event = 'message';
+                    const data: string[] = [];
+                    for (const line of chunk.split('\n')) {
+                        if (line.startsWith('event:')) event = line.slice(6).trim();
+                        else if (line.startsWith('data:')) data.push(line.slice(5).trimStart());
+                    }
+                    handle(event, data.join('\n'));
                 }
-                handle(event, data.join('\n'));
+            }
+        } catch (error) {
+            // firefox reports an abruptly closed body as "Error in input stream"; once the result is here that is harmless
+            if (!outcome) {
+                if (error instanceof DOMException && error.name === 'AbortError') throw error;
+                throw new ApiError(
+                    0,
+                    `lost the connection to the server mid-run (${error instanceof Error ? error.message : String(error)}); it may have restarted`,
+                );
             }
         }
         if (failure) throw new ApiError(500, failure);

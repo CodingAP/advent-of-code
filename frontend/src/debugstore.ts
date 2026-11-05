@@ -4,13 +4,20 @@
  * breakpoints per puzzle (remembered) and the line the debugger is paused on, shared by the code and debugger panels
  */
 
-import type { PuzzleRef } from './types.ts';
+import type { Part, PuzzleRef } from './types.ts';
 
 const STORAGE_KEY = 'aoc.breakpoints';
 
 export interface PausedLocation extends PuzzleRef {
     line: number; // 1-based line in solution.ts, or 0 when paused somewhere else
     file: string; // url of the paused script
+}
+
+/** what another panel wants debugged: the real input, or an example */
+export interface DebugRequest {
+    part: Part;
+    input?: string;
+    label?: string;
 }
 
 type Listener = () => void;
@@ -25,6 +32,7 @@ const load = (): Record<string, number[]> => {
 
 let breakpoints = load();
 let paused: PausedLocation | null = null;
+let request: DebugRequest | null = null;
 const listeners = new Set<Listener>();
 
 const key = (puzzle: PuzzleRef) => `${puzzle.year}/${puzzle.day}`;
@@ -54,6 +62,18 @@ export const debugStore = {
         delete breakpoints[key(puzzle)];
         localStorage.setItem(STORAGE_KEY, JSON.stringify(breakpoints));
         notify();
+    },
+
+    /** asks the debugger panel to start; the panel picks it up with takeRequest */
+    requestSession(next: DebugRequest): void {
+        request = next;
+        notify();
+    },
+
+    takeRequest(): DebugRequest | null {
+        const current = request;
+        request = null;
+        return current;
     },
 
     get paused(): PausedLocation | null {
