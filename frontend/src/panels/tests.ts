@@ -8,6 +8,7 @@ import { api } from '../api.ts';
 import { clear, formatMs, h, replace } from '../dom.ts';
 import { debugStore } from '../debugstore.ts';
 import { createLiveLog } from '../livelog.ts';
+import { plainCode } from '../markdown.ts';
 import { settings } from '../settings.ts';
 import { actions, getState, subscribe } from '../state.ts';
 import type { Example, Part, RunOutcome } from '../types.ts';
@@ -20,7 +21,7 @@ const suggestionsFrom = (markdown: string): Example[] => {
     const seen = new Set<string>();
     const examples: Example[] = [];
     for (const match of markdown.matchAll(/```\n([\s\S]*?)\n```/g)) {
-        const input = match[1];
+        const input = plainCode(match[1]);
         if (!input.trim() || seen.has(input)) continue;
         seen.add(input);
         examples.push({ name: `puzzle text #${examples.length + 1}`, input: input + '\n' });

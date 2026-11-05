@@ -7,11 +7,17 @@
 
 const escapeHtml = (text: string) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/** ⟪…⟫ inside code is the scraper's way of keeping the site's highlighted characters */
+const codeHtml = (text: string) => escapeHtml(text).replace(/⟪([^⟫]*)⟫/g, '<em class="star">$1</em>');
+
+/** code with the highlight markers removed (for copying examples) */
+export const plainCode = (text: string) => text.replace(/[⟪⟫]/g, '');
+
 const inline = (text: string): string => {
     const codes: string[] = [];
     // protect code spans first so emphasis markers inside them are left alone
     let out = text.replace(/``\s?([\s\S]*?)\s?``|`([^`]+)`/g, (_match, a: string | undefined, b: string | undefined) => {
-        codes.push(`<code>${escapeHtml(a ?? b ?? '')}</code>`);
+        codes.push(`<code>${codeHtml(a ?? b ?? '')}</code>`);
         return `@@CODE${codes.length - 1}@@`;
     });
     out = escapeHtml(out)
@@ -42,7 +48,7 @@ export const renderMarkdown = (markdown: string): string => {
             i++;
             while (i < lines.length && !lines[i].startsWith('```')) code.push(lines[i++]);
             i++;
-            html.push(`<pre><code>${escapeHtml(code.join('\n'))}</code></pre>`);
+            html.push(`<pre><code>${codeHtml(code.join('\n'))}</code></pre>`);
             continue;
         }
 

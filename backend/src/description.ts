@@ -38,8 +38,12 @@ const toMarkdown = (node: HtmlNode, inPre = false): string => {
             .map((child) => toMarkdown(child, pre))
             .join('');
 
-    // inside a code block every element (em, span, a…) is just text; markdown has no markup there
-    if (inPre && node.tag !== 'pre') return children(true);
+    // inside code, markdown has no markup: emphasis (the site highlights the digits that matter) becomes ⟪…⟫ markers
+    // that the hub's renderer turns back into <em>; everything else is plain text
+    if (inPre && node.tag !== 'pre') {
+        if (node.tag === 'em' || node.tag === 'strong' || node.tag === 'b') return `⟪${children(true)}⟫`;
+        return children(true);
+    }
 
     switch (node.tag) {
         case 'h2':
@@ -50,7 +54,7 @@ const toMarkdown = (node: HtmlNode, inPre = false): string => {
             return `\`\`\`\n${children(true).replace(/\n$/, '')}\n\`\`\`\n\n`;
         case 'code': {
             if (inPre) return children(true);
-            const text = children();
+            const text = children(true); // nested emphasis becomes a ⟪…⟫ marker, see above
             return text.includes('`') ? `\`\` ${text} \`\`` : `\`${text}\``;
         }
         case 'em':
