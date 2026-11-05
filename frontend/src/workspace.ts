@@ -43,6 +43,7 @@ const ZOOM_MAX = 3;
 const ZOOM_STEP = 0.1;
 const PRESETS_KEY = 'aoc.layout.presets';
 const LOCK_KEY = 'aoc.layout.locked';
+const KNOWN_KEY = 'aoc.layout.known'; // panel ids this browser has seen, so new panels show up once in an existing layout
 
 type Listener = () => void;
 
@@ -72,7 +73,9 @@ export class Workspace {
         this.dock.onDidAddPanel(() => this.notify());
         this.dock.onDidRemovePanel(() => this.notify());
 
-        if (!this.restore()) this.reset();
+        const restored = this.restore();
+        if (!restored) this.reset();
+        this.introduceNewPanels(restored);
     }
 
     /** dockview's base theme (icon colours, drag overlays) follows light/dark; the palette itself comes from css variables */
@@ -252,6 +255,33 @@ export class Workspace {
     onChange(listener: Listener): () => void {
         this.listeners.add(listener);
         return () => this.listeners.delete(listener);
+    }
+
+    /** panels added in a newer build get opened once, next to the runner, instead of hiding until someone finds the menu */
+    private introduceNewPanels(restored: boolean): void {
+        let known: string[] = [];
+        try {
+            known = JSON.parse(localStorage.getItem(KNOWN_KEY) ?? 'null') ?? [];
+        } catch {
+            known = [];
+        }
+        const ids = [...this.definitions.keys()];
+        // first run of a build that tracks this: a restored layout knows exactly the panels it shows (settings is optional)
+        if (!known.length && restored) known = [...ids.filter((id) => this.isOpen(id)), 'settings'];
+        if (known.length) {
+            for (const id of ids) {
+                if (known.includes(id) || this.isOpen(id)) continue;
+                const anchor = ['runner', 'code', ...ids].find((candidate) => this.isOpen(candidate));
+                this.dock.addPanel({
+                    id,
+                    component: id,
+                    title: this.definitions.get(id)!.title,
+                    position: anchor ? { referencePanel: anchor, direction: 'within' } : undefined,
+                    inactive: true,
+                });
+            }
+        }
+        localStorage.setItem(KNOWN_KEY, JSON.stringify(ids));
     }
 
     // ---- presets --------------------------------------------------------
