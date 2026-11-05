@@ -19,7 +19,6 @@ const part1 = (input: string) => {
         const direction = (turns[i][0] === 'L') ? -1 : 1;
         const amount = parseInt(turns[i].slice(1));
         dial = ((dial + amount * direction) + 100) % 100;
-        console.log(dial);
 
         if (dial === 0) count++;
     }
