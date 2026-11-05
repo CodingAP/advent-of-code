@@ -6,6 +6,7 @@
 
 import type * as Monaco from 'monaco-editor';
 import { api } from '../api.ts';
+import { debugStore } from '../debugstore.ts';
 import { h, pad, replace } from '../dom.ts';
 import { editorOptions, loadMonaco } from '../editor.ts';
 import { settings } from '../settings.ts';
@@ -23,6 +24,7 @@ export const codePanel: PanelDefinition = {
         let loadedFor = '';
         let disposed = false;
         let zoom = 1;
+        let decorations: Monaco.editor.IEditorDecorationsCollection | null = null;
 
         const options = () => {
             const base = editorOptions(settings.get());
@@ -110,6 +112,14 @@ export const codePanel: PanelDefinition = {
                 if (!editor) {
                     editor = monaco.editor.create(host, { ...options(), theme: monacoThemeName(settings.get().theme), language: 'typescript', value: '' });
                     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => save());
+                    decorations = editor.createDecorationsCollection();
+                    // clicking the glyph margin toggles a breakpoint for the debugger panel
+                    editor.onMouseDown((event) => {
+                        const position = event.target.position;
+                        if (monaco && position && event.target.type === monaco.editor.MouseTargetType.GUTTER_GLYPH_MARGIN) {
+                            debugStore.toggleBreakpoint(getState().puzzle, position.lineNumber);
+                        }
+                    });
                     editor.onDidChangeModelContent(() => {
                         if (savedCode === null) return;
                         const dirty = editor!.getValue() !== savedCode;
@@ -124,6 +134,7 @@ export const codePanel: PanelDefinition = {
                 actions.setPendingCode(null);
                 setStatus('saved', 'ok');
                 editor.focus();
+                renderDecorations();
             } catch (error) {
                 if (loadedFor !== key) return;
                 loadedFor = ''; // allow the next puzzle change (or token fix) to retry
@@ -132,8 +143,28 @@ export const codePanel: PanelDefinition = {
             }
         };
 
+        /** breakpoint dots and the line the debugger is paused on */
+        const renderDecorations = () => {
+            if (!editor || !monaco || !decorations) return;
+            const puzzle = getState().puzzle;
+            const items: Monaco.editor.IModelDeltaDecoration[] = debugStore.breakpoints(puzzle).map((line) => ({
+                range: new monaco!.Range(line, 1, line, 1),
+                options: { glyphMarginClassName: 'bp-glyph', glyphMarginHoverMessage: { value: `breakpoint at line ${line}` } },
+            }));
+            const paused = debugStore.paused;
+            if (paused && paused.year === puzzle.year && paused.day === puzzle.day && paused.line > 0) {
+                items.push({
+                    range: new monaco!.Range(paused.line, 1, paused.line, 1),
+                    options: { isWholeLine: true, className: 'debug-current-line', glyphMarginClassName: 'debug-current-glyph' },
+                });
+                editor.revealLineInCenterIfOutsideViewport(paused.line);
+            }
+            decorations.set(items);
+        };
+
         const unsubscribes = [
             subscribe(load, ['puzzle']),
+            debugStore.onChange(renderDecorations),
             // when a run auto-saved the pending code, reflect that here
             subscribe(() => {
                 const { dirty, pendingCode } = getState();

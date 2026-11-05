@@ -65,6 +65,7 @@ export const editorOptions = (settings: Settings): Monaco.editor.IEditorOptions 
     insertSpaces: true,
     scrollBeyondLastLine: false,
     automaticLayout: true,
+    glyphMargin: true, // breakpoints live here
     renderWhitespace: 'selection',
     smoothScrolling: true,
 });

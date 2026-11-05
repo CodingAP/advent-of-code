@@ -43,13 +43,15 @@ deno task serve   # http://localhost:8000
 deno task dev     # server with reload + frontend rebuild on change
 ```
 
-The dashboard is the year/day grid with star totals and a button that downloads every missing input and puzzle text. The editor view has panels (AoC, Puzzles, Input, Code, Runner, Tests, Runs, Submissions, README, Settings) that can be opened from the `Panels` menu, dragged into tabs or splits, and the layout is remembered. Presets live under `Layout`. The API token and runner defaults are set in Settings; the UI can also point at a remote backend via the api base url.
+The dashboard is the year/day grid with star totals and a button that downloads every missing input and puzzle text. The editor view has panels (AoC, Puzzles, Input, Code, Runner, Tests, Debugger, Runs, Submissions, README, Settings) that can be opened from the `Panels` menu, dragged into tabs or splits, and the layout is remembered. Presets live under `Layout`. The API token and runner defaults are set in Settings; the UI can also point at a remote backend via the api base url.
 
 The puzzle text is scraped from adventofcode.com into `puzzle.md` next to the solution (gitignored, since the puzzle text should not be redistributed). The AoC panel shows it (with a [website] toggle for the live page); refresh it there after solving part one to pull in part two.
 
 Themes live in Settings → appearance: advent of code (dark), light, hacker, frutiger aero, dracula, nord, and synthwave. A theme is a block of CSS variables in `frontend/static/styles.css` plus matching editor colours in `frontend/src/themes.ts`, so adding one is a copy-and-tweak job.
 
-The Runner streams the solution's console output live (the server keeps only the last 2000 lines), Cancel really kills the process, and **🐞 debug** starts the run paused under the inspector: paste the shown `devtools://…` URL into a Chromium address bar, set breakpoints in `solution.ts` (or use `debugger;`), press resume. The inspector websocket is proxied through the API with a one-time token, so it works over HTTPS on the server too. One debug session at a time.
+The Runner streams the solution's console output live (the server keeps only the last 2000 lines) and Cancel really kills the process.
+
+The **Debugger panel** works in any browser: click the editor gutter to set breakpoints, press 🐞 debug, and the run pauses on them (or on `debugger;` statements, or on uncaught exceptions if enabled). It shows the call stack, the scope variables (expandable), an evaluate box for the selected frame, step over / into / out, pause and resume (F8 / F10 / F11 / shift+F11 while the panel has focus), with the current line highlighted in the editor. Under the hood it speaks the Chrome DevTools Protocol to Deno's inspector through a websocket the API proxies with a one-time token, and translates V8's transpiled line numbers back to the TypeScript source with the inline source map. The same session can be opened in Chrome DevTools via the "devtools url" link. One debug session at a time.
 
 Profiling also publishes the puzzle: the puzzle directory (solution, README, examples; never inputs or puzzle text) is committed as `<year> day <day>: <title>` and pushed from the machine running the api. Turn it off in Settings ("commit and push the puzzle after profiling") or with `--push=false`. On the server this needs git in the container and a deploy key with write access (see the deployment section).
 

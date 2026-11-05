@@ -1412,3 +1412,134 @@ button.link.current {
     font-family: var(--font-mono);
     font-size: 12px;
 }
+
+/* debugger: editor decorations */
+.bp-glyph {
+    background: radial-gradient(circle at 50% 50%, #e5484d 0 42%, transparent 46%);
+    cursor: pointer;
+}
+
+.debug-current-glyph::before {
+    content: '\25B6';
+    color: var(--staryellow);
+    font-size: 10px;
+    position: absolute;
+    left: 4px;
+}
+
+.debug-current-line {
+    background: rgba(255, 255, 102, 0.14);
+    box-shadow: inset 2px 0 0 var(--staryellow);
+}
+
+.monaco-editor .margin-view-overlays .cgmr:hover {
+    background: rgba(229, 72, 77, 0.35);
+    border-radius: 50%;
+}
+
+/* debugger panel */
+.debugger {
+    display: flex;
+    flex-direction: column;
+}
+
+.dbg-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 0 12px;
+    padding: 8px 10px;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    font-size: 13px;
+}
+
+.dbg-column {
+    min-width: 0;
+}
+
+.dbg-column h4 {
+    margin: 6px 0 4px;
+    font-size: 12px;
+    font-weight: normal;
+    color: var(--lightgreen);
+    border-bottom: 1px solid var(--border);
+}
+
+.dbg-list {
+    margin-bottom: 6px;
+}
+
+.dbg-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 1px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dbg-frame {
+    cursor: pointer;
+}
+
+.dbg-frame:hover {
+    background: var(--hover);
+}
+
+.dbg-frame.active {
+    color: var(--highlightlinkgreen);
+    background: var(--hover);
+}
+
+.dbg-scope-title {
+    color: var(--dim);
+    margin: 4px 0 2px;
+    text-transform: lowercase;
+}
+
+.dbg-prop {
+    padding-left: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dbg-toggle {
+    width: 14px;
+    display: inline-block;
+}
+
+[data-theme='aero'] .dbg-toggle {
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.dbg-name {
+    color: var(--offwhite);
+}
+
+.dbg-value {
+    color: var(--staryellow);
+}
+
+.dbg-children {
+    padding-left: 18px;
+}
+
+.dbg-eval {
+    width: 100%;
+    margin: 2px 0 4px;
+}
+
+.dbg-eval-output {
+    min-height: 1.4em;
+}
+
+.debugger .live-log-wrapper {
+    flex: 0 0 auto;
+    max-height: 35%;
+}

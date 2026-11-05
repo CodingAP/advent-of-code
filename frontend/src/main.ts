@@ -9,6 +9,7 @@ import { currentAocYear, h } from './dom.ts';
 import { createDashboard } from './dashboard.ts';
 import { aocPanel } from './panels/aoc.ts';
 import { codePanel } from './panels/code.ts';
+import { debuggerPanel } from './panels/debugger.ts';
 import { inputPanel } from './panels/input.ts';
 import { puzzlesPanel } from './panels/puzzles.ts';
 import { readmePanel } from './panels/readme.ts';
@@ -122,7 +123,7 @@ const boot = async () => {
     const ensureWorkspace = () => {
         workspace ??= new Workspace(
             workspaceRoot,
-            [aocPanel, puzzlesPanel, inputPanel, codePanel, runnerPanel, testsPanel, runsPanel, submissionsPanel, readmePanel, settingsPanel],
+            [aocPanel, puzzlesPanel, inputPanel, codePanel, runnerPanel, testsPanel, debuggerPanel, runsPanel, submissionsPanel, readmePanel, settingsPanel],
             [
                 { id: 'aoc' },
                 { id: 'puzzles', position: { referencePanel: 'aoc', direction: 'within' } },
@@ -130,6 +131,7 @@ const boot = async () => {
                 { id: 'code', position: { referencePanel: 'aoc', direction: 'right' }, initialWidth: Math.round(workspaceRoot.clientWidth * 0.6) },
                 { id: 'runner', position: { referencePanel: 'code', direction: 'below' }, initialHeight: Math.round(workspaceRoot.clientHeight * 0.35) },
                 { id: 'tests', position: { referencePanel: 'runner', direction: 'within' } },
+                { id: 'debugger', position: { referencePanel: 'runner', direction: 'within' } },
                 { id: 'runs', position: { referencePanel: 'runner', direction: 'within' } },
                 { id: 'submissions', position: { referencePanel: 'runner', direction: 'within' } },
                 { id: 'readme', position: { referencePanel: 'runner', direction: 'within' } },
