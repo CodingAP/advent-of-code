@@ -16,6 +16,9 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends git openssh-client ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
+# the compose file runs the container as the host user (uid 1000); ssh refuses to run as a uid without a passwd entry
+RUN id -u 1000 >/dev/null 2>&1 || useradd --uid 1000 --no-create-home --home-dir /tmp --shell /usr/sbin/nologin app
+
 WORKDIR /app
 COPY . .
 
