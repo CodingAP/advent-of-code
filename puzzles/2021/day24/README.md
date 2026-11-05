@@ -1,7 +1,5 @@
 # Advent of Code 2021 - Day 24: [Arithmetic Logic Unit](https://adventofcode.com/2021/day/24)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2021/day24)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

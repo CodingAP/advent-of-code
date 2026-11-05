@@ -1,7 +1,5 @@
 # Advent of Code 2022 - Day 25: [Full of Hot Air](https://adventofcode.com/2022/day/25)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2022/day25)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

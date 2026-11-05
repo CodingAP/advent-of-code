@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 1: [Historian Hysteria](https://adventofcode.com/2024/day/1)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day01)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

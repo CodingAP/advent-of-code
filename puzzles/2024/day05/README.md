@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 5: [Print Queue](https://adventofcode.com/2024/day/5)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day05)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

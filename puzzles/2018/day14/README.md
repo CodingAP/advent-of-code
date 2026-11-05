@@ -1,7 +1,5 @@
 # Advent of Code 2018 - Day 14: [Chocolate Charts](https://adventofcode.com/2018/day/14)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2018/day14)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

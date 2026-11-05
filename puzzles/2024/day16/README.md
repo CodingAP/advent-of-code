@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 16: [Reindeer Maze](https://adventofcode.com/2024/day/16)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day16)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

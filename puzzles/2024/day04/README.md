@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 4: [Ceres Search](https://adventofcode.com/2024/day/4)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day04)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

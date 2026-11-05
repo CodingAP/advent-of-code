@@ -1,7 +1,5 @@
 # Advent of Code 2020 - Day 25: [Combo Breaker](https://adventofcode.com/2020/day/25)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2020/day25)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

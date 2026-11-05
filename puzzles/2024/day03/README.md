@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 3: [Mull It Over](https://adventofcode.com/2024/day/3)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day03)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

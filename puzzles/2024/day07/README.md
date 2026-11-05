@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 7: [Bridge Repair](https://adventofcode.com/2024/day/7)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day07)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

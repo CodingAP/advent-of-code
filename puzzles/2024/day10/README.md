@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 10: [Hoof It](https://adventofcode.com/2024/day/10)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day10)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

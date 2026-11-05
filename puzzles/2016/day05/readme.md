@@ -1,7 +1,5 @@
 # Advent of Code 2016 - Day 5: [How About a Nice Game of Chess?](https://adventofcode.com/2016/day/5)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2016/day05)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

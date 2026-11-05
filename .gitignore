@@ -106,8 +106,16 @@ dist
 # my settings file
 settings.json
 
-# removing inputs from github
+# puzzle inputs are never committed (advent of code asks that they are not redistributed)
 **/input.txt
+**/puzzle.md
+**/.run-*.txt
+
+# built frontend bundle
+frontend/dist/
+
+# runtime secrets (adventofcode.com session cookie)
+backend/local.json
 
 # remove dev stuff
 dev.md

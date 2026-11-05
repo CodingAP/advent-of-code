@@ -1,7 +1,5 @@
 # Advent of Code 2019 - Day 21: [Springdroid Adventure](https://adventofcode.com/2019/day/21)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2019/day21)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

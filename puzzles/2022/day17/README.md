@@ -1,7 +1,5 @@
 # Advent of Code 2022 - Day 17: [Pyroclastic Flow](https://adventofcode.com/2022/day/17)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2022/day17)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

@@ -1,7 +1,5 @@
 # Advent of Code 2022 - Day 16: [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2022/day16)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

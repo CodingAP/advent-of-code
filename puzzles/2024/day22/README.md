@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 22: [Monkey Market](https://adventofcode.com/2024/day/22)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day22)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

@@ -1,7 +1,5 @@
 # Advent of Code 2022 - Day 23: [Unstable Diffusion](https://adventofcode.com/2022/day/23)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2022/day23)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

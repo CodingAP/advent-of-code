@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 8: [Resonant Collinearity](https://adventofcode.com/2024/day/8)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day08)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

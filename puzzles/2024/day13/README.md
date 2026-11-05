@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 13: [Claw Contraption](https://adventofcode.com/2024/day/13)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day13)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

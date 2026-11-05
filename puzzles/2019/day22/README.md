@@ -1,7 +1,5 @@
 # Advent of Code 2019 - Day 22: [Slam Shuffle](https://adventofcode.com/2019/day/22)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2019/day22)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

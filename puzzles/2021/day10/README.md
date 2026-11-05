@@ -1,7 +1,5 @@
 # Advent of Code 2021 - Day 10: [Syntax Scoring](https://adventofcode.com/2021/day/10)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2021/day10)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

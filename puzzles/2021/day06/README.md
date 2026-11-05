@@ -1,7 +1,5 @@
 # Advent of Code 2021 - Day 6: [Lanternfish](https://adventofcode.com/2021/day/6)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2021/day06)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

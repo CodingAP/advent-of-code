@@ -1,0 +1,36 @@
+{
+    "workspace": [
+        "./backend",
+        "./frontend"
+    ],
+    "imports": {
+        "@std/crypto": "jsr:@std/crypto@^1.0.3"
+    },
+    "tasks": {
+        "cli": "deno run -A --env-file backend/cli.ts",
+        "serve": "deno run -A --env-file backend/cli.ts serve",
+        "build": "deno task --cwd frontend build",
+        "dev": {
+            "description": "run the api server with reload and rebuild the frontend on change",
+            "command": "deno task --cwd frontend dev & deno run -A --env-file --watch=backend backend/cli.ts serve"
+        },
+        "check": "deno check backend/cli.ts backend/server.ts backend/runner-child.ts frontend/src/main.ts"
+    },
+    "fmt": {
+        "indentWidth": 4,
+        "singleQuote": true,
+        "lineWidth": 160,
+        "exclude": [
+            "puzzles",
+            "**/*.md",
+            "frontend/dist",
+            "frontend/static"
+        ]
+    },
+    "lint": {
+        "exclude": [
+            "puzzles",
+            "frontend/dist"
+        ]
+    }
+}

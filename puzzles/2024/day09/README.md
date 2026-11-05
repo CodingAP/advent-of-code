@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 9: [Disk Fragmenter](https://adventofcode.com/2024/day/9)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day09)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

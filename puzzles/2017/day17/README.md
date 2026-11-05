@@ -1,7 +1,5 @@
 # Advent of Code 2017 - Day 17: [Spinlock](https://adventofcode.com/2017/day/17)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2017/day17)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

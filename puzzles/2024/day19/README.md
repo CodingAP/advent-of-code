@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 19: [Linen Layout](https://adventofcode.com/2024/day/19)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day19)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

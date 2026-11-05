@@ -1,7 +1,5 @@
 # Advent of Code 2020 - Day 20: [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2020/day20)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

@@ -1,0 +1,9 @@
+{
+    "name": "@aoc/backend",
+    "exports": {},
+    "tasks": {
+        "cli": "deno run -A --env-file=../.env cli.ts",
+        "serve": "deno run -A --env-file=../.env cli.ts serve"
+    },
+    "imports": {}
+}

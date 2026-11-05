@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 12: [Garden Groups](https://adventofcode.com/2024/day/12)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day12)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

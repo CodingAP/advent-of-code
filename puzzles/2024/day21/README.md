@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 21: [Keypad Conundrum](https://adventofcode.com/2024/day/21)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day21)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

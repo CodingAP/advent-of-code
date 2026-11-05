@@ -1,7 +1,5 @@
 # Advent of Code 2019 - Day 12: [The N-Body Problem](https://adventofcode.com/2019/day/12)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2019/day12)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

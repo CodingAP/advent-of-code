@@ -1,7 +1,5 @@
 # Advent of Code 2024 - Day 2: [Red-Nosed Reports](https://adventofcode.com/2024/day/2)
 
-## [Write Up](https://codingap.github.io/advent-of-code/writeups/2024/day02)
-
 ## Results
 
 |                  | **Part 1** | **Part 2** |

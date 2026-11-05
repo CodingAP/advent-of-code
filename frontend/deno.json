@@ -1,0 +1,15 @@
+{
+    "name": "@aoc/frontend",
+    "exports": {},
+    "tasks": {
+        "build": "deno bundle --platform browser --minify --sourcemap=linked -o dist/main.js src/main.ts",
+        "dev": "deno bundle --platform browser --watch --sourcemap=inline -o dist/main.js src/main.ts"
+    },
+    "imports": {
+        "dockview-core": "npm:dockview-core@^8.8.3",
+        "monaco-editor": "npm:monaco-editor@^0.52.2"
+    },
+    "compilerOptions": {
+        "lib": ["dom", "dom.iterable", "esnext"]
+    }
+}
