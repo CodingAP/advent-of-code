@@ -26,6 +26,7 @@ interface CommandArguments {
     clear: string;
     input: string;
     debug: string;
+    push: string;
 }
 
 interface CommandInfo {
@@ -100,15 +101,21 @@ const commandLineInfo: { commands: Record<string, CommandInfo>; arguments: Recor
         },
         profile: {
             aliases: ['p'],
-            description: 'times the puzzle over several iterations and writes the results table to the readme.',
-            arguments: ['day', 'year', 'iterations'],
+            description: 'times the puzzle over several iterations, writes the results table to the readme, and commits + pushes the puzzle.',
+            arguments: ['day', 'year', 'iterations', 'push'],
             command: async (args) => {
                 const { year, day } = toNumbers(args);
                 log(`profiling puzzle for ${where(args)} (${hl(args.iterations)} iterations)!`);
-                const outcome = await runPuzzle(year, day, { part: 'both', iterations: Number(args.iterations), updateReadme: true });
+                const outcome = await runPuzzle(year, day, {
+                    part: 'both',
+                    iterations: Number(args.iterations),
+                    updateReadme: true,
+                    commit: args.push === 'true',
+                });
                 if (!outcome.success) return fail(outcome.error ?? 'unknown error');
                 printRun(outcome.results);
                 log(`profiling complete! results are in the ${hl('readme')} in the solution directory!`);
+                if (outcome.git) (outcome.git.pushed || !outcome.git.committed ? log : fail)(`git: ${outcome.git.message}`);
             },
         },
         submit: {
@@ -216,6 +223,12 @@ const commandLineInfo: { commands: Record<string, CommandInfo>; arguments: Recor
             aliases: [],
             description: 'for run: pause under the inspector so chrome devtools can attach.',
             default: 'false',
+            expects: ['true', 'false'],
+        },
+        push: {
+            aliases: [],
+            description: 'for profile: commit the puzzle directory and push it to github.',
+            default: 'true',
             expects: ['true', 'false'],
         },
         missing: {

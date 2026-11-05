@@ -46,6 +46,12 @@ const SECTIONS: { title: string; fields: Field[] }[] = [
             { key: 'runTimeoutMs', label: 'run timeout (ms)', type: 'number', min: 1000, hint: "capped by the server's RUN_TIMEOUT_MS" },
             { key: 'defaultFake', label: 'fake submissions by default', type: 'checkbox' },
             { key: 'confirmSubmit', label: 'confirm before real submissions', type: 'checkbox' },
+            {
+                key: 'profilePush',
+                label: 'commit and push the puzzle after profiling',
+                type: 'checkbox',
+                hint: 'git add + commit + push of puzzles/<year>/dayNN from the server running the api',
+            },
         ],
     },
     {

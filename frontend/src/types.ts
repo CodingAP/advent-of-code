@@ -77,6 +77,7 @@ export interface RunOutcome {
     iterations: number;
     readmeUpdated: boolean;
     cancelled: boolean;
+    git?: { committed: boolean; pushed: boolean; commit?: string; message: string };
 }
 
 export interface RunRequest {
@@ -86,6 +87,7 @@ export interface RunRequest {
     timeoutMs?: number;
     input?: string;
     debug?: boolean;
+    commit?: boolean;
 }
 
 export interface RunHandlers {

@@ -154,7 +154,16 @@ export const createApiRouter = (): Router => {
     router.post('/api/puzzles/:year/:day/run', async (request, params) => {
         const { year, day } = parsePuzzle(params);
         const body = await readJson<
-            { part?: unknown; iterations?: unknown; updateReadme?: unknown; timeoutMs?: unknown; input?: unknown; stream?: unknown; debug?: unknown }
+            {
+                part?: unknown;
+                iterations?: unknown;
+                updateReadme?: unknown;
+                timeoutMs?: unknown;
+                input?: unknown;
+                stream?: unknown;
+                debug?: unknown;
+                commit?: unknown;
+            }
         >(request);
         const part = body.part ?? 'both';
         if (!isPart(part)) throw new HttpError(400, "part must be '1', '2', or 'both'");
@@ -170,6 +179,7 @@ export const createApiRouter = (): Router => {
             updateReadme: body.updateReadme === true,
             input: typeof body.input === 'string' ? body.input : undefined,
             debug,
+            commit: body.commit === true,
         };
 
         if (body.stream !== true) return json(await runPuzzle(year, day, options));

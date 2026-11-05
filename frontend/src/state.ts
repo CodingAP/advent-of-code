@@ -126,7 +126,7 @@ export const actions = {
     },
 
     async run(
-        options: { part: Part; iterations?: number; updateReadme?: boolean; debug?: boolean },
+        options: { part: Part; iterations?: number; updateReadme?: boolean; debug?: boolean; commit?: boolean },
         signal?: AbortSignal,
         handlers: RunHandlers = {},
     ): Promise<RunOutcome | null> {

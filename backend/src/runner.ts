@@ -9,6 +9,7 @@
 import { env, type Part, repoRoot, rootConfigPath, runnerChildPath } from './config.ts';
 import { insertRun } from './db.ts';
 import { clearDebugSession, DEBUG_PORT, disconnectDebugSession, newDebugToken, registerDebugSession } from './debug.ts';
+import { type GitOutcome, publishPuzzle } from './git.ts';
 import { getPuzzlePaths, getPuzzleStatus, getTitle, PuzzleNotGeneratedError, readReadme, writeReadme } from './puzzles.ts';
 import { renderReadme } from './readme.ts';
 
@@ -33,6 +34,8 @@ export interface RunOutcome {
     iterations: number;
     readmeUpdated: boolean;
     cancelled: boolean;
+    /** set when the run also committed/pushed the puzzle (profile with commit: true) */
+    git?: GitOutcome;
 }
 
 export interface RunOptions {
@@ -45,6 +48,8 @@ export interface RunOptions {
     input?: string;
     /** start under the inspector, paused at the first line; no timeout applies */
     debug?: boolean;
+    /** after a successful profile (updateReadme), commit the puzzle directory and push it */
+    commit?: boolean;
 }
 
 export interface RunHandlers {
@@ -233,12 +238,18 @@ export const runPuzzle = async (year: number, day: number, options: RunOptions =
     }
 
     let readmeUpdated = false;
+    let git: GitOutcome | undefined;
     if (success && options.updateReadme && !customInput && !debug && results.part1 && results.part2) {
-        const title = (await getTitle(year, day)) ?? 'untitled';
+        const title = await getTitle(year, day);
         const existing = await readReadme(year, day);
-        await writeReadme(year, day, renderReadme(year, day, title, results, existing ?? undefined));
+        await writeReadme(year, day, renderReadme(year, day, title ?? 'untitled', results, existing ?? undefined));
         readmeUpdated = true;
+        if (options.commit) {
+            handlers.onLog?.('— committing and pushing the puzzle —');
+            git = await publishPuzzle(year, day, title);
+            handlers.onLog?.(`— ${git.message} —`);
+        }
     }
 
-    return { success, error, results, logs, logLines, durationMs, iterations, readmeUpdated, cancelled };
+    return { success, error, results, logs, logLines, durationMs, iterations, readmeUpdated, cancelled, git };
 };

@@ -13,6 +13,7 @@ export interface Settings {
     defaultIterations: number;
     defaultFake: boolean;
     confirmSubmit: boolean;
+    profilePush: boolean;
     runTimeoutMs: number;
     editorFontSize: number;
     editorMinimap: boolean;
@@ -33,6 +34,7 @@ export const DEFAULT_SETTINGS: Settings = {
     defaultIterations: 10,
     defaultFake: false,
     confirmSubmit: true,
+    profilePush: true,
     runTimeoutMs: 120_000,
     editorFontSize: 14,
     editorMinimap: false,

@@ -100,7 +100,7 @@ export const runnerPanel: PanelDefinition = {
             replace(summary);
             startTicker(mode === 'profile' ? 'profiling' : mode === 'debug' ? 'debugging' : 'running');
             const options = mode === 'profile'
-                ? { part: 'both' as Part, iterations: Math.max(1, Number(iterations.value) || 1), updateReadme: true }
+                ? { part: 'both' as Part, iterations: Math.max(1, Number(iterations.value) || 1), updateReadme: true, commit: settings.get().profilePush }
                 : { part: runPart.value as Part, iterations: 1, debug: mode === 'debug' };
             await actions.run(options, controller.signal, {
                 onLog: (line) => live.append(line),
@@ -158,6 +158,9 @@ export const runnerPanel: PanelDefinition = {
                     h('tbody', null, rows),
                 ),
                 run.error && !run.cancelled ? h('pre', { className: 'error', style: 'margin-top: 8px' }, run.error) : null,
+                run.git
+                    ? h('p', { className: run.git.pushed || !run.git.committed ? 'ok' : 'error', style: 'margin-top: 8px' }, `git: ${run.git.message}`)
+                    : null,
             );
             status.textContent = run.success ? `done in ${formatMs(run.durationMs)}` : run.cancelled ? 'cancelled' : 'failed';
         };

@@ -6,8 +6,15 @@
 # then set the adventofcode.com session cookie from the settings panel (it is stored in backend/local.json inside the container;
 # mount that file too if it should survive rebuilds, or pass -e SESSION=... as a fallback).
 #
-# mount puzzles/ and the database so edits made through the web ui land in your checkout.
+# on codingap.dev the compose file builds this image and bind-mounts the checkout over /app, so the copy below only
+# matters for standalone use.
 FROM denoland/deno:2.9.7
+
+# git + ssh so profiling can commit and push the puzzle (see backend/src/git.ts)
+USER root
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends git openssh-client ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY . .

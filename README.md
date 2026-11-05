@@ -26,7 +26,7 @@ Inputs and puzzle text are not stored in git. Download them all with `deno task 
 deno task cli                              # list commands and arguments
 deno task cli fetch --year=2024 --day=1    # create solution.ts (if missing), download input.txt and puzzle.md
 deno task cli run --year=2024 --day=1      # run both parts with timing (--part=1|2|both; --input=file.txt runs an example instead)
-deno task cli profile --year=2024 --day=1 --iterations=10   # average timing, writes the readme results table
+deno task cli profile --year=2024 --day=1 --iterations=10   # average timing, writes the readme results table, commits + pushes the puzzle (--push=false to skip)
 deno task cli submit --year=2024 --day=1 --part=1           # submit (--fake=true records without contacting the site)
 deno task cli update                       # download missing inputs + puzzle text (--missing=false re-downloads everything)
 deno task cli session --token=...          # store / show the adventofcode.com session cookie
@@ -51,6 +51,8 @@ Themes live in Settings → appearance: advent of code (dark), light, hacker, fr
 
 The Runner streams the solution's console output live (the server keeps only the last 2000 lines), Cancel really kills the process, and **🐞 debug** starts the run paused under the inspector: paste the shown `devtools://…` URL into a Chromium address bar, set breakpoints in `solution.ts` (or use `debugger;`), press resume. The inspector websocket is proxied through the API with a one-time token, so it works over HTTPS on the server too. One debug session at a time.
 
+Profiling also publishes the puzzle: the puzzle directory (solution, README, examples; never inputs or puzzle text) is committed as `<year> day <day>: <title>` and pushed from the machine running the api. Turn it off in Settings ("commit and push the puzzle after profiling") or with `--push=false`. On the server this needs git in the container and a deploy key with write access (see the deployment section).
+
 The Tests panel runs the solution against example inputs: the code blocks from the puzzle text are offered automatically, and examples you save (with expected answers) go to `examples.json` next to the solution so they travel with the repo. Example runs are not recorded in the run history.
 
 ### API
@@ -70,7 +72,7 @@ All routes are under `/api` and return JSON. When `API_TOKEN` is set every route
 | GET/PUT | `/api/puzzles/:year/:day/readme` | read / write `README.md` (`{ content }`) |
 | GET/POST | `/api/puzzles/:year/:day/description` | stored puzzle text as markdown / re-scrape it |
 | GET/POST | `/api/bulk` | status of / start the background download of all inputs and puzzle text (`{ onlyMissing, inputs, descriptions }`) |
-| POST | `/api/puzzles/:year/:day/run` | `{ part, iterations, updateReadme, timeoutMs, input, debug, stream }` (`input` runs that text instead of input.txt, unrecorded; `stream: true` answers with server-sent events `start`, `log`, `inspector`, `result`; `debug` starts under the inspector) |
+| POST | `/api/puzzles/:year/:day/run` | `{ part, iterations, updateReadme, timeoutMs, input, debug, stream, commit }` (`input` runs that text instead of input.txt, unrecorded; `stream: true` answers with server-sent events `start`, `log`, `inspector`, `result`; `debug` starts under the inspector) |
 | GET | `/api/debug` | whether a debug session is active |
 | GET | `/api/debug/ws/:token` | websocket proxy to the inspector of the current debug run (token from the `inspector` event; no bearer header needed) |
 | GET/PUT | `/api/puzzles/:year/:day/examples` | saved example inputs with expected answers (`{ examples }`) |
@@ -89,6 +91,7 @@ The live instance at https://aoc.codingap.dev runs on the home server from `~/do
 - `~/docker/aoc` is a checkout of this repository, bind-mounted into the `aoc` service (`denoland/deno`, running as `serverap`), which runs `deno task build && deno task serve`. Solutions, inputs, puzzle text, examples and the database all live in that checkout, so you can `git pull` / commit there.
 - `~/docker/configs/aoc/.env` holds `API_TOKEN` (paste it into Settings → api token in the browser); `~/docker/configs/aoc/deno-dir` caches dependencies.
 - Caddy terminates TLS (`aoc.codingap.dev { reverse_proxy aoc:8000 }` in `configs/caddy/Caddyfile`). Caddy bind-mounts that single file, so after editing it recreate the container (`docker compose up -d --force-recreate caddy`) rather than only reloading, or the container keeps the old inode.
+- The image is built from the repo `Dockerfile` (deno + git + ssh). Pushes use the deploy key in `~/docker/configs/aoc/ssh/aoc_deploy` through the `github-aoc` ssh alias (origin is `git@github-aoc:CodingAP/advent-of-code.git`); the author identity comes from `GIT_AUTHOR_*` in `configs/aoc/.env`.
 - The service has hard limits (`mem_limit: 4g`, `cpus: 2`, `pids_limit: 256`) and solution runs are capped by `RUN_MAX_MEMORY_MB`, so a runaway solution fails with an out-of-memory error instead of freezing the host.
 - Update: `cd ~/docker/aoc && git pull && cd ~/docker && docker compose restart aoc`. Logs: `docker logs -f aoc`.
 
